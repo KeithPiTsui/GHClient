@@ -11,7 +11,8 @@
     "956D2B21DD155C49504BB67697A67F7C5351A353" : 9223372036854775807,
     "E084C86B03F81D63323C9E7510697EA528A758C7" : 9223372036854775807,
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : 9223372036854775807,
-    "0A5C3A6DB1EA9211CEFA5384E9882B4D710699A4" : 9223372036854775807
+    "0A5C3A6DB1EA9211CEFA5384E9882B4D710699A4" : 9223372036854775807,
+    "CCB02F62BD05252A9CDF3FAECA34BF4FA5882DCF" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8D255161-81CF-43F9-AC03-501CD0591EFC",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
@@ -23,7 +24,8 @@
     "956D2B21DD155C49504BB67697A67F7C5351A353" : "GHClient\/ReactiveCocoa\/Carthage\/Checkouts\/Result\/",
     "E084C86B03F81D63323C9E7510697EA528A758C7" : "GHClient\/ReactiveCocoa\/Carthage\/Checkouts\/ReactiveSwift\/Carthage\/Checkouts\/xcconfigs\/",
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : "GHClient\/ReactiveCocoa\/Carthage\/Checkouts\/ReactiveSwift\/",
-    "0A5C3A6DB1EA9211CEFA5384E9882B4D710699A4" : "GHClient\/Runes\/"
+    "0A5C3A6DB1EA9211CEFA5384E9882B4D710699A4" : "GHClient\/Runes\/",
+    "CCB02F62BD05252A9CDF3FAECA34BF4FA5882DCF" : "GHClient\/M13ProgressSuite\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "GHClient",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -63,6 +65,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/antitypical\/Result.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "956D2B21DD155C49504BB67697A67F7C5351A353"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Marxon13\/M13ProgressSuite.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CCB02F62BD05252A9CDF3FAECA34BF4FA5882DCF"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jspahrsummers\/xcconfigs.git",

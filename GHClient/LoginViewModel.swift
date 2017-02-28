@@ -98,6 +98,18 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
         self.tappedSaveAccountProperty.signal.skipNil().observeValues { [weak self] in
             self?.accountProperty.value = $0
             _ = Account.save(account: $0)
+            if let password = $0.password {
+                let githubServiceConfig = ServerConfig.githubServerConfig(username: $0.username, password: password)
+                let service = Service.init(serverConfig: githubServiceConfig)
+                service.testConnectionToGithub().observe(on: QueueScheduler()).startWithResult{ (result) in
+                    if let user = result.value {
+                        print("user id: \(user.id)")
+                    } else {
+                        print("fail to get user profile")
+                    }
+                }
+            }
+            print("saved")
         }
         
     }

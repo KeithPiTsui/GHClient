@@ -13,6 +13,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 import GHAPI
+import M13ProgressSuite
 
 class LoginViewController: UIViewController {
 
@@ -37,7 +38,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bindUIAction()
-        self.viewModel.inputs.viewDidLoad()        
+        self.viewModel.inputs.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,17 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.KeyboardWillHide(_:)),
                                                name: NSNotification.Name.UIKeyboardWillHide,
                                                object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        guard let hud = M13ProgressHUD(progressView: M13ProgressViewRing()) else { return }
+//        hud.progressViewSize = CGSize(width: 60, height: 60)
+//        hud.animationPoint = CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 2)
+//        self.view.addSubview(hud)
+//        hud.status = "Saving"
+//        hud.show(true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -38,6 +38,8 @@
 		0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F3291E65206000E962B6 /* LoginViewController.swift */; };
 		0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */; };
 		0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F5AA1E654ABF00E962B6 /* Account.swift */; };
+		0E94F5B91E65758400E962B6 /* M13ProgressSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */; };
+		0E94F5BA1E65758400E962B6 /* M13ProgressSuite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -510,6 +512,34 @@
 			remoteGlobalIDString = EAD9FACE19D0EAB50031E006;
 			remoteInfo = "Argo-iOS";
 		};
+		0E94F5B31E65756C00E962B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA2FAF981889907300BCAEF5;
+			remoteInfo = M13ProgressSuiteDemo;
+		};
+		0E94F5B51E65756C00E962B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA2FAFBC1889907300BCAEF5;
+			remoteInfo = M13ProgressSuiteTests;
+		};
+		0E94F5B71E65756C00E962B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FB2A7BDC1B793E5600FE4E4A;
+			remoteInfo = M13ProgressSuiteFramework;
+		};
+		0E94F5BB1E65758400E962B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = FB2A7BDB1B793E5600FE4E4A;
+			remoteInfo = M13ProgressSuiteFramework;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -522,6 +552,7 @@
 				0E94F2DB1E651B7E00E962B6 /* Result.framework in Embed Frameworks */,
 				0E94F2EF1E651B7E00E962B6 /* Prelude_UIKit.framework in Embed Frameworks */,
 				0E94F2F31E651B7E00E962B6 /* Curry.framework in Embed Frameworks */,
+				0E94F5BA1E65758400E962B6 /* M13ProgressSuite.framework in Embed Frameworks */,
 				0E94F2D71E651B7E00E962B6 /* Runes.framework in Embed Frameworks */,
 				0E94F2EB1E651B7E00E962B6 /* Prelude.framework in Embed Frameworks */,
 				0E94F2D31E651B7E00E962B6 /* GHAPI.framework in Embed Frameworks */,
@@ -560,6 +591,7 @@
 		0E94F3291E65206000E962B6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0E94F5AA1E654ABF00E962B6 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = M13ProgressSuite.xcodeproj; path = M13ProgressSuite/M13ProgressSuite.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -570,6 +602,7 @@
 				0E94F2DA1E651B7E00E962B6 /* Result.framework in Frameworks */,
 				0E94F2EE1E651B7E00E962B6 /* Prelude_UIKit.framework in Frameworks */,
 				0E94F2F21E651B7E00E962B6 /* Curry.framework in Frameworks */,
+				0E94F5B91E65758400E962B6 /* M13ProgressSuite.framework in Frameworks */,
 				0E94F2D61E651B7E00E962B6 /* Runes.framework in Frameworks */,
 				0E94F2EA1E651B7E00E962B6 /* Prelude.framework in Frameworks */,
 				0E94F2D21E651B7E00E962B6 /* GHAPI.framework in Frameworks */,
@@ -637,6 +670,7 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */,
 				0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */,
 				0E94F2B11E651AF100E962B6 /* Runes.xcodeproj */,
 				0E94F2961E651AE900E962B6 /* Result.xcodeproj */,
@@ -843,6 +877,16 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		0E94F5AD1E65756C00E962B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E94F5B41E65756C00E962B6 /* M13ProgressSuiteDemo.app */,
+				0E94F5B61E65756C00E962B6 /* M13ProgressSuiteTests.xctest */,
+				0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -868,6 +912,7 @@
 				0E94F2F11E651B7E00E962B6 /* PBXTargetDependency */,
 				0E94F2F51E651B7E00E962B6 /* PBXTargetDependency */,
 				0E94F2F91E651B7E00E962B6 /* PBXTargetDependency */,
+				0E94F5BC1E65758400E962B6 /* PBXTargetDependency */,
 			);
 			name = GHClient;
 			productName = GHClient;
@@ -938,6 +983,10 @@
 				{
 					ProductGroup = 0E94F2CA1E651B2A00E962B6 /* Products */;
 					ProjectRef = 0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */;
+				},
+				{
+					ProductGroup = 0E94F5AD1E65756C00E962B6 /* Products */;
+					ProjectRef = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
 				},
 				{
 					ProductGroup = 0E94F2351E651ABE00E962B6 /* Products */;
@@ -1365,6 +1414,27 @@
 			remoteRef = 0E94F2D01E651B2B00E962B6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		0E94F5B41E65756C00E962B6 /* M13ProgressSuiteDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = M13ProgressSuiteDemo.app;
+			remoteRef = 0E94F5B31E65756C00E962B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E94F5B61E65756C00E962B6 /* M13ProgressSuiteTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = M13ProgressSuiteTests.xctest;
+			remoteRef = 0E94F5B51E65756C00E962B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = M13ProgressSuite.framework;
+			remoteRef = 0E94F5B71E65756C00E962B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1467,6 +1537,11 @@
 			isa = PBXTargetDependency;
 			name = "Argo-iOS";
 			targetProxy = 0E94F2F81E651B7E00E962B6 /* PBXContainerItemProxy */;
+		};
+		0E94F5BC1E65758400E962B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = M13ProgressSuiteFramework;
+			targetProxy = 0E94F5BB1E65758400E962B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
