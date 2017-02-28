@@ -37,6 +37,7 @@
 		0E94F3281E651FE000E962B6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E94F3271E651FE000E962B6 /* Login.storyboard */; };
 		0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F3291E65206000E962B6 /* LoginViewController.swift */; };
 		0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */; };
+		0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F5AA1E654ABF00E962B6 /* Account.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -558,6 +559,7 @@
 		0E94F3271E651FE000E962B6 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		0E94F3291E65206000E962B6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		0E94F5AA1E654ABF00E962B6 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,7 +612,7 @@
 		0E94F1EB1E65189900E962B6 /* GHClient */ = {
 			isa = PBXGroup;
 			children = (
-				0E94F31C1E651CA300E962B6 /* Library */,
+				0E94F31C1E651CA300E962B6 /* others */,
 				0E94F2FE1E651C3500E962B6 /* Models */,
 				0E94F3011E651C5000E962B6 /* Resources */,
 				0E94F2FB1E651C1800E962B6 /* Storyboards */,
@@ -795,6 +797,7 @@
 		0E94F2FE1E651C3500E962B6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0E94F5AA1E654ABF00E962B6 /* Account.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -823,14 +826,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		0E94F31C1E651CA300E962B6 /* Library */ = {
+		0E94F31C1E651CA300E962B6 /* others */ = {
 			isa = PBXGroup;
 			children = (
 				0E94F31D1E651CBA00E962B6 /* NSBundleType.swift */,
 				0E94F31E1E651CBA00E962B6 /* Storyboard.swift */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
 			);
-			name = Library;
+			name = others;
 			sourceTree = "<group>";
 		};
 		0E94F3231E651CF000E962B6 /* Views */ = {
@@ -1395,6 +1398,7 @@
 				0E94F3221E651CBA00E962B6 /* UIViewController-Preparation.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
+				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

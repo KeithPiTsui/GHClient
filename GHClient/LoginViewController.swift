@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import Prelude
+import Prelude_UIKit
+import ReactiveSwift
+import ReactiveCocoa
+import Result
+import GHAPI
 
 class LoginViewController: UIViewController {
 
@@ -21,23 +27,148 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var saveAccountBtn: UIButton!
     @IBOutlet weak var removeAccountBtn: UIButton!
     
+    @IBAction func tapOnView(_ sender: UITapGestureRecognizer) {
+        firstResponderTextField?.resignFirstResponder()
+    }
+    
+    
     internal static func instantiate() -> LoginViewController {
         return Storyboard.Login.instantiate(LoginViewController.self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.viewModel.inputs.viewDidLoad()        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardDidShow(_:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.KeyboardWillHide(_:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
 
     internal override func bindStyles() {
         super.bindStyles()
+        _ = self.navigationItem |> UINavigationItem.lens.title %~ {_ in "Login"}
+        _ = self.removeAccountBtn |> UIButton.lens.titleColor(forState: .disabled) %~ {_ in UIColor.lightGray}
+        _ = self.saveAccountBtn |> UIButton.lens.titleColor(forState: .disabled) %~ {_ in UIColor.lightGray}
+        
+        self.usernameTF.reactive.continuousTextValues.observeValues{ [weak self] in
+            guard let newName = $0 else { return }
+            self?.viewModel.inputs.usernameEdit(newName)
+        }
+        
+        self.passwordTF.reactive.continuousTextValues.observeValues{ [weak self] in
+            guard let newPassword = $0 else { return }
+            self?.viewModel.inputs.passwordEdit(newPassword)
+        }
+        
+        self.authTokenTF.reactive.continuousTextValues.observeValues{ [weak self] in
+            guard let newToken = $0 else { return }
+            self?.viewModel.inputs.authTokenEdit(newToken)
+        }
+        
+        self.pushTokenTF.reactive.continuousTextValues.observeValues{ [weak self] in
+            guard let newToken = $0 else { return }
+            self?.viewModel.inputs.pushTokenEdit(newToken)
+        }
+        
     }
     
+    /// Hanlding view model output signals
     internal override func bindViewModel() {
         super.bindViewModel()
+        
+        self.viewModel.outputs.saveAccountButtonEnable.observeForUI().observeValues{ [weak self] in
+            self?.saveAccountBtn.isEnabled = $0
+        }
+        
+        self.viewModel.outputs.removeAccountButtonEnable.observeForUI().observeValues{ [weak self] in
+            self?.removeAccountBtn.isEnabled = $0
+        }
+    }
+}
+
+extension LoginViewController {
+    fileprivate var firstResponderTextField: UITextField? {
+        if usernameTF.isFirstResponder { return usernameTF }
+        else if passwordTF.isFirstResponder { return passwordTF }
+        else if authTokenTF.isFirstResponder { return authTokenTF }
+        else if pushTokenTF.isFirstResponder { return pushTokenTF }
+        else { return nil }
     }
     
+    internal func keyboardDidShow(_ notification: Notification){
+        guard let fr = firstResponderTextField, fr === authTokenTF || fr === pushTokenTF  else { return }
+        guard let info = notification.userInfo else { return }
+        guard let kbSizeValue = info[UIKeyboardFrameBeginUserInfoKey] as? NSValue else { return }
+        let kbSize = kbSizeValue.cgRectValue.size
+        var rect = view.frame
+        rect.origin.y = -kbSize.height
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.view.frame = rect
+        }
+    }
     
+    internal func KeyboardWillHide(_ notification: Notification){
+        guard view.frame.origin.y < 0 else { return }
+        var rect = view.frame
+        rect.origin.y = 0
+        UIView.animate(withDuration: 0.6) {
+            self.view.frame = rect
+            self.view.layoutIfNeeded()
+        }
+    }
 }
+
+
+extension LoginViewController: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
