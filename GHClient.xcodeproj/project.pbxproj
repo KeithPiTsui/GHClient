@@ -612,7 +612,7 @@
 		0E94F1EB1E65189900E962B6 /* GHClient */ = {
 			isa = PBXGroup;
 			children = (
-				0E94F31C1E651CA300E962B6 /* others */,
+				0E94F31C1E651CA300E962B6 /* Others */,
 				0E94F2FE1E651C3500E962B6 /* Models */,
 				0E94F3011E651C5000E962B6 /* Resources */,
 				0E94F2FB1E651C1800E962B6 /* Storyboards */,
@@ -826,14 +826,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		0E94F31C1E651CA300E962B6 /* others */ = {
+		0E94F31C1E651CA300E962B6 /* Others */ = {
 			isa = PBXGroup;
 			children = (
 				0E94F31D1E651CBA00E962B6 /* NSBundleType.swift */,
 				0E94F31E1E651CBA00E962B6 /* Storyboard.swift */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
 			);
-			name = others;
+			name = Others;
 			sourceTree = "<group>";
 		};
 		0E94F3231E651CF000E962B6 /* Views */ = {

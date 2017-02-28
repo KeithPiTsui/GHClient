@@ -50,10 +50,10 @@ public protocol LoginViewModelOutputs {
     var account: Signal<Account?, NoError> {get}
     var saveAccountButtonEnable: Signal<Bool, NoError> {get}
     var removeAccountButtonEnable: Signal<Bool, NoError> {get}
-    var accountSaving: Signal<(),NoError> {get}
-    var accountSaved: Signal<(), NoError> {get}
-    var accountDeleting: Signal<(), NoError> {get}
-    var accountDeleted: Signal<(), NoError> {get}
+//    var accountSaving: Signal<(),NoError> {get}
+//    var accountSaved: Signal<(), NoError> {get}
+//    var accountDeleting: Signal<(), NoError> {get}
+//    var accountDeleted: Signal<(), NoError> {get}
 }
 
 public protocol LoginViewModelType {

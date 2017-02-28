@@ -60,6 +60,8 @@ extension UIViewController {
      */
     open func bindStyles() {}
     
+    
+    
     public func ksr_traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         self.ksr_traitCollectionDidChange(previousTraitCollection)
         self.bindStyles()

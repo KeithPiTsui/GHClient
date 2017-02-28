@@ -19,3 +19,6 @@
 [submodule "GHAPI"]
 	path = GHAPI
 	url = https://github.com/KeithPiTsui/GHAPI.git
+[submodule "M13ProgressSuite"]
+	path = M13ProgressSuite
+	url = https://github.com/Marxon13/M13ProgressSuite.git

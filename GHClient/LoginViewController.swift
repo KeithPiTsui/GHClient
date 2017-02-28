@@ -27,9 +27,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var saveAccountBtn: UIButton!
     @IBOutlet weak var removeAccountBtn: UIButton!
     
-    @IBAction func tapOnView(_ sender: UITapGestureRecognizer) {
-        firstResponderTextField?.resignFirstResponder()
-    }
+    @IBAction func tapOnView(_ sender: UITapGestureRecognizer) { firstResponderTextField?.resignFirstResponder() }
     
     
     internal static func instantiate() -> LoginViewController {
@@ -38,6 +36,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.bindUIAction()
         self.viewModel.inputs.viewDidLoad()        
     }
     
@@ -56,12 +55,7 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-    internal override func bindStyles() {
-        super.bindStyles()
-        _ = self.navigationItem |> UINavigationItem.lens.title %~ {_ in "Login"}
-        _ = self.removeAccountBtn |> UIButton.lens.titleColor(forState: .disabled) %~ {_ in UIColor.lightGray}
-        _ = self.saveAccountBtn |> UIButton.lens.titleColor(forState: .disabled) %~ {_ in UIColor.lightGray}
-        
+    private func bindUIAction() {
         self.usernameTF.reactive.continuousTextValues.observeValues{ [weak self] in
             guard let newName = $0 else { return }
             self?.viewModel.inputs.usernameEdit(newName)
@@ -82,6 +76,27 @@ class LoginViewController: UIViewController {
             self?.viewModel.inputs.pushTokenEdit(newToken)
         }
         
+        self.saveAccountBtn.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
+            self?.firstResponderTextField?.resignFirstResponder()
+            guard let username = self?.usernameTF.text else { return }
+            let password = self?.passwordTF.text
+            let authToken = self?.authTokenTF.text
+            let pushToken = self?.pushTokenTF.text
+            let acc = Account(username: username, password: password, accessToken: authToken, pushToken: pushToken)
+            self?.viewModel.inputs.tappedSaveAccount(acc)
+        }
+        
+        self.removeAccountBtn.reactive.controlEvents(.touchUpInside).observeValues{ [weak self] _ in
+            self?.firstResponderTextField?.resignFirstResponder()
+            self?.viewModel.inputs.tappedRemoveAccount()
+        }
+    }
+    
+    internal override func bindStyles() {
+        super.bindStyles()
+        _ = self.navigationItem |> UINavigationItem.lens.title %~ {_ in "Login"}
+        _ = self.removeAccountBtn |> UIButton.lens.titleColor(forState: .disabled) %~ {_ in UIColor.lightGray}
+        _ = self.saveAccountBtn |> UIButton.lens.titleColor(forState: .disabled) %~ {_ in UIColor.lightGray}
     }
     
     /// Hanlding view model output signals
@@ -94,6 +109,13 @@ class LoginViewController: UIViewController {
         
         self.viewModel.outputs.removeAccountButtonEnable.observeForUI().observeValues{ [weak self] in
             self?.removeAccountBtn.isEnabled = $0
+        }
+        
+        self.viewModel.outputs.account.skipNil().observeForUI().observeValues{ [weak self] in
+            self?.usernameTF.text = $0.username
+            self?.passwordTF.text = $0.password
+            self?.authTokenTF.text = $0.accessToken
+            self?.pushTokenTF.text = $0.pushToken
         }
     }
 }
