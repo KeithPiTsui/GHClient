@@ -15,9 +15,7 @@ extension Bundle {
 }
 
 public enum Storyboard: String {
-    case AboutCryptoKeyboard
-    case CipherInterpreter
-    
+    case Login
     
     public func instantiate<VC: UIViewController>(_ viewController: VC.Type, inBundle bundle: Bundle = .framework) -> VC {
         guard
