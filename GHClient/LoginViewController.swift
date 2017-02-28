@@ -10,6 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    fileprivate let viewModel: LoginViewModelType = LoginViewModel()
+    
+    
+    @IBOutlet weak var NotificationPushSwitch: UISwitch!
+    @IBOutlet weak var pushTokenTF: UITextField!
+    @IBOutlet weak var authTokenTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var usernameTF: UITextField!
+    @IBOutlet weak var saveAccountBtn: UIButton!
+    @IBOutlet weak var removeAccountBtn: UIButton!
     
     internal static func instantiate() -> LoginViewController {
         return Storyboard.Login.instantiate(LoginViewController.self)
@@ -21,20 +31,13 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    internal override func bindStyles() {
+        super.bindStyles()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    internal override func bindViewModel() {
+        super.bindViewModel()
     }
-    */
-
+    
+    
 }

@@ -157,6 +157,15 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="NotificationPushSwitch" destination="ZpU-Pb-2Oc" id="Efh-Cc-mzo"/>
+                        <outlet property="authTokenTF" destination="h0a-sa-aP8" id="wUI-tg-p05"/>
+                        <outlet property="passwordTF" destination="AaH-mI-TUZ" id="MiU-Jc-Xgm"/>
+                        <outlet property="pushTokenTF" destination="EwD-m3-8jv" id="jcW-Wx-iAB"/>
+                        <outlet property="removeAccountBtn" destination="nEb-tD-WML" id="9sV-3d-Ely"/>
+                        <outlet property="saveAccountBtn" destination="5gj-C3-YCs" id="iJq-VT-vrx"/>
+                        <outlet property="usernameTF" destination="pc8-fk-T46" id="7Lo-wF-aZq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8m-qJ-aBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
