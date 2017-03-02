@@ -28,6 +28,8 @@
 		0E50AA2A1E680A020002A40D /* Trending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA291E680A020002A40D /* Trending.storyboard */; };
 		0E50AA2C1E680A130002A40D /* Feedback.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA2B1E680A130002A40D /* Feedback.storyboard */; };
 		0E50AA2E1E680A3D0002A40D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA2D1E680A3D0002A40D /* Settings.storyboard */; };
+		0E50AA301E6843D30002A40D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA2F1E6843D30002A40D /* Notifications.swift */; };
+		0E50AA321E6844700002A40D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA311E6844700002A40D /* Main.storyboard */; };
 		0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */; };
 		0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */; };
 		0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */; };
@@ -644,6 +646,8 @@
 		0E50AA291E680A020002A40D /* Trending.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trending.storyboard; sourceTree = "<group>"; };
 		0E50AA2B1E680A130002A40D /* Feedback.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feedback.storyboard; sourceTree = "<group>"; };
 		0E50AA2D1E680A3D0002A40D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		0E50AA2F1E6843D30002A40D /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		0E50AA311E6844700002A40D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -899,6 +903,7 @@
 				0E50AA211E6809A40002A40D /* IssuePullRequests.storyboard */,
 				0E94F1F51E65189900E962B6 /* LaunchScreen.storyboard */,
 				0E94F3271E651FE000E962B6 /* Login.storyboard */,
+				0E50AA311E6844700002A40D /* Main.storyboard */,
 				0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */,
 				0E50AA231E6809BB0002A40D /* PersonalGists.storyboard */,
 				0E50AA191E6808E40002A40D /* PersonalRepositories.storyboard */,
@@ -971,16 +976,17 @@
 		0E94F31C1E651CA300E962B6 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */,
-				0E50AA091E67F6140002A40D /* Reachability.swift */,
+				0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */,
 				0E50AA031E67F56F0002A40D /* DateProtocol.swift */,
-				0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */,
+				0E84B59B1E67AB2E00C5ADF7 /* Environment.swift */,
+				0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */,
 				0E50A9CB1E67F5210002A40D /* KSCache.swift */,
+				0E50AA2F1E6843D30002A40D /* Notifications.swift */,
 				0E94F31D1E651CBA00E962B6 /* NSBundleType.swift */,
+				0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */,
+				0E50AA091E67F6140002A40D /* Reachability.swift */,
 				0E94F31E1E651CBA00E962B6 /* Storyboard.swift */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
-				0E84B59B1E67AB2E00C5ADF7 /* Environment.swift */,
-				0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -1608,6 +1614,7 @@
 				0E50AA1A1E6808E40002A40D /* PersonalRepositories.storyboard in Resources */,
 				0E50AA241E6809BB0002A40D /* PersonalGists.storyboard in Resources */,
 				0E84B5A01E67C3DE00C5ADF7 /* UserProfile.storyboard in Resources */,
+				0E50AA321E6844700002A40D /* Main.storyboard in Resources */,
 				0E50AA1E1E6809590002A40D /* WatchedRepositories.storyboard in Resources */,
 				0E50AA2C1E680A130002A40D /* Feedback.storyboard in Resources */,
 			);
@@ -1642,6 +1649,7 @@
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
+				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
 				0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */,
 				0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */,
 				0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */,

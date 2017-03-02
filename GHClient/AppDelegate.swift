@@ -19,7 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        AppEnvironment.replaceCurrentEnvironment(
+            AppEnvironment.fromStorage(
+                ubiquitousStore: NSUbiquitousKeyValueStore.default(),
+                userDefaults: UserDefaults.standard
+            )
+        )
+        
+        self.bindViewModel()
         
         window = UIWindow()
 //        let nvc = UINavigationController(rootViewController: LoginViewController.instantiate())
@@ -32,7 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = slideMenuVC
         window?.makeKeyAndVisible()
         
-        return true
+        self.viewModel.inputs.applicationDidFinishLaunching(application: application, launchOptions: launchOptions)
+        
+        return self.viewModel.outputs.applicationDidFinishLaunchingReturnValue
+    }
+    
+    private func bindViewModel() {
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
