@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,9 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
 //        let nvc = UINavigationController(rootViewController: LoginViewController.instantiate())
-//        let nvc = UINavigationController(rootViewController: MenuViewController.instantiate())
-        let nvc = UINavigationController(rootViewController: UserProfileViewController.instantiate())
-        window?.rootViewController = nvc
+        let menu = UINavigationController(rootViewController: MenuViewController.instantiate())
+        let profile = UINavigationController(rootViewController: UserProfileViewController.instantiate())
+        
+        let slideMenuVC = SlideMenuController(mainViewController: profile, leftMenuViewController: menu)
+        
+        window?.rootViewController = slideMenuVC
         window?.makeKeyAndVisible()
         
         return true

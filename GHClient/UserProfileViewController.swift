@@ -10,6 +10,10 @@ import UIKit
 
 final class UserProfileViewController: UITableViewController {
 
+    @IBAction func openMenu(_ sender: UIBarButtonItem) {
+        guard let menu = self.slideMenuController() else { return }
+        menu.openLeft()
+    }
     internal static func instantiate() -> UserProfileViewController {
         return Storyboard.UserProfile.instantiate(UserProfileViewController.self)
     }

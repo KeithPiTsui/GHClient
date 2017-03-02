@@ -144,7 +144,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="User Profile" id="xQR-9V-9nO">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="s2C-ik-ulq"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="s2C-ik-ulq">
+                            <connections>
+                                <action selector="openMenu:" destination="L9m-Er-vSd" id="XoD-hB-zWK"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="share-icon" id="ChS-E5-RZJ"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
