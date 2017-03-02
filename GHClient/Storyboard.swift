@@ -16,6 +16,7 @@ extension Bundle {
 
 public enum Storyboard: String {
     case Login
+    case Menu
     
     public func instantiate<VC: UIViewController>(_ viewController: VC.Type, inBundle bundle: Bundle = .framework) -> VC {
         guard
