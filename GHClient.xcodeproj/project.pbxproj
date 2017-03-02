@@ -14,6 +14,8 @@
 		0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */; };
 		0E50AA0D1E67FA3F0002A40D /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5C81E6587D700E962B6 /* SlideMenuControllerSwift.framework */; };
 		0E50AA0E1E67FA3F0002A40D /* SlideMenuControllerSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5C81E6587D700E962B6 /* SlideMenuControllerSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E50AA121E67FCF60002A40D /* AppDelegateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */; };
+		0E50AA141E67FD080002A40D /* SlideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA131E67FD080002A40D /* SlideMenuViewModel.swift */; };
 		0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */; };
 		0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */; };
 		0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */; };
@@ -616,6 +618,8 @@
 		0E50AA031E67F56F0002A40D /* DateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProtocol.swift; sourceTree = "<group>"; };
 		0E50AA091E67F6140002A40D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStoreType.swift; sourceTree = "<group>"; };
+		0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateViewModel.swift; sourceTree = "<group>"; };
+		0E50AA131E67FD080002A40D /* SlideMenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewModel.swift; sourceTree = "<group>"; };
 		0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -890,6 +894,8 @@
 				0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */,
 				0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */,
 				0E84B5A31E67C3FF00C5ADF7 /* UserProfileViewModel.swift */,
+				0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */,
+				0E50AA131E67FD080002A40D /* SlideMenuViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1582,6 +1588,8 @@
 				0E94F3221E651CBA00E962B6 /* UIViewController-Preparation.swift in Sources */,
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
 				0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */,
+				0E50AA141E67FD080002A40D /* SlideMenuViewModel.swift in Sources */,
+				0E50AA121E67FCF60002A40D /* AppDelegateViewModel.swift in Sources */,
 				0E84B5A41E67C3FF00C5ADF7 /* UserProfileViewModel.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,

@@ -13,6 +13,8 @@ import SlideMenuControllerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    fileprivate let viewModel: AppDelegateViewModelType = AppDelegateViewModel()
+    
     var window: UIWindow?
 
 
@@ -25,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let profile = UINavigationController(rootViewController: UserProfileViewController.instantiate())
         
         let slideMenuVC = SlideMenuController(mainViewController: profile, leftMenuViewController: menu)
+        slideMenuVC.delegate = SlideMenuViewModel()
         
         window?.rootViewController = slideMenuVC
         window?.makeKeyAndVisible()
