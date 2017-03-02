@@ -15,9 +15,21 @@ extension Bundle {
 }
 
 public enum Storyboard: String {
+    case Feedback
+    case Feeds
+    case IssuePullRequests
     case Login
     case Menu
+    case PersonalGists
+    case PersonalRepositories
+    case RepositoryDetail
+    case Search
+    case Settings
+    case StarredGists
+    case StarredRepositories
+    case Trending
     case UserProfile
+    case WatchedRepositories
     
     public func instantiate<VC: UIViewController>(_ viewController: VC.Type, inBundle bundle: Bundle = .framework) -> VC {
         guard
