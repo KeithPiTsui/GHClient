@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A9CB1E67F5210002A40D /* KSCache.swift */; };
+		0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */; };
+		0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA031E67F56F0002A40D /* DateProtocol.swift */; };
+		0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA091E67F6140002A40D /* Reachability.swift */; };
+		0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */; };
 		0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */; };
 		0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */; };
 		0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */; };
 		0E84B59C1E67AB2E00C5ADF7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B59B1E67AB2E00C5ADF7 /* Environment.swift */; };
 		0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */; };
+		0E84B5A01E67C3DE00C5ADF7 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */; };
+		0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */; };
+		0E84B5A41E67C3FF00C5ADF7 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5A31E67C3FF00C5ADF7 /* UserProfileViewModel.swift */; };
 		0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F1EC1E65189900E962B6 /* AppDelegate.swift */; };
 		0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E94F1F31E65189900E962B6 /* Assets.xcassets */; };
 		0E94F1F71E65189900E962B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E94F1F51E65189900E962B6 /* LaunchScreen.storyboard */; };
@@ -593,11 +601,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E50A9CB1E67F5210002A40D /* KSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSCache.swift; sourceTree = "<group>"; };
+		0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSHTTPCookieStorageType.swift; sourceTree = "<group>"; };
+		0E50AA031E67F56F0002A40D /* DateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProtocol.swift; sourceTree = "<group>"; };
+		0E50AA091E67F6140002A40D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStoreType.swift; sourceTree = "<group>"; };
 		0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		0E84B59B1E67AB2E00C5ADF7 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		0E84B5A31E67C3FF00C5ADF7 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		0E94F1E91E65189900E962B6 /* GHClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E94F1EC1E65189900E962B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E94F1F31E65189900E962B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -842,6 +858,7 @@
 				0E94F3271E651FE000E962B6 /* Login.storyboard */,
 				0E94F1F51E65189900E962B6 /* LaunchScreen.storyboard */,
 				0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */,
+				0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -851,6 +868,7 @@
 			children = (
 				0E94F3291E65206000E962B6 /* LoginViewController.swift */,
 				0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */,
+				0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -860,6 +878,7 @@
 			children = (
 				0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */,
 				0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */,
+				0E84B5A31E67C3FF00C5ADF7 /* UserProfileViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -899,6 +918,11 @@
 		0E94F31C1E651CA300E962B6 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */,
+				0E50AA091E67F6140002A40D /* Reachability.swift */,
+				0E50AA031E67F56F0002A40D /* DateProtocol.swift */,
+				0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */,
+				0E50A9CB1E67F5210002A40D /* KSCache.swift */,
 				0E94F31D1E651CBA00E962B6 /* NSBundleType.swift */,
 				0E94F31E1E651CBA00E962B6 /* Storyboard.swift */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
@@ -1519,6 +1543,7 @@
 				0E94F1F71E65189900E962B6 /* LaunchScreen.storyboard in Resources */,
 				0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */,
 				0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */,
+				0E84B5A01E67C3DE00C5ADF7 /* UserProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1537,14 +1562,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */,
+				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
 				0E94F3211E651CBA00E962B6 /* Storyboard.swift in Sources */,
+				0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */,
 				0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */,
 				0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */,
 				0E94F3221E651CBA00E962B6 /* UIViewController-Preparation.swift in Sources */,
+				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
+				0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */,
+				0E84B5A41E67C3FF00C5ADF7 /* UserProfileViewModel.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
+				0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */,
 				0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */,
+				0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */,
 				0E84B59C1E67AB2E00C5ADF7 /* Environment.swift in Sources */,
 				0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */,
 			);

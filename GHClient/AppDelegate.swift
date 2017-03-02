@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
 //        let nvc = UINavigationController(rootViewController: LoginViewController.instantiate())
-        let nvc = UINavigationController(rootViewController: MenuViewController.instantiate())
+//        let nvc = UINavigationController(rootViewController: MenuViewController.instantiate())
+        let nvc = UINavigationController(rootViewController: UserProfileViewController.instantiate())
         window?.rootViewController = nvc
         window?.makeKeyAndVisible()
         
