@@ -32,12 +32,13 @@ public struct AppEnvironment {
      
      - parameter envelope: An access token envelope with the api access token and user.
      */
-//    public static func login(_ envelope: AccessTokenEnvelope) {
-//        replaceCurrentEnvironment(
-//            apiService: current.apiService.login(OauthToken(token: envelope.accessToken)),
-//            currentUser: envelope.user
-//        )
-//    }
+    public static func login(_ envelope: UserPasswordEnvelope) {
+        replaceCurrentEnvironment(
+            apiService: current.apiService.login(username: envelope.user.name, password: envelope.password),
+            currentUser: envelope.user
+        )
+    }
+    
     
     /**
      Invoke when we have acquired a fresh current user and you want to replace the current environment's
@@ -191,66 +192,31 @@ public struct AppEnvironment {
         
         var service = current.apiService
         var currentUser: User? = nil
-        
-        
-        if let oauthToken = data["apiService.oauthToken.token"] as? String {
-            // If there is an oauth token stored in the defaults, then we can authenticate our api service
-            service = service.login(OauthToken(token: oauthToken))
-            removeLegacyOauthToken(fromUserDefaults: userDefaults)
-        } else if let oauthToken = legacyOauthToken(forUserDefaults: userDefaults) {
-            // Otherwise if there is a token in the legacy user defaults entry we can use that
-            service = service.login(OauthToken(token: oauthToken))
-            removeLegacyOauthToken(fromUserDefaults: userDefaults)
-        }
-        
-        // Try restoring the client id for the api service
-        if let clientId = data["apiService.serverConfig.apiClientAuth.clientId"] as? String {
-            service = Service(
-                serverConfig: ServerConfig(
-                    apiBaseUrl: service.serverConfig.apiBaseUrl,
-                    webBaseUrl: service.serverConfig.webBaseUrl,
-                    apiClientAuth: ClientAuth(clientId: clientId),
-                    basicHTTPAuth: service.serverConfig.basicHTTPAuth
-                ),
-                oauthToken: service.oauthToken
-            )
-        }
-        
+
         // Try restoring the base urls for the api service
         if let apiBaseUrlString = data["apiService.serverConfig.apiBaseUrl"] as? String,
-            let apiBaseUrl = URL(string: apiBaseUrlString),
-            let webBaseUrlString = data["apiService.serverConfig.webBaseUrl"] as? String,
-            let webBaseUrl = URL(string: webBaseUrlString) {
-            
+            let apiBaseUrl = URL(string: apiBaseUrlString) {
             service = Service(
                 serverConfig: ServerConfig(
                     apiBaseUrl: apiBaseUrl,
-                    webBaseUrl: webBaseUrl,
-                    apiClientAuth: service.serverConfig.apiClientAuth,
                     basicHTTPAuth: service.serverConfig.basicHTTPAuth
-                ),
-                oauthToken: service.oauthToken
+                )
             )
         }
         
         // Try restoring the basic auth data for the api service
         if let username = data["apiService.serverConfig.basicHTTPAuth.username"] as? String,
             let password = data["apiService.serverConfig.basicHTTPAuth.password"] as? String {
-            
             service = Service(
                 serverConfig: ServerConfig(
                     apiBaseUrl: service.serverConfig.apiBaseUrl,
-                    webBaseUrl: service.serverConfig.webBaseUrl,
-                    apiClientAuth: service.serverConfig.apiClientAuth,
                     basicHTTPAuth: BasicHTTPAuth(username: username, password: password)
-                ),
-                oauthToken: service.oauthToken
-                
+                )
             )
         }
         
         // Try restore the current user
-        if service.oauthToken != nil {
+        if service.isAuthenticated {
             currentUser = data["currentUser"].flatMap(decode)
         }
         
@@ -259,7 +225,6 @@ public struct AppEnvironment {
             currentUser: currentUser
         )
     }
-    // swiftlint:enable function_body_length
     
     // Saves some key data for the current environment
     internal static func saveEnvironment(environment env: Environment = AppEnvironment.current,
@@ -267,18 +232,11 @@ public struct AppEnvironment {
                                          userDefaults: KeyValueStoreType) {
         
         var data: [String:Any] = [:]
-        
-        data["apiService.oauthToken.token"] = env.apiService.oauthToken?.token
         data["apiService.serverConfig.apiBaseUrl"] = env.apiService.serverConfig.apiBaseUrl.absoluteString
-        // swiftlint:disable line_length
-        data["apiService.serverConfig.apiClientAuth.clientId"] = env.apiService.serverConfig.apiClientAuth.clientId
         data["apiService.serverConfig.basicHTTPAuth.username"] = env.apiService.serverConfig.basicHTTPAuth?.username
         data["apiService.serverConfig.basicHTTPAuth.password"] = env.apiService.serverConfig.basicHTTPAuth?.password
-        // swiftlint:enable line_length
-        data["apiService.serverConfig.webBaseUrl"] = env.apiService.serverConfig.webBaseUrl.absoluteString
         data["apiService.language"] = env.apiService.language
         data["currentUser"] = env.currentUser?.encode()
-        
         userDefaults.set(data, forKey: environmentStorageKey)
     }
 }
