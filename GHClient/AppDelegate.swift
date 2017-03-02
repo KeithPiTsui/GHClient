@@ -29,16 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.bindViewModel()
         
-        window = UIWindow()
-//        let nvc = UINavigationController(rootViewController: LoginViewController.instantiate())
-        let menu = UINavigationController(rootViewController: MenuViewController.instantiate())
-        let profile = UINavigationController(rootViewController: UserProfileViewController.instantiate())
-        
-        let slideMenuVC = SlideMenuController(mainViewController: profile, leftMenuViewController: menu)
-        slideMenuVC.delegate = SlideMenuViewModel()
-        
-        window?.rootViewController = slideMenuVC
-        window?.makeKeyAndVisible()
+//        window = UIWindow()
+////        let nvc = UINavigationController(rootViewController: LoginViewController.instantiate())
+//        let menu = UINavigationController(rootViewController: MenuViewController.instantiate())
+//        let profile = UINavigationController(rootViewController: UserProfileViewController.instantiate())
+//        
+//        let slideMenuVC = SlideMenuController(mainViewController: profile, leftMenuViewController: menu)
+//        slideMenuVC.delegate = SlideMenuViewModel()
+//        
+//        window?.rootViewController = slideMenuVC
+//        window?.makeKeyAndVisible()
         
         self.viewModel.inputs.applicationDidFinishLaunching(application: application, launchOptions: launchOptions)
         
