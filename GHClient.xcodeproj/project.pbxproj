@@ -30,8 +30,8 @@
 		0E50AA2E1E680A3D0002A40D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA2D1E680A3D0002A40D /* Settings.storyboard */; };
 		0E50AA301E6843D30002A40D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA2F1E6843D30002A40D /* Notifications.swift */; };
 		0E50AA321E6844700002A40D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA311E6844700002A40D /* Main.storyboard */; };
-		0E50AA431E6849500002A40D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA421E6849500002A40D /* MainViewController.swift */; };
-		0E50AA781E6849B00002A40D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA771E6849B00002A40D /* MainViewModel.swift */; };
+		0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA421E6849500002A40D /* RootSplitViewController.swift */; };
+		0E50AA781E6849B00002A40D /* RootSplitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */; };
 		0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */; };
 		0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */; };
 		0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */; };
@@ -650,8 +650,8 @@
 		0E50AA2D1E680A3D0002A40D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		0E50AA2F1E6843D30002A40D /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0E50AA311E6844700002A40D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0E50AA421E6849500002A40D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		0E50AA771E6849B00002A40D /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		0E50AA421E6849500002A40D /* RootSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitViewController.swift; sourceTree = "<group>"; };
+		0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitViewModel.swift; sourceTree = "<group>"; };
 		0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -926,7 +926,7 @@
 		0E94F2FC1E651C2300E962B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0E50AA421E6849500002A40D /* MainViewController.swift */,
+				0E50AA421E6849500002A40D /* RootSplitViewController.swift */,
 				0E94F3291E65206000E962B6 /* LoginViewController.swift */,
 				0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */,
 				0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */,
@@ -937,12 +937,12 @@
 		0E94F2FD1E651C2C00E962B6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				0E50AA771E6849B00002A40D /* MainViewModel.swift */,
+				0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */,
 				0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */,
 				0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */,
-				0E84B5A31E67C3FF00C5ADF7 /* UserProfileViewModel.swift */,
-				0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */,
+				0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */,
 				0E50AA131E67FD080002A40D /* SlideMenuViewModel.swift */,
+				0E84B5A31E67C3FF00C5ADF7 /* UserProfileViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1641,7 +1641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */,
-				0E50AA431E6849500002A40D /* MainViewController.swift in Sources */,
+				0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
 				0E94F3211E651CBA00E962B6 /* Storyboard.swift in Sources */,
 				0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */,
@@ -1661,7 +1661,7 @@
 				0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */,
 				0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */,
 				0E84B59C1E67AB2E00C5ADF7 /* Environment.swift in Sources */,
-				0E50AA781E6849B00002A40D /* MainViewModel.swift in Sources */,
+				0E50AA781E6849B00002A40D /* RootSplitViewModel.swift in Sources */,
 				0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,7 @@ import Result
  A collection of **all** global variables and singletons that the app wants access to.
  */
 public struct Environment {
-    /// A type that exposes endpoints for fetching Kickstarter data.
+    /// A type that exposes endpoints for fetching github data.
     public let apiService: ServiceType
     
     /// The amount of time to delay API requests by. Used primarily for testing. Default value is `0.0`.

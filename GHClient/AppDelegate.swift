@@ -14,31 +14,17 @@ import SlideMenuControllerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     fileprivate let viewModel: AppDelegateViewModelType = AppDelegateViewModel()
-    
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        /// Retrieve stored environment states if exists
         AppEnvironment.replaceCurrentEnvironment(
             AppEnvironment.fromStorage(
                 ubiquitousStore: NSUbiquitousKeyValueStore.default(),
-                userDefaults: UserDefaults.standard
-            )
-        )
+                userDefaults: UserDefaults.standard))
         
         self.bindViewModel()
-        
-//        window = UIWindow()
-////        let nvc = UINavigationController(rootViewController: LoginViewController.instantiate())
-//        let menu = UINavigationController(rootViewController: MenuViewController.instantiate())
-//        let profile = UINavigationController(rootViewController: UserProfileViewController.instantiate())
-//        
-//        let slideMenuVC = SlideMenuController(mainViewController: profile, leftMenuViewController: menu)
-//        slideMenuVC.delegate = SlideMenuViewModel()
-//        
-//        window?.rootViewController = slideMenuVC
-//        window?.makeKeyAndVisible()
         
         self.viewModel.inputs.applicationDidFinishLaunching(application: application, launchOptions: launchOptions)
         

@@ -53,13 +53,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        guard let hud = M13ProgressHUD(progressView: M13ProgressViewRing()) else { return }
-//        hud.progressViewSize = CGSize(width: 60, height: 60)
-//        hud.animationPoint = CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 2)
-//        self.view.addSubview(hud)
-//        hud.status = "Saving"
-//        hud.show(true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
