@@ -50,6 +50,7 @@ public protocol LoginViewModelOutputs {
     var account: Signal<Account?, NoError> {get}
     var saveAccountButtonEnable: Signal<Bool, NoError> {get}
     var removeAccountButtonEnable: Signal<Bool, NoError> {get}
+    var accountSaved: Signal<(), NoError> {get}
 }
 
 public protocol LoginViewModelType {
@@ -79,6 +80,7 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
 
         
         self.removeAccountButtonEnable = self.account.map{$0 != nil}
+        self.accountSaved = self.accountSavedProperty.signal
         
         self.account.observeValues{ [weak self] in
             self?.usernameProperty.value = $0?.username
@@ -100,6 +102,8 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
                 service.testConnectionToGithub().observe(on: QueueScheduler()).startWithResult{ (result) in
                     if let user = result.value {
                         print("user id: \(user.id)")
+                        AppEnvironment.login(UserPasswordEnvelope(password: password, user: user))
+                        self?.accountSavedProperty.value = ()
                     } else {
                         print("fail to get user profile")
                     }
@@ -161,10 +165,12 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
     }
     
     fileprivate let accountProperty = MutableProperty<Account?>(nil)
+    fileprivate let accountSavedProperty = MutableProperty()
     
     public let account: Signal<Account?, NoError>
     public let saveAccountButtonEnable: Signal<Bool, NoError>
     public let removeAccountButtonEnable: Signal<Bool, NoError>
+    public let accountSaved: Signal<(), NoError>
     
     public var inputs: LoginViewModelInputs {return self}
     public var outputs: LoginViewModelOutputs { return self}

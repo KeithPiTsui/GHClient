@@ -125,6 +125,10 @@ internal final class LoginViewController: UIViewController {
             self?.authTokenTF.text = $0.accessToken
             self?.pushTokenTF.text = $0.pushToken
         }
+        
+        self.viewModel.outputs.accountSaved.observeValues {
+            print("Account saved")
+        }
     }
 }
 
