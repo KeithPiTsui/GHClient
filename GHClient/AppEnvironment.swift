@@ -217,6 +217,7 @@ public struct AppEnvironment {
         
         // Try restore the current user
         if service.isAuthenticated {
+            let x = data["currentUser"]
             currentUser = data["currentUser"].flatMap(decode)
         }
         
@@ -236,7 +237,8 @@ public struct AppEnvironment {
         data["apiService.serverConfig.basicHTTPAuth.username"] = env.apiService.serverConfig.basicHTTPAuth?.username
         data["apiService.serverConfig.basicHTTPAuth.password"] = env.apiService.serverConfig.basicHTTPAuth?.password
         data["apiService.language"] = env.apiService.language
-        data["currentUser"] = env.currentUser?.encode()
+        let x = env.currentUser?.encode()
+        data["currentUser"] = x
         userDefaults.set(data, forKey: environmentStorageKey)
     }
 }

@@ -103,6 +103,7 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
                     if let user = result.value {
                         print("user id: \(user.id)")
                         AppEnvironment.login(UserPasswordEnvelope(password: password, user: user))
+                        
                         self?.accountSavedProperty.value = ()
                     } else {
                         print("fail to get user profile")
