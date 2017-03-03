@@ -73,6 +73,9 @@
 		0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F5AA1E654ABF00E962B6 /* Account.swift */; };
 		0E94F5B91E65758400E962B6 /* M13ProgressSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */; };
 		0E94F5BA1E65758400E962B6 /* M13ProgressSuite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460D1E69500900017D28 /* MenuDataSource.swift */; };
+		0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */; };
+		0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6464B1E6950E700017D28 /* ValueCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -686,6 +689,9 @@
 		0E94F5AA1E654ABF00E962B6 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = M13ProgressSuite.xcodeproj; path = M13ProgressSuite/M13ProgressSuite.xcodeproj; sourceTree = "<group>"; };
 		0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SlideMenuControllerSwift.xcodeproj; path = SlideMenuControllerSwift/SlideMenuControllerSwift.xcodeproj; sourceTree = "<group>"; };
+		0ED6460D1E69500900017D28 /* MenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
+		0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
+		0ED6464B1E6950E700017D28 /* ValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -740,15 +746,16 @@
 		0E94F1EB1E65189900E962B6 /* GHClient */ = {
 			isa = PBXGroup;
 			children = (
+				0ED645D91E694FF400017D28 /* DataSource */,
 				0E94F31C1E651CA300E962B6 /* Library */,
 				0E94F2FE1E651C3500E962B6 /* Models */,
 				0E94F3011E651C5000E962B6 /* Resources */,
 				0E94F2FB1E651C1800E962B6 /* Storyboards */,
 				0E94F3001E651C4400E962B6 /* SupportingFiles */,
 				0E94F2FF1E651C3B00E962B6 /* Utilities */,
-				0E94F3231E651CF000E962B6 /* Views */,
 				0E94F2FC1E651C2300E962B6 /* ViewControllers */,
 				0E94F2FD1E651C2C00E962B6 /* ViewModels */,
+				0E94F3231E651CF000E962B6 /* Views */,
 			);
 			path = GHClient;
 			sourceTree = "<group>";
@@ -1022,6 +1029,16 @@
 				0E94F5C81E6587D700E962B6 /* SlideMenuControllerSwift.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0ED645D91E694FF400017D28 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0ED6464B1E6950E700017D28 /* ValueCell.swift */,
+				0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */,
+				0ED6460D1E69500900017D28 /* MenuDataSource.swift */,
+			);
+			name = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1647,14 +1664,17 @@
 				0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */,
 				0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */,
 				0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */,
+				0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */,
 				0E94F3221E651CBA00E962B6 /* UIViewController-Preparation.swift in Sources */,
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
 				0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */,
 				0E50AA141E67FD080002A40D /* SlideMenuViewModel.swift in Sources */,
 				0E50AA121E67FCF60002A40D /* AppDelegateViewModel.swift in Sources */,
+				0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */,
 				0E84B5A41E67C3FF00C5ADF7 /* UserProfileViewModel.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
+				0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */,
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
 				0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */,

@@ -46,8 +46,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Username" id="ZkI-rF-ymF">
-                        <barButtonItem key="leftBarButtonItem" title="Accounts" id="E76-am-ZyN"/>
-                        <barButtonItem key="rightBarButtonItem" title="Upgrade" id="HoL-f8-qFs"/>
+                        <barButtonItem key="leftBarButtonItem" image="tabbar-icon-profile-logged-out" id="E76-am-ZyN">
+                            <connections>
+                                <action selector="tappedOnUserIcon:" destination="dwf-7S-UtG" id="WQf-4t-c6g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -64,5 +67,6 @@
     </scenes>
     <resources>
         <image name="safari-icon-full" width="46" height="46"/>
+        <image name="tabbar-icon-profile-logged-out" width="25" height="25"/>
     </resources>
 </document>
