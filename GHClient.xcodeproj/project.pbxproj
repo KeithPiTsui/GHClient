@@ -64,6 +64,7 @@
 		0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6464B1E6950E700017D28 /* ValueCell.swift */; };
 		0ED6464E1E695BCD00017D28 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */; };
 		0ED646511E695C4300017D28 /* MenuGeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED646501E695C4300017D28 /* MenuGeneralCell.swift */; };
+		0ED646531E69901200017D28 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED646521E69901200017D28 /* MenuItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -668,6 +669,7 @@
 		0ED6464B1E6950E700017D28 /* ValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCell.swift; sourceTree = "<group>"; };
 		0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
 		0ED646501E695C4300017D28 /* MenuGeneralCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGeneralCell.swift; sourceTree = "<group>"; };
+		0ED646521E69901200017D28 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -920,6 +922,7 @@
 			isa = PBXGroup;
 			children = (
 				0E94F5AA1E654ABF00E962B6 /* Account.swift */,
+				0ED646521E69901200017D28 /* MenuItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1641,6 +1644,7 @@
 				0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */,
 				0E84B59C1E67AB2E00C5ADF7 /* Environment.swift in Sources */,
 				0E50AA781E6849B00002A40D /* RootSplitViewModel.swift in Sources */,
+				0ED646531E69901200017D28 /* MenuItem.swift in Sources */,
 				0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */,
 				0ED646511E695C4300017D28 /* MenuGeneralCell.swift in Sources */,
 			);

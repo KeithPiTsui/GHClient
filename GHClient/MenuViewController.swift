@@ -57,6 +57,19 @@ final class MenuViewController: UITableViewController {
             self?.datasource.load(appItems: $0)
             self?.tableView.reloadData()
         }
+        
+        self.viewModel.outpus.gotoUserProfile.observeForUI().observeValues{ [weak self] _ in
+            self?.splitViewController?.showDetailViewController(UserProfileViewController.instantiate(), sender: nil)
+        }
     }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let menuItem = self.datasource[indexPath] as? MenuItem else { return }
+        self.viewModel.inputs.tappedMenuItem(menuItem)
+    }
+    
+    
+    
     
 }

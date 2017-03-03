@@ -15,7 +15,7 @@ import Result
 import GHAPI
 import M13ProgressSuite
 
-class LoginViewController: UIViewController {
+internal final class LoginViewController: UIViewController {
 
     fileprivate let viewModel: LoginViewModelType = LoginViewModel()
     
@@ -28,6 +28,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var saveAccountBtn: UIButton!
     @IBOutlet weak var removeAccountBtn: UIButton!
     
+    @IBAction func tapOnCancelBarBtn(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func tapOnView(_ sender: UITapGestureRecognizer) { firstResponderTextField?.resignFirstResponder() }
     
     

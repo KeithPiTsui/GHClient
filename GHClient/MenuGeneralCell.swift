@@ -8,11 +8,6 @@
 
 import UIKit
 
-internal struct MenuItem {
-    let icon: UIImage
-    let name: String
-}
-
 
 internal final class MenuGeneralCell: UITableViewCell, ValueCell {
 
@@ -20,8 +15,8 @@ internal final class MenuGeneralCell: UITableViewCell, ValueCell {
     @IBOutlet weak var itemIconView: UIImageView!
 
     func configureWith(value: MenuItem) {
-        self.itemIconView.image = value.icon
-        self.itemName.text = value.name
+        self.itemIconView.image = value.itemIcon
+        self.itemName.text = value.itemName
     }
     
     override func bindViewModel() {

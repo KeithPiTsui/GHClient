@@ -170,7 +170,16 @@
                             <outletCollection property="gestureRecognizers" destination="24b-xK-VUp" appends="YES" id="71b-Zj-Ef7"/>
                         </connections>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="pkD-a6-ffd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Hw1-9x-ejo">
+                            <connections>
+                                <action selector="tapOnCancelBarBtn:" destination="6ur-lx-WzX" id="Csv-DK-22A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="NotificationPushSwitch" destination="ZpU-Pb-2Oc" id="Efh-Cc-mzo"/>
                         <outlet property="authTokenTF" destination="h0a-sa-aP8" id="wUI-tg-p05"/>

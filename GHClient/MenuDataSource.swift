@@ -45,4 +45,39 @@ internal final class MenuDataSource: ValueCellDataSource {
             assertionFailure("Unrecognized combo: \(cell), \(value)")
         }
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard self[section: section].isEmpty == false else { return nil }
+        
+        switch section {
+        case 0:
+            return "Personal"
+        case 1:
+            return "Discovery"
+        case 2:
+            return "App"
+        default:
+            return nil
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
