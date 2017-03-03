@@ -43,6 +43,20 @@ final class MenuViewController: UITableViewController {
             self?.present($0, animated: true, completion: nil)
         }
         
+        self.viewModel.outpus.personalMenuItems.observeForUI().observeValues{ [weak self] in
+            self?.datasource.load(personalItems: $0)
+            self?.tableView.reloadData()
+        }
+        
+        self.viewModel.outpus.discoveryMenuItems.observeForUI().observeValues{ [weak self] in
+            self?.datasource.load(discoveryItems: $0)
+            self?.tableView.reloadData()
+        }
+        
+        self.viewModel.outpus.appMenuItems.observeForUI().observeValues{ [weak self] in
+            self?.datasource.load(appItems: $0)
+            self?.tableView.reloadData()
+        }
     }
     
 }

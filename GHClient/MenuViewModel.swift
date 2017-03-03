@@ -31,6 +31,15 @@ internal protocol MenuViewModelOutpus {
     /// Login view controller would be `LoginViewController`, whereas logout's would be an alert view controller
     var presentViewController: Signal<UIViewController, NoError> { get }
     
+    /// Emit signal for new personal items
+    var personalMenuItems: Signal<[MenuItem], NoError> {get}
+    
+    /// Emit signal for new discovery items
+    var discoveryMenuItems: Signal<[MenuItem], NoError> {get}
+    
+    /// Emit signal for new app items
+    var appMenuItems: Signal<[MenuItem], NoError> {get}
+    
 }
 
 internal protocol MenuViewModelType {
@@ -41,9 +50,7 @@ internal protocol MenuViewModelType {
 internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, MenuViewModelOutpus {
     
     init() {
-        self.title = self.viewDidLoadProperty.signal.map {
-            return "Guest"
-        }
+        self.title = self.viewDidLoadProperty.signal.map { return "Guest"}
         
         self.presentViewController = self.tappedUserIconProperty.signal.map {
             if AppEnvironment.current.currentUser != nil {
@@ -54,6 +61,24 @@ internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, Menu
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 return alert
             }
+        }
+        
+        self.personalMenuItems = self.viewDidLoadProperty.signal.map {
+            let img = UIImage(named: "tabbar-icon-profile-logged-out")!
+            let item = MenuItem(icon: img, name: "Profile")
+            return [item]
+        }
+        
+        self.discoveryMenuItems = self.viewDidLoadProperty.signal.map {
+            let img = UIImage(named: "tabbar-icon-search")!
+            let item = MenuItem(icon: img, name: "Searching")
+            return [item]
+        }
+        
+        self.appMenuItems = self.viewDidLoadProperty.signal.map {
+            let img = UIImage(named: "phone-icon")!
+            let item = MenuItem(icon: img, name: "Setting")
+            return [item]
         }
         
     }
@@ -74,8 +99,10 @@ internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, Menu
     }
     
     internal let title: Signal<String, NoError>
-    
     internal let presentViewController: Signal<UIViewController, NoError>
+    internal let personalMenuItems: Signal<[MenuItem], NoError>
+    internal let discoveryMenuItems: Signal<[MenuItem], NoError>
+    internal let appMenuItems: Signal<[MenuItem], NoError>
     
     internal var inputs: MenuViewModelInputs { return self }
     internal var outpus: MenuViewModelOutpus { return self }

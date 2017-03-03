@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,31 +14,44 @@
         <scene sceneID="XgP-Vs-vzR">
             <objects>
                 <tableViewController storyboardIdentifier="MenuViewController" id="dwf-7S-UtG" customClass="MenuViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CHG-g9-ci7">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" id="CHG-g9-ci7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuCell" textLabel="LtK-HD-Nrm" imageView="GhA-Gd-eNK" style="IBUITableViewCellStyleDefault" id="PcZ-cX-pxF">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuGeneralCell" rowHeight="74" id="PcZ-cX-pxF" customClass="MenuGeneralCell" customModule="GHClient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PcZ-cX-pxF" id="eyi-XL-tNP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LtK-HD-Nrm">
-                                            <rect key="frame" x="73" y="0.0" width="287" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lZR-8T-f1W">
+                                            <rect key="frame" x="8" y="8" width="65" height="57"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="lKp-an-cEL"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMe-i6-o1Q">
+                                            <rect key="frame" x="81" y="19" width="286" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="safari-icon-full" id="GhA-Gd-eNK">
-                                            <rect key="frame" x="15" y="0.0" width="43" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lZR-8T-f1W" firstAttribute="leading" secondItem="eyi-XL-tNP" secondAttribute="leadingMargin" id="RY6-9o-zF4"/>
+                                        <constraint firstItem="lZR-8T-f1W" firstAttribute="bottom" secondItem="eyi-XL-tNP" secondAttribute="bottomMargin" id="acL-uK-dBw"/>
+                                        <constraint firstItem="VMe-i6-o1Q" firstAttribute="centerY" secondItem="lZR-8T-f1W" secondAttribute="centerY" constant="-5.5" id="kBJ-7r-d02"/>
+                                        <constraint firstItem="lZR-8T-f1W" firstAttribute="top" secondItem="eyi-XL-tNP" secondAttribute="topMargin" id="rmJ-1o-UWM"/>
+                                        <constraint firstItem="VMe-i6-o1Q" firstAttribute="trailing" secondItem="eyi-XL-tNP" secondAttribute="trailingMargin" id="wMz-D1-L3D"/>
+                                        <constraint firstItem="VMe-i6-o1Q" firstAttribute="leading" secondItem="lZR-8T-f1W" secondAttribute="trailing" constant="8" symbolic="YES" id="wZd-sM-1Mg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="itemIconView" destination="lZR-8T-f1W" id="RhQ-Va-rxg"/>
+                                    <outlet property="itemName" destination="VMe-i6-o1Q" id="OOK-1y-GLQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -62,11 +76,10 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPd-fQ-U98" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6201" y="138"/>
+            <point key="canvasLocation" x="-6303.1999999999998" y="126.38680659670166"/>
         </scene>
     </scenes>
     <resources>
-        <image name="safari-icon-full" width="46" height="46"/>
         <image name="tabbar-icon-profile-logged-out" width="25" height="25"/>
     </resources>
 </document>
