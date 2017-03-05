@@ -39,6 +39,22 @@ public struct AppEnvironment {
         )
     }
     
+    public static func login(username: String, password: String) {
+        let service = current.apiService.login(username: username, password: password)
+        replaceCurrentEnvironment( apiService: service )
+        service.userProfile(name: username).startWithResult { result in
+            if let user = result.value {
+                loginSucceedProperty.value = true
+                updateCurrentUser(user)
+                NotificationCenter.default.post(Notification(name: Notification.Name.gh_sessionStarted))
+            } else {
+                loginSucceedProperty.value = false
+            }
+        }
+    }
+    
+    public static let loginSucceedProperty = MutableProperty<Bool?>(nil)
+    
     
     /**
      Invoke when we have acquired a fresh current user and you want to replace the current environment's
@@ -47,16 +63,9 @@ public struct AppEnvironment {
      - parameter user: A user model.
      */
     public static func updateCurrentUser(_ user: User) {
-        replaceCurrentEnvironment(
-            currentUser: user
-        )
+        replaceCurrentEnvironment( currentUser: user )
+        NotificationCenter.default.post(Notification(name: Notification.Name.gh_userUpdated))
     }
-    
-//    public static func updateConfig(_ config: Config) {
-//        replaceCurrentEnvironment(
-//            config: config
-//        )
-//    }
     
     // Invoke when you want to end the user's session.
     public static func logout() {
@@ -68,6 +77,7 @@ public struct AppEnvironment {
             cache: type(of: AppEnvironment.current.cache).init(),
             currentUser: nil
         )
+        NotificationCenter.default.post(Notification(name: Notification.Name.gh_sessionEnded))
     }
     
     // The most recent environment on the stack.
@@ -230,14 +240,11 @@ public struct AppEnvironment {
     internal static func saveEnvironment(environment env: Environment = AppEnvironment.current,
                                          ubiquitousStore: KeyValueStoreType,
                                          userDefaults: KeyValueStoreType) {
-        
         var data: [String:Any] = [:]
         data["apiService.serverConfig.apiBaseUrl"] = env.apiService.serverConfig.apiBaseUrl.absoluteString
         data["apiService.serverConfig.basicHTTPAuth.username"] = env.apiService.serverConfig.basicHTTPAuth?.username
         data["apiService.serverConfig.basicHTTPAuth.password"] = env.apiService.serverConfig.basicHTTPAuth?.password
-        data["apiService.language"] = env.apiService.language
-        let x = env.currentUser?.encode()
-        data["currentUser"] = x
+        data["currentUser"] = env.currentUser?.encode()
         userDefaults.set(data, forKey: environmentStorageKey)
     }
 }

@@ -97,20 +97,13 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
             self?.accountProperty.value = $0
             _ = Account.save(account: $0)
             if let password = $0.password {
-                let githubServiceConfig = ServerConfig.githubServerConfig(username: $0.username, password: password)
-                let service = Service.init(serverConfig: githubServiceConfig)
-                service.testConnectionToGithub().observe(on: QueueScheduler()).startWithResult{ (result) in
-                    if let user = result.value {
-                        print("user id: \(user.id)")
-                        AppEnvironment.login(UserPasswordEnvelope(password: password, user: user))
-                        
-                        self?.accountSavedProperty.value = ()
-                    } else {
-                        print("fail to get user profile")
-                    }
+                AppEnvironment.loginSucceedProperty.signal.skipNil().observeValues {
+                    let msg = $0 ? "succeed" : "failed"
+                    print(msg)
+                    self?.accountSavedProperty.value = ()
                 }
+                AppEnvironment.login(username: $0.username, password: password)
             }
-            print("saved")
         }
         
     }

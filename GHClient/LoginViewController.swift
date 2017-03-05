@@ -127,7 +127,7 @@ internal final class LoginViewController: UIViewController {
         }
         
         self.viewModel.outputs.accountSaved.observeValues {
-            print("Account saved")
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }

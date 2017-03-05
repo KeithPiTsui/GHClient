@@ -71,7 +71,7 @@ internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, Menu
         self.presentViewController = self.tappedUserIconProperty.signal.map {
             if AppEnvironment.current.currentUser != nil {
                 let alert = UIAlertController(title: "Logout", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Logout", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Logout", style: .default, handler: {_ in AppEnvironment.logout()}))
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 return alert
             } else {
