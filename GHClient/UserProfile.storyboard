@@ -171,15 +171,21 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organizations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foL-mq-zwC">
-                                <rect key="frame" x="16" y="392" width="106" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Organizations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foL-mq-zwC">
+                                <rect key="frame" x="16" y="392" width="106" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mEx-QM-EkG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ2-kW-pPO">
-                                <rect key="frame" x="0.0" y="420" width="375" height="239"/>
+                                <rect key="frame" x="0.0" y="439.5" width="375" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="nB3-cT-nii"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserProfileOrganizationTableViewCell" textLabel="T2g-ZM-212" style="IBUITableViewCellStyleDefault" id="VEQ-o3-tIa" customClass="UserProfileOrganizationTableViewCell" customModule="GHClient" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -198,7 +204,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserProfileNoOrganizationTableViewCell" textLabel="qo8-W3-aa5" style="IBUITableViewCellStyleDefault" id="vNC-5P-YLM" customClass="UserProfileNoOrganizationTableViewCell" customModule="GHClient" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserProfileNoOrganizationTableViewCell" textLabel="qo8-W3-aa5" style="IBUITableViewCellStyleDefault" id="vNC-5P-YLM" customClass="UserProfileNoOrganizationTableViewCell" customModule="GHClient" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vNC-5P-YLM" id="gRz-Ss-lma">
@@ -232,7 +238,6 @@
                             <constraint firstItem="ZJ2-kW-pPO" firstAttribute="top" secondItem="foL-mq-zwC" secondAttribute="bottom" constant="8" symbolic="YES" id="ax0-y9-AvG"/>
                             <constraint firstItem="foL-mq-zwC" firstAttribute="top" secondItem="qvf-iV-imz" secondAttribute="bottom" constant="16" id="dXd-q5-ZbH"/>
                             <constraint firstItem="qvf-iV-imz" firstAttribute="top" secondItem="k9S-ZE-7Ls" secondAttribute="bottom" constant="8" symbolic="YES" id="hDL-VR-kLc"/>
-                            <constraint firstItem="t0d-lT-RKn" firstAttribute="top" secondItem="ZJ2-kW-pPO" secondAttribute="bottom" constant="8" symbolic="YES" id="tA0-7K-PHv"/>
                             <constraint firstItem="y7G-1d-aNu" firstAttribute="leading" secondItem="Ltc-f5-cbp" secondAttribute="leading" id="uNn-Wk-sCZ"/>
                             <constraint firstItem="k9S-ZE-7Ls" firstAttribute="trailing" secondItem="y7G-1d-aNu" secondAttribute="trailing" id="zij-bA-BHz"/>
                         </constraints>
@@ -241,9 +246,11 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="eventTableHeight" destination="MrG-we-87K" id="Ihd-z6-dZH"/>
                         <outlet property="events" destination="qvf-iV-imz" id="siT-WX-5eP"/>
                         <outlet property="followers" destination="7Ry-IX-lF5" id="V8S-r9-c30"/>
                         <outlet property="followings" destination="Nc2-4q-cFq" id="r7I-sV-ANY"/>
+                        <outlet property="organizationTableHeight" destination="nB3-cT-nii" id="n8X-tT-Xek"/>
                         <outlet property="organizations" destination="ZJ2-kW-pPO" id="tjM-Pl-8kH"/>
                         <outlet property="repositories" destination="AyC-ap-cY4" id="MqN-DW-Wmr"/>
                         <outlet property="userAvatar" destination="baI-GX-o2g" id="LpU-8b-jAS"/>

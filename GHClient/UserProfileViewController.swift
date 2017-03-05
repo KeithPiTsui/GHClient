@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Prelude_UIKit
+import Prelude
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 final class UserProfileViewController: UIViewController {
 
@@ -24,6 +29,11 @@ final class UserProfileViewController: UIViewController {
     @IBOutlet weak var events: UITableView!
     @IBOutlet weak var organizations: UITableView!
     
+    @IBOutlet weak var eventTableHeight: NSLayoutConstraint!
+    @IBOutlet weak var organizationTableHeight: NSLayoutConstraint!
+    
+    
+    
     internal static func instantiate() -> UserProfileViewController {
         return Storyboard.UserProfile.instantiate(UserProfileViewController.self)
     }
@@ -36,8 +46,15 @@ final class UserProfileViewController: UIViewController {
         self.viewModel.inputs.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.inputs.viewWillAppear(animated: animated)
+    }
+    
     override func bindStyles() {
         super.bindStyles()
+        _ = self.events |> UITableView.lens.rowHeight %~ {_ in return 46 }
+        _ = self.organizations |> UITableView.lens.rowHeight %~ {_ in return 46 }
     }
     
     override func bindViewModel() {
@@ -53,6 +70,9 @@ final class UserProfileViewController: UIViewController {
         }
         self.viewModel.outputs.events.observeForUI().observeValues { [weak self] in
             self?.eventDatasource.load(events: $0)
+            if let height = self?.events.rowHeight {
+                self?.eventTableHeight.constant = height * CGFloat($0.count) - 2
+            }
             self?.events.reloadData()
         }
         self.viewModel.outputs.organizations.observeForUI().observeValues { [weak self] in
@@ -61,11 +81,25 @@ final class UserProfileViewController: UIViewController {
             } else {
                 self?.organizationDatasource.load(organizations: $0)
             }
+            if let height = self?.organizations.rowHeight,
+                let orgY = self?.organizations.frame.origin.y,
+                let blg = self?.bottomLayoutGuide.length,
+                let viewHeight = self?.view.frame.height,
+                viewHeight > 0 {
+                
+                let rowCount = $0.isEmpty ? 1 : $0.count
+                let expectedHeight = height * CGFloat(rowCount)
+                let maxHeight = viewHeight - blg - orgY
+
+                self?.organizations.isScrollEnabled = expectedHeight > maxHeight
+                self?.organizationTableHeight.constant = min(expectedHeight, maxHeight) - 2
+            }
             self?.organizations.reloadData()
         }
     }
+    
+    
 }
-
 
 
 

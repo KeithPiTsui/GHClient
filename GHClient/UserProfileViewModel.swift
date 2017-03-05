@@ -46,15 +46,15 @@ internal protocol UserProfileViewModelType {
 internal final class UserProfileViewModel: UserProfileViewModelType, UserProfileViewModelInputs, UserProfileViewModelOutputs {
     
     init() {
-        self.followings = self.viewDidLoadProperty.signal.map{return 1}
-        self.repositories = self.viewDidLoadProperty.signal.map{return 1}
-        self.followers = self.viewDidLoadProperty.signal.map{return 1}
-        self.events = self.viewDidLoadProperty.signal.map {
+        self.followings = self.viewWillAppearProperty.signal.map{_ in return 1}
+        self.repositories = self.viewWillAppearProperty.signal.map{_ in return 1}
+        self.followers = self.viewWillAppearProperty.signal.map{_ in return 1}
+        self.events = self.viewWillAppearProperty.signal.map {_ in
             guard let img = UIImage(named: "phone-icon") else { fatalError("No such image phone_icon") }
             return [(img, "RecentActivity"),(img, "Starred Repos"),(img, "Gists")]
         }
-        self.organizations = self.viewDidLoadProperty.signal.map {
-            return []
+        self.organizations = self.viewWillAppearProperty.signal.map {_ in
+            return [] // "A", "B", "C", "D"
         }
     }
     
