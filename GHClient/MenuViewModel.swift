@@ -24,6 +24,12 @@ internal protocol MenuViewModelInputs {
     
     /// Call when the view will appear with animated property.
     func viewWillAppear(animated: Bool)
+    
+    /// Call when a user session ends.
+    func userSessionEnded()
+    
+    /// Call when a user session has started.
+    func userSessionStarted()
 }
 
 internal protocol MenuViewModelOutpus {
@@ -66,7 +72,9 @@ internal protocol MenuViewModelType {
 internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, MenuViewModelOutpus {
     
     init() {
-        self.username = self.viewDidLoadProperty.signal.map { return AppEnvironment.current.currentUser?.name ?? "Guest"}
+        
+        let userInfoUpdatedCombinedSignal = Signal.merge(self.viewDidLoadProperty.signal, self.userSessionStartedProperty.signal, self.userSessionEndedProperty.signal)
+        self.username = userInfoUpdatedCombinedSignal.map { return AppEnvironment.current.currentUser?.name ?? "Guest"}
         
         self.presentViewController = self.tappedUserIconProperty.signal.map {
             if AppEnvironment.current.currentUser != nil {
@@ -79,9 +87,10 @@ internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, Menu
             }
         }
         
-        self.personalMenuItems = self.viewDidLoadProperty.signal
-            .filter{ AppEnvironment.current.currentUser != nil }
+        
+        self.personalMenuItems = userInfoUpdatedCombinedSignal
             .map {
+                if AppEnvironment.current.currentUser != nil {
                 return [.Personal(.UserProfile)
                     , .Personal(.PersonalRepos)
                     , .Personal(.WathcedRepos)
@@ -90,6 +99,7 @@ internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, Menu
                     , .Personal(.PersonalGists)
                     , .Personal(.StarredGists)
                     , .Personal(.Feeds)]
+                } else { return [] }
             }
         
         self.discoveryMenuItems = self.viewDidLoadProperty.signal.map {
@@ -115,6 +125,15 @@ internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, Menu
             .filter{if case let .App(x) = $0, x == .Settings { return true } else { return false }}
             .map {_ in return () }
         
+    }
+    
+    fileprivate let userSessionStartedProperty = MutableProperty(())
+    public func userSessionStarted() {
+        self.userSessionStartedProperty.value = ()
+    }
+    fileprivate let userSessionEndedProperty = MutableProperty(())
+    public func userSessionEnded() {
+        self.userSessionEndedProperty.value = ()
     }
     
     fileprivate let tappedMenuItemProperty = MutableProperty<MenuItem?>(nil)

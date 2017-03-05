@@ -25,6 +25,20 @@ final class MenuViewController: UITableViewController {
         self.viewModel.inputs.tappedUserIcon()
     }
     
+    internal required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        NotificationCenter.default
+            .addObserver(forName: Notification.Name.gh_sessionStarted, object: nil, queue: nil) { [weak self] _ in
+                self?.viewModel.inputs.userSessionStarted()
+        }
+        
+        NotificationCenter.default
+            .addObserver(forName: Notification.Name.gh_sessionEnded, object: nil, queue: nil) { [weak self] _ in
+                self?.viewModel.inputs.userSessionEnded()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self.datasource
