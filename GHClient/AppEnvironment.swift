@@ -217,7 +217,6 @@ public struct AppEnvironment {
         
         // Try restore the current user
         if service.isAuthenticated {
-            let x = data["currentUser"]
             currentUser = data["currentUser"].flatMap(decode)
         }
         

@@ -82,18 +82,22 @@ internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, Menu
         self.personalMenuItems = self.viewDidLoadProperty.signal
             .filter{ AppEnvironment.current.currentUser != nil }
             .map {
-                let item = MenuItem.Personal(.UserProfile)
-                return [item]
+                return [.Personal(.UserProfile)
+                    , .Personal(.PersonalRepos)
+                    , .Personal(.WathcedRepos)
+                    , .Personal(.StarredRepos)
+                    , .Personal(.IssuesRequests)
+                    , .Personal(.PersonalGists)
+                    , .Personal(.StarredGists)
+                    , .Personal(.Feeds)]
             }
         
         self.discoveryMenuItems = self.viewDidLoadProperty.signal.map {
-            let item = MenuItem.Discovery(.Searching)
-            return [item]
+            return [.Discovery(.Searching), .Discovery(.Trending)]
         }
         
         self.appMenuItems = self.viewDidLoadProperty.signal.map {
-            let item = MenuItem.App(.Settings)
-            return [item]
+            return [.App(.Settings), .App(.Feedback)]
         }
         
         self.gotoUserProfile = self.tappedMenuItemProperty.signal.skipNil()

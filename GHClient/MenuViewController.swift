@@ -22,7 +22,6 @@ final class MenuViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self.datasource
-        
         self.viewModel.inputs.viewDidLoad()
     }
     

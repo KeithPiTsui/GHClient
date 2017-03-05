@@ -8,21 +8,40 @@
 
 import UIKit
 
-fileprivate let itemIconNames: [String: String] = ["Personal.UserProfile":"tabbar-icon-profile-logged-out"
-                                                    ,"Discovery.Searching":"tabbar-icon-search"
-                                                    ,"App.Settings":"phone-icon"]
+fileprivate let itemIconNames: [String: String] =
+    ["Personal.UserProfile":"tabbar-icon-profile-logged-out"
+    ,"Personal.PersonalRepos": "tabbar-icon-profile-logged-out"
+    ,"Personal.WathcedRepos": "tabbar-icon-profile-logged-out"
+    ,"Personal.StarredRepos": "tabbar-icon-profile-logged-out"
+    ,"Personal.IssuesRequests": "tabbar-icon-profile-logged-out"
+    ,"Personal.PersonalGists": "tabbar-icon-profile-logged-out"
+    ,"Personal.StarredGists": "tabbar-icon-profile-logged-out"
+    ,"Personal.Feeds": "tabbar-icon-profile-logged-out"
+    ,"Discovery.Searching":"tabbar-icon-search"
+    ,"Discovery.Trending":"tabbar-icon-search"
+    ,"App.Settings":"phone-icon"
+    ,"App.Feedback":"phone-icon"]
 
 internal enum MenuItem {
     internal enum PersonalItem: String {
         case UserProfile
+        case PersonalRepos
+        case WathcedRepos
+        case StarredRepos
+        case IssuesRequests
+        case PersonalGists
+        case StarredGists
+        case Feeds
     }
     
     internal enum DiscoveryItem: String {
         case Searching
+        case Trending
     }
     
     internal enum AppItem: String{
         case Settings
+        case Feedback
     }
     
     case Personal(PersonalItem)

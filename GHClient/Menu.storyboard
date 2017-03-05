@@ -14,26 +14,26 @@
         <scene sceneID="XgP-Vs-vzR">
             <objects>
                 <tableViewController storyboardIdentifier="MenuViewController" id="dwf-7S-UtG" customClass="MenuViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" id="CHG-g9-ci7">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="CHG-g9-ci7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuGeneralCell" rowHeight="74" id="PcZ-cX-pxF" customClass="MenuGeneralCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="74"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuGeneralCell" rowHeight="60" id="PcZ-cX-pxF" customClass="MenuGeneralCell" customModule="GHClient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PcZ-cX-pxF" id="eyi-XL-tNP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lZR-8T-f1W">
-                                            <rect key="frame" x="8" y="8" width="65" height="57"/>
+                                            <rect key="frame" x="8" y="8" width="50" height="43.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="65" id="lKp-an-cEL"/>
+                                                <constraint firstAttribute="width" constant="50" id="lKp-an-cEL"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMe-i6-o1Q">
-                                            <rect key="frame" x="81" y="19" width="286" height="24"/>
+                                            <rect key="frame" x="66" y="18" width="301" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                                     <constraints>
                                         <constraint firstItem="lZR-8T-f1W" firstAttribute="leading" secondItem="eyi-XL-tNP" secondAttribute="leadingMargin" id="RY6-9o-zF4"/>
                                         <constraint firstItem="lZR-8T-f1W" firstAttribute="bottom" secondItem="eyi-XL-tNP" secondAttribute="bottomMargin" id="acL-uK-dBw"/>
-                                        <constraint firstItem="VMe-i6-o1Q" firstAttribute="centerY" secondItem="lZR-8T-f1W" secondAttribute="centerY" constant="-5.5" id="kBJ-7r-d02"/>
+                                        <constraint firstItem="VMe-i6-o1Q" firstAttribute="centerY" secondItem="lZR-8T-f1W" secondAttribute="centerY" id="kBJ-7r-d02"/>
                                         <constraint firstItem="lZR-8T-f1W" firstAttribute="top" secondItem="eyi-XL-tNP" secondAttribute="topMargin" id="rmJ-1o-UWM"/>
                                         <constraint firstItem="VMe-i6-o1Q" firstAttribute="trailing" secondItem="eyi-XL-tNP" secondAttribute="trailingMargin" id="wMz-D1-L3D"/>
                                         <constraint firstItem="VMe-i6-o1Q" firstAttribute="leading" secondItem="lZR-8T-f1W" secondAttribute="trailing" constant="8" symbolic="YES" id="wZd-sM-1Mg"/>
