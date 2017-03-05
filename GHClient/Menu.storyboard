@@ -7,33 +7,34 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Username-->
+        <!--Menu-->
         <scene sceneID="XgP-Vs-vzR">
             <objects>
                 <tableViewController storyboardIdentifier="MenuViewController" id="dwf-7S-UtG" customClass="MenuViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="CHG-g9-ci7">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="28" sectionFooterHeight="28" id="CHG-g9-ci7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuGeneralCell" rowHeight="60" id="PcZ-cX-pxF" customClass="MenuGeneralCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MenuGeneralCell" rowHeight="46" id="PcZ-cX-pxF" customClass="MenuGeneralCell" customModule="GHClient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PcZ-cX-pxF" id="eyi-XL-tNP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lZR-8T-f1W">
-                                            <rect key="frame" x="8" y="8" width="50" height="43.5"/>
+                                            <rect key="frame" x="8" y="8" width="50" height="29.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="lKp-an-cEL"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMe-i6-o1Q">
-                                            <rect key="frame" x="66" y="18" width="301" height="24"/>
+                                            <rect key="frame" x="66" y="11" width="268" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -59,20 +60,26 @@
                             <outlet property="delegate" destination="dwf-7S-UtG" id="gJn-Ea-ijy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Username" id="ZkI-rF-ymF">
-                        <barButtonItem key="leftBarButtonItem" image="tabbar-icon-profile-logged-out" id="E76-am-ZyN">
-                            <connections>
-                                <action selector="tappedOnUserIcon:" destination="dwf-7S-UtG" id="WQf-4t-c6g"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Menu" id="ZkI-rF-ymF">
+                        <leftBarButtonItems>
+                            <barButtonItem image="tabbar-icon-profile-logged-out" id="E76-am-ZyN">
+                                <connections>
+                                    <action selector="tappedOnUserIcon:" destination="dwf-7S-UtG" id="WQf-4t-c6g"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="username" width="30" id="Ot8-Sv-vgz"/>
+                        </leftBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="username" destination="Ot8-Sv-vgz" id="sad-Xl-GlK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPd-fQ-U98" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6303.1999999999998" y="126.38680659670166"/>
+            <point key="canvasLocation" x="-6610" y="134"/>
         </scene>
     </scenes>
     <resources>

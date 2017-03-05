@@ -17,6 +17,9 @@ internal protocol UserProfileViewModelInputs {
     
     /// Call when the view will appear with animated property.
     func viewWillAppear(animated: Bool)
+    
+    /// Call when the user tapped reflesh button
+    func tappedRefleshButton()
 }
 
 internal protocol UserProfileViewModelOutputs {
@@ -56,6 +59,11 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
         self.organizations = self.viewWillAppearProperty.signal.map {_ in
             return [] // "A", "B", "C", "D"
         }
+    }
+    
+    fileprivate let tappedRefleshButtonProperty = MutableProperty()
+    internal func tappedRefleshButton() {
+        self.tappedRefleshButtonProperty.value = ()
     }
     
     fileprivate let viewDidLoadProperty = MutableProperty()

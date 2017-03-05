@@ -44,10 +44,6 @@ final class RootSplitViewController: UISplitViewController {
 }
 
 extension RootSplitViewController: UISplitViewControllerDelegate {
-
-    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewControllerDisplayMode) {
-        print("Hello")
-    }
 }
 
 // MARK: -

@@ -33,6 +33,9 @@ final class UserProfileViewController: UIViewController {
     @IBOutlet weak var organizationTableHeight: NSLayoutConstraint!
     
     
+    @IBAction func tappedRefleshBtn(_ sender: UIBarButtonItem) {
+        self.viewModel.inputs.tappedRefleshButton()
+    }
     
     internal static func instantiate() -> UserProfileViewController {
         return Storyboard.UserProfile.instantiate(UserProfileViewController.self)
@@ -42,7 +45,6 @@ final class UserProfileViewController: UIViewController {
         super.viewDidLoad()
         self.events.dataSource = self.eventDatasource
         self.organizations.dataSource = self.organizationDatasource
-        
         self.viewModel.inputs.viewDidLoad()
     }
     

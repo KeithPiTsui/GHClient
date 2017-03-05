@@ -29,7 +29,7 @@ internal protocol MenuViewModelInputs {
 internal protocol MenuViewModelOutpus {
     
     /// Emit signal to change the title of view controller
-    var title: Signal<String, NoError> { get }
+    var username: Signal<String, NoError> { get }
     
     /// Emit a signal to present a view controller. E.g. user tapped user icon to login or logout
     /// Login view controller would be `LoginViewController`, whereas logout's would be an alert view controller
@@ -66,7 +66,7 @@ internal protocol MenuViewModelType {
 internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, MenuViewModelOutpus {
     
     init() {
-        self.title = self.viewDidLoadProperty.signal.map { return "Guest"}
+        self.username = self.viewDidLoadProperty.signal.map { return AppEnvironment.current.currentUser?.name ?? "Guest"}
         
         self.presentViewController = self.tappedUserIconProperty.signal.map {
             if AppEnvironment.current.currentUser != nil {
@@ -137,7 +137,7 @@ internal final class MenuViewModel: MenuViewModelType, MenuViewModelInputs, Menu
         self.viewWillAppearProperty.value = animated
     }
     
-    internal let title: Signal<String, NoError>
+    internal let username: Signal<String, NoError>
     internal let presentViewController: Signal<UIViewController, NoError>
     internal let personalMenuItems: Signal<[MenuItem], NoError>
     internal let discoveryMenuItems: Signal<[MenuItem], NoError>

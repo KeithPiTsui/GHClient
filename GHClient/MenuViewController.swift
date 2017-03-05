@@ -19,6 +19,8 @@ final class MenuViewController: UITableViewController {
     fileprivate let viewModel: MenuViewModelType = MenuViewModel()
     fileprivate let datasource = MenuDataSource()
     
+    @IBOutlet weak var username: UIBarButtonItem!
+    
     @IBAction func tappedOnUserIcon(_ sender: UIBarButtonItem) {
         self.viewModel.inputs.tappedUserIcon()
     }
@@ -36,9 +38,8 @@ final class MenuViewController: UITableViewController {
     override func bindViewModel() {
         super.bindViewModel()
         
-        self.viewModel.outpus.title.observeForUI().observeValues { [weak self] in
-            self?.title = $0
-            self?.navigationItem.title = $0
+        self.viewModel.outpus.username.observeForUI().observeValues { [weak self] in
+            self?.username.title = $0
         }
         
         self.viewModel.outpus.presentViewController.observeForUI().observeValues{ [weak self] in

@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="duj-et-Epk">
             <objects>
                 <viewController storyboardIdentifier="UserProfileViewController" id="PKI-Bu-PTr" customClass="UserProfileViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -242,6 +242,13 @@
                             <constraint firstItem="k9S-ZE-7Ls" firstAttribute="trailing" secondItem="y7G-1d-aNu" secondAttribute="trailing" id="zij-bA-BHz"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Profile" id="54o-rt-4lj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="nEn-Sb-XJd">
+                            <connections>
+                                <action selector="tappedRefleshBtn:" destination="PKI-Bu-PTr" id="R8u-6a-rIq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
