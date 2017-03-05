@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */; };
+		0E238F471E6BD60B001F493A /* UserProfileEventDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F461E6BD60B001F493A /* UserProfileEventDatasource.swift */; };
+		0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F481E6BD669001F493A /* UserProfileOrganizationDatasource.swift */; };
+		0E238F4B1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F4A1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift */; };
+		0E238F4D1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */; };
 		0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A9CB1E67F5210002A40D /* KSCache.swift */; };
 		0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */; };
 		0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA031E67F56F0002A40D /* DateProtocol.swift */; };
@@ -621,6 +626,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		0E238F461E6BD60B001F493A /* UserProfileEventDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEventDatasource.swift; sourceTree = "<group>"; };
+		0E238F481E6BD669001F493A /* UserProfileOrganizationDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileOrganizationDatasource.swift; sourceTree = "<group>"; };
+		0E238F4A1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEventTableViewCell.swift; sourceTree = "<group>"; };
+		0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileOrganizationTableViewCell.swift; sourceTree = "<group>"; };
 		0E50A9CB1E67F5210002A40D /* KSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSCache.swift; sourceTree = "<group>"; };
 		0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSHTTPCookieStorageType.swift; sourceTree = "<group>"; };
 		0E50AA031E67F56F0002A40D /* DateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProtocol.swift; sourceTree = "<group>"; };
@@ -914,6 +924,7 @@
 				0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */,
 				0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */,
 				0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */,
+				0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1004,6 +1015,8 @@
 				0ED6464B1E6950E700017D28 /* ValueCell.swift */,
 				0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */,
 				0ED6460D1E69500900017D28 /* MenuDataSource.swift */,
+				0E238F461E6BD60B001F493A /* UserProfileEventDatasource.swift */,
+				0E238F481E6BD669001F493A /* UserProfileOrganizationDatasource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -1012,6 +1025,8 @@
 			isa = PBXGroup;
 			children = (
 				0ED646501E695C4300017D28 /* MenuGeneralCell.swift */,
+				0E238F4A1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift */,
+				0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1624,6 +1639,7 @@
 				0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
 				0E94F3211E651CBA00E962B6 /* Storyboard.swift in Sources */,
+				0E238F4B1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift in Sources */,
 				0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */,
 				0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */,
 				0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */,
@@ -1632,11 +1648,15 @@
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
 				0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */,
 				0E50AA121E67FCF60002A40D /* AppDelegateViewModel.swift in Sources */,
+				0E238F4D1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift in Sources */,
 				0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */,
+				0E238F471E6BD60B001F493A /* UserProfileEventDatasource.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
+				0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */,
 				0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */,
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
+				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
 				0ED6464E1E695BCD00017D28 /* UIView-Extensions.swift in Sources */,
 				0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */,

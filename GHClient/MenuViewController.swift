@@ -12,6 +12,10 @@ final class MenuViewController: UITableViewController {
 
     internal static func instantiate() -> MenuViewController { return Storyboard.Menu.instantiate(MenuViewController.self)}
     
+    fileprivate var rootSplitViewController: RootSplitViewController? {
+        return self.splitViewController as? RootSplitViewController
+    }
+    
     fileprivate let viewModel: MenuViewModelType = MenuViewModel()
     fileprivate let datasource = MenuDataSource()
     
@@ -58,7 +62,7 @@ final class MenuViewController: UITableViewController {
         }
         
         self.viewModel.outpus.gotoUserProfile.observeForUI().observeValues{ [weak self] _ in
-            self?.splitViewController?.showDetailViewController(UserProfileViewController.instantiate(), sender: nil)
+            self?.rootSplitViewController?.gotoUserProfile()
         }
     }
     

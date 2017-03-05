@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 internal final class MenuDataSource: ValueCellDataSource {
     internal enum Section: Int {
         case personal

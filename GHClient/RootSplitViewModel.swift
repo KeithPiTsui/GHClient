@@ -39,9 +39,7 @@ internal final class RootSplitViewModel: RootSplitViewModelType, RootSplitViewMo
     
     init() {
         self.setViewControllers = self.viewDidLoadProperty.signal.map{
-            let menu = UINavigationController(rootViewController: MenuViewController.instantiate())
-            let profile = UINavigationController(rootViewController: UIViewController())
-            return (menu, profile)
+            return (MenuViewController.instantiate(), UserProfileViewController.instantiate())
         }
     }
     

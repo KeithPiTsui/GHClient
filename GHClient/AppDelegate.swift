@@ -11,10 +11,14 @@ import SlideMenuControllerSwift
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+internal final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     fileprivate let viewModel: AppDelegateViewModelType = AppDelegateViewModel()
     var window: UIWindow?
+    
+    internal var rootSplitViewController: RootSplitViewController? {
+        return self.window?.rootViewController as? RootSplitViewController
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
