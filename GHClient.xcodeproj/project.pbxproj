@@ -24,6 +24,13 @@
 		0E50AA321E6844700002A40D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA311E6844700002A40D /* Main.storyboard */; };
 		0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA421E6849500002A40D /* RootSplitViewController.swift */; };
 		0E50AA781E6849B00002A40D /* RootSplitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */; };
+		0E7B7BA81E6E572E00D50C95 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E7B7BA71E6E572E00D50C95 /* Search.storyboard */; };
+		0E7B7BDD1E6E575800D50C95 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */; };
+		0E7B7BE51E6E884800D50C95 /* SearchUserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BE41E6E884800D50C95 /* SearchUserDataSource.swift */; };
+		0E7B7BE71E6E88AB00D50C95 /* SearchRepositoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BE61E6E88AB00D50C95 /* SearchRepositoryDataSource.swift */; };
+		0E7B7BE91E6E890000D50C95 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */; };
+		0E7B7BEB1E6E93A100D50C95 /* SearchUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BEA1E6E93A100D50C95 /* SearchUserTableViewCell.swift */; };
+		0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BEC1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift */; };
 		0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */; };
 		0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */; };
 		0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */; };
@@ -641,6 +648,13 @@
 		0E50AA311E6844700002A40D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0E50AA421E6849500002A40D /* RootSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitViewController.swift; sourceTree = "<group>"; };
 		0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitViewModel.swift; sourceTree = "<group>"; };
+		0E7B7BA71E6E572E00D50C95 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0E7B7BE41E6E884800D50C95 /* SearchUserDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserDataSource.swift; sourceTree = "<group>"; };
+		0E7B7BE61E6E88AB00D50C95 /* SearchRepositoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepositoryDataSource.swift; sourceTree = "<group>"; };
+		0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		0E7B7BEA1E6E93A100D50C95 /* SearchUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserTableViewCell.swift; sourceTree = "<group>"; };
+		0E7B7BEC1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -902,6 +916,7 @@
 				0E50AA311E6844700002A40D /* Main.storyboard */,
 				0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */,
 				0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */,
+				0E7B7BA71E6E572E00D50C95 /* Search.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -913,6 +928,7 @@
 				0E94F3291E65206000E962B6 /* LoginViewController.swift */,
 				0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */,
 				0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */,
+				0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -925,6 +941,7 @@
 				0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */,
 				0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */,
 				0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */,
+				0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1017,6 +1034,8 @@
 				0ED6460D1E69500900017D28 /* MenuDataSource.swift */,
 				0E238F461E6BD60B001F493A /* UserProfileEventDatasource.swift */,
 				0E238F481E6BD669001F493A /* UserProfileOrganizationDatasource.swift */,
+				0E7B7BE41E6E884800D50C95 /* SearchUserDataSource.swift */,
+				0E7B7BE61E6E88AB00D50C95 /* SearchRepositoryDataSource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -1027,6 +1046,8 @@
 				0ED646501E695C4300017D28 /* MenuGeneralCell.swift */,
 				0E238F4A1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift */,
 				0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */,
+				0E7B7BEA1E6E93A100D50C95 /* SearchUserTableViewCell.swift */,
+				0E7B7BEC1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1616,6 +1637,7 @@
 				0E94F1F71E65189900E962B6 /* LaunchScreen.storyboard in Resources */,
 				0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */,
 				0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */,
+				0E7B7BA81E6E572E00D50C95 /* Search.storyboard in Resources */,
 				0E84B5A01E67C3DE00C5ADF7 /* UserProfile.storyboard in Resources */,
 				0E50AA321E6844700002A40D /* Main.storyboard in Resources */,
 			);
@@ -1641,22 +1663,28 @@
 				0E94F3211E651CBA00E962B6 /* Storyboard.swift in Sources */,
 				0E238F4B1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift in Sources */,
 				0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */,
+				0E7B7BE91E6E890000D50C95 /* SearchViewModel.swift in Sources */,
 				0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */,
 				0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */,
+				0E7B7BEB1E6E93A100D50C95 /* SearchUserTableViewCell.swift in Sources */,
 				0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */,
 				0E94F3221E651CBA00E962B6 /* UIViewController-Preparation.swift in Sources */,
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
 				0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */,
+				0E7B7BDD1E6E575800D50C95 /* SearchViewController.swift in Sources */,
 				0E50AA121E67FCF60002A40D /* AppDelegateViewModel.swift in Sources */,
 				0E238F4D1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift in Sources */,
 				0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */,
 				0E238F471E6BD60B001F493A /* UserProfileEventDatasource.swift in Sources */,
+				0E7B7BE71E6E88AB00D50C95 /* SearchRepositoryDataSource.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
 				0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */,
 				0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */,
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
 				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
+				0E7B7BE51E6E884800D50C95 /* SearchUserDataSource.swift in Sources */,
+				0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
 				0ED6464E1E695BCD00017D28 /* UIView-Extensions.swift in Sources */,
 				0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */,

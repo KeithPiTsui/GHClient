@@ -25,3 +25,12 @@
 [submodule "SlideMenuControllerSwift"]
 	path = SlideMenuControllerSwift
 	url = https://github.com/dekatotoro/SlideMenuControllerSwift.git
+[submodule "ios-twitter-image-pipeline"]
+	path = ios-twitter-image-pipeline
+	url = https://github.com/twitter/ios-twitter-image-pipeline.git
+[submodule "Alamofire"]
+	path = Alamofire
+	url = https://github.com/Alamofire/Alamofire.git
+[submodule "AlamofireImage"]
+	path = AlamofireImage
+	url = https://github.com/Alamofire/AlamofireImage.git

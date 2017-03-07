@@ -39,7 +39,8 @@ internal final class RootSplitViewModel: RootSplitViewModelType, RootSplitViewMo
     
     init() {
         self.setViewControllers = self.viewDidLoadProperty.signal.map{
-            return (MenuViewController.instantiate(), UserProfileViewController.instantiate())
+//            return (MenuViewController.instantiate(), UserProfileViewController.instantiate())
+            return (MenuViewController.instantiate(), SearchViewController.instantiate())
         }
     }
     

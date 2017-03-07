@@ -58,6 +58,10 @@ extension RootSplitViewController {
         self.showDetailViewController(UserProfileViewController.instantiate(), sender: nil)
     }
     
+    internal func gotoSearch() {
+        self.showDetailViewController(SearchViewController.instantiate(), sender: nil)
+    }
+    
     internal func gotoPersonalRepos() {
         
     }

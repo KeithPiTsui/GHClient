@@ -98,6 +98,10 @@ final class UserProfileViewController: UIViewController {
             }
             self?.organizations.reloadData()
         }
+        
+        self.viewModel.outputs.userName.observeForUI().observeValues {self.username.text = $0}
+        self.viewModel.outputs.userLocation.observeForUI().observeValues {self.userLocation.text = $0}
+        self.viewModel.outputs.userAvatar.observeForUI().observeValues{self.userAvatar.image = $0}
     }
     
     

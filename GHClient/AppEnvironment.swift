@@ -34,7 +34,7 @@ public struct AppEnvironment {
      */
     public static func login(_ envelope: UserPasswordEnvelope) {
         replaceCurrentEnvironment(
-            apiService: current.apiService.login(username: envelope.user.name, password: envelope.password),
+            apiService: current.apiService.login(username: envelope.user.name!, password: envelope.password),
             currentUser: envelope.user
         )
     }

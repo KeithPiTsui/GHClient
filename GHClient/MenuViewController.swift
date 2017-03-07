@@ -79,6 +79,11 @@ final class MenuViewController: UITableViewController {
         self.viewModel.outpus.gotoUserProfile.observeForUI().observeValues{ [weak self] _ in
             self?.rootSplitViewController?.gotoUserProfile()
         }
+        
+        self.viewModel.outpus.gotoSearching.observeForUI().observeValues { [weak self] in
+            self?.rootSplitViewController?.gotoSearch()
+        }
+        
     }
     
     
