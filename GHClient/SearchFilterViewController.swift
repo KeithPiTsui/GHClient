@@ -9,7 +9,7 @@
 import UIKit
 import GHAPI
 
-internal final class SearchFilterViewController: UITableViewController {
+internal final class SearchFilterViewController: UIViewController {
 
     internal static func instantiate() -> SearchFilterViewController {
         return Storyboard.SearchFilter.instantiate(SearchFilterViewController.self)
@@ -18,19 +18,28 @@ internal final class SearchFilterViewController: UITableViewController {
     fileprivate let viewModel = SearchFilterViewModel()
     fileprivate let repositoriesDatasource = SearchFilterRepositoriesDatasource()
     fileprivate let usersDatasource = SearchFilterUsersDatasource()
-    @IBAction func TappedCancelButton(_ sender: UIBarButtonItem) {
+
+    @IBOutlet weak var filterOptionsCollectionView: UICollectionView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBAction func tappedResetBtn(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func tappedOkayBtn(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func tappedDoneButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    
     internal func setFilterScope(_ scope: SearchScope) {
-        self.title = scope.name + " Search Filter"
+        self.title = scope.name.uppercased() + " Search Filter"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.filterOptionsCollectionView.dataSource = self.usersDatasource
+        self.filterOptionsCollectionView.allowsMultipleSelection = true
+        self.filterOptionsCollectionView.allowsSelection = true
     }
     
     override func bindStyles() {
@@ -41,3 +50,41 @@ internal final class SearchFilterViewController: UITableViewController {
         super.bindViewModel()
     }
 }
+
+extension SearchFilterViewController: UICollectionViewDelegate {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
