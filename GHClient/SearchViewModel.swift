@@ -12,12 +12,6 @@ import ReactiveSwift
 import Result
 import GHAPI
 
-internal enum SeachViewModelSearchScope: String {
-    case users
-    case repositories
-    case code
-}
-
 internal protocol SearchViewModelInputs {
     /// Call when the view did load.
     func viewDidLoad()
@@ -35,22 +29,28 @@ internal protocol SearchViewModelInputs {
     func scopeSegmentChanged(index: Int)
     
     /// Call when user search
-    func search(scope: SeachViewModelSearchScope, keyword: String)
+    func search(scope: SearchScope, keyword: String)
+    
+    /// Call when user tapped on filter button
+    func tappedFilterButton(within scope: SearchScope)
 }
 
 internal protocol SearchViewModelOutputs {
     
-    // Emit a signal to update user data source
+    /// Emit a signal to update user data source
     var users: Signal<[User], NoError> { get }
     
-    // Emit a signal to update repository data source
+    /// Emit a signal to update repository data source
     var repositories: Signal<[Repository], NoError> {get}
     
-    // Emit a signal to specify search scopes
-    var searchScope: Signal<[SeachViewModelSearchScope], NoError> { get }
+    /// Emit a signal to specify search scopes
+    var searchScope: Signal<[SearchScope], NoError> { get }
     
-    // Emit a signal to specify selected search scopes
-    var selectedSearchScope: Signal<SeachViewModelSearchScope, NoError> { get }
+    /// Emit a signal to specify selected search scopes
+    var selectedSearchScope: Signal<SearchScope, NoError> { get }
+    
+    /// Emit a signal to notify vc to present a view controller
+    var presentViewController: Signal<UIViewController, NoError> {get}
     
 }
 
@@ -63,29 +63,35 @@ internal protocol SearchViewModelType {
 internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs, SearchViewModelOutputs {
     
     init() {
-        self.searchScope = self.viewDidLoadProperty.signal.map {[.users, .repositories, .code]}
+        self.searchScope = self.viewDidLoadProperty.signal.map {[.users([]), .repositories([]), .code([])]}
         
         self.users = self.usersProperty.signal.skipNil()
         self.repositories = self.repositoriesProperty.signal.skipNil()
         
-        let scopeSignal1 = self.viewDidLoadProperty.signal.map{SeachViewModelSearchScope.users}
+        let scopeSignal1 = self.viewDidLoadProperty.signal.map{SearchScope.users([])}
         let scopeSignal2 = self.scopeSegmentChangedProperty.signal.skipNil()
-            .map{ (idx) -> SeachViewModelSearchScope in
+            .map{ (idx) -> SearchScope in
                 switch idx {
                 case 0:
-                    return .users
+                    return .users([])
                 case 1:
-                    return .repositories
+                    return .repositories([])
                 case 2:
-                    return .code
+                    return .code([])
                 default:
-                    return .users
+                    return .users([])
                 }
             }
         self.selectedSearchScope = Signal.merge(scopeSignal1, scopeSignal2)
         
+        self.presentViewController = self.tappedFilterButtonProperty.signal.skipNil().map {
+            let vc = SearchFilterViewController.instantiate()
+            vc.setFilterScope($0)
+            return UINavigationController(rootViewController: vc)
+        }
+        
         self.searchProperty.signal.observe(on: QueueScheduler()).skipNil()
-            .filter{$0.keyword.isEmpty == false && $0.scope == .users}
+            .filter{$0.keyword.isEmpty == false && $0.scope == .users([])}
             .observeValues {
                 let keyword = $0.keyword
                 let uq = UserQualifier.type(.user)
@@ -98,7 +104,7 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
             }
         
         self.searchProperty.signal.observe(on: QueueScheduler()).skipNil()
-            .filter{$0.keyword.isEmpty == false && $0.scope == .repositories}
+            .filter{$0.keyword.isEmpty == false && $0.scope == .repositories([])}
             .observeValues {
                 let keyword = $0.keyword
                 let rq = RepositoriesQualifier.language([.swift])
@@ -112,13 +118,18 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
         
     }
     
+    fileprivate let tappedFilterButtonProperty = MutableProperty<SearchScope?>(nil)
+    internal func tappedFilterButton(within scope: SearchScope) {
+        self.tappedFilterButtonProperty.value = scope
+    }
+    
     fileprivate let scopeSegmentChangedProperty = MutableProperty<Int?>(nil)
     internal func scopeSegmentChanged(index: Int) {
         self.scopeSegmentChangedProperty.value = index
     }
     
-    fileprivate let searchProperty = MutableProperty<(scope: SeachViewModelSearchScope, keyword: String)?>(nil)
-    internal func search(scope: SeachViewModelSearchScope, keyword: String) {
+    fileprivate let searchProperty = MutableProperty<(scope: SearchScope, keyword: String)?>(nil)
+    internal func search(scope: SearchScope, keyword: String) {
         self.searchProperty.value = (scope, keyword)
     }
     
@@ -146,8 +157,9 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
     
     internal let users: Signal<[User], NoError>
     internal let repositories: Signal<[Repository], NoError>
-    internal let searchScope: Signal<[SeachViewModelSearchScope], NoError>
-    internal let selectedSearchScope: Signal<SeachViewModelSearchScope, NoError>
+    internal let searchScope: Signal<[SearchScope], NoError>
+    internal let selectedSearchScope: Signal<SearchScope, NoError>
+    internal let presentViewController: Signal<UIViewController, NoError>
     
     internal var inputs: SearchViewModelInputs { return self }
     internal var outputs: SearchViewModelOutputs { return self }

@@ -31,6 +31,11 @@
 		0E7B7BE91E6E890000D50C95 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */; };
 		0E7B7BEB1E6E93A100D50C95 /* SearchUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BEA1E6E93A100D50C95 /* SearchUserTableViewCell.swift */; };
 		0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BEC1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift */; };
+		0E7B7BEF1E6EB01300D50C95 /* SearchFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E7B7BEE1E6EB01300D50C95 /* SearchFilter.storyboard */; };
+		0E7B7BF11E6EB02C00D50C95 /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BF01E6EB02C00D50C95 /* SearchFilterViewController.swift */; };
+		0E7B7BF31E6EB03B00D50C95 /* SearchFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */; };
+		0E7B7BF51E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BF41E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift */; };
+		0E7B7BF71E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BF61E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift */; };
 		0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */; };
 		0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */; };
 		0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */; };
@@ -655,6 +660,11 @@
 		0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		0E7B7BEA1E6E93A100D50C95 /* SearchUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserTableViewCell.swift; sourceTree = "<group>"; };
 		0E7B7BEC1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		0E7B7BEE1E6EB01300D50C95 /* SearchFilter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchFilter.storyboard; sourceTree = "<group>"; };
+		0E7B7BF01E6EB02C00D50C95 /* SearchFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
+		0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterViewModel.swift; sourceTree = "<group>"; };
+		0E7B7BF41E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterRepositoriesDatasource.swift; sourceTree = "<group>"; };
+		0E7B7BF61E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilterUsersDatasource.swift; sourceTree = "<group>"; };
 		0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -917,6 +927,7 @@
 				0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */,
 				0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */,
 				0E7B7BA71E6E572E00D50C95 /* Search.storyboard */,
+				0E7B7BEE1E6EB01300D50C95 /* SearchFilter.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -929,6 +940,7 @@
 				0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */,
 				0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */,
 				0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */,
+				0E7B7BF01E6EB02C00D50C95 /* SearchFilterViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -942,6 +954,7 @@
 				0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */,
 				0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */,
 				0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */,
+				0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1036,6 +1049,8 @@
 				0E238F481E6BD669001F493A /* UserProfileOrganizationDatasource.swift */,
 				0E7B7BE41E6E884800D50C95 /* SearchUserDataSource.swift */,
 				0E7B7BE61E6E88AB00D50C95 /* SearchRepositoryDataSource.swift */,
+				0E7B7BF41E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift */,
+				0E7B7BF61E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -1635,6 +1650,7 @@
 			files = (
 				0E94F3281E651FE000E962B6 /* Login.storyboard in Resources */,
 				0E94F1F71E65189900E962B6 /* LaunchScreen.storyboard in Resources */,
+				0E7B7BEF1E6EB01300D50C95 /* SearchFilter.storyboard in Resources */,
 				0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */,
 				0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */,
 				0E7B7BA81E6E572E00D50C95 /* Search.storyboard in Resources */,
@@ -1682,15 +1698,19 @@
 				0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */,
 				0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */,
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
+				0E7B7BF11E6EB02C00D50C95 /* SearchFilterViewController.swift in Sources */,
 				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
 				0E7B7BE51E6E884800D50C95 /* SearchUserDataSource.swift in Sources */,
 				0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
+				0E7B7BF51E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift in Sources */,
+				0E7B7BF31E6EB03B00D50C95 /* SearchFilterViewModel.swift in Sources */,
 				0ED6464E1E695BCD00017D28 /* UIView-Extensions.swift in Sources */,
 				0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */,
 				0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */,
 				0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */,
 				0E84B59C1E67AB2E00C5ADF7 /* Environment.swift in Sources */,
+				0E7B7BF71E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift in Sources */,
 				0E50AA781E6849B00002A40D /* RootSplitViewModel.swift in Sources */,
 				0ED646531E69901200017D28 /* MenuItem.swift in Sources */,
 				0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GHAPI
 
 internal final class SearchViewController: UITableViewController {
 
@@ -21,6 +22,26 @@ internal final class SearchViewController: UITableViewController {
     @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
         self.viewModel.inputs.scopeSegmentChanged(index: sender.selectedSegmentIndex)
     }
+    
+    @IBAction func tappedSearchFilterBtn(_ sender: UIBarButtonItem) {
+        self.viewModel.inputs.tappedFilterButton(within: self.scope)
+    }
+    
+    fileprivate var scope: SearchScope {
+        let scope: SearchScope
+        switch self.searchScopeSelector.selectedSegmentIndex {
+        case 0:
+            scope = .users([])
+        case 1:
+            scope = .repositories([])
+        case 2:
+            scope = .code([])
+        default:
+            scope = .users([])
+        }
+        return scope
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +60,7 @@ internal final class SearchViewController: UITableViewController {
         self.viewModel.outputs.searchScope.observeForUI().observeValues { [weak self] in
             self?.searchScopeSelector.removeAllSegments()
             for (idx, scope) in $0.enumerated() {
-                self?.searchScopeSelector.insertSegment(withTitle: scope.rawValue, at: idx, animated: false)
+                self?.searchScopeSelector.insertSegment(withTitle: scope.name, at: idx, animated: false)
             }
         }
         
@@ -66,7 +87,10 @@ internal final class SearchViewController: UITableViewController {
             self?.tableView.reloadData()
         }
         
-        
+        self.viewModel.outputs.presentViewController.observeForUI().observeValues { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+            self?.present($0, animated: true, completion: nil)
+        }
     }
 }
 
@@ -74,21 +98,7 @@ extension SearchViewController: UISearchBarDelegate {
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let keyword = self.searchBar.text else { return }
-        
-        let scope: SeachViewModelSearchScope
-        
-        switch self.searchScopeSelector.selectedSegmentIndex {
-        case 0:
-            scope = .users
-        case 1:
-            scope = .repositories
-        case 2:
-            scope = .code
-        default:
-            scope = .users
-        }
-
-        self.viewModel.inputs.search(scope: scope, keyword: keyword)
+        self.viewModel.inputs.search(scope: self.scope, keyword: keyword)
     }
     
     internal func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

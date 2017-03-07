@@ -83,7 +83,11 @@
                                 <action selector="segmentValueChanged:" destination="2s3-ID-5H3" eventType="valueChanged" id="Gxj-0q-3Ec"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="gjc-mT-K2r"/>
+                        <barButtonItem key="rightBarButtonItem" image="More" id="gjc-mT-K2r">
+                            <connections>
+                                <action selector="tappedSearchFilterBtn:" destination="2s3-ID-5H3" id="wff-o0-i5N"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -95,7 +99,10 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="umA-bZ-X4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207.19999999999999" y="-259.52023988005999"/>
+            <point key="canvasLocation" x="-190" y="-283"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="More" width="7" height="25"/>
+    </resources>
 </document>

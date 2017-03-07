@@ -24,6 +24,7 @@ public enum Storyboard: String {
     case PersonalRepositories
     case RepositoryDetail
     case Search
+    case SearchFilter
     case Settings
     case StarredGists
     case StarredRepositories
