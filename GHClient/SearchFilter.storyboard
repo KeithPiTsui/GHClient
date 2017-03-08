@@ -182,6 +182,36 @@
                                             <outlet property="rightDateBtn" destination="EgS-Cu-vZY" id="Ofv-lx-v36"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RegularTextFieldCollectionViewCell" id="zhX-Gv-Itg" customClass="RegularTextFieldCollectionViewCell" customModule="GHClient" customModuleProvider="target">
+                                        <rect key="frame" x="263" y="107" width="94" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="94" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yNE-xU-hY4">
+                                                    <rect key="frame" x="8" y="8" width="78" height="33"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="zhX-Gv-Itg" id="1kb-dQ-poY"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="yNE-xU-hY4" firstAttribute="top" secondItem="zhX-Gv-Itg" secondAttribute="topMargin" id="I8V-pw-35Z"/>
+                                            <constraint firstItem="yNE-xU-hY4" firstAttribute="leading" secondItem="zhX-Gv-Itg" secondAttribute="leadingMargin" id="gvL-8f-Ua3"/>
+                                            <constraint firstItem="yNE-xU-hY4" firstAttribute="trailing" secondItem="zhX-Gv-Itg" secondAttribute="trailingMargin" id="pWe-FD-4IT"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="yNE-xU-hY4" secondAttribute="bottom" id="tIF-JD-WSv"/>
+                                        </constraints>
+                                        <size key="customSize" width="94" height="49"/>
+                                        <connections>
+                                            <outlet property="textField" destination="yNE-xU-hY4" id="FuW-lL-Bfl"/>
+                                        </connections>
+                                    </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UICollectionElementKindSectionHeader" id="PBS-fj-mRS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -272,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULN-Ig-FgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="-85"/>
+            <point key="canvasLocation" x="1492" y="-13"/>
         </scene>
     </scenes>
 </document>

@@ -71,9 +71,13 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
                  inSection: Section.reposCount.rawValue)
     }
     
+    internal func set(city: String?) {
+        
+    }
+    
     internal func load(cities: [String]) {
         self.set(values: cities,
-                 cellClass: RegularCollectionViewCell.self,
+                 cellClass: RegularTextFieldCollectionViewCell.self,
                  inSection: Section.cities.rawValue)
     }
     
@@ -102,6 +106,8 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
         case let (cell as NumberRangeCollectionViewCell, item as NumberRange):
             cell.configureWith(value: item)
         case let (cell as DateRangeCollectionViewCell, item as DateRange):
+            cell.configureWith(value: item)
+        case let (cell as RegularTextFieldCollectionViewCell, item as String):
             cell.configureWith(value: item)
         default:
             assertionFailure("Unrecognized combo: \(cell), \(value)")
