@@ -19,7 +19,7 @@ open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableVie
      - parameter cell:  A cell that is about to be displayed.
      - parameter value: A value that is associated with the cell.
      */
-    open func configureCell(collectionCell cell: UICollectionViewCell, withValue value: Any) {
+    open func configureCell(collectionCell cell: UICollectionViewCell, withValue value: Any, for indexPath: IndexPath) {
     }
     
     /**
@@ -30,7 +30,7 @@ open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableVie
      - parameter cell:  A cell that is about to be displayed.
      - parameter value: A value that is associated with the cell.
      */
-    open func configureCell(tableCell cell: UITableViewCell, withValue value: Any) {
+    open func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
     }
     
     /**
@@ -159,7 +159,6 @@ open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableVie
         (value: Value, cellClass: Cell.Type, inSection section: Int, row: Int)
         where
         Cell.Value == Value {
-            
             self.values[section][row] = (value, Cell.defaultReusableId)
     }
     
@@ -226,7 +225,13 @@ open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableVie
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId, for: indexPath)
         
-        self.configureCell(collectionCell: cell, withValue: value)
+        if let setableCell = cell as? ValueSetableCell {
+            setableCell.section = indexPath.section
+            setableCell.row = indexPath.item
+            setableCell.dataSource = self
+        }
+        
+        self.configureCell(collectionCell: cell, withValue: value, for: indexPath)
         
         return cell
     }
@@ -248,7 +253,13 @@ open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: reusableId, for: indexPath)
         
-        self.configureCell(tableCell: cell, withValue: value)
+        if let setableCell = cell as? ValueSetableCell {
+            setableCell.section = indexPath.section
+            setableCell.row = indexPath.item
+            setableCell.dataSource = self
+        }
+        
+        self.configureCell(tableCell: cell, withValue: value, for: indexPath)
         
         return cell
     }

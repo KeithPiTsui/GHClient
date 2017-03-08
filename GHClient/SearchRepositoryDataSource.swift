@@ -17,7 +17,7 @@ internal final class SearchRepositoryDataSource: ValueCellDataSource {
         
     }
     
-    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any) {
+    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
         switch (cell, value) {
         case let (cell as SearchRepositoryTableViewCell, item as Repository):
             cell.configureWith(value: item)

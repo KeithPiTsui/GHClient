@@ -18,7 +18,7 @@ internal final class SearchUserDataSource: ValueCellDataSource {
         
     }
     
-    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any) {
+    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
         switch (cell, value) {
         case let (cell as SearchUserTableViewCell, item as User):
             cell.configureWith(value: item)

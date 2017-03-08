@@ -18,6 +18,37 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
         case language
         case createdDate
         case followersCount
+        
+        internal var name: String {
+            switch self {
+            case .userType:
+                return "User Type"
+            case .searchField:
+                return "Search Field"
+            case .reposCount:
+                return "Repos Range"
+            case .cities:
+                return "Located Cities"
+            case .language:
+                return "Languages"
+            case .createdDate:
+                return "Created Date Range"
+            case .followersCount:
+                return "Followers Range"
+            }
+        }
+    }
+    
+    internal var rangeSections: [Int] {
+        return [Section.reposCount.rawValue, Section.createdDate.rawValue, Section.followersCount.rawValue]
+    }
+    
+    internal var multiChoiceSection: [Int] {
+        return [Section.searchField.rawValue, Section.cities.rawValue, Section.language.rawValue]
+    }
+    
+    internal var singleChoiceSection: [Int] {
+        return [Section.userType.rawValue]
     }
     
     internal func load(userTypes:[UserType]) {
@@ -64,7 +95,7 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
                  inSection: Section.followersCount.rawValue)
     }
     
-    override func configureCell(collectionCell cell: UICollectionViewCell, withValue value: Any) {
+    override func configureCell(collectionCell cell: UICollectionViewCell, withValue value: Any, for indexPath: IndexPath) {
         switch (cell, value) {
         case let (cell as RegularCollectionViewCell, item as String):
             cell.configureWith(value: item)
@@ -76,11 +107,22 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
             assertionFailure("Unrecognized combo: \(cell), \(value)")
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+
+        let v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                withReuseIdentifier: "UICollectionElementKindSectionHeader",
+                                                                for: indexPath)
+        guard let lab = v.viewWithTag(1) as? UILabel
+            else {
+                fatalError("Cannot reach section header label")
+            }
+        lab.text = Section.init(rawValue: indexPath.section)?.name
+        return v
+    }
 }
-
-
-
-
 
 
 

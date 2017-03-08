@@ -34,7 +34,7 @@ internal final class MenuDataSource: ValueCellDataSource {
                  inSection: Section.app.rawValue)
     }
     
-    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any) {
+    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
         switch (cell, value) {
         case let (cell as MenuGeneralCell, item as MenuItem):
             cell.configureWith(value: item)

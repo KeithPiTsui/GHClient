@@ -24,7 +24,7 @@ internal final class UserProfileOrganizationDatasource: ValueCellDataSource {
     }
     
     
-    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any) {
+    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
         switch (cell, value) {
         case let (cell as UserProfileOrganizationTableViewCell, item as String):
             cell.configureWith(value: item)

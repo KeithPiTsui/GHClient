@@ -12,6 +12,10 @@ internal typealias UserProfileEventTableViewCellConfig = (icon: UIImage, name: S
 
 internal final class UserProfileEventTableViewCell: UITableViewCell, ValueCell {
 
+    internal var section: Int = 0
+    internal var row: Int = 0
+    internal weak var dataSource: ValueCellDataSource? = nil
+    
     internal func configureWith(value: UserProfileEventTableViewCellConfig) {
         self.imageView?.image = value.icon
         self.textLabel?.text = value.name
