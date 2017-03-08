@@ -124,7 +124,124 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
     }
 }
 
+extension SearchFilterUsersDatasource {
+    internal func userQualifiers(with indexPaths: [IndexPath]) -> [UserQualifier] {
+        var returnedUserQualifiers: [UserQualifier] = []
+        
+        // user type
+        let userTypeIndice = indexPaths.filter{$0.section == Section.userType.rawValue}
+        var userTypeQualifiers: [UserQualifier] = []
+        userTypeIndice.forEach {
+            guard let s = self[$0] as? String else { return }
+            guard let x = UserType.init(rawValue: s) else { return }
+            userTypeQualifiers.append(UserQualifier.type(x))
+        }
+        if userTypeQualifiers.isEmpty == false {
+            returnedUserQualifiers.append(contentsOf: userTypeQualifiers)
+        }
+        
+        // search field
+        let searchFieldIndice = indexPaths.filter{$0.section == Section.searchField.rawValue}
+        var userInArguments: [UserInArgument] = []
+        searchFieldIndice.forEach {
+            guard let s = self[$0] as? String else { return }
+            guard let x = UserInArgument.init(rawValue: s) else { return }
+            userInArguments.append(x)
+        }
+        
+        if userInArguments.isEmpty == false {
+            returnedUserQualifiers.append(UserQualifier.in(userInArguments))
+        }
+        
+        // reposCount
+        let ip = IndexPath(item: 0, section: Section.reposCount.rawValue)
+        var reposCountQualifiers = [UserQualifier]()
+        if let s = self[ip] as? NumberRange {
+            switch (s.0, s.1) {
+            case (nil, nil):
+                break
+            case let (left?, right?):
+                let maxN = UInt(max(left, right))
+                let minN = UInt(min(left, right))
+                reposCountQualifiers.append(.repos(.between(minN, maxN)))
+            case let (nil, right?):
+                let minN = UInt(right)
+                reposCountQualifiers.append(.repos(.lessAndEqualThan(minN)))
+            case let (left?, nil):
+                let maxN = UInt(left)
+                reposCountQualifiers.append(.repos(.biggerAndEqualThan(maxN)))
+            }
+        }
+        if reposCountQualifiers.isEmpty == false {
+            returnedUserQualifiers.append(contentsOf: reposCountQualifiers)
+        }
+        
+        // language
+        let languageIndice = indexPaths.filter{$0.section == Section.language.rawValue}
+        var languageArguments: [LanguageArgument] = []
+        languageIndice.forEach {
+            guard let s = self[$0] as? String else { return }
+            guard let x = LanguageArgument.init(rawValue: s) else { return }
+            languageArguments.append(x)
+        }
+        
+        if userInArguments.isEmpty == false {
+            returnedUserQualifiers.append(UserQualifier.language(languageArguments))
+        }
+        
+        
+        // CreatedDate
+        let cip = IndexPath(item: 0, section: Section.createdDate.rawValue)
+        var createdDateQualifiers = [UserQualifier]()
+        if let s = self[cip] as? DateRange {
+            switch (s.0, s.1) {
+            case (nil, nil):
+                break
+            case let (left?, right?):
+                let maxN = max(left, right)
+                let minN = min(left, right)
+                createdDateQualifiers.append(.created(.between(minN, maxN)))
+            case let (nil, right?):
+                createdDateQualifiers.append(.created(.lessAndEqualThan(right)))
+            case let (left?, nil):
+                createdDateQualifiers.append(.created(.biggerAndEqualThan(left)))
+            }
+        }
+        if createdDateQualifiers.isEmpty == false {
+            returnedUserQualifiers.append(contentsOf: createdDateQualifiers)
+        }
+        
+        // followersCount
+        let fip = IndexPath(item: 0, section: Section.followersCount.rawValue)
+        var followersCountQualifiers = [UserQualifier]()
+        if let s = self[fip] as? NumberRange {
+            switch (s.0, s.1) {
+            case (nil, nil):
+                break
+            case let (left?, right?):
+                let maxN = UInt(max(left, right))
+                let minN = UInt(min(left, right))
+                followersCountQualifiers.append(.followers(.between(minN, maxN)))
+            case let (nil, right?):
+                let minN = UInt(right)
+                followersCountQualifiers.append(.followers(.lessAndEqualThan(minN)))
+            case let (left?, nil):
+                let maxN = UInt(left)
+                followersCountQualifiers.append(.followers(.biggerAndEqualThan(maxN)))
+            }
+        }
+        if followersCountQualifiers.isEmpty == false {
+            returnedUserQualifiers.append(contentsOf: followersCountQualifiers)
+        }
+        
+        
+        return returnedUserQualifiers
+    }
+}
 
+//public final subscript(indexPath: IndexPath) -> Any {
+//    return self.values[indexPath.section][indexPath.item].value
+//}
 
 
 

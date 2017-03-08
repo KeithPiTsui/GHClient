@@ -34,6 +34,9 @@ internal final class SearchFilterViewController: UIViewController {
     }
     
     @IBAction func tappedOkayBtn(_ sender: UIButton) {
+        
+        let x = self.generateFilters()
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -239,7 +242,12 @@ extension SearchFilterViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
-
+extension SearchFilterViewController {
+    internal func generateFilters() -> [UserQualifier] {
+        guard let selectedIndexPath = self.filterOptionsCollectionView.indexPathsForSelectedItems else { return [] }
+        return self.usersDatasource.userQualifiers(with: selectedIndexPath)
+    }
+}
 
 
 

@@ -47,9 +47,6 @@ internal final class DateRangeCollectionViewCell: UICollectionViewCell, ValueCel
             let color = $0 == nil ? UIColor.lightGray : UIColor.black
             self?.leftDateBtn.setTitleColor(color, for: .normal)
         }
-        
-        
-        
     }
     
     override func bindStyles() {
