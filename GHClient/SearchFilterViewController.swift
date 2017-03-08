@@ -9,11 +9,18 @@
 import UIKit
 import GHAPI
 
+protocol SearchFilterViewControllerDelegate: class {
+    func filteredQualifiers(_ qualifiers: [SearchQualifier])
+}
+
+
 internal final class SearchFilterViewController: UIViewController {
 
     internal static func instantiate() -> SearchFilterViewController {
         return Storyboard.SearchFilter.instantiate(SearchFilterViewController.self)
     }
+    
+    internal var delegate: SearchFilterViewControllerDelegate?
     
     fileprivate let viewModel = SearchFilterViewModel()
     fileprivate let repositoriesDatasource = SearchFilterRepositoriesDatasource()
@@ -34,10 +41,8 @@ internal final class SearchFilterViewController: UIViewController {
     }
     
     @IBAction func tappedOkayBtn(_ sender: UIButton) {
-        
-        let x = self.generateFilters()
-        
         self.dismiss(animated: true, completion: nil)
+        delegate?.filteredQualifiers(self.generateFilters())
     }
     
     

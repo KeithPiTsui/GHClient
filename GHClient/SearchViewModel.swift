@@ -31,6 +31,9 @@ internal protocol SearchViewModelInputs {
     /// Call when user search
     func search(scope: SearchScope, keyword: String)
     
+    /// Call when user search
+    func search(scope: SearchScope, keyword: String, qualifiers: [SearchQualifier])
+    
     /// Call when user tapped on filter button
     func tappedFilterButton(within scope: SearchScope)
 }
@@ -51,6 +54,9 @@ internal protocol SearchViewModelOutputs {
     
     /// Emit a signal to notify vc to present a view controller
     var presentViewController: Signal<UIViewController, NoError> {get}
+    
+    /// Emit a signal to notify vc to present a filter view controller
+    var presentSearchFilterViewController: Signal<SearchFilterViewController, NoError> {get}
     
 }
 
@@ -90,6 +96,12 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
             return UINavigationController(rootViewController: vc)
         }
         
+        self.presentSearchFilterViewController = self.tappedFilterButtonProperty.signal.skipNil().map {
+            let vc = SearchFilterViewController.instantiate()
+            vc.setFilterScope($0)
+            return vc
+        }
+        
         self.searchProperty.signal.observe(on: QueueScheduler()).skipNil()
             .filter{$0.keyword.isEmpty == false && $0.scope == .users([])}
             .observeValues {
@@ -102,6 +114,19 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
                         self?.usersProperty.value = value.items
                     }
             }
+        
+        self.searchWithQualifiersProperty.signal.observe(on: QueueScheduler()).skipNil()
+            .filter{$0.keyword.isEmpty == false && $0.scope == .users([]) && $0.qualifiers is [UserQualifier]}
+            .observeValues {
+                let keyword = $0.keyword
+                let uq = $0.qualifiers as! [UserQualifier]
+                AppEnvironment.current.apiService
+                    .searchUser(qualifiers: uq, keyword: keyword, sort: .stars, order: .desc)
+                    .startWithResult{ [weak self] result in
+                        guard let value = result.value else { return }
+                        self?.usersProperty.value = value.items
+                }
+        }
         
         self.searchProperty.signal.observe(on: QueueScheduler()).skipNil()
             .filter{$0.keyword.isEmpty == false && $0.scope == .repositories([])}
@@ -116,6 +141,12 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
                 }
             }
         
+    }
+    
+    /// Call when user search
+    fileprivate let searchWithQualifiersProperty = MutableProperty<(scope: SearchScope, keyword: String, qualifiers:[SearchQualifier])?>(nil)
+    func search(scope: SearchScope, keyword: String, qualifiers: [SearchQualifier]){
+        self.searchWithQualifiersProperty.value = (scope, keyword, qualifiers)
     }
     
     fileprivate let tappedFilterButtonProperty = MutableProperty<SearchScope?>(nil)
@@ -160,6 +191,7 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
     internal let searchScope: Signal<[SearchScope], NoError>
     internal let selectedSearchScope: Signal<SearchScope, NoError>
     internal let presentViewController: Signal<UIViewController, NoError>
+    internal let presentSearchFilterViewController: Signal<SearchFilterViewController, NoError>
     
     internal var inputs: SearchViewModelInputs { return self }
     internal var outputs: SearchViewModelOutputs { return self }

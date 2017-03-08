@@ -86,11 +86,17 @@ internal final class SearchViewController: UITableViewController {
             self?.repositoryDatasource.load(repositories: $0)
             self?.tableView.reloadData()
         }
-        
-        self.viewModel.outputs.presentViewController.observeForUI().observeValues { [weak self] in
+
+        self.viewModel.outputs.presentSearchFilterViewController.observeForUI().observeValues { [weak self] in
+            $0.delegate = self
+            let nvc = UINavigationController(rootViewController: $0)
             self?.dismiss(animated: true, completion: nil)
-            self?.present($0, animated: true, completion: nil)
+            self?.present(nvc, animated: true, completion: nil)
         }
+//        self.viewModel.outputs.presentViewController.observeForUI().observeValues { [weak self] in
+//            self?.dismiss(animated: true, completion: nil)
+//            self?.present($0, animated: true, completion: nil)
+//        }
     }
 }
 
@@ -106,7 +112,11 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
-
+extension SearchViewController: SearchFilterViewControllerDelegate {
+    func filteredQualifiers(_ qualifiers: [SearchQualifier]) {
+        self.viewModel.inputs.search(scope: self.scope, keyword: "Keith", qualifiers: qualifiers)
+    }
+}
 
 
 
