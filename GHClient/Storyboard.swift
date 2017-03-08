@@ -15,6 +15,8 @@ extension Bundle {
 }
 
 public enum Storyboard: String {
+    case Activities
+    case Discovery
     case Feedback
     case Feeds
     case IssuePullRequests

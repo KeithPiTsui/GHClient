@@ -13,6 +13,11 @@
 		0E238F4B1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F4A1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift */; };
 		0E238F4D1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */; };
 		0E4B40A31E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */; };
+		0E4B40B81E703BEB004144DC /* RootTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */; };
+		0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B40B91E703C1D004144DC /* RootTabBarViewController.swift */; };
+		0E4B40BC1E703C4E004144DC /* RootTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B40BB1E703C4E004144DC /* RootTabBarViewModel.swift */; };
+		0E4B40BE1E70453A004144DC /* Discovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4B40BD1E70453A004144DC /* Discovery.storyboard */; };
+		0E4B40C01E70456C004144DC /* DiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B40BF1E70456C004144DC /* DiscoveryViewController.swift */; };
 		0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A9CB1E67F5210002A40D /* KSCache.swift */; };
 		0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */; };
 		0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA031E67F56F0002A40D /* DateProtocol.swift */; };
@@ -86,6 +91,11 @@
 		0ED6464E1E695BCD00017D28 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */; };
 		0ED646511E695C4300017D28 /* MenuGeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED646501E695C4300017D28 /* MenuGeneralCell.swift */; };
 		0ED646531E69901200017D28 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED646521E69901200017D28 /* MenuItem.swift */; };
+		0EECF6351E7045F0009600BB /* Activities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EECF6341E7045F0009600BB /* Activities.storyboard */; };
+		0EECF6371E704608009600BB /* ActivitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF6361E704608009600BB /* ActivitesViewController.swift */; };
+		0EECF63A1E7047B2009600BB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF6391E7047B2009600BB /* Colors.swift */; };
+		0EECF63C1E7047C1009600BB /* TabBarItemStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF63B1E7047C1009600BB /* TabBarItemStyles.swift */; };
+		0EECF63E1E70482C009600BB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF63D1E70482C009600BB /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -648,6 +658,11 @@
 		0E238F4A1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEventTableViewCell.swift; sourceTree = "<group>"; };
 		0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileOrganizationTableViewCell.swift; sourceTree = "<group>"; };
 		0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularTextFieldCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
+		0E4B40B91E703C1D004144DC /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
+		0E4B40BB1E703C4E004144DC /* RootTabBarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewModel.swift; sourceTree = "<group>"; };
+		0E4B40BD1E70453A004144DC /* Discovery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discovery.storyboard; sourceTree = "<group>"; };
+		0E4B40BF1E70456C004144DC /* DiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewController.swift; sourceTree = "<group>"; };
 		0E50A9CB1E67F5210002A40D /* KSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSCache.swift; sourceTree = "<group>"; };
 		0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSHTTPCookieStorageType.swift; sourceTree = "<group>"; };
 		0E50AA031E67F56F0002A40D /* DateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProtocol.swift; sourceTree = "<group>"; };
@@ -712,6 +727,11 @@
 		0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
 		0ED646501E695C4300017D28 /* MenuGeneralCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGeneralCell.swift; sourceTree = "<group>"; };
 		0ED646521E69901200017D28 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		0EECF6341E7045F0009600BB /* Activities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
+		0EECF6361E704608009600BB /* ActivitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitesViewController.swift; sourceTree = "<group>"; };
+		0EECF6391E7047B2009600BB /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0EECF63B1E7047C1009600BB /* TabBarItemStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemStyles.swift; sourceTree = "<group>"; };
+		0EECF63D1E70482C009600BB /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -936,6 +956,9 @@
 				0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */,
 				0E7B7BA71E6E572E00D50C95 /* Search.storyboard */,
 				0E7B7BEE1E6EB01300D50C95 /* SearchFilter.storyboard */,
+				0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */,
+				0E4B40BD1E70453A004144DC /* Discovery.storyboard */,
+				0EECF6341E7045F0009600BB /* Activities.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -943,12 +966,15 @@
 		0E94F2FC1E651C2300E962B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0E50AA421E6849500002A40D /* RootSplitViewController.swift */,
+				0EECF6361E704608009600BB /* ActivitesViewController.swift */,
+				0E4B40BF1E70456C004144DC /* DiscoveryViewController.swift */,
 				0E94F3291E65206000E962B6 /* LoginViewController.swift */,
 				0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */,
-				0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */,
-				0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */,
+				0E50AA421E6849500002A40D /* RootSplitViewController.swift */,
+				0E4B40B91E703C1D004144DC /* RootTabBarViewController.swift */,
 				0E7B7BF01E6EB02C00D50C95 /* SearchFilterViewController.swift */,
+				0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */,
+				0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -963,6 +989,7 @@
 				0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */,
 				0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */,
 				0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */,
+				0E4B40BB1E703C4E004144DC /* RootTabBarViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1003,6 +1030,8 @@
 		0E94F31C1E651CA300E962B6 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0EECF63D1E70482C009600BB /* UIColor.swift */,
+				0EECF6381E70479F009600BB /* Style */,
 				0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */,
 				0E50AA031E67F56F0002A40D /* DateProtocol.swift */,
 				0E84B59B1E67AB2E00C5ADF7 /* Environment.swift */,
@@ -1077,6 +1106,15 @@
 				0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		0EECF6381E70479F009600BB /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				0EECF63B1E7047C1009600BB /* TabBarItemStyles.swift */,
+				0EECF6391E7047B2009600BB /* Colors.swift */,
+			);
+			name = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1660,11 +1698,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4B40B81E703BEB004144DC /* RootTabBar.storyboard in Resources */,
 				0E94F3281E651FE000E962B6 /* Login.storyboard in Resources */,
 				0E94F1F71E65189900E962B6 /* LaunchScreen.storyboard in Resources */,
 				0E7B7BEF1E6EB01300D50C95 /* SearchFilter.storyboard in Resources */,
 				0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */,
+				0E4B40BE1E70453A004144DC /* Discovery.storyboard in Resources */,
 				0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */,
+				0EECF6351E7045F0009600BB /* Activities.storyboard in Resources */,
 				0E7B7BA81E6E572E00D50C95 /* Search.storyboard in Resources */,
 				0E84B5A01E67C3DE00C5ADF7 /* UserProfile.storyboard in Resources */,
 				0E50AA321E6844700002A40D /* Main.storyboard in Resources */,
@@ -1685,6 +1726,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4B40BC1E703C4E004144DC /* RootTabBarViewModel.swift in Sources */,
 				0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */,
 				0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
@@ -1701,13 +1743,16 @@
 				0E94F3221E651CBA00E962B6 /* UIViewController-Preparation.swift in Sources */,
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
 				0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */,
+				0EECF63E1E70482C009600BB /* UIColor.swift in Sources */,
 				0E7B7BDD1E6E575800D50C95 /* SearchViewController.swift in Sources */,
 				0E7B7BF91E6EF68C00D50C95 /* RegularCollectionViewCell.swift in Sources */,
 				0E50AA121E67FCF60002A40D /* AppDelegateViewModel.swift in Sources */,
 				0E238F4D1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift in Sources */,
 				0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */,
 				0E238F471E6BD60B001F493A /* UserProfileEventDatasource.swift in Sources */,
+				0EECF6371E704608009600BB /* ActivitesViewController.swift in Sources */,
 				0E7B7BE71E6E88AB00D50C95 /* SearchRepositoryDataSource.swift in Sources */,
+				0E4B40C01E70456C004144DC /* DiscoveryViewController.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
 				0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */,
@@ -1715,9 +1760,11 @@
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
 				0E7B7BF11E6EB02C00D50C95 /* SearchFilterViewController.swift in Sources */,
 				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
+				0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */,
 				0E7B7BE51E6E884800D50C95 /* SearchUserDataSource.swift in Sources */,
 				0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
+				0EECF63A1E7047B2009600BB /* Colors.swift in Sources */,
 				0E7B7BF51E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift in Sources */,
 				0E7B7BF31E6EB03B00D50C95 /* SearchFilterViewModel.swift in Sources */,
 				0ED6464E1E695BCD00017D28 /* UIView-Extensions.swift in Sources */,
@@ -1728,6 +1775,7 @@
 				0E7B7BF71E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift in Sources */,
 				0E4B40A31E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift in Sources */,
 				0E50AA781E6849B00002A40D /* RootSplitViewModel.swift in Sources */,
+				0EECF63C1E7047C1009600BB /* TabBarItemStyles.swift in Sources */,
 				0ED646531E69901200017D28 /* MenuItem.swift in Sources */,
 				0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */,
 				0ED646511E695C4300017D28 /* MenuGeneralCell.swift in Sources */,
