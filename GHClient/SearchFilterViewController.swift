@@ -28,6 +28,7 @@ internal final class SearchFilterViewController: UIViewController {
     
     internal var delegate: SearchFilterViewControllerDelegate?
     
+    fileprivate var currentSearchScope: SearchScope = SearchScope.userUnit
     fileprivate let viewModel = SearchFilterViewModel()
     fileprivate let repositoriesDatasource = SearchFilterRepositoriesDatasource()
     fileprivate let usersDatasource = SearchFilterUsersDatasource()
@@ -87,6 +88,7 @@ internal final class SearchFilterViewController: UIViewController {
     
     internal func setFilterScope(_ scope: SearchScope) {
         self.title = scope.name.uppercased() + " Search Filter"
+        self.currentSearchScope = scope
     }
     
     override func viewDidLoad() {

@@ -12,6 +12,11 @@ import ReactiveSwift
 import Result
 import GHAPI
 
+internal struct UserSearchQualifierPackage {
+    
+}
+
+
 internal protocol SearchFilterViewModelInputs {
     /// Call when the view did load.
     func viewDidLoad()
@@ -24,6 +29,12 @@ internal protocol SearchFilterViewModelInputs {
     
     /// Call when a user session has started.
     func userSessionStarted()
+    
+    /// Call when set filter scope
+    func set(filterScope: SearchScope)
+    
+    
+    
 }
 
 internal protocol SearchFilterViewModelOutputs{
@@ -61,7 +72,7 @@ internal final class SearchFilterViewModel: SearchFilterViewModelType, SearchFil
         self.userTypes = self.viewDidLoadProperty.signal.map{return [UserType.user, UserType.org]}
         self.searchFields = self.viewDidLoadProperty.signal.map{return [UserInArgument.name, UserInArgument.readme]}
         self.reposRange = self.viewDidLoadProperty.signal.map{return (nil, nil)}
-        self.cities = self.viewDidLoadProperty.signal.map{return ["Guangzhou", "HongKong"]}
+        self.cities = self.viewDidLoadProperty.signal.map{return ["Guangzhou"]}
         self.languages = self.viewDidLoadProperty.signal.map{[LanguageArgument.assembly, LanguageArgument.swift]}
         self.createdDateRange = self.viewDidLoadProperty.signal.map{return (nil, nil)}
         self.followersRange = self.viewDidLoadProperty.signal.map{return (nil, nil)}

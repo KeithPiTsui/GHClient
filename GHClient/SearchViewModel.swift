@@ -78,9 +78,9 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
 
     
     init() {
-        self.searchScopes = self.viewDidLoadProperty.signal.map {[.users([]), .repositories([])]}
+        self.searchScopes = self.viewDidLoadProperty.signal.map {[SearchScope.userUnit, SearchScope.repositoryUnit]}
         
-        let scopeSignal1 = self.viewDidLoadProperty.signal.map{SearchScope.users([])}
+        let scopeSignal1 = self.viewDidLoadProperty.signal.map{SearchScope.userUnit}
         let scopeSignal2 = Signal.combineLatest(self.searchScopes, self.scopeSegmentChangedProperty.signal.skipNil()).map{$0[$1]}
         self.selectedSearchScope = Signal.merge(scopeSignal1, scopeSignal2)
         
@@ -106,7 +106,7 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
                     .filter{$0.keyword.isEmpty == false}
         
         self.users = search
-                    .filter{$0.scope == .users([]) && $0.qualifiers is [UserQualifier]}
+                    .filter{$0.scope == SearchScope.userUnit && $0.qualifiers is [UserQualifier]}
                     .map { (scope, keyword, qualifiers) -> ((SearchScope, String, [UserQualifier])?) in
                         guard let qualifiers = qualifiers as? [UserQualifier] else { return nil }
                         return (scope, keyword, qualifiers)
@@ -119,7 +119,7 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
                     }.skipNil()
 
         self.repositories = search
-                            .filter{$0.scope == .repositories([]) && $0.qualifiers is [RepositoriesQualifier]}
+                            .filter{$0.scope == SearchScope.repositoryUnit && $0.qualifiers is [RepositoriesQualifier]}
                             .map { (scope, keyword, qualifiers) -> ((SearchScope, String, [RepositoriesQualifier])?) in
                                 guard let qualifiers = qualifiers as? [RepositoriesQualifier] else { return nil }
                                 return (scope, keyword, qualifiers)

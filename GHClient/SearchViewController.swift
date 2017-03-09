@@ -43,13 +43,13 @@ internal final class SearchViewController: UIViewController {
         let scope: SearchScope
         switch self.searchScopeSelector.selectedSegmentIndex {
         case 0:
-            scope = .users([])
+            scope = SearchScope.userUnit
         case 1:
-            scope = .repositories([])
+            scope = SearchScope.repositoryUnit
         case 2:
-            scope = .code([])
+            scope = SearchScope.codeUnit
         default:
-            scope = .users([])
+            scope = SearchScope.userUnit
         }
         return scope
     }
@@ -71,21 +71,40 @@ internal final class SearchViewController: UIViewController {
     override func bindViewModel() {
         super.bindViewModel()
         
-        self.viewModel.outputs.searchScopes.observeForUI().observeValues { [weak self] in
+        self.searchBar.reactive.continuousTextValues
+            .map{ ($0 ?? "").isEmpty }
+            .filter{$0}
+            .observeForUI()
+            .observeValues { [weak self] _ in
+                self?.userDatasource.clearValues()
+                self?.repositoryDatasource.clearValues()
+                self?.tableView.reloadData()
+        }
+        
+        
+        self.viewModel.outputs.searchScopes.observeForUI()
+            .observeValues { [weak self] in
             self?.searchScopeSelector.removeAllSegments()
             for (idx, scope) in $0.enumerated() {
                 self?.searchScopeSelector.insertSegment(withTitle: scope.name, at: idx, animated: false)
             }
         }
         
-        self.viewModel.outputs.selectedSearchScope.observeForUI().observeValues { [weak self] in
+        self.viewModel.outputs.selectedSearchScope.observeForUI()
+            .observeValues { [weak self] in
             switch $0 {
             case .users:
                 self?.searchScopeSelector.selectedSegmentIndex = 0
+                self?.userDatasource.clearValues()
                 self?.tableView.dataSource = self?.userDatasource
+                self?.tableView.reloadData()
+                self?.searchBar.becomeFirstResponder()
             case .repositories:
                 self?.searchScopeSelector.selectedSegmentIndex = 1
+                self?.repositoryDatasource.clearValues()
                 self?.tableView.dataSource = self?.repositoryDatasource
+                self?.tableView.reloadData()
+                self?.searchBar.becomeFirstResponder()
             default:
                 break
             }
