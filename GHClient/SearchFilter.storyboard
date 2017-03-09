@@ -114,7 +114,7 @@
                                             <outlet property="rightNumberTF" destination="xqO-n8-vRb" id="6zL-Or-8ev"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jol-mU-V0u">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="xxx" id="jol-mU-V0u">
                                         <rect key="frame" x="312" y="50" width="63" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -280,6 +280,7 @@
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="m2p-BR-Zzf" firstAttribute="trailing" secondItem="kWi-DT-uwd" secondAttribute="trailing" id="2sH-mc-avE"/>
                             <constraint firstItem="Z4d-n6-JCF" firstAttribute="leading" secondItem="kWi-DT-uwd" secondAttribute="leading" id="9jU-6J-Cn1"/>
@@ -292,6 +293,9 @@
                             <constraint firstItem="kWi-DT-uwd" firstAttribute="leading" secondItem="Ywj-g2-koN" secondAttribute="leading" id="wu8-3h-dC2"/>
                             <constraint firstItem="Z4d-n6-JCF" firstAttribute="bottom" secondItem="HHO-8Y-jsf" secondAttribute="top" id="yYD-wD-SaT"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Gau-i3-pw0" appends="YES" id="mto-Ub-xDs"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="bottomHeight" destination="Qa6-va-tei" id="Cm5-Vv-KEC"/>
@@ -301,6 +305,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULN-Ig-FgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Gau-i3-pw0">
+                    <connections>
+                        <action selector="panGesture:" destination="4ac-wQ-LeW" id="3gn-3S-Vz2"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1492" y="-13"/>
         </scene>

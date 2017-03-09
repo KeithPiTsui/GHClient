@@ -38,6 +38,9 @@ internal protocol SearchViewModelInputs {
     /// Call when user tapped on dim view
     func tappedOnDimView()
     
+    /// Call when vc want to veil filter
+    func wannaVeilFilter()
+    
     /// Call when vc show filter
     func filter(showed: Bool)
     
@@ -120,12 +123,9 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
                             }.skipNil()
     }
     
-    fileprivate static func xxx(scope: SearchScope, keyword: String, qualifiers: [SearchQualifier]) -> [User]? {
-        
-        guard let qualifiers = qualifiers as? [UserQualifier] else { return nil}
-        return AppEnvironment.current.apiService
-            .searchUser(qualifiers: qualifiers, keyword: keyword, sort: .stars, order: .desc)
-            .single().map {$0.value?.items ?? []}
+
+    internal func wannaVeilFilter() {
+        self.tappedOnDimViewProperty.value = ()
     }
     
     

@@ -11,6 +11,12 @@ import GHAPI
 
 protocol SearchFilterViewControllerDelegate: class {
     func filteredQualifiers(_ qualifiers: [SearchQualifier])
+    
+    func wipe(filter: SearchFilterViewController, beginAt point: CGPoint)
+    func wipe(filter: SearchFilterViewController, rightForwardAt point: CGPoint)
+    func wipe(filter: SearchFilterViewController, endAt point: CGPoint)
+
+    func closeFilter()
 }
 
 
@@ -38,6 +44,35 @@ internal final class SearchFilterViewController: UIViewController {
     
     @IBAction func tappedResetBtn(_ sender: UIButton) {
         
+    }
+    
+    
+    fileprivate var closed: Bool = false
+    
+    @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
+//        guard sender.velocity(in: self.view).x > 0 else { return }
+        let location = sender.location(in: nil)
+        switch sender.state {
+        case .began:
+            self.delegate?.wipe(filter: self, beginAt: location)
+        case .changed:
+            self.delegate?.wipe(filter: self, rightForwardAt: location)
+        case .ended, .cancelled:
+            self.delegate?.wipe(filter: self, endAt: location)
+        default:
+            break
+        }
+        
+        
+//        let p = sender.velocity(in: self.view)
+//        print("velocity: \(p)")
+//        let a = sender.location(in: self.view)
+//        print("location: \(a)")
+        
+//        if p.x > 0 && self.closed == false {
+//            self.delegate?.closeFilter()
+//            self.closed = true
+//        }
     }
     
     @IBAction func tappedOkayBtn(_ sender: UIButton) {
@@ -94,6 +129,12 @@ internal final class SearchFilterViewController: UIViewController {
         
         
         self.viewModel.inputs.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.inputs.viewWillAppear(animated: animated)
+        self.closed = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {

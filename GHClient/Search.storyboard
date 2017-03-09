@@ -32,6 +32,9 @@
                                         <string>Title</string>
                                         <string>Title</string>
                                     </scopeButtonTitles>
+                                    <connections>
+                                        <outlet property="delegate" destination="Sd5-Sg-5k4" id="L64-lV-msW"/>
+                                    </connections>
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchUserTableViewCell" textLabel="7tZ-vA-YO7" style="IBUITableViewCellStyleDefault" id="v5e-C1-ptk" customClass="SearchUserTableViewCell" customModule="GHClient" customModuleProvider="target">
@@ -80,6 +83,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="LPX-Cs-OaD" firstAttribute="bottom" secondItem="dzh-0f-f91" secondAttribute="top" id="3bd-Li-k7n"/>
                             <constraint firstItem="LPX-Cs-OaD" firstAttribute="top" secondItem="lwV-zh-z1w" secondAttribute="bottom" id="Ak8-gx-FPK"/>
@@ -127,7 +131,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1178" y="-702"/>
+            <point key="canvasLocation" x="-1185" y="-771"/>
         </scene>
     </scenes>
     <resources>

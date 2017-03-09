@@ -35,6 +35,14 @@ internal final class SearchViewController: UIViewController {
         self.viewModel.inputs.tappedOnDimView()
     }
     
+    fileprivate var filterShowed: Bool = false
+    
+    func edgePan(_ sender: UIScreenEdgePanGestureRecognizer) {
+        guard filterShowed == false else { return }
+        filterShowed = true
+        self.viewModel.inputs.tappedFilterButton(within: self.scope)
+    }
+    
     fileprivate var scope: SearchScope {
         let scope: SearchScope
         switch self.searchScopeSelector.selectedSegmentIndex {
@@ -59,6 +67,9 @@ internal final class SearchViewController: UIViewController {
     override func bindStyles() {
         super.bindStyles()
         _ = self.dimView |> UIView.lens.hidden .~ true
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(edgePan(_:)))
+        edgePan.edges = .right
+        self.view.addGestureRecognizer(edgePan)
     }
     
     override func bindViewModel() {
@@ -94,12 +105,39 @@ internal final class SearchViewController: UIViewController {
             self?.tableView.reloadData()
         }
 
-        self.viewModel.outputs.presentSearchFilterViewController.observeForUI().observeValues { [weak self] in
-            self?.reveal(filter: $0)
+        self.viewModel.outputs.presentSearchFilterViewController.observeForUI().observeValues { [weak self] (filter) in
+            guard let v = filter.view else { return }
+            filter.delegate = self
+            self?.addChildViewController(filter)
+            
+            var filterFrame = self?.tableView.frame ?? CGRect.zero
+            filterFrame.origin.x = filterFrame.size.width
+            filterFrame.size.width *= 0.8
+            filterFrame.origin.y += (filterFrame.size.height * 0.05)
+            filterFrame.size.height *= 0.9
+            
+            v.frame = filterFrame
+            v.clipsToBounds = true
+            v.layer.cornerRadius = 6
+            v.layer.shadowRadius = 6
+            v.layer.shadowOpacity = 1
+            v.layer.shadowOffset = CGSize(width: 5, height: 5)
+            
+            self?.view.addSubview(v)
+            filter.didMove(toParentViewController: self)
+            
+            var newFilterFrame = filterFrame
+            newFilterFrame.origin.x = (self?.tableView.frame.width ?? 0) - v.frame.width
+            
+            UIView.animate(withDuration: 0.5) {
+                self?.dimView.isHidden = false
+                v.frame = newFilterFrame
+            }
+
         }
         
         self.viewModel.outputs.removeFilter.observeForUI().observeValues { [weak self] (filter) in
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self?.dimView.isHidden = true
                 filter.view.frame.origin.x = self?.tableView.frame.size.width ?? 0
             }) { _ in
@@ -110,31 +148,16 @@ internal final class SearchViewController: UIViewController {
         }
     }
     
-    fileprivate func reveal(filter: SearchFilterViewController) {
-        guard let v = filter.view else { return }
-        
-        self.addChildViewController(filter)
-        
-        var filterFrame = self.tableView.frame
-        filterFrame.origin.x = filterFrame.size.width
-        filterFrame.size.width *= 0.8
-        v.frame = filterFrame
-        v.layer.shadowRadius = 6
-        v.layer.shadowOpacity = 1
-        v.layer.shadowOffset = CGSize(width: 5, height: 5)
-        
-        self.view.addSubview(v)
-        filter.didMove(toParentViewController: self)
-        
-        var newFilterFrame = filterFrame
-        newFilterFrame.origin.x = self.tableView.frame.width - v.frame.width
-        
-        UIView.animate(withDuration: 0.3) {
-            self.dimView.isHidden = false
-            v.frame = newFilterFrame
-        }
+    fileprivate var filterStartPoint: CGPoint = CGPoint.zero
+    fileprivate var previousPoint: CGPoint = CGPoint.zero
+}
+
+extension SearchViewController {
+    internal func wannaVeilFilter() {
+        self.viewModel.inputs.wannaVeilFilter()
     }
 }
+
 
 extension SearchViewController: UISearchBarDelegate {
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -149,8 +172,32 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: SearchFilterViewControllerDelegate {
+    
     func filteredQualifiers(_ qualifiers: [SearchQualifier]) {
         self.viewModel.inputs.search(scope: self.scope, keyword: "Keith", qualifiers: qualifiers)
+    }
+    
+    func closeFilter() {
+        self.wannaVeilFilter()
+    }
+    
+    func wipe(filter: SearchFilterViewController, beginAt point: CGPoint) {
+        self.filterStartPoint = point
+        previousPoint = point
+    }
+    
+    func wipe(filter: SearchFilterViewController, rightForwardAt point: CGPoint) {
+        4
+        let dx = point.x - previousPoint.x
+        previousPoint = point
+        
+        filter.view.frame.origin.x += dx
+    }
+    
+    func wipe(filter: SearchFilterViewController, endAt point: CGPoint) {
+        
+        
+        self.filterStartPoint = CGPoint.zero
     }
 }
 

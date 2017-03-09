@@ -136,7 +136,7 @@ internal final class RootTabBarViewModel:
             .filter { isTrue($1) }
             .map(first)
         
-        let discovery = viewControllers
+        _ = viewControllers
             .map(first(MenuViewController.self))
             .skipNil()
         
