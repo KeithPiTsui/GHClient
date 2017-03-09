@@ -26,32 +26,29 @@ internal protocol SearchViewModelInputs {
     /// Call when a user session has started.
     func userSessionStarted()
     
+    
     /// Call when user tap scope segment to change scope
     func scopeSegmentChanged(index: Int)
-    
-    /// Call when user search
-    func search(scope: SearchScope, keyword: String, qualifiers: [SearchQualifier])
     
     /// Call when user tapped on filter button
     func tappedFilterButton(within scope: SearchScope)
     
+    /// Call when user pan on screen edge
+    func screenEdgePan()
+    
     /// Call when user tapped on dim view
     func tappedOnDimView()
     
-    /// Call when vc want to veil filter
-    func wannaVeilFilter()
-    
-    /// Call when vc show filter
-    func filter(showed: Bool)
-    
+    /// Call when user search
+    func search(scope: SearchScope, keyword: String, qualifiers: [SearchQualifier])
 }
 
 internal protocol SearchViewModelOutputs {
     
-    /// Emit a signal to update user data source
+    /// Emit a signal to update user data source, user search results
     var users: Signal<[User], NoError> { get }
     
-    /// Emit a signal to update repository data source
+    /// Emit a signal to update repository data source, repository search results
     var repositories: Signal<[Repository], NoError> {get}
     
     /// Emit a signal to specify search scopes, user and repository
@@ -61,10 +58,13 @@ internal protocol SearchViewModelOutputs {
     var selectedSearchScope: Signal<SearchScope, NoError> { get }
     
     /// Emit a signal to notify vc to present filter view controller
-    var presentSearchFilterViewController: Signal<SearchFilterViewController, NoError> {get}
+    var presentFilter: Signal<SearchFilterViewController, NoError> {get}
     
     /// Emit a signal to notify vc to remove filter view controller
     var removeFilter: Signal<SearchFilterViewController, NoError> {get}
+    
+    /// Emit a signal to specify the place holder of search bar
+    var searchBarPlaceholder: Signal<String, NoError> {get}
     
 }
 
@@ -76,24 +76,33 @@ internal protocol SearchViewModelType {
 
 internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs, SearchViewModelOutputs {
 
+    
     init() {
-        self.searchScopes = self.viewDidLoadProperty.signal.map {[.users([])]}
+        self.searchScopes = self.viewDidLoadProperty.signal.map {[.users([]), .repositories([])]}
         
         let scopeSignal1 = self.viewDidLoadProperty.signal.map{SearchScope.users([])}
         let scopeSignal2 = Signal.combineLatest(self.searchScopes, self.scopeSegmentChangedProperty.signal.skipNil()).map{$0[$1]}
         self.selectedSearchScope = Signal.merge(scopeSignal1, scopeSignal2)
         
         let filterViewController = self.viewDidLoadProperty.signal.map{_ in SearchFilterViewController.instantiate()}
-        let filterButtonTap = self.tappedFilterButtonProperty.signal.skipNil()
-        let filterShow = Signal.combineLatest(filterViewController, filterButtonTap)
-        self.presentSearchFilterViewController = filterShow.map(first)
         
-        let dimView = self.tappedOnDimViewProperty.signal
-        let filterRemove = Signal.combineLatest(filterViewController, dimView)
-        self.removeFilter = filterRemove.map(first)
+        let filterPresented1 = self.tappedFilterButtonProperty.signal.skipNil().map{_ in true}
+        let filterPresented2 = self.tappedOnDimViewProperty.signal.map{false}
+        let filterPresented3 = self.screenEdgePanProperty.signal.map{true}
+        let filterPresented4 = self.scopeSegmentChangedProperty.signal.skipNil().map{_ in false}
+        let filterPresented = Signal.merge(filterPresented1, filterPresented2, filterPresented3, filterPresented4).skipRepeats()
         
+        let filter = Signal.combineLatest(filterViewController, filterPresented)
+        
+        self.presentFilter = filter.filter{$0.1 == true}.map(first)
+        
+        self.removeFilter = filter.filter{$0.1 == false}.map(first)
 
-        let search = self.searchWithQualifiersProperty.signal.skipNil().observe(on: QueueScheduler())
+
+        self.searchBarPlaceholder = self.selectedSearchScope.map { "Keyword about \($0.name)"}
+        
+        
+        let search = self.searchProperty.signal.skipNil().observe(on: QueueScheduler())
                     .filter{$0.keyword.isEmpty == false}
         
         self.users = search
@@ -121,28 +130,23 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
                                     .single()
                                     .map{$0.value?.items ?? []}
                             }.skipNil()
+        
+        
     }
     
-
-    internal func wannaVeilFilter() {
-        self.tappedOnDimViewProperty.value = ()
+    fileprivate let screenEdgePanProperty = MutableProperty()
+    internal func screenEdgePan() {
+        self.screenEdgePanProperty.value = ()
     }
     
-    
-    fileprivate let filterShowedProperty = MutableProperty<Bool>(false)
-    internal func filter(showed: Bool) {
-        self.filterShowedProperty.value = showed
-    }
-    
-    /// Call when user search
     fileprivate let tappedOnDimViewProperty = MutableProperty()
     internal func tappedOnDimView() {
         self.tappedOnDimViewProperty.value = ()
     }
     
-    fileprivate let searchWithQualifiersProperty = MutableProperty<(scope: SearchScope, keyword: String, qualifiers:[SearchQualifier])?>(nil)
+    fileprivate let searchProperty = MutableProperty<(scope: SearchScope, keyword: String, qualifiers:[SearchQualifier])?>(nil)
     func search(scope: SearchScope, keyword: String, qualifiers: [SearchQualifier]){
-        self.searchWithQualifiersProperty.value = (scope, keyword, qualifiers)
+        self.searchProperty.value = (scope, keyword, qualifiers)
     }
     
     fileprivate let tappedFilterButtonProperty = MutableProperty<SearchScope?>(nil)
@@ -178,8 +182,9 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
     internal let repositories: Signal<[Repository], NoError>
     internal let searchScopes: Signal<[SearchScope], NoError>
     internal let selectedSearchScope: Signal<SearchScope, NoError>
-    internal let presentSearchFilterViewController: Signal<SearchFilterViewController, NoError>
+    internal let presentFilter: Signal<SearchFilterViewController, NoError>
     internal let removeFilter: Signal<SearchFilterViewController, NoError>
+    internal let searchBarPlaceholder: Signal<String, NoError>
     
     internal var inputs: SearchViewModelInputs { return self }
     internal var outputs: SearchViewModelOutputs { return self }

@@ -35,12 +35,8 @@ internal final class SearchViewController: UIViewController {
         self.viewModel.inputs.tappedOnDimView()
     }
     
-    fileprivate var filterShowed: Bool = false
-    
     func edgePan(_ sender: UIScreenEdgePanGestureRecognizer) {
-        guard filterShowed == false else { return }
-        filterShowed = true
-        self.viewModel.inputs.tappedFilterButton(within: self.scope)
+        self.viewModel.inputs.screenEdgePan()
     }
     
     fileprivate var scope: SearchScope {
@@ -105,7 +101,7 @@ internal final class SearchViewController: UIViewController {
             self?.tableView.reloadData()
         }
 
-        self.viewModel.outputs.presentSearchFilterViewController.observeForUI().observeValues { [weak self] (filter) in
+        self.viewModel.outputs.presentFilter.observeForUI().observeValues { [weak self] (filter) in
             guard let v = filter.view else { return }
             filter.delegate = self
             self?.addChildViewController(filter)
@@ -133,7 +129,6 @@ internal final class SearchViewController: UIViewController {
                 self?.dimView.isHidden = false
                 v.frame = newFilterFrame
             }
-
         }
         
         self.viewModel.outputs.removeFilter.observeForUI().observeValues { [weak self] (filter) in
@@ -146,16 +141,14 @@ internal final class SearchViewController: UIViewController {
                 filter.removeFromParentViewController()
             }
         }
+        
+        self.viewModel.outputs.searchBarPlaceholder.observeForUI().observeValues { [weak self] in
+            self?.searchBar.placeholder = $0
+        }
     }
     
     fileprivate var filterStartPoint: CGPoint = CGPoint.zero
     fileprivate var previousPoint: CGPoint = CGPoint.zero
-}
-
-extension SearchViewController {
-    internal func wannaVeilFilter() {
-        self.viewModel.inputs.wannaVeilFilter()
-    }
 }
 
 
@@ -178,7 +171,7 @@ extension SearchViewController: SearchFilterViewControllerDelegate {
     }
     
     func closeFilter() {
-        self.wannaVeilFilter()
+        
     }
     
     func wipe(filter: SearchFilterViewController, beginAt point: CGPoint) {
@@ -187,7 +180,7 @@ extension SearchViewController: SearchFilterViewControllerDelegate {
     }
     
     func wipe(filter: SearchFilterViewController, rightForwardAt point: CGPoint) {
-        4
+        
         let dx = point.x - previousPoint.x
         previousPoint = point
         

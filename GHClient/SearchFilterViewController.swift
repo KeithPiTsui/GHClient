@@ -46,11 +46,7 @@ internal final class SearchFilterViewController: UIViewController {
         
     }
     
-    
-    fileprivate var closed: Bool = false
-    
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
-//        guard sender.velocity(in: self.view).x > 0 else { return }
         let location = sender.location(in: nil)
         switch sender.state {
         case .began:
@@ -62,17 +58,6 @@ internal final class SearchFilterViewController: UIViewController {
         default:
             break
         }
-        
-        
-//        let p = sender.velocity(in: self.view)
-//        print("velocity: \(p)")
-//        let a = sender.location(in: self.view)
-//        print("location: \(a)")
-        
-//        if p.x > 0 && self.closed == false {
-//            self.delegate?.closeFilter()
-//            self.closed = true
-//        }
     }
     
     @IBAction func tappedOkayBtn(_ sender: UIButton) {
@@ -116,8 +101,12 @@ internal final class SearchFilterViewController: UIViewController {
         layout.itemSize = CGSize(width:100, height:45)
         
         self.datePicker.maximumDate = Date()
-        
-        
+        self.viewModel.inputs.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.inputs.viewWillAppear(animated: animated)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(SearchFilterViewController.keyboardDidShow(_:)),
                                                name: Notification.Name.UIKeyboardWillShow,
@@ -126,15 +115,6 @@ internal final class SearchFilterViewController: UIViewController {
                                                selector: #selector(SearchFilterViewController.keyboardWillHide(_:)),
                                                name: Notification.Name.UIKeyboardWillHide,
                                                object: nil)
-        
-        
-        self.viewModel.inputs.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.viewModel.inputs.viewWillAppear(animated: animated)
-        self.closed = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -146,8 +126,17 @@ internal final class SearchFilterViewController: UIViewController {
         print("keyboardWillShow")
         guard let info = notification.userInfo else { return }
         guard let kbSizeValue = info[UIKeyboardFrameBeginUserInfoKey] as? NSValue else { return }
+        guard let delegate = UIApplication.shared.delegate, let window = delegate.window else { return }
+        guard let win = window else { return }
+        
         let kbSize = kbSizeValue.cgRectValue.size
-        self.moveUpCollectionView(by: kbSize.height)
+
+        let leftConner = self.view.bounds.leftConner
+        let absLeftConner = self.view.convert(leftConner, to: nil)
+        let absHeight = win.bounds.height - absLeftConner.y
+        let dy = kbSize.height - absHeight
+        
+        self.moveUpCollectionView(by: dy)
         guard let fr = self.firstResponder(in: self.filterOptionsCollectionView) else { return }
         guard let cell = self.cellContaining(view: fr) else { return }
         let rect = cell.frame
