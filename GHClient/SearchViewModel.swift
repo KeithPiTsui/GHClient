@@ -69,7 +69,7 @@ internal protocol SearchViewModelType {
 internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs, SearchViewModelOutputs {
     
     init() {
-        self.searchScope = self.viewDidLoadProperty.signal.map {[.users([]), .repositories([]), .code([])]}
+        self.searchScope = self.viewDidLoadProperty.signal.map {[.users([])]}
         
         self.users = self.usersProperty.signal.skipNil()
         self.repositories = self.repositoriesProperty.signal.skipNil()

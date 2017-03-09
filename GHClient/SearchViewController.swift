@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Prelude
+import Prelude_UIKit
 import GHAPI
 
 internal final class SearchViewController: UITableViewController {
@@ -26,6 +28,8 @@ internal final class SearchViewController: UITableViewController {
     @IBAction func tappedSearchFilterBtn(_ sender: UIBarButtonItem) {
         self.viewModel.inputs.tappedFilterButton(within: self.scope)
     }
+    
+    fileprivate let dimView = UIView()
     
     fileprivate var scope: SearchScope {
         let scope: SearchScope
@@ -52,6 +56,14 @@ internal final class SearchViewController: UITableViewController {
     
     override func bindStyles() {
         super.bindStyles()
+        _ = self.dimView |> UIView.lens.backgroundColor .~ UIColor.brown
+        _ = self.dimView |> UIView.lens.alpha .~ 0.5
+        _ = self.dimView |> UIView.lens.hidden .~ true
+        self.view.addSubview(self.dimView)
+        self.dimView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        self.dimView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        self.dimView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.dimView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
     override func bindViewModel() {
@@ -88,16 +100,20 @@ internal final class SearchViewController: UITableViewController {
         }
 
         self.viewModel.outputs.presentSearchFilterViewController.observeForUI().observeValues { [weak self] in
-            $0.delegate = self
-            let nvc = UINavigationController(rootViewController: $0)
-            self?.dismiss(animated: true, completion: nil)
-            self?.present(nvc, animated: true, completion: nil)
-        }
-//        self.viewModel.outputs.presentViewController.observeForUI().observeValues { [weak self] in
+//            $0.delegate = self
+//            let nvc = UINavigationController(rootViewController: $0)
 //            self?.dismiss(animated: true, completion: nil)
-//            self?.present($0, animated: true, completion: nil)
-//        }
+//            self?.present(nvc, animated: true, completion: nil)
+            self?.reveal(filter: $0)
+        }
     }
+    
+    fileprivate func reveal(filter: SearchFilterViewController) {
+        UIView.animate(withDuration: 0.3) {
+            self.dimView.isHidden = false
+        }
+    }
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
