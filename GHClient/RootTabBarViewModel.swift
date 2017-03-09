@@ -19,15 +19,14 @@ struct DiscoveryParams {
 internal struct TabBarItemsData {
     internal let items: [TabBarItem]
     internal let isLoggedIn: Bool
-    internal let isMember: Bool
 }
 
 internal enum TabBarItem {
     case activity(index: Int)
-    case dashboard(index: Int)
-    case home(index: Int)
-    case profile(avatarUrl: URL?, index: Int)
+    case discovery(index: Int)
+    case profile(index: Int)
     case search(index: Int)
+    case login(index: Int)
 }
 
 internal protocol RootTabBarViewModelInputs {
@@ -77,7 +76,7 @@ internal protocol RootTabBarViewModelOutputs {
     var setViewControllers: Signal<[UIViewController], NoError> { get }
     
     /// Emits data for setting tab bar item styles.
-    var tabBarItemsData: Signal<[String], NoError> { get }
+    var tabBarItemsData: Signal<TabBarItemsData, NoError> { get }
 }
 
 internal protocol RootTabBarViewModelType {
@@ -165,10 +164,10 @@ internal final class RootTabBarViewModel:
             .takePairWhen(selectedTabAgain)
             .map { vcs, idx in vcs[idx] }
         
-//        self.tabBarItemsData = Signal.combineLatest(currentUser, self.viewDidLoadProperty.signal)
-//            .map(first)
-//            .map(tabData(forUser:))
-        self.tabBarItemsData = self.viewDidLoadProperty.signal.map{["1","2","3","4"]}
+        self.tabBarItemsData = Signal.combineLatest(currentUser, self.viewDidLoadProperty.signal)
+            .map(first)
+            .map(tabData(forUser:))
+//        self.tabBarItemsData = self.viewDidLoadProperty.signal.map{["1","2","3","4"]}
     }
     
     
@@ -219,7 +218,7 @@ internal final class RootTabBarViewModel:
     internal let scrollToTop: Signal<UIViewController, NoError>
     internal let selectedIndex: Signal<Int, NoError>
     internal let setViewControllers: Signal<[UIViewController], NoError>
-    internal let tabBarItemsData: Signal<[String], NoError>
+    internal let tabBarItemsData: Signal<TabBarItemsData, NoError>
     
     
     internal var inputs: RootTabBarViewModelInputs { return self }
@@ -227,20 +226,20 @@ internal final class RootTabBarViewModel:
 }
 
 private func tabData(forUser user: User?) -> TabBarItemsData {
-    let isMember = false
+
+    let isLoggedIn = user != nil
     
-    let items: [TabBarItem] = []
+    let items: [TabBarItem] = isLoggedIn
+        ? [.discovery(index:0), .activity(index:1), .search(index: 2), .profile(index: 3)]
+        : [.discovery(index:0), .activity(index:1), .search(index: 2), .login(index: 3)]
     
-    return TabBarItemsData(items: items,
-                           isLoggedIn: user != nil,
-                           isMember: isMember)
+    return TabBarItemsData(items: items, isLoggedIn: user != nil)
 }
 
 extension TabBarItemsData: Equatable {}
 func == (lhs: TabBarItemsData, rhs: TabBarItemsData) -> Bool {
     return lhs.items == rhs.items &&
-        lhs.isLoggedIn == rhs.isLoggedIn &&
-        lhs.isMember == rhs.isMember
+        lhs.isLoggedIn == rhs.isLoggedIn
 }
 
 // swiftlint:disable cyclomatic_complexity
@@ -249,12 +248,10 @@ func == (lhs: TabBarItem, rhs: TabBarItem) -> Bool {
     switch (lhs, rhs) {
     case let (.activity(lhs), .activity(rhs)):
         return lhs == rhs
-    case let (.dashboard(lhs), .dashboard(rhs)):
-        return lhs == rhs
-    case let (.home(lhs), .home(rhs)):
+    case let (.discovery(lhs), .discovery(rhs)):
         return lhs == rhs
     case let (.profile(lhs), .profile(rhs)):
-        return lhs.avatarUrl == rhs.avatarUrl && lhs.index == rhs.index
+        return lhs == rhs
     case let (.search(lhs), .search(rhs)):
         return lhs == rhs
     default: return false

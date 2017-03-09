@@ -84,6 +84,9 @@
 		0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F5AA1E654ABF00E962B6 /* Account.swift */; };
 		0E94F5B91E65758400E962B6 /* M13ProgressSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */; };
 		0E94F5BA1E65758400E962B6 /* M13ProgressSuite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E9EBD181E71000600D3E5A9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EBD171E71000600D3E5A9 /* Image.swift */; };
+		0E9EBD4D1E71002600D3E5A9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EBD4C1E71002600D3E5A9 /* Strings.swift */; };
+		0E9EBD4F1E7100FA00D3E5A9 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */; };
 		0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */; };
 		0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460D1E69500900017D28 /* MenuDataSource.swift */; };
 		0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */; };
@@ -720,6 +723,9 @@
 		0E94F5AA1E654ABF00E962B6 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = M13ProgressSuite.xcodeproj; path = M13ProgressSuite/M13ProgressSuite.xcodeproj; sourceTree = "<group>"; };
 		0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SlideMenuControllerSwift.xcodeproj; path = SlideMenuControllerSwift/SlideMenuControllerSwift.xcodeproj; sourceTree = "<group>"; };
+		0E9EBD171E71000600D3E5A9 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		0E9EBD4C1E71002600D3E5A9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0ED6460D1E69500900017D28 /* MenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
 		0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
@@ -1030,6 +1036,9 @@
 		0E94F31C1E651CA300E962B6 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */,
+				0E9EBD4C1E71002600D3E5A9 /* Strings.swift */,
+				0E9EBD171E71000600D3E5A9 /* Image.swift */,
 				0EECF63D1E70482C009600BB /* UIColor.swift */,
 				0EECF6381E70479F009600BB /* Style */,
 				0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */,
@@ -1727,6 +1736,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E4B40BC1E703C4E004144DC /* RootTabBarViewModel.swift in Sources */,
+				0E9EBD181E71000600D3E5A9 /* Image.swift in Sources */,
 				0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */,
 				0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
@@ -1737,6 +1747,7 @@
 				0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */,
 				0E7B7BE91E6E890000D50C95 /* SearchViewModel.swift in Sources */,
 				0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */,
+				0E9EBD4D1E71002600D3E5A9 /* Strings.swift in Sources */,
 				0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */,
 				0E7B7BEB1E6E93A100D50C95 /* SearchUserTableViewCell.swift in Sources */,
 				0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */,
@@ -1762,6 +1773,7 @@
 				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
 				0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */,
 				0E7B7BE51E6E884800D50C95 /* SearchUserDataSource.swift in Sources */,
+				0E9EBD4F1E7100FA00D3E5A9 /* LocalizedString.swift in Sources */,
 				0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
 				0EECF63A1E7047B2009600BB /* Colors.swift in Sources */,

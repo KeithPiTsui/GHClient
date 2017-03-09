@@ -80,9 +80,20 @@ internal final class RootTabBarViewController: UITabBarController {
 
     }
     
-    fileprivate func setTabBarItemStyles(withData data: [String]) {
-        for (idx, str) in data.enumerated() {
-            self.tabBarItem(atIndex: idx)?.title = str
+    fileprivate func setTabBarItemStyles(withData data: TabBarItemsData) {
+        data.items.forEach { item in
+            switch item {
+            case let .discovery(index):
+                _ = tabBarItem(atIndex: index) ?|> discoveryTabBarItemStyle
+            case let .activity(index):
+                _ = tabBarItem(atIndex: index) ?|> activityTabBarItemStyle(isLogin: data.isLoggedIn)
+            case let .search(index):
+                _ = tabBarItem(atIndex: index) ?|> searchTabBarItemStyle
+            case let .login(index):
+                _ = tabBarItem(atIndex: index) ?|> profileTabBarItemStyle(isLoggedIn: data.isLoggedIn)
+            case let .profile(index):
+                _ = tabBarItem(atIndex: index) ?|> profileTabBarItemStyle(isLoggedIn: data.isLoggedIn)
+            }
         }
     }
     
