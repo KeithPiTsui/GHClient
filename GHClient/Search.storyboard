@@ -10,66 +10,87 @@
     </dependencies>
     <scenes>
         <!--Search View Controller-->
-        <scene sceneID="ndY-Hn-j7O">
+        <scene sceneID="fOn-5c-hMW">
             <objects>
-                <tableViewController storyboardIdentifier="SearchViewController" id="2s3-ID-5H3" customClass="SearchViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LPX-Cs-OaD">
+                <viewController storyboardIdentifier="SearchViewController" automaticallyAdjustsScrollViewInsets="NO" id="Sd5-Sg-5k4" customClass="SearchViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lwV-zh-z1w"/>
+                        <viewControllerLayoutGuide type="bottom" id="dzh-0f-f91"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N3L-wl-78v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPX-Cs-OaD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="keyword" showsCancelButton="YES" id="wBa-aP-ks0">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <scopeButtonTitles>
+                                        <string>Title</string>
+                                        <string>Title</string>
+                                    </scopeButtonTitles>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchUserTableViewCell" textLabel="7tZ-vA-YO7" style="IBUITableViewCellStyleDefault" id="v5e-C1-ptk" customClass="SearchUserTableViewCell" customModule="GHClient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v5e-C1-ptk" id="n3T-eF-Ga4">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7tZ-vA-YO7">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchRepositoryTableViewCell" textLabel="E8m-IY-Zpr" style="IBUITableViewCellStyleDefault" id="NQT-ym-cms" customClass="SearchRepositoryTableViewCell" customModule="GHClient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NQT-ym-cms" id="aQz-Vx-crZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E8m-IY-Zpr">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5I-Pe-aZl">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tVm-uL-hgo" appends="YES" id="bhO-KF-Plq"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="keyword" showsCancelButton="YES" id="wBa-aP-ks0">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
-                            </scopeButtonTitles>
-                            <connections>
-                                <outlet property="delegate" destination="2s3-ID-5H3" id="MOJ-kp-Jc9"/>
-                            </connections>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchUserTableViewCell" textLabel="7tZ-vA-YO7" style="IBUITableViewCellStyleDefault" id="v5e-C1-ptk" customClass="SearchUserTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v5e-C1-ptk" id="n3T-eF-Ga4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7tZ-vA-YO7">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchRepositoryTableViewCell" textLabel="E8m-IY-Zpr" style="IBUITableViewCellStyleDefault" id="NQT-ym-cms" customClass="SearchRepositoryTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NQT-ym-cms" id="aQz-Vx-crZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E8m-IY-Zpr">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="2s3-ID-5H3" id="d1v-71-QZm"/>
-                            <outlet property="delegate" destination="2s3-ID-5H3" id="zJX-fv-mY5"/>
-                        </connections>
-                    </tableView>
+                        <constraints>
+                            <constraint firstItem="LPX-Cs-OaD" firstAttribute="bottom" secondItem="dzh-0f-f91" secondAttribute="top" id="3bd-Li-k7n"/>
+                            <constraint firstItem="LPX-Cs-OaD" firstAttribute="top" secondItem="lwV-zh-z1w" secondAttribute="bottom" id="Ak8-gx-FPK"/>
+                            <constraint firstItem="LPX-Cs-OaD" firstAttribute="leading" secondItem="N3L-wl-78v" secondAttribute="leading" id="Bj4-qp-WR3"/>
+                            <constraint firstAttribute="trailing" secondItem="LPX-Cs-OaD" secondAttribute="trailing" id="UR1-aO-qhs"/>
+                            <constraint firstItem="g5I-Pe-aZl" firstAttribute="leading" secondItem="LPX-Cs-OaD" secondAttribute="leading" id="bLK-oG-Xi2"/>
+                            <constraint firstItem="g5I-Pe-aZl" firstAttribute="top" secondItem="LPX-Cs-OaD" secondAttribute="top" id="i5i-WS-VuO"/>
+                            <constraint firstItem="g5I-Pe-aZl" firstAttribute="bottom" secondItem="dzh-0f-f91" secondAttribute="top" id="jLW-ZZ-XJi"/>
+                            <constraint firstItem="g5I-Pe-aZl" firstAttribute="trailing" secondItem="LPX-Cs-OaD" secondAttribute="trailing" id="rTA-hJ-mSp"/>
+                        </constraints>
+                    </view>
                     <navigationItem key="navigationItem" id="y6i-aS-Aej">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" id="DiK-Rm-42E">
@@ -80,12 +101,12 @@
                                 <segment title="Repository"/>
                             </segments>
                             <connections>
-                                <action selector="segmentValueChanged:" destination="2s3-ID-5H3" eventType="valueChanged" id="Gxj-0q-3Ec"/>
+                                <action selector="segmentValueChanged:" destination="Sd5-Sg-5k4" eventType="valueChanged" id="uRs-y0-hdF"/>
                             </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" image="More" id="gjc-mT-K2r">
                             <connections>
-                                <action selector="tappedSearchFilterBtn:" destination="2s3-ID-5H3" id="wff-o0-i5N"/>
+                                <action selector="tappedSearchFilterBtn:" destination="Sd5-Sg-5k4" id="GxM-cz-Mhr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -93,13 +114,20 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="searchBar" destination="wBa-aP-ks0" id="umO-ni-thA"/>
-                        <outlet property="searchScopeSelector" destination="DiK-Rm-42E" id="Lwm-r7-Yr3"/>
+                        <outlet property="dimView" destination="g5I-Pe-aZl" id="zOD-ao-cFL"/>
+                        <outlet property="searchBar" destination="wBa-aP-ks0" id="uyr-dd-9Gf"/>
+                        <outlet property="searchScopeSelector" destination="DiK-Rm-42E" id="Ido-cz-6N8"/>
+                        <outlet property="tableView" destination="LPX-Cs-OaD" id="YTp-el-nbM"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="umA-bZ-X4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="inG-fF-chb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tVm-uL-hgo">
+                    <connections>
+                        <action selector="tapOnDimView:" destination="Sd5-Sg-5k4" id="3on-8n-VBl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-282" y="-377"/>
+            <point key="canvasLocation" x="-1178" y="-702"/>
         </scene>
     </scenes>
     <resources>

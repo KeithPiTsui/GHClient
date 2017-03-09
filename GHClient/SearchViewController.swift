@@ -11,7 +11,7 @@ import Prelude
 import Prelude_UIKit
 import GHAPI
 
-internal final class SearchViewController: UITableViewController {
+internal final class SearchViewController: UIViewController {
 
     internal static func instantiate() -> SearchViewController { return Storyboard.Search.instantiate(SearchViewController.self)}
     fileprivate let userDatasource = SearchUserDataSource()
@@ -29,8 +29,14 @@ internal final class SearchViewController: UITableViewController {
         self.viewModel.inputs.tappedFilterButton(within: self.scope)
     }
     
-    fileprivate let dimView = UIView()
+    @IBOutlet var tableView: UITableView!
     
+    @IBOutlet weak var dimView: UIView!
+//    fileprivate let dimView = UIView()
+    
+    @IBAction func tapOnDimView(_ sender: UITapGestureRecognizer) {
+        self.veilFilter()
+    }
     fileprivate var scope: SearchScope {
         let scope: SearchScope
         switch self.searchScopeSelector.selectedSegmentIndex {
@@ -49,21 +55,12 @@ internal final class SearchViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         self.viewModel.inputs.viewDidLoad()
     }
     
     override func bindStyles() {
         super.bindStyles()
-        _ = self.dimView |> UIView.lens.backgroundColor .~ UIColor.brown
-        _ = self.dimView |> UIView.lens.alpha .~ 0.5
         _ = self.dimView |> UIView.lens.hidden .~ true
-        self.view.addSubview(self.dimView)
-        self.dimView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        self.dimView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.dimView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        self.dimView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
     override func bindViewModel() {
@@ -108,12 +105,41 @@ internal final class SearchViewController: UITableViewController {
         }
     }
     
+    fileprivate var filter: SearchFilterViewController? = nil
+    
     fileprivate func reveal(filter: SearchFilterViewController) {
+        guard let v = filter.view else { return }
+
+        self.addChildViewController(filter)
+        self.filter = filter
+        
+        var filterFrame = self.tableView.frame
+        filterFrame.origin.x = filterFrame.size.width
+        filterFrame.size.width *= 0.8
+        v.frame = filterFrame
+        
+        self.view.addSubview(v)
+        filter.didMove(toParentViewController: self)
+        
+        var newFilterFrame = filterFrame
+        newFilterFrame.origin.x = self.tableView.frame.width - v.frame.width
+        
         UIView.animate(withDuration: 0.3) {
             self.dimView.isHidden = false
+            v.frame = newFilterFrame
         }
     }
     
+    fileprivate func veilFilter() {
+        UIView.animate(withDuration: 0.3, animations: { 
+            self.dimView.isHidden = true
+            self.filter?.view.frame.origin.x = self.tableView.frame.size.width
+        }) { _ in
+            self.filter?.willMove(toParentViewController: nil)
+            self.filter?.view.removeFromSuperview()
+            self.filter?.removeFromParentViewController()
+        }
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
