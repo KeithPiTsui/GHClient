@@ -20,6 +20,8 @@ internal final class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchScopeSelector: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dimView: UIView!
     
     @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
         self.viewModel.inputs.scopeSegmentChanged(index: sender.selectedSegmentIndex)
@@ -29,14 +31,10 @@ internal final class SearchViewController: UIViewController {
         self.viewModel.inputs.tappedFilterButton(within: self.scope)
     }
     
-    @IBOutlet var tableView: UITableView!
-    
-    @IBOutlet weak var dimView: UIView!
-//    fileprivate let dimView = UIView()
-    
     @IBAction func tapOnDimView(_ sender: UITapGestureRecognizer) {
-        self.veilFilter()
+        self.viewModel.inputs.tappedOnDimView()
     }
+    
     fileprivate var scope: SearchScope {
         let scope: SearchScope
         switch self.searchScopeSelector.selectedSegmentIndex {
@@ -66,7 +64,7 @@ internal final class SearchViewController: UIViewController {
     override func bindViewModel() {
         super.bindViewModel()
         
-        self.viewModel.outputs.searchScope.observeForUI().observeValues { [weak self] in
+        self.viewModel.outputs.searchScopes.observeForUI().observeValues { [weak self] in
             self?.searchScopeSelector.removeAllSegments()
             for (idx, scope) in $0.enumerated() {
                 self?.searchScopeSelector.insertSegment(withTitle: scope.name, at: idx, animated: false)
@@ -97,26 +95,33 @@ internal final class SearchViewController: UIViewController {
         }
 
         self.viewModel.outputs.presentSearchFilterViewController.observeForUI().observeValues { [weak self] in
-//            $0.delegate = self
-//            let nvc = UINavigationController(rootViewController: $0)
-//            self?.dismiss(animated: true, completion: nil)
-//            self?.present(nvc, animated: true, completion: nil)
             self?.reveal(filter: $0)
+        }
+        
+        self.viewModel.outputs.removeFilter.observeForUI().observeValues { [weak self] (filter) in
+            UIView.animate(withDuration: 0.3, animations: {
+                self?.dimView.isHidden = true
+                filter.view.frame.origin.x = self?.tableView.frame.size.width ?? 0
+            }) { _ in
+                filter.willMove(toParentViewController: nil)
+                filter.view.removeFromSuperview()
+                filter.removeFromParentViewController()
+            }
         }
     }
     
-    fileprivate var filter: SearchFilterViewController? = nil
-    
     fileprivate func reveal(filter: SearchFilterViewController) {
         guard let v = filter.view else { return }
-
+        
         self.addChildViewController(filter)
-        self.filter = filter
         
         var filterFrame = self.tableView.frame
         filterFrame.origin.x = filterFrame.size.width
         filterFrame.size.width *= 0.8
         v.frame = filterFrame
+        v.layer.shadowRadius = 6
+        v.layer.shadowOpacity = 1
+        v.layer.shadowOffset = CGSize(width: 5, height: 5)
         
         self.view.addSubview(v)
         filter.didMove(toParentViewController: self)
@@ -129,24 +134,13 @@ internal final class SearchViewController: UIViewController {
             v.frame = newFilterFrame
         }
     }
-    
-    fileprivate func veilFilter() {
-        UIView.animate(withDuration: 0.3, animations: { 
-            self.dimView.isHidden = true
-            self.filter?.view.frame.origin.x = self.tableView.frame.size.width
-        }) { _ in
-            self.filter?.willMove(toParentViewController: nil)
-            self.filter?.view.removeFromSuperview()
-            self.filter?.removeFromParentViewController()
-        }
-    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let keyword = self.searchBar.text else { return }
-        self.viewModel.inputs.search(scope: self.scope, keyword: keyword)
+        self.viewModel.inputs.search(scope: self.scope, keyword: keyword, qualifiers: [])
     }
     
     internal func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
