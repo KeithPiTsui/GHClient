@@ -7,8 +7,8 @@
 //
 
 import UIKit
+import GHAPI
 
-internal typealias NumberRange = (Int?, Int?)
 
 internal final class NumberRangeCollectionViewCell: UICollectionViewCell, ValueCell {
     
@@ -16,11 +16,11 @@ internal final class NumberRangeCollectionViewCell: UICollectionViewCell, ValueC
     internal var row: Int = 0
     internal weak var dataSource: ValueCellDataSource? = nil
     
-    internal func configureWith(value: NumberRange) {
-        if let leftNum = value.0 {
+    internal func configureWith(value: ComparativeArgument<UInt>) {
+        if let leftNum = value.lower {
             self.leftNumberTF.text = "\(leftNum)"
         }
-        if let rightNum = value.1 {
+        if let rightNum = value.upper {
             self.rightNumberTF.text = "\(rightNum)"
         }
     }
@@ -33,9 +33,27 @@ internal final class NumberRangeCollectionViewCell: UICollectionViewCell, ValueC
 extension NumberRangeCollectionViewCell: UITextFieldDelegate {
     internal func textFieldDidEndEditing(_ textField: UITextField) {
         print("textFieldDidEndEditing")
-        let leftNum = Int(leftNumberTF.text ?? "")
-        let rightNum = Int(rightNumberTF.text ?? "")
-        self.dataSource?.set(value: (leftNum, rightNum),
+        let leftNum = UInt(leftNumberTF.text ?? "")
+        let rightNum = UInt(rightNumberTF.text ?? "")
+        
+        var ca: ComparativeArgument<UInt>? = nil
+        switch (leftNum, rightNum) {
+        case let (l?, r?):
+            if l == r {
+                ca = ComparativeArgument.equal(l)
+            } else {
+                ca = ComparativeArgument.between(l, r)
+            }
+        case let (l?, nil):
+            ca = ComparativeArgument.biggerAndEqualThan(l)
+        case let (nil, r?):
+            ca = ComparativeArgument.lessAndEqualThan(r)
+        default:
+            break
+        }
+        guard let ca0 = ca else { return }
+        
+        self.dataSource?.set(value: ca0,
                              cellClass: NumberRangeCollectionViewCell.self,
                              inSection: self.section,
                              row: self.row)

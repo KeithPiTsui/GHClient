@@ -1032,25 +1032,25 @@
 		0E94F31C1E651CA300E962B6 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */,
-				0E9EBD4C1E71002600D3E5A9 /* Strings.swift */,
-				0E9EBD171E71000600D3E5A9 /* Image.swift */,
-				0EECF63D1E70482C009600BB /* UIColor.swift */,
-				0EECF6381E70479F009600BB /* Style */,
 				0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */,
+				0E9EBD571E715D1B00D3E5A9 /* CGRect-Extension.swift */,
 				0E50AA031E67F56F0002A40D /* DateProtocol.swift */,
 				0E84B59B1E67AB2E00C5ADF7 /* Environment.swift */,
+				0E9EBD171E71000600D3E5A9 /* Image.swift */,
 				0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */,
 				0E50A9CB1E67F5210002A40D /* KSCache.swift */,
+				0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */,
 				0E50AA2F1E6843D30002A40D /* Notifications.swift */,
 				0E94F31D1E651CBA00E962B6 /* NSBundleType.swift */,
 				0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */,
 				0E50AA091E67F6140002A40D /* Reachability.swift */,
 				0E94F31E1E651CBA00E962B6 /* Storyboard.swift */,
+				0E9EBD4C1E71002600D3E5A9 /* Strings.swift */,
+				0EECF6381E70479F009600BB /* Style */,
+				0E7AF4291E724E990001C425 /* UICollectionView-Extension.swift */,
+				0EECF63D1E70482C009600BB /* UIColor.swift */,
 				0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
-				0E9EBD571E715D1B00D3E5A9 /* CGRect-Extension.swift */,
-				0E7AF4291E724E990001C425 /* UICollectionView-Extension.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";

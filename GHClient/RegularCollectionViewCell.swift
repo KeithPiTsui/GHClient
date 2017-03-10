@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GHAPI
 
 internal final class RegularCollectionViewCell: UICollectionViewCell, ValueCell {
     
@@ -18,8 +19,8 @@ internal final class RegularCollectionViewCell: UICollectionViewCell, ValueCell 
     
     @IBOutlet weak var textLabel: UILabel!
     
-    func configureWith(value: String) {
-        self.textLabel.text = value
+    func configureWith(value: CustomStringConvertible) {
+        self.textLabel.text = value.description
     }
     
     override var isSelected: Bool {

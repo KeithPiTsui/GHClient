@@ -10,8 +10,7 @@ import UIKit
 import ReactiveCocoa
 import ReactiveSwift
 import Result
-
-internal typealias DateRange = (Date?, Date?)
+import GHAPI
 
 internal final class DateRangeCollectionViewCell: UICollectionViewCell, ValueCell {
     
@@ -53,9 +52,9 @@ internal final class DateRangeCollectionViewCell: UICollectionViewCell, ValueCel
         super.bindStyles()
     }
     
-    internal func configureWith(value: DateRange) {
-        self.leftDate.value = value.0
-        self.rightDate.value = value.1
+    internal func configureWith(value: ComparativeArgument<Date>) {
+        self.leftDate.value = value.lower
+        self.rightDate.value = value.upper
     }
     
     internal func set(date: Date, by dateBtn: UIButton) {
@@ -69,8 +68,25 @@ internal final class DateRangeCollectionViewCell: UICollectionViewCell, ValueCel
     }
     
     fileprivate func saveDates() {
-        let dates = (self.leftDate.value, self.rightDate.value)
-        self.dataSource?.set(value: dates,
+        var ca: ComparativeArgument<Date>? = nil
+        switch (self.leftDate.value, self.rightDate.value) {
+        case let (l?, r?):
+            if l == r {
+                ca = ComparativeArgument.equal(l)
+            } else {
+                ca = ComparativeArgument.between(l, r)
+            }
+        case let (l?, nil):
+            ca = ComparativeArgument.biggerAndEqualThan(l)
+        case let (nil, r?):
+            ca = ComparativeArgument.lessAndEqualThan(r)
+        default:
+            break
+        }
+        guard let ca0 = ca else { return }
+        
+        
+        self.dataSource?.set(value: ca0,
                              cellClass: DateRangeCollectionViewCell.self,
                              inSection: self.section,
                              row: self.row)

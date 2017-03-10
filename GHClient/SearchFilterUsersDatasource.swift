@@ -40,7 +40,7 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
     }
     
     internal var rangeSections: [Int] {
-        return [Section.reposCount.rawValue, Section.createdDate.rawValue, Section.followersCount.rawValue]
+        return [Section.reposCount.rawValue, Section.createdDate.rawValue, Section.followersCount.rawValue, Section.cities.rawValue]
     }
     
     internal var multiChoiceSection: [Int] {
@@ -62,20 +62,18 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
     }
     
     internal func load(userTypes:[UserType]) {
-        let texts = userTypes.map{$0.rawValue}
-        self.set(values: texts,
+        self.set(values: userTypes,
                  cellClass: RegularCollectionViewCell.self,
                  inSection: Section.userType.rawValue)
     }
     
     internal func load(searchFields: [UserInArgument]) {
-        let texts = searchFields.map{$0.rawValue}
-        self.set(values: texts,
+        self.set(values: searchFields,
                  cellClass: RegularCollectionViewCell.self,
                  inSection: Section.searchField.rawValue)
     }
     
-    internal func set(reposRange: NumberRange) {
+    internal func set(reposRange: ComparativeArgument<UInt>) {
         self.set(values: [reposRange],
                  cellClass: NumberRangeCollectionViewCell.self,
                  inSection: Section.reposCount.rawValue)
@@ -88,18 +86,18 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
     }
     
     internal func load(languages: [LanguageArgument]) {
-        self.set(values: languages.map{$0.rawValue},
+        self.set(values: languages,
                  cellClass: RegularCollectionViewCell.self,
                  inSection: Section.language.rawValue)
     }
     
-    internal func set(createdDateRange: DateRange) {
+    internal func set(createdDateRange: ComparativeArgument<Date>) {
         self.set(values: [createdDateRange],
                  cellClass: DateRangeCollectionViewCell.self,
                  inSection: Section.createdDate.rawValue)
     }
     
-    internal func set(followersRange: NumberRange) {
+    internal func set(followersRange: ComparativeArgument<UInt>) {
         self.set(values: [followersRange],
                  cellClass: NumberRangeCollectionViewCell.self,
                  inSection: Section.followersCount.rawValue)
@@ -107,11 +105,11 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
     
     override func configureCell(collectionCell cell: UICollectionViewCell, withValue value: Any, for indexPath: IndexPath) {
         switch (cell, value) {
-        case let (cell as RegularCollectionViewCell, item as String):
+        case let (cell as RegularCollectionViewCell, item as CustomStringConvertible):
             cell.configureWith(value: item)
-        case let (cell as NumberRangeCollectionViewCell, item as NumberRange):
+        case let (cell as NumberRangeCollectionViewCell, item as ComparativeArgument<UInt>):
             cell.configureWith(value: item)
-        case let (cell as DateRangeCollectionViewCell, item as DateRange):
+        case let (cell as DateRangeCollectionViewCell, item as ComparativeArgument<Date>):
             cell.configureWith(value: item)
         case let (cell as RegularTextFieldCollectionViewCell, item as String):
             cell.configureWith(value: item)
@@ -137,19 +135,15 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
 }
 
 extension SearchFilterUsersDatasource {
-    internal func indexPaths(for qualifiers: [UserQualifier]) -> [IndexPath] {
-        var indexPaths = [IndexPath]()
-        
+    
+    internal func indexPath<ItemType: Equatable>(for item: ItemType) -> IndexPath? {
         let values = self.valueSnapshot
-        for (sec, uqs)  in values.enumerated() where uqs is [UserQualifier] {
-            let uqs = uqs as! [UserQualifier]
-            for uq in qualifiers {
-                guard let idx = uqs.index(of: uq) else { continue }
-                indexPaths.append(IndexPath(item: idx, section: sec))
-            }
+        for (sec, uqs)  in values.enumerated() {
+            guard let userTypes = uqs as? [ItemType] else { continue }
+            guard let idx = userTypes.index(of: item) else { continue }
+            return IndexPath(item: idx, section: sec)
         }
-        
-        return indexPaths
+        return nil
     }
 }
 
@@ -185,8 +179,8 @@ extension SearchFilterUsersDatasource {
         // reposCount
         let ip = IndexPath(item: 0, section: Section.reposCount.rawValue)
         var reposCountQualifiers = [UserQualifier]()
-        if let s = self[ip] as? NumberRange {
-            switch (s.0, s.1) {
+        if let s = self[ip] as? ComparativeArgument<UInt> {
+            switch (s.lower, s.upper) {
             case (nil, nil):
                 break
             case let (left?, right?):
@@ -222,8 +216,8 @@ extension SearchFilterUsersDatasource {
         // CreatedDate
         let cip = IndexPath(item: 0, section: Section.createdDate.rawValue)
         var createdDateQualifiers = [UserQualifier]()
-        if let s = self[cip] as? DateRange {
-            switch (s.0, s.1) {
+        if let s = self[cip] as? ComparativeArgument<Date> {
+            switch (s.lower, s.upper) {
             case (nil, nil):
                 break
             case let (left?, right?):
@@ -243,8 +237,8 @@ extension SearchFilterUsersDatasource {
         // followersCount
         let fip = IndexPath(item: 0, section: Section.followersCount.rawValue)
         var followersCountQualifiers = [UserQualifier]()
-        if let s = self[fip] as? NumberRange {
-            switch (s.0, s.1) {
+        if let s = self[fip] as? ComparativeArgument<UInt> {
+            switch (s.lower, s.upper) {
             case (nil, nil):
                 break
             case let (left?, right?):
@@ -267,12 +261,6 @@ extension SearchFilterUsersDatasource {
         return returnedUserQualifiers
     }
 }
-
-//public final subscript(indexPath: IndexPath) -> Any {
-//    return self.values[indexPath.section][indexPath.item].value
-//}
-
-
 
 
 

@@ -126,6 +126,7 @@ internal final class SearchViewController: UIViewController {
             self?.searchBar.resignFirstResponder()
             filter.delegate = self
             filter.setFilterScope(scope)
+
             self?.addChildViewController(filter)
             
             var filterFrame = self?.tableView.frame ?? CGRect.zero
@@ -151,6 +152,8 @@ internal final class SearchViewController: UIViewController {
                 self?.dimView.isHidden = false
                 v.frame = newFilterFrame
             }
+            
+            filter.specify(qualifiers: [UserQualifier.type(.user)])
         }
         
         self.viewModel.outputs.removeFilter.observeForUI().observeValues { [weak self] (filter) in

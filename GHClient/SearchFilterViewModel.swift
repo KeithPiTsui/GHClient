@@ -19,11 +19,11 @@ import Prelude
 internal struct UserSearchQualifierOptions {
     let userTypes: [UserType]
     let userInArguments: [UserInArgument]
-    let reposRange: NumberRange
+    let reposRange: ComparativeArgument<UInt>
     let city: String
     let programmingLanguages: [LanguageArgument]
-    let createdDateRange: DateRange
-    let followersRange: NumberRange
+    let createdDateRange: ComparativeArgument<Date>
+    let followersRange: ComparativeArgument<UInt>
 }
 
 internal struct RepositorySearchQualifierOptions {
@@ -46,6 +46,9 @@ internal protocol SearchFilterViewModelInputs {
     
     /// Call when set filter scope
     func set(filterScope: SearchScope)
+    
+    /// Call when specify user qualifiers
+    func specify(qualifiers: [SearchQualifier])
     
 }
 
@@ -78,11 +81,11 @@ internal final class SearchFilterViewModel: SearchFilterViewModelType, SearchFil
         let userSQP = self.viewDidLoadProperty.signal.map {
             UserSearchQualifierOptions(userTypes: [UserType.user, UserType.org],
                                        userInArguments: [UserInArgument.name, UserInArgument.readme],
-                                       reposRange: (nil, nil),
+                                       reposRange: ComparativeArgument<UInt>.none,
                                        city: "",
                                        programmingLanguages: [LanguageArgument.assembly, LanguageArgument.swift],
-                                       createdDateRange: (nil, nil),
-                                       followersRange: (nil, nil))}
+                                       createdDateRange: ComparativeArgument<Date>.none,
+                                       followersRange: ComparativeArgument<UInt>.none)}
         
         self.userSearchQualifierPackage = Signal.combineLatest(userSQP, self.setScope.signal.skipNil())
             .filter{$0.1 == SearchScope.userUnit}
@@ -98,8 +101,18 @@ internal final class SearchFilterViewModel: SearchFilterViewModelType, SearchFil
         
         self.filterScope = self.setScope.signal.skipNil()
         
-        self.userSearchQualifiers = self.viewDidLoadProperty.signal.map{[]}
-        self.repositorySearchQualifiers = self.viewDidLoadProperty.signal.map{[]}
+        let uq = self.specifiedQualifiersProperty.signal.map{$0 as? [UserQualifier]}.skipNil()
+        
+        self.userSearchQualifiers = Signal.combineLatest(uq, self.viewWillAppearProperty.signal).map(first)
+        
+        let rq = self.specifiedQualifiersProperty.signal.map{$0 as? [RepositoriesQualifier]}.skipNil()
+        
+        self.repositorySearchQualifiers = Signal.combineLatest(rq, self.viewWillAppearProperty.signal).map(first)
+    }
+    
+    fileprivate let specifiedQualifiersProperty = MutableProperty<[SearchQualifier]>([])
+    internal func specify(qualifiers: [SearchQualifier]) {
+        self.specifiedQualifiersProperty.value = qualifiers
     }
     
     fileprivate let setScope = MutableProperty<SearchScope?>(nil)

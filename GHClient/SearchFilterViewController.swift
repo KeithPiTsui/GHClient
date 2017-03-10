@@ -28,7 +28,7 @@ internal final class SearchFilterViewController: UIViewController {
     
     internal var delegate: SearchFilterViewControllerDelegate?
     
-    fileprivate var currentSearchScope: SearchScope = SearchScope.userUnit
+    
     fileprivate let viewModel = SearchFilterViewModel()
     fileprivate let repositoriesDatasource = SearchFilterRepositoriesDatasource()
     fileprivate let usersDatasource = SearchFilterUsersDatasource()
@@ -36,11 +36,8 @@ internal final class SearchFilterViewController: UIViewController {
     fileprivate weak var focusedDateBtn: UIButton? = nil
     
     @IBOutlet weak var bottomHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var datePickerHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var filterOptionsCollectionView: UICollectionView!
-    
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBAction func tappedResetBtn(_ sender: UIButton) {
@@ -87,26 +84,17 @@ internal final class SearchFilterViewController: UIViewController {
     }
     
     internal func setFilterScope(_ scope: SearchScope) {
-        self.title = scope.name.uppercased() + " Search Filter"
-        self.currentSearchScope = scope
-        
-        
-        
         self.viewModel.inputs.set(filterScope: scope)
+    }
+    
+    internal func specify(qualifiers: [SearchQualifier]) {
+        self.viewModel.inputs.specify(qualifiers: qualifiers)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.filterOptionsCollectionView.dataSource = self.usersDatasource
         self.filterOptionsCollectionView.allowsMultipleSelection = true
         self.filterOptionsCollectionView.allowsSelection = true
-        
-        let layout = self.filterOptionsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsetsMake(10,20,10,20)
-        layout.headerReferenceSize = CGSize(width:0, height:40)
-        layout.itemSize = CGSize(width:100, height:45)
-        
-        self.datePicker.maximumDate = Date()
         self.viewModel.inputs.viewDidLoad()
     }
     
@@ -172,6 +160,14 @@ internal final class SearchFilterViewController: UIViewController {
     override func bindStyles() {
         super.bindStyles()
         self.datePicker.backgroundColor = UIColor.white
+        
+        let layout = self.filterOptionsCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsetsMake(10,20,10,20)
+        layout.headerReferenceSize = CGSize(width:0, height:40)
+        layout.itemSize = CGSize(width:100, height:45)
+        
+        self.datePicker.maximumDate = Date()
+
     }
     
     override func bindViewModel() {
@@ -200,23 +196,41 @@ internal final class SearchFilterViewController: UIViewController {
             }
             self?.filterOptionsCollectionView.reloadData()
         }
-        
     }
     
     fileprivate func setupSpecifiedUserQualifiers(_ uqs: [UserQualifier]) {
-        let ips = self.usersDatasource.indexPaths(for: uqs)
-        /// Clear current selected items
         self.filterOptionsCollectionView.clearAllSelectedItem()
-        /// select specified items
-        self.filterOptionsCollectionView.selectItems(by: ips)
+        uqs.forEach { (uq) in
+            var ips: [IndexPath?] = []
+            switch uq {
+            case let .type(arg):
+                ips.append(self.usersDatasource.indexPath(for: arg))
+            case let .in(args):
+                ips.append(contentsOf: args.map{self.usersDatasource.indexPath(for: $0)})
+            case let .repos(arg):
+                self.usersDatasource.set(reposRange: arg)
+            case let .location(arg):
+                self.usersDatasource.set(city: arg)
+            case let .language(args):
+                ips.append(contentsOf: args.map{self.usersDatasource.indexPath(for: $0)})
+            case let .created(arg):
+                self.usersDatasource.set(createdDateRange: arg)
+            case let .followers(arg):
+                self.usersDatasource.set(followersRange: arg)
+            }
+            let ipsCompacted = ips.compact()
+            self.filterOptionsCollectionView.selectItems(by: ipsCompacted)
+            
+            print("\(self.filterOptionsCollectionView.indexPathsForSelectedItems)")
+        }
     }
     
     fileprivate func setupSpecifiedRepoQualifiers(_ rqs: [RepositoriesQualifier]) {
-        let ips = self.repositoriesDatasource.indexPaths(for: rqs)
-        /// Clear current selected items
-        self.filterOptionsCollectionView.clearAllSelectedItem()
-        /// select specified items
-        self.filterOptionsCollectionView.selectItems(by: ips)
+//        let ips = self.repositoriesDatasource.indexPaths(for: rqs)
+//        /// Clear current selected items
+//        self.filterOptionsCollectionView.clearAllSelectedItem()
+//        /// select specified items
+//        self.filterOptionsCollectionView.selectItems(by: ips)
     }
     
 }
@@ -224,7 +238,7 @@ internal final class SearchFilterViewController: UIViewController {
 extension SearchFilterViewController: UICollectionViewDelegate {
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(indexPath)")
-        print("\(collectionView.indexPathsForSelectedItems)")
+        print("\(self.filterOptionsCollectionView.indexPathsForSelectedItems)")
         if let fr = self.firstResponder(in: self.filterOptionsCollectionView) {
             fr.resignFirstResponder()
         }
@@ -289,7 +303,7 @@ extension SearchFilterViewController: UICollectionViewDelegateFlowLayout {
         }
         var sz = lay.itemSize
         if self.usersDatasource.rangeSections.contains(indexPath.section) {
-            sz.width = collectionView.frame.size.width - lay.sectionInset.left - lay.sectionInset.right
+            sz.width = 200
         }
         return sz
     }
