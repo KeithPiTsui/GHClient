@@ -210,7 +210,7 @@ extension SearchFilterUsersDatasource {
         // cities
         let cityip = IndexPath(item: 0, section: Section.cities.rawValue)
         var CityQualifiers = [UserQualifier]()
-        if let s = self[cityip] as? String {
+        if let s = self[cityip] as? String, s.isEmpty == false {
             CityQualifiers.append(UserQualifier.location(s))
         }
         if CityQualifiers.isEmpty == false {

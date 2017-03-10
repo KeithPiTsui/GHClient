@@ -73,6 +73,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39p-Mn-a28" userLabel="Filter View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3E-AU-m51">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Q3E-AU-m51" secondAttribute="bottom" id="FKY-QS-qp1"/>
+                                    <constraint firstItem="Q3E-AU-m51" firstAttribute="leading" secondItem="39p-Mn-a28" secondAttribute="leading" id="SEN-EU-A9q"/>
+                                    <constraint firstAttribute="height" id="ckA-he-wLk"/>
+                                    <constraint firstItem="Q3E-AU-m51" firstAttribute="top" secondItem="39p-Mn-a28" secondAttribute="top" id="qO9-rZ-s7S"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q3E-AU-m51" secondAttribute="trailing" id="vnb-al-B2G"/>
+                                </constraints>
+                            </view>
                             <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5I-Pe-aZl">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,11 +105,14 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="LPX-Cs-OaD" firstAttribute="bottom" secondItem="dzh-0f-f91" secondAttribute="top" id="3bd-Li-k7n"/>
-                            <constraint firstItem="LPX-Cs-OaD" firstAttribute="top" secondItem="lwV-zh-z1w" secondAttribute="bottom" id="Ak8-gx-FPK"/>
                             <constraint firstItem="LPX-Cs-OaD" firstAttribute="leading" secondItem="N3L-wl-78v" secondAttribute="leading" id="Bj4-qp-WR3"/>
+                            <constraint firstItem="g5I-Pe-aZl" firstAttribute="top" secondItem="lwV-zh-z1w" secondAttribute="bottom" id="PUd-f0-QUe"/>
                             <constraint firstAttribute="trailing" secondItem="LPX-Cs-OaD" secondAttribute="trailing" id="UR1-aO-qhs"/>
                             <constraint firstItem="g5I-Pe-aZl" firstAttribute="leading" secondItem="LPX-Cs-OaD" secondAttribute="leading" id="bLK-oG-Xi2"/>
-                            <constraint firstItem="g5I-Pe-aZl" firstAttribute="top" secondItem="LPX-Cs-OaD" secondAttribute="top" id="i5i-WS-VuO"/>
+                            <constraint firstItem="39p-Mn-a28" firstAttribute="top" secondItem="lwV-zh-z1w" secondAttribute="bottom" id="cCq-7O-lN6"/>
+                            <constraint firstItem="39p-Mn-a28" firstAttribute="leading" secondItem="LPX-Cs-OaD" secondAttribute="leading" id="fRd-4G-eaO"/>
+                            <constraint firstItem="LPX-Cs-OaD" firstAttribute="top" secondItem="39p-Mn-a28" secondAttribute="bottom" id="iEu-gO-xYV"/>
+                            <constraint firstItem="39p-Mn-a28" firstAttribute="trailing" secondItem="LPX-Cs-OaD" secondAttribute="trailing" id="jJ1-5C-6HX"/>
                             <constraint firstItem="g5I-Pe-aZl" firstAttribute="bottom" secondItem="dzh-0f-f91" secondAttribute="top" id="jLW-ZZ-XJi"/>
                             <constraint firstItem="g5I-Pe-aZl" firstAttribute="trailing" secondItem="LPX-Cs-OaD" secondAttribute="trailing" id="rTA-hJ-mSp"/>
                         </constraints>
@@ -119,6 +141,9 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="dimView" destination="g5I-Pe-aZl" id="zOD-ao-cFL"/>
+                        <outlet property="filterContainer" destination="39p-Mn-a28" id="9oI-yK-cU4"/>
+                        <outlet property="filterDescription" destination="Q3E-AU-m51" id="Bgl-VU-RBd"/>
+                        <outlet property="filterViewHeight" destination="ckA-he-wLk" id="cOW-bB-xUw"/>
                         <outlet property="searchBar" destination="wBa-aP-ks0" id="uyr-dd-9Gf"/>
                         <outlet property="searchScopeSelector" destination="DiK-Rm-42E" id="Ido-cz-6N8"/>
                         <outlet property="tableView" destination="LPX-Cs-OaD" id="YTp-el-nbM"/>
@@ -131,7 +156,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1185" y="-771"/>
+            <point key="canvasLocation" x="-1758" y="-831"/>
         </scene>
     </scenes>
     <resources>

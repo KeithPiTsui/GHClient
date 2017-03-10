@@ -207,7 +207,7 @@ extension SearchFilterRepositoriesDatasource {
         // UserName
         let unip = IndexPath(item: 0, section: Section.UserName.rawValue)
         var unQualifiers = [RepositoriesQualifier]()
-        if let s = self[unip] as? String {
+        if let s = self[unip] as? String, s.isEmpty == false {
             unQualifiers.append(RepositoriesQualifier.user([s]))
         }
         if unQualifiers.isEmpty == false {

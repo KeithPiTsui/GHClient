@@ -9,6 +9,8 @@
 import UIKit
 import ReactiveSwift
 import Result
+import GHAPI
+import Prelude
 
 internal protocol UserProfileViewModelInputs {
     
@@ -23,6 +25,12 @@ internal protocol UserProfileViewModelInputs {
     
     /// Call when the user tapped event table
     func tappedEvent(eventConfig: UserProfileEventTableViewCellConfig)
+    
+    /// Call when vc receive a user to display
+    func set(user: User)
+    
+    /// Call when vc receive a url refer to user then in turn to display
+    func set(userUrl: URL)
 }
 
 internal protocol UserProfileViewModelOutputs {
@@ -61,9 +69,28 @@ internal protocol UserProfileViewModelType {
 internal final class UserProfileViewModel: UserProfileViewModelType, UserProfileViewModelInputs, UserProfileViewModelOutputs {
     
     init() {
-        self.followings = self.viewWillAppearProperty.signal.map{_ in return AppEnvironment.current.currentUser?.followers ?? 0}
-        self.repositories = self.viewWillAppearProperty.signal.map{_ in return AppEnvironment.current.currentUser?.publicRepos ?? 0}
-        self.followers = self.viewWillAppearProperty.signal.map{_ in return AppEnvironment.current.currentUser?.following ?? 0}
+        
+        let user1 = self.setUserUrlProperty.signal.skipNil()
+            .map {AppEnvironment.current.apiService.user(referredBy: $0).single()}
+            .map {$0?.value}.skipNil()
+        let user2 = self.setUserProperty.signal.skipNil()
+        let user = Signal.merge(user1, user2)
+        let userDisplay = Signal.combineLatest(user, self.viewWillAppearProperty.signal).map(first)
+        
+        self.followers = userDisplay.map{ $0.followers ?? 0}
+        self.repositories = userDisplay.map{$0.publicRepos ?? 0}
+        self.followings = userDisplay.map{$0.following ?? 0}
+        self.userName = userDisplay.map{$0.name ?? "unknown"}
+        self.userLocation = userDisplay.map{$0.location ?? "unknown"}
+        
+        self.userAvatar = userDisplay.observe(on: QueueScheduler()).map{ (u) -> UIImage? in
+            let urlStr = u.avatar.url
+            guard let url = URL(string: urlStr) else { return nil }
+            guard let imgData = try? Data(contentsOf: url) else { return nil}
+            guard let image = UIImage(data: imgData) else { return nil}
+            return image
+        }.skipNil()
+        
         self.events = self.viewWillAppearProperty.signal.map {_ in
             guard let img = UIImage(named: "phone-icon") else { fatalError("No such image phone_icon") }
             return [(img, "RecentActivity"),(img, "Starred Repos"),(img, "Gists")]
@@ -71,18 +98,17 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
         self.organizations = self.viewWillAppearProperty.signal.map {_ in
             return [] // "A", "B", "C", "D"
         }
-        self.userName = self.viewWillAppearProperty.signal.map{_ in return AppEnvironment.current.currentUser?.name ?? "unknown"}
-        self.userLocation = self.viewWillAppearProperty.signal.map{_ in return AppEnvironment.current.currentUser?.location ?? "unknown"}
-        self.userAvatar = self.userAvatarProperty.signal.skipNil()
         
-        self.viewWillAppearProperty.signal.observe(on: QueueScheduler()).observeValues { [weak self] _ in
-            guard let imgUrlStr = AppEnvironment.current.currentUser?.avatar.url,
-                let imgUrl = URL(string: imgUrlStr) else { return }
-            guard let imgData = try? Data(contentsOf: imgUrl) else { return }
-            guard let image = UIImage(data: imgData) else { return }
-            self?.userAvatarProperty.value = image
-        }
-        
+    }
+    
+    fileprivate let setUserProperty = MutableProperty<User?>(nil)
+    internal func set(user: User) {
+        self.setUserProperty.value = user
+    }
+    
+    fileprivate let setUserUrlProperty = MutableProperty<URL?>(nil)
+    internal func set(userUrl: URL) {
+        self.setUserUrlProperty.value = userUrl
     }
     
     fileprivate let tappedEventProperty = MutableProperty<UserProfileEventTableViewCellConfig?>(nil)
@@ -104,8 +130,6 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
     internal func viewWillAppear(animated: Bool) {
         self.viewWillAppearProperty.value = animated
     }
-    
-    fileprivate let userAvatarProperty = MutableProperty<UIImage?>(nil)
     
     internal let followers: Signal<Int, NoError>
     internal let followings: Signal<Int, NoError>

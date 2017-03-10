@@ -61,17 +61,6 @@ internal final class RootTabBarViewController: UITabBarController {
             .observeForUI()
             .observeValues { [weak self] in self?.selectedIndex = $0 }
         
-//        self.viewModel.outputs.scrollToTop
-//            .observeForUI()
-//            .observeValues(scrollToTop)
-        
-//        self.viewModel.outputs.tabBarItemsData
-//            .observeForUI()
-//            .observeValues { [weak self] in self?.setTabBarItemStyles(withData: $0) }
-//
-//        self.viewModel.outputs.filterDiscovery
-//            .observeForUI()
-//            .observeValues { $0.filter(with: $1) }
         
         self.viewModel.outputs.tabBarItemsData
             .observeForUI()
@@ -109,5 +98,34 @@ internal final class RootTabBarViewController: UITabBarController {
 }
 
 extension RootTabBarViewController: UITabBarControllerDelegate {
-    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let rvc = viewController as? UINavigationController,
+            let vc = rvc.viewControllers.first as? UserProfileViewController,
+            let user = AppEnvironment.current.currentUser {
+            vc.set(user: user)
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

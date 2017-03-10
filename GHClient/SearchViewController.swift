@@ -22,7 +22,10 @@ internal final class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dimView: UIView!
+    @IBOutlet weak var filterViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var filterContainer: UIView!
     
+    @IBOutlet weak var filterDescription: UILabel!
     @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
         self.viewModel.inputs.scopeSegmentChanged(index: sender.selectedSegmentIndex)
     }
@@ -52,6 +55,20 @@ internal final class SearchViewController: UIViewController {
             scope = SearchScope.userUnit
         }
         return scope
+    }
+    
+    internal func updateFilterDescription() {
+        if self.scope == SearchScope.userUnit && self.userQualifiers.isEmpty == false {
+            self.filterViewHeight.constant = 60
+            self.filterDescription.text = self.userQualifiers.map{$0.searchRepresentation}.joined(separator: "+")
+        } else if self.scope == SearchScope.repositoryUnit && self.repoQualifiers.isEmpty == false {
+            self.filterViewHeight.constant = 60
+            self.filterDescription.text = self.repoQualifiers.map{$0.searchRepresentation}.joined(separator: "+")
+        } else {
+            self.filterViewHeight.constant = 0
+            self.filterDescription.text = nil
+        }
+        self.view.layoutIfNeeded()
     }
     
     
@@ -129,7 +146,7 @@ internal final class SearchViewController: UIViewController {
 
             self?.addChildViewController(filter)
             
-            var filterFrame = self?.tableView.frame ?? CGRect.zero
+            var filterFrame = self?.dimView.frame ?? CGRect.zero
             filterFrame.origin.x = filterFrame.size.width
             filterFrame.size.width *= 0.8
             filterFrame.origin.y += (filterFrame.size.height * 0.05)
@@ -221,6 +238,7 @@ extension SearchViewController: SearchFilterViewControllerDelegate {
             self.repoQualifiers = qs
         }
         self.viewModel.inputs.tappedOnDimView()
+        self.updateFilterDescription()
         self.search()
     }
     
@@ -234,16 +252,12 @@ extension SearchViewController: SearchFilterViewControllerDelegate {
     }
     
     func wipe(filter: SearchFilterViewController, rightForwardAt point: CGPoint) {
-        
         let dx = point.x - previousPoint.x
         previousPoint = point
-        
         filter.view.frame.origin.x += dx
     }
     
     func wipe(filter: SearchFilterViewController, endAt point: CGPoint) {
-        
-        
         self.filterStartPoint = CGPoint.zero
     }
 }

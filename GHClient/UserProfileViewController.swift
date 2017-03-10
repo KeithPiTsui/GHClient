@@ -12,6 +12,7 @@ import Prelude
 import ReactiveCocoa
 import ReactiveSwift
 import Result
+import GHAPI
 
 final class UserProfileViewController: UIViewController {
 
@@ -39,6 +40,14 @@ final class UserProfileViewController: UIViewController {
     
     internal static func instantiate() -> UserProfileViewController {
         return Storyboard.UserProfile.instantiate(UserProfileViewController.self)
+    }
+    
+    internal func set(user: User) {
+        self.viewModel.inputs.set(user: user)
+    }
+    
+    internal func set(userUrl: URL) {
+        self.viewModel.inputs.set(userUrl: userUrl)
     }
     
     override func viewDidLoad() {
@@ -99,9 +108,15 @@ final class UserProfileViewController: UIViewController {
             self?.organizations.reloadData()
         }
         
-        self.viewModel.outputs.userName.observeForUI().observeValues {self.username.text = $0}
-        self.viewModel.outputs.userLocation.observeForUI().observeValues {self.userLocation.text = $0}
-        self.viewModel.outputs.userAvatar.observeForUI().observeValues{self.userAvatar.image = $0}
+        self.viewModel.outputs.userName.observeForUI().observeValues { [weak self] in
+            self?.username.text = $0
+        }
+        self.viewModel.outputs.userLocation.observeForUI().observeValues { [weak self] in
+            self?.userLocation.text = $0
+        }
+        self.viewModel.outputs.userAvatar.observeForUI().observeValues{ [weak self] in
+            self?.userAvatar.image = $0
+        }
     }
     
     
