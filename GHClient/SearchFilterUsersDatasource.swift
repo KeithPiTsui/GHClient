@@ -155,9 +155,8 @@ extension SearchFilterUsersDatasource {
         let userTypeIndice = indexPaths.filter{$0.section == Section.userType.rawValue}
         var userTypeQualifiers: [UserQualifier] = []
         userTypeIndice.forEach {
-            guard let s = self[$0] as? String else { return }
-            guard let x = UserType.init(rawValue: s) else { return }
-            userTypeQualifiers.append(UserQualifier.type(x))
+            guard let s = self[$0] as? UserType else { return }
+            userTypeQualifiers.append(UserQualifier.type(s))
         }
         if userTypeQualifiers.isEmpty == false {
             returnedUserQualifiers.append(contentsOf: userTypeQualifiers)
@@ -167,9 +166,8 @@ extension SearchFilterUsersDatasource {
         let searchFieldIndice = indexPaths.filter{$0.section == Section.searchField.rawValue}
         var userInArguments: [UserInArgument] = []
         searchFieldIndice.forEach {
-            guard let s = self[$0] as? String else { return }
-            guard let x = UserInArgument.init(rawValue: s) else { return }
-            userInArguments.append(x)
+            guard let s = self[$0] as? UserInArgument else { return }
+            userInArguments.append(s)
         }
         
         if userInArguments.isEmpty == false {
@@ -213,9 +211,8 @@ extension SearchFilterUsersDatasource {
         let languageIndice = indexPaths.filter{$0.section == Section.language.rawValue}
         var languageArguments: [LanguageArgument] = []
         languageIndice.forEach {
-            guard let s = self[$0] as? String else { return }
-            guard let x = LanguageArgument.init(rawValue: s) else { return }
-            languageArguments.append(x)
+            guard let s = self[$0] as? LanguageArgument else { return }
+            languageArguments.append(s)
         }
         
         if userInArguments.isEmpty == false {

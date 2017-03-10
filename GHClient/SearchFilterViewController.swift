@@ -41,7 +41,7 @@ internal final class SearchFilterViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBAction func tappedResetBtn(_ sender: UIButton) {
-        
+        self.viewModel.inputs.specify(qualifiers: [])
     }
     
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
@@ -200,6 +200,11 @@ internal final class SearchFilterViewController: UIViewController {
     
     fileprivate func setupSpecifiedUserQualifiers(_ uqs: [UserQualifier]) {
         self.filterOptionsCollectionView.clearAllSelectedItem()
+        self.usersDatasource.set(reposRange: .none)
+        self.usersDatasource.set(followersRange: .none)
+        self.usersDatasource.set(createdDateRange: .none)
+        self.usersDatasource.set(city: "")
+        self.filterOptionsCollectionView.reloadData()
         uqs.forEach { (uq) in
             var ips: [IndexPath?] = []
             switch uq {

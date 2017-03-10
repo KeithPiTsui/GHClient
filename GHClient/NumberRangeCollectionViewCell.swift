@@ -17,6 +17,14 @@ internal final class NumberRangeCollectionViewCell: UICollectionViewCell, ValueC
     internal weak var dataSource: ValueCellDataSource? = nil
     
     internal func configureWith(value: ComparativeArgument<UInt>) {
+        switch value {
+        case .none:
+            self.leftNumberTF.text = nil
+            self.rightNumberTF.text = nil
+        default:
+            break
+        }
+        
         if let leftNum = value.lower {
             self.leftNumberTF.text = "\(leftNum)"
         }

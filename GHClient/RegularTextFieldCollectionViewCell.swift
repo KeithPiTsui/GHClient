@@ -15,7 +15,7 @@ internal final class RegularTextFieldCollectionViewCell: UICollectionViewCell, V
     @IBOutlet weak var textField: UITextField!
 
     func configureWith(value: String) {
-        
+        self.textField.text = value
     }
 }
 

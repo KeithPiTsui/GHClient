@@ -153,7 +153,11 @@ internal final class SearchViewController: UIViewController {
                 v.frame = newFilterFrame
             }
             
-            filter.specify(qualifiers: [UserQualifier.type(.user)])
+            if self?.scope == SearchScope.userUnit, let uqs = self?.userQualifiers {
+                filter.specify(qualifiers: uqs)
+            } else if self?.scope == SearchScope.repositoryUnit, let rqs = self?.repoQualifiers {
+                filter.specify(qualifiers: rqs )
+            }
         }
         
         self.viewModel.outputs.removeFilter.observeForUI().observeValues { [weak self] (filter) in
@@ -174,14 +178,33 @@ internal final class SearchViewController: UIViewController {
     
     fileprivate var filterStartPoint: CGPoint = CGPoint.zero
     fileprivate var previousPoint: CGPoint = CGPoint.zero
+    fileprivate var userQualifiers: [UserQualifier] = []
+    fileprivate var repoQualifiers: [RepositoriesQualifier] = []
 }
+
+extension SearchViewController {
+    fileprivate func search() {
+        guard let keyword = self.searchBar.text else { return }
+        self.search(keyword: keyword)
+    }
+    
+    fileprivate func search(keyword: String) {
+        var qualifiers: [SearchQualifier] = self.userQualifiers
+        if self.scope == SearchScope.userUnit {
+            qualifiers = self.userQualifiers
+        } else if self.scope == SearchScope.repositoryUnit {
+            qualifiers = self.repoQualifiers
+        }
+        self.viewModel.inputs.search(scope: self.scope, keyword: keyword, qualifiers: qualifiers)
+    }
+}
+
 
 
 extension SearchViewController: UISearchBarDelegate {
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        guard let keyword = self.searchBar.text else { return }
-        self.viewModel.inputs.search(scope: self.scope, keyword: keyword, qualifiers: [])
+        self.search()
     }
     
     internal func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -192,7 +215,13 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: SearchFilterViewControllerDelegate {
     
     func filteredQualifiers(_ qualifiers: [SearchQualifier]) {
-        self.viewModel.inputs.search(scope: self.scope, keyword: "Keith", qualifiers: qualifiers)
+        if let qs = qualifiers as? [UserQualifier] {
+            self.userQualifiers = qs
+        } else if let qs = qualifiers as? [RepositoriesQualifier] {
+            self.repoQualifiers = qs
+        }
+        self.viewModel.inputs.tappedOnDimView()
+        self.search()
     }
     
     func closeFilter() {

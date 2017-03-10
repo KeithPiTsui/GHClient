@@ -27,7 +27,7 @@ extension SearchFilterRepositoriesDatasource {
 
 extension SearchFilterRepositoriesDatasource {
     internal func userQualifiers(with indexPaths: [IndexPath]) -> [RepositoriesQualifier] {
-        var returnedUserQualifiers: [RepositoriesQualifier] = []
+        let returnedUserQualifiers: [RepositoriesQualifier] = []
         
         return returnedUserQualifiers
     }
