@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Prelude
 
 /**
  A type-safe wrapper around a two-dimensional array of values that can be used to provide a data source for
@@ -10,6 +11,10 @@ import UIKit
 open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableViewDataSource {
     
     private var values: [[(value: Any, reusableId: String)]] = []
+    
+    public var valueSnapshot: [[Any]] {
+        return self.values.map{$0.map(first)}
+    }
     
     /**
      Override this method to destructure `cell` and `value` in order to call the `configureWith(value:)` method
@@ -59,6 +64,7 @@ open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableVie
     public final func clearValues() {
         self.values = [[]]
     }
+    
     
     /**
      Clears all the values stored in a particular section.

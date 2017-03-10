@@ -89,6 +89,10 @@ internal final class SearchFilterViewController: UIViewController {
     internal func setFilterScope(_ scope: SearchScope) {
         self.title = scope.name.uppercased() + " Search Filter"
         self.currentSearchScope = scope
+        
+        
+        
+        self.viewModel.inputs.set(filterScope: scope)
     }
     
     override func viewDidLoad() {
@@ -172,36 +176,49 @@ internal final class SearchFilterViewController: UIViewController {
     
     override func bindViewModel() {
         super.bindViewModel()
-        self.viewModel.outputs.userTypes.observeForUI().observeValues { [weak self] in
-            self?.usersDatasource.load(userTypes: $0)
-            self?.filterOptionsCollectionView.reloadData()
+        
+        self.viewModel.outputs.userSearchQualifierPackage.observeForUI().observeValues { [weak self] in
+            self?.usersDatasource.load(filterOptions: $0)
         }
-        self.viewModel.outputs.cities.observeForUI().observeValues { [weak self] in
-            self?.usersDatasource.load(cities: $0)
-            self?.filterOptionsCollectionView.reloadData()
+        self.viewModel.outputs.repositorySearchQualifierPackage.observeForUI().observeValues{ [weak self] in
+            self?.repositoriesDatasource.load(filterOptions: $0)
         }
-        self.viewModel.outputs.createdDateRange.observeForUI().observeValues {  [weak self] _ in
-            self?.usersDatasource.setCreatedDateRange()
-            self?.filterOptionsCollectionView.reloadData()
+        
+        self.viewModel.outputs.repositorySearchQualifiers.observeForUI().observeValues { [weak self] in
+            self?.setupSpecifiedRepoQualifiers($0)
         }
-        self.viewModel.outputs.languages.observeForUI().observeValues { [weak self] in
-            self?.usersDatasource.load(languages: $0)
-            self?.filterOptionsCollectionView.reloadData()
+        
+        self.viewModel.outputs.userSearchQualifiers.observeForUI().observeValues { [weak self] in
+            self?.setupSpecifiedUserQualifiers($0)
         }
-        self.viewModel.outputs.reposRange.observeForUI().observeValues { [weak self] _ in
-            self?.usersDatasource.setReposRange()
-            self?.filterOptionsCollectionView.reloadData()
-        }
-        self.viewModel.outputs.searchFields.observeForUI().observeValues { [weak self] in
-            self?.usersDatasource.load(searchFields: $0)
-            self?.filterOptionsCollectionView.reloadData()
-        }
-        self.viewModel.outputs.followersRange.observeForUI().observeValues { [weak self] _ in
-            self?.usersDatasource.setFollowersRange()
+        
+        self.viewModel.outputs.filterScope.observeForUI().observeValues { [weak self] in
+            if $0 == SearchScope.userUnit {
+                self?.filterOptionsCollectionView.dataSource = self?.usersDatasource
+            } else if $0 == SearchScope.repositoryUnit {
+                self?.filterOptionsCollectionView.dataSource = self?.repositoriesDatasource
+            }
             self?.filterOptionsCollectionView.reloadData()
         }
         
     }
+    
+    fileprivate func setupSpecifiedUserQualifiers(_ uqs: [UserQualifier]) {
+        let ips = self.usersDatasource.indexPaths(for: uqs)
+        /// Clear current selected items
+        self.filterOptionsCollectionView.clearAllSelectedItem()
+        /// select specified items
+        self.filterOptionsCollectionView.selectItems(by: ips)
+    }
+    
+    fileprivate func setupSpecifiedRepoQualifiers(_ rqs: [RepositoriesQualifier]) {
+        let ips = self.repositoriesDatasource.indexPaths(for: rqs)
+        /// Clear current selected items
+        self.filterOptionsCollectionView.clearAllSelectedItem()
+        /// select specified items
+        self.filterOptionsCollectionView.selectItems(by: ips)
+    }
+    
 }
 
 extension SearchFilterViewController: UICollectionViewDelegate {

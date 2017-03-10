@@ -30,6 +30,7 @@
 		0E50AA321E6844700002A40D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA311E6844700002A40D /* Main.storyboard */; };
 		0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA421E6849500002A40D /* RootSplitViewController.swift */; };
 		0E50AA781E6849B00002A40D /* RootSplitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */; };
+		0E7AF42A1E724E990001C425 /* UICollectionView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7AF4291E724E990001C425 /* UICollectionView-Extension.swift */; };
 		0E7B7BA81E6E572E00D50C95 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E7B7BA71E6E572E00D50C95 /* Search.storyboard */; };
 		0E7B7BDD1E6E575800D50C95 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */; };
 		0E7B7BE51E6E884800D50C95 /* SearchUserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BE41E6E884800D50C95 /* SearchUserDataSource.swift */; };
@@ -677,6 +678,7 @@
 		0E50AA311E6844700002A40D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0E50AA421E6849500002A40D /* RootSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitViewController.swift; sourceTree = "<group>"; };
 		0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitViewModel.swift; sourceTree = "<group>"; };
+		0E7AF4291E724E990001C425 /* UICollectionView-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView-Extension.swift"; sourceTree = "<group>"; };
 		0E7B7BA71E6E572E00D50C95 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0E7B7BE41E6E884800D50C95 /* SearchUserDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserDataSource.swift; sourceTree = "<group>"; };
@@ -1048,6 +1050,7 @@
 				0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
 				0E9EBD571E715D1B00D3E5A9 /* CGRect-Extension.swift */,
+				0E7AF4291E724E990001C425 /* UICollectionView-Extension.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -1756,6 +1759,7 @@
 				0E50AA121E67FCF60002A40D /* AppDelegateViewModel.swift in Sources */,
 				0E238F4D1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift in Sources */,
 				0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */,
+				0E7AF42A1E724E990001C425 /* UICollectionView-Extension.swift in Sources */,
 				0E238F471E6BD60B001F493A /* UserProfileEventDatasource.swift in Sources */,
 				0EECF6371E704608009600BB /* ActivitesViewController.swift in Sources */,
 				0E7B7BE71E6E88AB00D50C95 /* SearchRepositoryDataSource.swift in Sources */,

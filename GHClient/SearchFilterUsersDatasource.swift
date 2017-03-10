@@ -51,6 +51,16 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
         return [Section.userType.rawValue]
     }
     
+    internal func load(filterOptions: UserSearchQualifierOptions) {
+        self.load(userTypes: filterOptions.userTypes)
+        self.load(searchFields: filterOptions.userInArguments)
+        self.set(reposRange: filterOptions.reposRange)
+        self.set(city: filterOptions.city)
+        self.load(languages: filterOptions.programmingLanguages)
+        self.set(createdDateRange: filterOptions.createdDateRange)
+        self.set(followersRange: filterOptions.followersRange)
+    }
+    
     internal func load(userTypes:[UserType]) {
         let texts = userTypes.map{$0.rawValue}
         self.set(values: texts,
@@ -65,18 +75,14 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
                  inSection: Section.searchField.rawValue)
     }
     
-    internal func setReposRange() {
-        self.set(values: [(nil, nil)],
+    internal func set(reposRange: NumberRange) {
+        self.set(values: [reposRange],
                  cellClass: NumberRangeCollectionViewCell.self,
                  inSection: Section.reposCount.rawValue)
     }
     
-    internal func set(city: String?) {
-        
-    }
-    
-    internal func load(cities: [String]) {
-        self.set(values: cities,
+    internal func set(city: String) {
+        self.set(values: [city],
                  cellClass: RegularTextFieldCollectionViewCell.self,
                  inSection: Section.cities.rawValue)
     }
@@ -87,14 +93,14 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
                  inSection: Section.language.rawValue)
     }
     
-    internal func setCreatedDateRange() {
-        self.set(values: [(nil, nil)],
+    internal func set(createdDateRange: DateRange) {
+        self.set(values: [createdDateRange],
                  cellClass: DateRangeCollectionViewCell.self,
                  inSection: Section.createdDate.rawValue)
     }
     
-    internal func setFollowersRange() {
-        self.set(values: [(nil, nil)],
+    internal func set(followersRange: NumberRange) {
+        self.set(values: [followersRange],
                  cellClass: NumberRangeCollectionViewCell.self,
                  inSection: Section.followersCount.rawValue)
     }
@@ -127,6 +133,23 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
             }
         lab.text = Section.init(rawValue: indexPath.section)?.name
         return v
+    }
+}
+
+extension SearchFilterUsersDatasource {
+    internal func indexPaths(for qualifiers: [UserQualifier]) -> [IndexPath] {
+        var indexPaths = [IndexPath]()
+        
+        let values = self.valueSnapshot
+        for (sec, uqs)  in values.enumerated() where uqs is [UserQualifier] {
+            let uqs = uqs as! [UserQualifier]
+            for uq in qualifiers {
+                guard let idx = uqs.index(of: uq) else { continue }
+                indexPaths.append(IndexPath(item: idx, section: sec))
+            }
+        }
+        
+        return indexPaths
     }
 }
 

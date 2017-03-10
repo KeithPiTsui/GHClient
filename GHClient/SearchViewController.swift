@@ -122,7 +122,10 @@ internal final class SearchViewController: UIViewController {
 
         self.viewModel.outputs.presentFilter.observeForUI().observeValues { [weak self] (filter) in
             guard let v = filter.view else { return }
+            guard let scope = self?.scope else { return }
+            self?.searchBar.resignFirstResponder()
             filter.delegate = self
+            filter.setFilterScope(scope)
             self?.addChildViewController(filter)
             
             var filterFrame = self?.tableView.frame ?? CGRect.zero
