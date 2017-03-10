@@ -199,6 +199,16 @@ extension SearchFilterUsersDatasource {
             returnedUserQualifiers.append(contentsOf: reposCountQualifiers)
         }
         
+        // cities
+        let cityip = IndexPath(item: 0, section: Section.cities.rawValue)
+        var CityQualifiers = [UserQualifier]()
+        if let s = self[cityip] as? String {
+            CityQualifiers.append(UserQualifier.location(s))
+        }
+        if CityQualifiers.isEmpty == false {
+            returnedUserQualifiers.append(contentsOf: CityQualifiers)
+        }
+        
         // language
         let languageIndice = indexPaths.filter{$0.section == Section.language.rawValue}
         var languageArguments: [LanguageArgument] = []
