@@ -26,20 +26,23 @@ internal protocol FilterDataSource {
     func qualifiers(with indexPaths: [IndexPath]) -> [SearchQualifier]
 }
 
-internal final class SearchFilterUsersDatasource: ValueCellDataSource, FilterDataSource {
-    fileprivate enum Section: Int {
-        case userType
-        case searchField
-        case reposCount
-        case cities
-        case language
-        case createdDate
-        case followersCount
-        
-        internal var name: String {
-            return String(describing: self)
-        }
+fileprivate enum Section: Int {
+    case userType
+    case searchField
+    case reposCount
+    case cities
+    case language
+    case createdDate
+    case followersCount
+    
+    internal var name: String {
+        return String(describing: self)
     }
+}
+extension Section: HashableEnumCaseIterating {}
+
+internal final class SearchFilterUsersDatasource: ValueCellDataSource, FilterDataSource {
+    
     
     internal var rangeSections: [Int] {
         return [Section.reposCount.rawValue,
@@ -141,8 +144,7 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource, FilterDat
     }
 }
 
-extension SearchFilterUsersDatasource {
-    
+extension ValueCellDataSource {
     internal func indexPath<ItemType: Equatable>(for item: ItemType) -> IndexPath? {
         let values = self.valueSnapshot
         for (sec, uqs)  in values.enumerated() {
@@ -157,6 +159,7 @@ extension SearchFilterUsersDatasource {
 extension SearchFilterUsersDatasource {
     internal func qualifiers(with indexPaths: [IndexPath]) -> [SearchQualifier] {
         var returnedUserQualifiers: [UserQualifier] = []
+    
         
         // user type
         let userTypeIndice = indexPaths.filter{$0.section == Section.userType.rawValue}
@@ -222,7 +225,7 @@ extension SearchFilterUsersDatasource {
             languageArguments.append(s)
         }
         
-        if userInArguments.isEmpty == false {
+        if languageArguments.isEmpty == false {
             returnedUserQualifiers.append(UserQualifier.language(languageArguments))
         }
         

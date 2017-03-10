@@ -234,11 +234,44 @@ internal final class SearchFilterViewController: UIViewController {
     }
     
     fileprivate func setupSpecifiedRepoQualifiers(_ rqs: [RepositoriesQualifier]) {
-//        let ips = self.repositoriesDatasource.indexPaths(for: rqs)
-//        /// Clear current selected items
-//        self.filterOptionsCollectionView.clearAllSelectedItem()
-//        /// select specified items
-//        self.filterOptionsCollectionView.selectItems(by: ips)
+        self.filterOptionsCollectionView.clearAllSelectedItem()
+        self.repositoriesDatasource.set(stars: .none)
+        self.repositoriesDatasource.set(user: "")
+        self.repositoriesDatasource.set(pushedDateRange: .none)
+        self.repositoriesDatasource.set(createdDateRange: .none)
+        self.repositoriesDatasource.set(size: .none)
+        self.repositoriesDatasource.set(forks: .none)
+        self.filterOptionsCollectionView.reloadData()
+        rqs.forEach { (uq) in
+            var ips: [IndexPath?] = []
+            switch uq {
+            case let .in(args):
+                ips.append(contentsOf: args.map{self.repositoriesDatasource.indexPath(for: $0)})
+            case let .size(arg):
+                self.repositoriesDatasource.set(size: arg)
+            case let .forks(arg):
+                self.repositoriesDatasource.set(forks: arg)
+            case let .fork(arg):
+                ips.append(self.repositoriesDatasource.indexPath(for: arg))
+            case let .created(arg):
+                self.repositoriesDatasource.set(createdDateRange: arg)
+            case let .pushed(arg):
+                self.repositoriesDatasource.set(pushedDateRange: arg)
+            case let .user(args):
+                guard let u = args.first else { break }
+                self.repositoriesDatasource.set(user: u)
+            case .repo(_):
+                break
+            case let .language(args):
+                ips.append(contentsOf: args.map{self.repositoriesDatasource.indexPath(for: $0)})
+            case let .stars(arg):
+                self.repositoriesDatasource.set(stars: arg)
+            }
+            let ipsCompacted = ips.compact()
+            self.filterOptionsCollectionView.selectItems(by: ipsCompacted)
+            
+            print("\(self.filterOptionsCollectionView.indexPathsForSelectedItems)")
+        }
     }
     
 }

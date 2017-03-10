@@ -23,7 +23,7 @@ internal final class RegularTextFieldCollectionViewCell: UICollectionViewCell, V
 extension RegularTextFieldCollectionViewCell: UITextFieldDelegate {
     internal func textFieldDidEndEditing(_ textField: UITextField) {
         print("textFieldDidEndEditing")
-        guard let text = self.textField.text else { return }
+        guard let text = self.textField.text, text.isEmpty == false else { return }
         self.dataSource?.set(value: text,
                              cellClass: RegularTextFieldCollectionViewCell.self,
                              inSection: self.section,

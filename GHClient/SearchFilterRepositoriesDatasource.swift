@@ -155,8 +155,166 @@ internal final class SearchFilterRepositoriesDatasource: ValueCellDataSource, Fi
 
 extension SearchFilterRepositoriesDatasource {
     internal func qualifiers(with indexPaths: [IndexPath]) -> [SearchQualifier] {
-        let returnedUserQualifiers: [RepositoriesQualifier] = []
+        var rqs: [RepositoriesQualifier] = []
         
-        return returnedUserQualifiers
+        // Forks
+        let forkedIndice = indexPaths.filter{$0.section == Section.Forked.rawValue}
+        var forkedQualifiers: [RepositoriesQualifier] = []
+        forkedIndice.forEach {
+            guard let s = self[$0] as? RepositoriesForkArgument else { return }
+            forkedQualifiers.append(RepositoriesQualifier.fork(s))
+        }
+        if forkedQualifiers.isEmpty == false {
+            rqs.append(contentsOf: forkedQualifiers)
+        }
+        
+        
+        // search field
+        let searchFieldIndice = indexPaths.filter{$0.section == Section.Field.rawValue}
+        var inArguments: [RepositoriesInArgument] = []
+        searchFieldIndice.forEach {
+            guard let s = self[$0] as? RepositoriesInArgument else { return }
+            inArguments.append(s)
+        }
+        
+        if inArguments.isEmpty == false {
+            rqs.append(RepositoriesQualifier.in(inArguments))
+        }
+        
+        // Size
+        let ip = IndexPath(item: 0, section: Section.Size.rawValue)
+        var sizeQualifiers = [RepositoriesQualifier]()
+        if let s = self[ip] as? ComparativeArgument<UInt> {
+            switch (s.lower, s.upper) {
+            case (nil, nil):
+                break
+            case let (left?, right?):
+                let maxN = UInt(max(left, right))
+                let minN = UInt(min(left, right))
+                sizeQualifiers.append(.size(.between(minN, maxN)))
+            case let (nil, right?):
+                let minN = UInt(right)
+                sizeQualifiers.append(.size(.lessAndEqualThan(minN)))
+            case let (left?, nil):
+                let maxN = UInt(left)
+                sizeQualifiers.append(.size(.biggerAndEqualThan(maxN)))
+            }
+        }
+        if sizeQualifiers.isEmpty == false {
+            rqs.append(contentsOf: sizeQualifiers)
+        }
+        
+        // UserName
+        let unip = IndexPath(item: 0, section: Section.UserName.rawValue)
+        var unQualifiers = [RepositoriesQualifier]()
+        if let s = self[unip] as? String {
+            unQualifiers.append(RepositoriesQualifier.user([s]))
+        }
+        if unQualifiers.isEmpty == false {
+            rqs.append(contentsOf: unQualifiers)
+        }
+        
+        // language
+        let languageIndice = indexPaths.filter{$0.section == Section.Languages.rawValue}
+        var languageArguments: [LanguageArgument] = []
+        languageIndice.forEach {
+            guard let s = self[$0] as? LanguageArgument else { return }
+            languageArguments.append(s)
+        }
+        
+        if languageArguments.isEmpty == false {
+            rqs.append(RepositoriesQualifier.language(languageArguments))
+        }
+        
+        
+        // CreatedDate
+        let cip = IndexPath(item: 0, section: Section.CreatedDate.rawValue)
+        var createdDateQualifiers = [RepositoriesQualifier]()
+        if let s = self[cip] as? ComparativeArgument<Date> {
+            switch (s.lower, s.upper) {
+            case (nil, nil):
+                break
+            case let (left?, right?):
+                let maxN = max(left, right)
+                let minN = min(left, right)
+                createdDateQualifiers.append(.created(.between(minN, maxN)))
+            case let (nil, right?):
+                createdDateQualifiers.append(.created(.lessAndEqualThan(right)))
+            case let (left?, nil):
+                createdDateQualifiers.append(.created(.biggerAndEqualThan(left)))
+            }
+        }
+        if createdDateQualifiers.isEmpty == false {
+            rqs.append(contentsOf: createdDateQualifiers)
+        }
+        
+        // pushedDate
+        let pip = IndexPath(item: 0, section: Section.PushedDate.rawValue)
+        var pushedDateQualifiers = [RepositoriesQualifier]()
+        if let s = self[pip] as? ComparativeArgument<Date> {
+            switch (s.lower, s.upper) {
+            case (nil, nil):
+                break
+            case let (left?, right?):
+                let maxN = max(left, right)
+                let minN = min(left, right)
+                pushedDateQualifiers.append(.pushed(.between(minN, maxN)))
+            case let (nil, right?):
+                pushedDateQualifiers.append(.pushed(.lessAndEqualThan(right)))
+            case let (left?, nil):
+                pushedDateQualifiers.append(.pushed(.biggerAndEqualThan(left)))
+            }
+        }
+        if pushedDateQualifiers.isEmpty == false {
+            rqs.append(contentsOf: pushedDateQualifiers)
+        }
+        
+        // stars
+        let fip = IndexPath(item: 0, section: Section.Stars.rawValue)
+        var followersCountQualifiers = [RepositoriesQualifier]()
+        if let s = self[fip] as? ComparativeArgument<UInt> {
+            switch (s.lower, s.upper) {
+            case (nil, nil):
+                break
+            case let (left?, right?):
+                let maxN = UInt(max(left, right))
+                let minN = UInt(min(left, right))
+                followersCountQualifiers.append(.stars(.between(minN, maxN)))
+            case let (nil, right?):
+                let minN = UInt(right)
+                followersCountQualifiers.append(.stars(.lessAndEqualThan(minN)))
+            case let (left?, nil):
+                let maxN = UInt(left)
+                followersCountQualifiers.append(.stars(.biggerAndEqualThan(maxN)))
+            }
+        }
+        if followersCountQualifiers.isEmpty == false {
+            rqs.append(contentsOf: followersCountQualifiers)
+        }
+        
+        // forks
+        let forksIp = IndexPath(item: 0, section: Section.Forks.rawValue)
+        var forksQualifiers = [RepositoriesQualifier]()
+        if let s = self[forksIp] as? ComparativeArgument<UInt> {
+            switch (s.lower, s.upper) {
+            case (nil, nil):
+                break
+            case let (left?, right?):
+                let maxN = UInt(max(left, right))
+                let minN = UInt(min(left, right))
+                forksQualifiers.append(.forks(.between(minN, maxN)))
+            case let (nil, right?):
+                let minN = UInt(right)
+                forksQualifiers.append(.forks(.lessAndEqualThan(minN)))
+            case let (left?, nil):
+                let maxN = UInt(left)
+                forksQualifiers.append(.forks(.biggerAndEqualThan(maxN)))
+            }
+        }
+        if forksQualifiers.isEmpty == false {
+            rqs.append(contentsOf: forksQualifiers)
+        }
+        
+        return rqs
     }
 }
