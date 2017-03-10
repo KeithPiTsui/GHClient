@@ -9,8 +9,25 @@
 import UIKit
 import GHAPI
 
-internal final class SearchFilterUsersDatasource: ValueCellDataSource {
-    internal enum Section: Int {
+internal struct UserSearchQualifierOptions {
+    internal let userTypes: [UserType]
+    internal let userInArguments: [UserInArgument]
+    internal let reposRange: ComparativeArgument<UInt>
+    internal let city: String
+    internal let programmingLanguages: [LanguageArgument]
+    internal let createdDateRange: ComparativeArgument<Date>
+    internal let followersRange: ComparativeArgument<UInt>
+}
+
+internal protocol FilterDataSource {
+    var rangeSections: [Int] {get}
+    var multiChoiceSection: [Int] {get}
+    var singleChoiceSection: [Int] {get}
+    func qualifiers(with indexPaths: [IndexPath]) -> [SearchQualifier]
+}
+
+internal final class SearchFilterUsersDatasource: ValueCellDataSource, FilterDataSource {
+    fileprivate enum Section: Int {
         case userType
         case searchField
         case reposCount
@@ -20,31 +37,21 @@ internal final class SearchFilterUsersDatasource: ValueCellDataSource {
         case followersCount
         
         internal var name: String {
-            switch self {
-            case .userType:
-                return "User Type"
-            case .searchField:
-                return "Search Field"
-            case .reposCount:
-                return "Repos Range"
-            case .cities:
-                return "Located Cities"
-            case .language:
-                return "Languages"
-            case .createdDate:
-                return "Created Date Range"
-            case .followersCount:
-                return "Followers Range"
-            }
+            return String(describing: self)
         }
     }
     
     internal var rangeSections: [Int] {
-        return [Section.reposCount.rawValue, Section.createdDate.rawValue, Section.followersCount.rawValue, Section.cities.rawValue]
+        return [Section.reposCount.rawValue,
+                Section.createdDate.rawValue,
+                Section.followersCount.rawValue,
+                Section.cities.rawValue]
     }
     
     internal var multiChoiceSection: [Int] {
-        return [Section.searchField.rawValue, Section.cities.rawValue, Section.language.rawValue]
+        return [Section.searchField.rawValue,
+                Section.cities.rawValue,
+                Section.language.rawValue]
     }
     
     internal var singleChoiceSection: [Int] {
@@ -148,7 +155,7 @@ extension SearchFilterUsersDatasource {
 }
 
 extension SearchFilterUsersDatasource {
-    internal func userQualifiers(with indexPaths: [IndexPath]) -> [UserQualifier] {
+    internal func qualifiers(with indexPaths: [IndexPath]) -> [SearchQualifier] {
         var returnedUserQualifiers: [UserQualifier] = []
         
         // user type

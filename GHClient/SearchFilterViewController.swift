@@ -32,6 +32,9 @@ internal final class SearchFilterViewController: UIViewController {
     fileprivate let viewModel = SearchFilterViewModel()
     fileprivate let repositoriesDatasource = SearchFilterRepositoriesDatasource()
     fileprivate let usersDatasource = SearchFilterUsersDatasource()
+    fileprivate var dataSource: FilterDataSource? {
+        return self.filterOptionsCollectionView.dataSource as? FilterDataSource
+    }
 
     fileprivate weak var focusedDateBtn: UIButton? = nil
     
@@ -280,13 +283,14 @@ extension SearchFilterViewController: UICollectionViewDelegate {
     
     internal func collectionView(_ collectionView: UICollectionView,
                                  shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        if self.usersDatasource.rangeSections.contains(indexPath.section) {
+        guard let ds = self.dataSource else { return false }
+        if ds.rangeSections.contains(indexPath.section) {
             return false
         }
-        if self.usersDatasource.multiChoiceSection.contains(indexPath.section) {
+        if ds.multiChoiceSection.contains(indexPath.section) {
             return true
         }
-        if self.usersDatasource.singleChoiceSection.contains(indexPath.section) {
+        if ds.singleChoiceSection.contains(indexPath.section) {
             let num = collectionView.numberOfItems(inSection: indexPath.section)
             for i in 0..<num {
                 let ip = IndexPath(item: i, section: indexPath.section)
@@ -307,7 +311,7 @@ extension SearchFilterViewController: UICollectionViewDelegateFlowLayout {
             fatalError("collection view layout cannot cast down as UICollectionViewFlowLayout")
         }
         var sz = lay.itemSize
-        if self.usersDatasource.rangeSections.contains(indexPath.section) {
+        if let ds = self.dataSource, ds.rangeSections.contains(indexPath.section) {
             sz.width = 200
         }
         return sz
@@ -316,9 +320,9 @@ extension SearchFilterViewController: UICollectionViewDelegateFlowLayout {
 
 
 extension SearchFilterViewController {
-    internal func generateFilters() -> [UserQualifier] {
+    internal func generateFilters() -> [SearchQualifier] {
         guard let selectedIndexPath = self.filterOptionsCollectionView.indexPathsForSelectedItems else { return [] }
-        return self.usersDatasource.userQualifiers(with: selectedIndexPath)
+        return self.dataSource?.qualifiers(with: selectedIndexPath) ?? []
     }
 }
 

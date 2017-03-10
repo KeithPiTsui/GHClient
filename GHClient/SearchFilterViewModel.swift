@@ -16,20 +16,6 @@ import Runes
 import GHAPI
 import Prelude
 
-internal struct UserSearchQualifierOptions {
-    let userTypes: [UserType]
-    let userInArguments: [UserInArgument]
-    let reposRange: ComparativeArgument<UInt>
-    let city: String
-    let programmingLanguages: [LanguageArgument]
-    let createdDateRange: ComparativeArgument<Date>
-    let followersRange: ComparativeArgument<UInt>
-}
-
-internal struct RepositorySearchQualifierOptions {
-    
-}
-
 
 internal protocol SearchFilterViewModelInputs {
     /// Call when the view did load.
@@ -78,21 +64,30 @@ internal protocol SearchFilterViewModelType{
 internal final class SearchFilterViewModel: SearchFilterViewModelType, SearchFilterViewModelInputs, SearchFilterViewModelOutputs {
     
     init() {
+        
         let userSQP = self.viewDidLoadProperty.signal.map {
-            UserSearchQualifierOptions(userTypes: [UserType.user, UserType.org],
-                                       userInArguments: [UserInArgument.name, UserInArgument.readme],
-                                       reposRange: ComparativeArgument<UInt>.none,
+            UserSearchQualifierOptions(userTypes: UserType.allCases,
+                                       userInArguments: UserInArgument.allCases,
+                                       reposRange: .none,
                                        city: "",
-                                       programmingLanguages: [LanguageArgument.assembly, LanguageArgument.swift],
-                                       createdDateRange: ComparativeArgument<Date>.none,
-                                       followersRange: ComparativeArgument<UInt>.none)}
+                                       programmingLanguages: LanguageArgument.allCases,
+                                       createdDateRange: .none,
+                                       followersRange: .none)}
         
         self.userSearchQualifierPackage = Signal.combineLatest(userSQP, self.setScope.signal.skipNil())
             .filter{$0.1 == SearchScope.userUnit}
             .map(first)
         
         let repoSQP = self.viewDidLoadProperty.signal.map {
-            RepositorySearchQualifierOptions()
+            RepositorySearchQualifierOptions(searchIn: RepositoriesInArgument.allCases,
+                                             size: .none,
+                                             forks: .none,
+                                             fork: RepositoriesForkArgument.allCases,
+                                             created: .none,
+                                             pushed: .none,
+                                             user: "",
+                                             language: LanguageArgument.allCases,
+                                             star: .none)
         }
         
         self.repositorySearchQualifierPackage = Signal.combineLatest(repoSQP, self.setScope.signal.skipNil())
