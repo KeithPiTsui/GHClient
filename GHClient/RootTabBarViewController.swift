@@ -98,13 +98,13 @@ internal final class RootTabBarViewController: UITabBarController {
 }
 
 extension RootTabBarViewController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let rvc = viewController as? UINavigationController,
-            let vc = rvc.viewControllers.first as? UserProfileViewController,
-            let user = AppEnvironment.current.currentUser {
-            vc.set(user: user)
-        }
-    }
+//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//        if let rvc = viewController as? UINavigationController,
+//            let vc = rvc.viewControllers.first as? UserProfileViewController,
+//            let user = AppEnvironment.current.currentUser {
+//            vc.set(user: user)
+//        }
+//    }
 }
 
 

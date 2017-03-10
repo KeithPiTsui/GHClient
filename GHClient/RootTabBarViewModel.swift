@@ -110,9 +110,13 @@ internal final class RootTabBarViewModel:
         }
         
         let personalizedViewControllers = userState
-            .map { loggedIn in
-                [
-                    loggedIn ? UserProfileViewController.instantiate() as UIViewController? : nil,
+            .map { (loggedIn) -> [UIViewController?] in
+                let vc = UserProfileViewController.instantiate()
+                if let user = AppEnvironment.current.currentUser {
+                    vc.set(user: user)
+                }
+                return [
+                    loggedIn ? vc : nil,
                     loggedIn ? nil : LoginViewController.instantiate() as UIViewController?
                 ]
             }
