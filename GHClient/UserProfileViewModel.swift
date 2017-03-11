@@ -56,7 +56,7 @@ internal protocol UserProfileViewModelType {
 internal final class UserProfileViewModel: UserProfileViewModelType, UserProfileViewModelInputs, UserProfileViewModelOutputs {
     
     init() {
-        let user1 = self.setUserUrlProperty.signal.skipNil()
+        let user1 = self.setUserUrlProperty.signal.skipNil().observe(on: QueueScheduler())
             .map {AppEnvironment.current.apiService.user(referredBy: $0).single()}
             .map {$0?.value}.skipNil()
         let user2 = self.setUserProperty.signal.skipNil()
@@ -66,9 +66,8 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
         self.user = userDisplay
         
         self.userAvatar = userDisplay.observe(on: QueueScheduler()).map{ (u) -> UIImage? in
-            let urlStr = u.avatar.url
-            guard let url = URL(string: urlStr),
-                let imgData = try? Data(contentsOf: url),
+            let url = u.avatar.url
+            guard let imgData = try? Data(contentsOf: url),
                 let image = UIImage(data: imgData)else { return nil }
             return image
         }.skipNil()

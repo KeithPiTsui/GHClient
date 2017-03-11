@@ -265,8 +265,8 @@ extension SearchViewController: SearchFilterViewControllerDelegate {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.scope == SearchScope.userUnit {
-            guard let user = self.userDatasource[indexPath] as? User,
-            let url = URL(string: user.urls.url) else { return }
+            guard let user = self.userDatasource[indexPath] as? User  else { return }
+            let url = user.urls.url
             let vc = UserProfileViewController.instantiate()
             vc.set(userUrl: url)
             self.navigationController?.pushViewController(vc, animated: true)
