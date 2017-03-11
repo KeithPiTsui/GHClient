@@ -262,6 +262,19 @@ extension SearchViewController: SearchFilterViewControllerDelegate {
     }
 }
 
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.scope == SearchScope.userUnit {
+            guard let user = self.userDatasource[indexPath] as? User else { return }
+            let vc = UserProfileViewController.instantiate()
+            vc.set(user: user)
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if self.scope == SearchScope.repositoryUnit {
+            let vc = RepositoryViewController.instantiate()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
 
 
 

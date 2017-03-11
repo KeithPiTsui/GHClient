@@ -41,6 +41,9 @@ internal protocol SearchViewModelInputs {
     
     /// Call when user search
     func search(scope: SearchScope, keyword: String, qualifiers: [SearchQualifier])
+    
+    /// tap on user
+    func goto(user: User)
 }
 
 internal protocol SearchViewModelOutputs {
@@ -132,6 +135,11 @@ internal final class SearchViewModel: SearchViewModelType, SearchViewModelInputs
                             }.skipNil()
         
         
+    }
+    
+    fileprivate let gotoUserProperty = MutableProperty<User?>(nil)
+    internal func goto(user: User) {
+        self.gotoUserProperty.value = user
     }
     
     fileprivate let screenEdgePanProperty = MutableProperty()

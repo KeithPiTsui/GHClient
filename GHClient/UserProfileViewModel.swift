@@ -69,15 +69,14 @@ internal protocol UserProfileViewModelType {
 internal final class UserProfileViewModel: UserProfileViewModelType, UserProfileViewModelInputs, UserProfileViewModelOutputs {
     
     init() {
-        
         let user1 = self.setUserUrlProperty.signal.skipNil()
             .map {AppEnvironment.current.apiService.user(referredBy: $0).single()}
             .map {$0?.value}.skipNil()
         let user2 = self.setUserProperty.signal.skipNil()
         let user = Signal.merge(user1, user2)
-        let userDisplay = Signal.combineLatest(user, self.viewWillAppearProperty.signal).map(first)
+        let userDisplay = Signal.combineLatest(user, self.viewDidLoadProperty.signal).map(first)
         
-        self.followers = userDisplay.map{ $0.followers ?? 0}
+        self.followers = userDisplay.map{ return $0.followers ?? 0}
         self.repositories = userDisplay.map{$0.publicRepos ?? 0}
         self.followings = userDisplay.map{$0.following ?? 0}
         self.userName = userDisplay.map{$0.name ?? "unknown"}
@@ -85,9 +84,9 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
         
         self.userAvatar = userDisplay.observe(on: QueueScheduler()).map{ (u) -> UIImage? in
             let urlStr = u.avatar.url
-            guard let url = URL(string: urlStr) else { return nil }
-            guard let imgData = try? Data(contentsOf: url) else { return nil}
-            guard let image = UIImage(data: imgData) else { return nil}
+            guard let url = URL(string: urlStr),
+                let imgData = try? Data(contentsOf: url),
+                let image = UIImage(data: imgData)else { return nil }
             return image
         }.skipNil()
         
@@ -98,7 +97,6 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
         self.organizations = self.viewWillAppearProperty.signal.map {_ in
             return [] // "A", "B", "C", "D"
         }
-        
     }
     
     fileprivate let setUserProperty = MutableProperty<User?>(nil)

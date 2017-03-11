@@ -79,6 +79,15 @@ final class UserProfileViewController: UIViewController {
         self.viewModel.outputs.repositories.observeForUI().observeValues{ [weak self] in
             self?.repositories.text = "\($0)"
         }
+        self.viewModel.outputs.userName.observeForUI().observeValues { [weak self] in
+            self?.username.text = $0
+        }
+        self.viewModel.outputs.userLocation.observeForUI().observeValues { [weak self] in
+            self?.userLocation.text = $0
+        }
+        self.viewModel.outputs.userAvatar.observeForUI().observeValues{ [weak self] in
+            self?.userAvatar.image = $0
+        }
         self.viewModel.outputs.events.observeForUI().observeValues { [weak self] in
             self?.eventDatasource.load(events: $0)
             if let height = self?.events.rowHeight {
@@ -107,19 +116,7 @@ final class UserProfileViewController: UIViewController {
             }
             self?.organizations.reloadData()
         }
-        
-        self.viewModel.outputs.userName.observeForUI().observeValues { [weak self] in
-            self?.username.text = $0
-        }
-        self.viewModel.outputs.userLocation.observeForUI().observeValues { [weak self] in
-            self?.userLocation.text = $0
-        }
-        self.viewModel.outputs.userAvatar.observeForUI().observeValues{ [weak self] in
-            self?.userAvatar.image = $0
-        }
     }
-    
-    
 }
 
 

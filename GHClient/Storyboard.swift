@@ -33,6 +33,7 @@ public enum Storyboard: String {
     case Trending
     case UserProfile
     case WatchedRepositories
+    case Repository
     
     public func instantiate<VC: UIViewController>(_ viewController: VC.Type, inBundle bundle: Bundle = .framework) -> VC {
         guard
