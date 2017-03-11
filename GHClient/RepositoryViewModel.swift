@@ -24,10 +24,18 @@ internal protocol RepositoryViewModelInputs {
     
     /// Call when a user session has started.
     func userSessionStarted()
+    
+    /// Call when vc receive a repository to display
+    func set(repo: Repository)
+    
+    /// Call when vc receive a url to repository for display
+    func set(repoURL: URL)
 }
 
 internal protocol RepositoryViewModelOutputs {
     
+    
+    var repository: Signal<Repository,NoError> { get }
 }
 
 internal protocol RepositoryViewModelType {
@@ -36,6 +44,27 @@ internal protocol RepositoryViewModelType {
 }
 
 internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryViewModelInputs, RepositoryViewModelOutputs {
+    
+    init() {
+        let repo1 = self.setRepoURLProperty.signal.skipNil()
+            .map {AppEnvironment.current.apiService.repository(referredBy: $0).single()}
+            .map {$0?.value}.skipNil()
+        let repo2 = self.setRepoProperty.signal.skipNil()
+        let repo = Signal.merge(repo1, repo2)
+        let repoDisplay = Signal.combineLatest(repo, self.viewDidLoadProperty.signal).map(first)
+        
+        self.repository = repoDisplay
+    }
+    
+    fileprivate let setRepoProperty = MutableProperty<Repository?>(nil)
+    public func set(repo: Repository) {
+        self.setRepoProperty.value = repo
+    }
+    
+    fileprivate let setRepoURLProperty = MutableProperty<URL?>(nil)
+    public func set(repoURL: URL) {
+        self.setRepoURLProperty.value = repoURL
+    }
     
     fileprivate let userSessionStartedProperty = MutableProperty(())
     public func userSessionStarted() {
@@ -55,6 +84,9 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
     internal func viewWillAppear(animated: Bool) {
         self.viewWillAppearProperty.value = animated
     }
+    
+    
+    internal let repository: Signal<Repository, NoError>
     
     internal var inputs: RepositoryViewModelInputs { return self }
     internal var outputs: RepositoryViewModelOutputs { return self }

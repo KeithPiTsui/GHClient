@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GHAPI
 
 internal final class RepositoryViewController: UIViewController {
 
@@ -28,6 +29,15 @@ internal final class RepositoryViewController: UIViewController {
         self.tableView.dataSource = self.datasource
         self.tableView.delegate = self
         self.viewModel.inputs.viewDidLoad()
+    }
+    
+    
+    internal func set(repo: Repository) {
+        
+    }
+    
+    internal func set(repoURL: URL) {
+        
     }
     
     override func bindStyles() {

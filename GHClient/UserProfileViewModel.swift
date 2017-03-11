@@ -38,27 +38,14 @@ internal protocol UserProfileViewModelOutputs {
     /// Emit a signal to update user avatar
     var userAvatar: Signal<UIImage, NoError> { get }
     
-    /// Emit a signal to update username
-    var userName: Signal<String, NoError> {get}
-    
-    /// Emit a signal to location
-    var userLocation: Signal<String, NoError> {get}
-    
-    /// Emit a signal to update followers
-    var followers: Signal<Int,NoError> {get}
-    
-    /// Emit a signal to update repositories
-    var repositories: Signal<Int, NoError> {get}
-    
-    /// Emit a signal to update followings
-    var followings: Signal<Int, NoError> {get}
-    
     /// Emit a signal to update event table
     var events: Signal<[UserProfileEventTableViewCellConfig], NoError> { get}
     
     /// Emit a signal to update organization table
     var organizations: Signal<[UserProfileOrganizationTableViewCellConfig], NoError> {get}
     
+    /// Emit a signal to specify a user
+    var user: Signal<User, NoError> {get}
 }
 
 internal protocol UserProfileViewModelType {
@@ -76,11 +63,7 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
         let user = Signal.merge(user1, user2)
         let userDisplay = Signal.combineLatest(user, self.viewDidLoadProperty.signal).map(first)
         
-        self.followers = userDisplay.map{ return $0.followers ?? 0}
-        self.repositories = userDisplay.map{$0.publicRepos ?? 0}
-        self.followings = userDisplay.map{$0.following ?? 0}
-        self.userName = userDisplay.map{$0.name ?? "unknown"}
-        self.userLocation = userDisplay.map{$0.location ?? "unknown"}
+        self.user = userDisplay
         
         self.userAvatar = userDisplay.observe(on: QueueScheduler()).map{ (u) -> UIImage? in
             let urlStr = u.avatar.url
@@ -129,14 +112,11 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
         self.viewWillAppearProperty.value = animated
     }
     
-    internal let followers: Signal<Int, NoError>
-    internal let followings: Signal<Int, NoError>
-    internal let repositories: Signal<Int, NoError>
+    
     internal let events: Signal<[UserProfileEventTableViewCellConfig], NoError>
     internal let organizations: Signal<[UserProfileOrganizationTableViewCellConfig], NoError>
-    internal let userName: Signal<String, NoError>
+    internal let user: Signal<User, NoError>
     internal let userAvatar: Signal<UIImage, NoError>
-    internal let userLocation: Signal<String, NoError>
     
     internal var inputs: UserProfileViewModelInputs { return self }
     internal var outputs: UserProfileViewModelOutputs { return self}

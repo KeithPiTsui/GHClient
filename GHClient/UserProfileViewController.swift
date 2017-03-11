@@ -70,21 +70,16 @@ final class UserProfileViewController: UIViewController {
     
     override func bindViewModel() {
         super.bindViewModel()
-        self.viewModel.outputs.followers.observeForUI().observeValues{ [weak self] in
-            self?.followers.text = "\($0)"
+        
+        self.viewModel.outputs.user.observeForUI().observeValues { [weak self] in
+            self?.followers.text = "\($0.followers ?? 0)"
+            self?.followings.text = "\($0.following ?? 0)"
+            self?.repositories.text = "\($0.publicRepos ?? 0)"
+            self?.username.text = $0.login
+            self?.userLocation.text = $0.location
         }
-        self.viewModel.outputs.followings.observeForUI().observeValues{ [weak self] in
-            self?.followings.text = "\($0)"
-        }
-        self.viewModel.outputs.repositories.observeForUI().observeValues{ [weak self] in
-            self?.repositories.text = "\($0)"
-        }
-        self.viewModel.outputs.userName.observeForUI().observeValues { [weak self] in
-            self?.username.text = $0
-        }
-        self.viewModel.outputs.userLocation.observeForUI().observeValues { [weak self] in
-            self?.userLocation.text = $0
-        }
+        
+        
         self.viewModel.outputs.userAvatar.observeForUI().observeValues{ [weak self] in
             self?.userAvatar.image = $0
         }
