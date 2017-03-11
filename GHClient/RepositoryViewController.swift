@@ -33,11 +33,11 @@ internal final class RepositoryViewController: UIViewController {
     
     
     internal func set(repo: Repository) {
-        
+        self.viewModel.inputs.set(repo: repo)
     }
     
     internal func set(repoURL: URL) {
-        
+        self.viewModel.inputs.set(repoURL: repoURL)
     }
     
     override func bindStyles() {

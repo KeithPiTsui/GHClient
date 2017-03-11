@@ -270,9 +270,11 @@ extension SearchViewController: UITableViewDelegate {
             let vc = UserProfileViewController.instantiate()
             vc.set(userUrl: url)
             self.navigationController?.pushViewController(vc, animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: false)
         } else if self.scope == SearchScope.repositoryUnit {
             let vc = RepositoryViewController.instantiate()
             self.navigationController?.pushViewController(vc, animated: true)
+            self.tableView.deselectRow(at: indexPath, animated: false)
         }
     }
 }
