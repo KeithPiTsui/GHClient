@@ -15,7 +15,8 @@ internal final class RegularBaseTableViewCell: UITableViewCell, ValueCell {
     internal weak var dataSource: ValueCellDataSource? = nil
 
     func configureWith(value: (UIImage?, String)) {
-        
+        self.imageView?.image = value.0
+        self.textLabel?.text = value.1
     }
     
     

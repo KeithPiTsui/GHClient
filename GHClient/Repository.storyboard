@@ -154,6 +154,10 @@
                                                 <constraint firstItem="ADF-gm-g0F" firstAttribute="leading" secondItem="Pun-97-bAk" secondAttribute="leadingMargin" id="ttv-xR-h21"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="left" destination="ADF-gm-g0F" id="ieN-iv-SNC"/>
+                                            <outlet property="right" destination="Cjk-oq-YND" id="jNB-WF-IiL"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelOnlyTableViewCell" id="CLG-v6-WVK" customClass="LabelOnlyTableViewCell" customModule="GHClient" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="257" width="375" height="44"/>
@@ -204,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5q-ms-gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128.80000000000001" y="246.02698650674665"/>
+            <point key="canvasLocation" x="-134" y="251"/>
         </scene>
     </scenes>
     <resources>

@@ -34,8 +34,15 @@ internal protocol RepositoryViewModelInputs {
 
 internal protocol RepositoryViewModelOutputs {
     
+    var brief: Signal<(a:String, b: String, c: String, d: String), NoError> {get}
     
     var repository: Signal<Repository,NoError> { get }
+    
+    var branches: Signal<[Branch], NoError> {get}
+    
+    var commits: Signal<[Commit], NoError> {get}
+    
+    var details: Signal<[(UIImage?, String)], NoError> {get}
 }
 
 internal protocol RepositoryViewModelType {
@@ -46,7 +53,7 @@ internal protocol RepositoryViewModelType {
 internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryViewModelInputs, RepositoryViewModelOutputs {
     
     init() {
-        let repo1 = self.setRepoURLProperty.signal.skipNil()
+        let repo1 = self.setRepoURLProperty.signal.skipNil().observe(on: QueueScheduler())
             .map {AppEnvironment.current.apiService.repository(referredBy: $0).single()}
             .map {$0?.value}.skipNil()
         let repo2 = self.setRepoProperty.signal.skipNil()
@@ -54,6 +61,24 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         let repoDisplay = Signal.combineLatest(repo, self.viewDidLoadProperty.signal).map(first)
         
         self.repository = repoDisplay
+        
+        self.commits = repoDisplay.observe(on: QueueScheduler()).map { (repo) -> [Commit]? in
+            AppEnvironment.current.apiService.commits(referredBy: repo.urls.commits_url).single()?.value
+        }.skipNil()
+        
+        self.branches = repoDisplay.observe(on: QueueScheduler()).map { (repo) -> [Branch]? in
+            AppEnvironment.current.apiService.branches(referredBy: repo.urls.branches_url).single()?.value
+            }.skipNil()
+        
+        self.brief = repoDisplay.map{ (repo) -> (a:String, b: String, c: String, d: String) in
+            ("owner", repo.owner.login, repo.description ?? "No Description", "README")
+        }
+        
+        self.details = self.viewWillAppearProperty.signal.map {_ in
+            guard let img = UIImage(named: "phone-icon") else { fatalError("No such image phone_icon") }
+            return [(img, "RecentActivity"),(img, "Starred Repos"),(img, "Gists")]
+        }
+        
     }
     
     fileprivate let setRepoProperty = MutableProperty<Repository?>(nil)
@@ -85,9 +110,12 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         self.viewWillAppearProperty.value = animated
     }
     
+    internal let brief: Signal<(a: String, b: String, c: String, d: String), NoError>
+    internal let details: Signal<[(UIImage?, String)], NoError>
     
     internal let repository: Signal<Repository, NoError>
-    
+    internal let branches: Signal<[Branch], NoError>
+    internal let commits: Signal<[Commit], NoError>
     internal var inputs: RepositoryViewModelInputs { return self }
     internal var outputs: RepositoryViewModelOutputs { return self }
 }

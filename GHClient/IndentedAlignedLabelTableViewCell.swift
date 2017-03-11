@@ -14,8 +14,12 @@ internal final class IndentedAlignedLabelTableViewCell: UITableViewCell, ValueCe
     internal var row: Int = 0
     internal weak var dataSource: ValueCellDataSource? = nil
     
+    @IBOutlet weak var left: UILabel!
+    @IBOutlet weak var right: UILabel!
+    
     func configureWith(value: (String, String)) {
-        
+        left.text = value.0
+        right.text = value.1
     }
     
     

@@ -272,7 +272,9 @@ extension SearchViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
             self.tableView.deselectRow(at: indexPath, animated: false)
         } else if self.scope == SearchScope.repositoryUnit {
+            guard let repo = self.repositoryDatasource[indexPath] as? Repository else { return }
             let vc = RepositoryViewController.instantiate()
+            vc.set(repoURL: repo.urls.url)
             self.navigationController?.pushViewController(vc, animated: true)
             self.tableView.deselectRow(at: indexPath, animated: false)
         }

@@ -14,8 +14,8 @@ internal final class LabelOnlyTableViewCell: UITableViewCell, ValueCell {
     internal var row: Int = 0
     internal weak var dataSource: ValueCellDataSource? = nil
     
-    func configureWith(value: (String, String)) {
-        
+    func configureWith(value: String) {
+        self.textLabel?.text = value
     }
     
     override func awakeFromNib() {
