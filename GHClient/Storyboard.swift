@@ -34,6 +34,7 @@ public enum Storyboard: String {
     case UserProfile
     case WatchedRepositories
     case Repository
+    case Readme
     
     public func instantiate<VC: UIViewController>(_ viewController: VC.Type, inBundle bundle: Bundle = .framework) -> VC {
         guard

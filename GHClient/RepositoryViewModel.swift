@@ -6,7 +6,7 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import ReactiveSwift
 import Result
 import GHAPI
@@ -30,6 +30,9 @@ internal protocol RepositoryViewModelInputs {
     
     /// Call when vc receive a url to repository for display
     func set(repoURL: URL)
+    
+    /// Call when user tapped on readme option
+    func gotoReadme()
 }
 
 internal protocol RepositoryViewModelOutputs {
@@ -43,6 +46,8 @@ internal protocol RepositoryViewModelOutputs {
     var commits: Signal<[Commit], NoError> {get}
     
     var details: Signal<[(UIImage?, String)], NoError> {get}
+    
+    var gotoReadmeVC: Signal<UIViewController, NoError> {get}
 }
 
 internal protocol RepositoryViewModelType {
@@ -76,9 +81,34 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         
         self.details = self.viewWillAppearProperty.signal.map {_ in
             guard let img = UIImage(named: "phone-icon") else { fatalError("No such image phone_icon") }
-            return [(img, "RecentActivity"),(img, "Starred Repos"),(img, "Gists")]
+            return [(img, "Forks"),
+                    (img, "Releases"),
+                    (img, "Recent Activity"),
+                    (img, "Contributors"),
+                    (img, "Stargazers"),
+                    (img, "Pull Requests"),
+                    (img, "Issues")]
         }
         
+        let vc = self.viewDidLoadProperty.signal.map { () -> ReadmeViewController in
+             ReadmeViewController.instantiate()
+        }
+        
+        let readmeURL = repoDisplay.map { (repo) -> URL? in
+            let rmURL = repo.urls.url.appendingPathComponent("/readme")
+            return AppEnvironment.current.apiService.readme(referredBy: rmURL).single()?.value?.html_url
+        }.skipNil()
+        
+        let readmeVC = Signal.combineLatest(vc, readmeURL).map { (vc, url) -> UIViewController in
+            vc.set(readmeUrl: url)
+            return vc
+        }
+        self.gotoReadmeVC = Signal.combineLatest(readmeVC, self.gotoReadmeProperty.signal).map(first)
+    }
+    
+    fileprivate let gotoReadmeProperty = MutableProperty()
+    public func gotoReadme() {
+        self.gotoReadmeProperty.value = ()
     }
     
     fileprivate let setRepoProperty = MutableProperty<Repository?>(nil)
@@ -116,6 +146,8 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
     internal let repository: Signal<Repository, NoError>
     internal let branches: Signal<[Branch], NoError>
     internal let commits: Signal<[Commit], NoError>
+    internal let gotoReadmeVC: Signal<UIViewController, NoError>
+    
     internal var inputs: RepositoryViewModelInputs { return self }
     internal var outputs: RepositoryViewModelOutputs { return self }
 }

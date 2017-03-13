@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivitesViewController: UIViewController {
+internal final class ActivitesViewController: UIViewController {
 
     internal static func instantiate() -> ActivitesViewController {
         return Storyboard.Activities.instantiate(ActivitesViewController.self)

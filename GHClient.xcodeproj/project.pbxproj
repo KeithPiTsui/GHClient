@@ -96,6 +96,9 @@
 		0E9EBD4D1E71002600D3E5A9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EBD4C1E71002600D3E5A9 /* Strings.swift */; };
 		0E9EBD4F1E7100FA00D3E5A9 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */; };
 		0E9EBD581E715D1B00D3E5A9 /* CGRect-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EBD571E715D1B00D3E5A9 /* CGRect-Extension.swift */; };
+		0EA044981E764F0A00643EBA /* Readme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA044971E764F0A00643EBA /* Readme.storyboard */; };
+		0EA044CD1E764F4A00643EBA /* ReadmeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044CC1E764F4A00643EBA /* ReadmeViewController.swift */; };
+		0EA044CF1E76506700643EBA /* ReadmeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044CE1E76506700643EBA /* ReadmeViewModel.swift */; };
 		0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */; };
 		0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460D1E69500900017D28 /* MenuDataSource.swift */; };
 		0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */; };
@@ -744,6 +747,9 @@
 		0E9EBD4C1E71002600D3E5A9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		0E9EBD571E715D1B00D3E5A9 /* CGRect-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect-Extension.swift"; sourceTree = "<group>"; };
+		0EA044971E764F0A00643EBA /* Readme.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Readme.storyboard; sourceTree = "<group>"; };
+		0EA044CC1E764F4A00643EBA /* ReadmeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeViewController.swift; sourceTree = "<group>"; };
+		0EA044CE1E76506700643EBA /* ReadmeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeViewModel.swift; sourceTree = "<group>"; };
 		0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0ED6460D1E69500900017D28 /* MenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
 		0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
@@ -983,6 +989,7 @@
 				0E4B40BD1E70453A004144DC /* Discovery.storyboard */,
 				0EECF6341E7045F0009600BB /* Activities.storyboard */,
 				0E5BF8821E73AD6200EDD841 /* Repository.storyboard */,
+				0EA044971E764F0A00643EBA /* Readme.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1000,6 +1007,7 @@
 				0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */,
 				0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */,
 				0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */,
+				0EA044CC1E764F4A00643EBA /* ReadmeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1016,6 +1024,7 @@
 				0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */,
 				0E4B40BB1E703C4E004144DC /* RootTabBarViewModel.swift */,
 				0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */,
+				0EA044CE1E76506700643EBA /* ReadmeViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1732,6 +1741,7 @@
 				0E7B7BEF1E6EB01300D50C95 /* SearchFilter.storyboard in Resources */,
 				0E5BF8831E73AD6200EDD841 /* Repository.storyboard in Resources */,
 				0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */,
+				0EA044981E764F0A00643EBA /* Readme.storyboard in Resources */,
 				0E4B40BE1E70453A004144DC /* Discovery.storyboard in Resources */,
 				0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */,
 				0EECF6351E7045F0009600BB /* Activities.storyboard in Resources */,
@@ -1799,6 +1809,7 @@
 				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
 				0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */,
 				0E7B7BE51E6E884800D50C95 /* SearchUserDataSource.swift in Sources */,
+				0EA044CD1E764F4A00643EBA /* ReadmeViewController.swift in Sources */,
 				0E9EBD4F1E7100FA00D3E5A9 /* LocalizedString.swift in Sources */,
 				0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
@@ -1818,6 +1829,7 @@
 				0E5BF8BC1E73B31400EDD841 /* LabelOnlyTableViewCell.swift in Sources */,
 				0ED646531E69901200017D28 /* MenuItem.swift in Sources */,
 				0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */,
+				0EA044CF1E76506700643EBA /* ReadmeViewModel.swift in Sources */,
 				0ED646511E695C4300017D28 /* MenuGeneralCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -72,11 +72,47 @@ internal final class RepositoryViewController: UIViewController {
             self?.datasource.setDetailDiveIn(values: $0)
             self?.tableView.reloadData()
         }
+        self.viewModel.outputs.gotoReadmeVC.observeForUI().observeValues { [weak self] in
+            self?.navigationController?.pushViewController($0, animated: true)
+        }
         
     }
     
 }
 
 extension RepositoryViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 2 {
+            self.viewModel.inputs.gotoReadme()
+        }
+    }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
