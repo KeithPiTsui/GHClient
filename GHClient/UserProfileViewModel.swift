@@ -56,10 +56,22 @@ internal protocol UserProfileViewModelType {
 internal final class UserProfileViewModel: UserProfileViewModelType, UserProfileViewModelInputs, UserProfileViewModelOutputs {
     
     init() {
-        let user1 = self.setUserUrlProperty.signal.skipNil().observe(on: QueueScheduler())
-            .map {AppEnvironment.current.apiService.user(referredBy: $0).single()}
-            .map {$0?.value}.skipNil()
+        let userUrl1 = self.setUserUrlProperty.signal.skipNil()
+        let userUrl3 = Signal.combineLatest(userUrl1, self.tappedRefleshButtonProperty.signal).map(first)
+        
+        let userUrl = Signal.merge(userUrl1, userUrl3)
+        
+        let user1 = userUrl.observe(on: QueueScheduler())
+            .map { AppEnvironment.current.apiService.user(referredBy: $0).single()}
+            .map {$0?.value}.skipNil().map { (u) -> User in
+                if let user = AppEnvironment.current.currentUser, user == u {
+                    AppEnvironment.updateCurrentUser(u)
+                }
+                return u
+        }
+        
         let user2 = self.setUserProperty.signal.skipNil()
+        
         let user = Signal.merge(user1, user2)
         let userDisplay = Signal.combineLatest(user, self.viewDidLoadProperty.signal).map(first)
         
@@ -79,6 +91,8 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
         self.organizations = self.viewWillAppearProperty.signal.map {_ in
             return [] // "A", "B", "C", "D"
         }
+        
+        
     }
     
     fileprivate let setUserProperty = MutableProperty<User?>(nil)

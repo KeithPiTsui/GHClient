@@ -113,7 +113,7 @@ internal final class RootTabBarViewModel:
             .map { (loggedIn) -> [UIViewController?] in
                 let vc = UserProfileViewController.instantiate()
                 if let user = AppEnvironment.current.currentUser {
-                    vc.set(user: user)
+                    vc.set(userUrl: user.urls.url)
                 }
                 return [
                     loggedIn ? vc : nil,

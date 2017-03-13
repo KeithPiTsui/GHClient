@@ -36,7 +36,7 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func bindViewModel() {
-        
+//        self.viewModel.outputs.user.observeValues {AppEnvironment.updateCurrentUser($0)}
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

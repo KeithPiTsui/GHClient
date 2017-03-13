@@ -23,7 +23,9 @@ public protocol AppDelegateViewModelOutputs {
     /// The value to return from the delegate's `application:didFinishLaunchingWithOptions:` method.
     var applicationDidFinishLaunchingReturnValue: Bool { get }
     
-//    var presentViewController: Signal<UIViewController, NoError> { get }
+
+//    var user: Signal<User, NoError> { get }
+    
 }
 
 public protocol AppDelegateViewModelType {
@@ -34,7 +36,12 @@ public protocol AppDelegateViewModelType {
 public final class AppDelegateViewModel: AppDelegateViewModelType, AppDelegateViewModelInputs, AppDelegateViewModelOutputs {
     
     init() {
-        
+//        self.user = self.applicationLaunchOptionsProperty.signal.map{ (op) -> User? in
+//                if let u = AppEnvironment.current.currentUser {
+//                    return AppEnvironment.current.apiService.user(referredBy: u.urls.url).single().map{$0.value} ?? nil
+//                }
+//                return nil
+//        }.skipNil()
     }
 
     
@@ -52,6 +59,7 @@ public final class AppDelegateViewModel: AppDelegateViewModelType, AppDelegateVi
     
 //    public let presentViewController: Signal<UIViewController, NoError>
     
+//    public let user: Signal<User, NoError>
     
     public var inputs: AppDelegateViewModelInputs { return self }
     public var outputs: AppDelegateViewModelOutputs { return self }
