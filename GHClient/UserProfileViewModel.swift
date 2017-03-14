@@ -61,9 +61,14 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
         
         let userUrl = Signal.merge(userUrl1, userUrl3)
         
+        
+        
         let user1 = userUrl.observe(on: QueueScheduler())
             .map { AppEnvironment.current.apiService.user(referredBy: $0).single()}
             .map {$0?.value}.skipNil().map { (u) -> User in
+        
+                /// This map contains side effect, need to refactor this code
+                
                 if let user = AppEnvironment.current.currentUser, user == u {
                     AppEnvironment.updateCurrentUser(u)
                 }

@@ -13,6 +13,7 @@
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : 9223372036854775807,
     "CCB02F62BD05252A9CDF3FAECA34BF4FA5882DCF" : 9223372036854775807,
     "5E7FCDF539B2F3BC45CA957A3D11B8C34E9B20E9" : 9223372036854775807,
+    "8FD8F7B1FD76A28DE77193D7D058AFD5380E5269" : 9223372036854775807,
     "956D2B21DD155C49504BB67697A67F7C5351A353" : 9223372036854775807,
     "0A5C3A6DB1EA9211CEFA5384E9882B4D710699A4" : 9223372036854775807,
     "194A7A54F3CE0138A6C320E0643B7C60F8218891" : 9223372036854775807
@@ -28,6 +29,7 @@
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : "GHClient\/ReactiveCocoa\/Carthage\/Checkouts\/ReactiveSwift\/",
     "CCB02F62BD05252A9CDF3FAECA34BF4FA5882DCF" : "GHClient\/M13ProgressSuite\/",
     "5E7FCDF539B2F3BC45CA957A3D11B8C34E9B20E9" : "GHClient\/GHAPI\/",
+    "8FD8F7B1FD76A28DE77193D7D058AFD5380E5269" : "GHClient\/Ji\/",
     "956D2B21DD155C49504BB67697A67F7C5351A353" : "GHClient\/ReactiveCocoa\/Carthage\/Checkouts\/Result\/",
     "0A5C3A6DB1EA9211CEFA5384E9882B4D710699A4" : "GHClient\/Runes\/",
     "194A7A54F3CE0138A6C320E0643B7C60F8218891" : "GHClient\/Curry\/"
@@ -70,6 +72,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KeithPiTsui\/GHAPI.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5E7FCDF539B2F3BC45CA957A3D11B8C34E9B20E9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/honghaoz\/Ji.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8FD8F7B1FD76A28DE77193D7D058AFD5380E5269"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/antitypical\/Result.git",

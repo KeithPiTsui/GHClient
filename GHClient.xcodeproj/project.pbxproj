@@ -99,7 +99,11 @@
 		0EA044981E764F0A00643EBA /* Readme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA044971E764F0A00643EBA /* Readme.storyboard */; };
 		0EA044CD1E764F4A00643EBA /* ReadmeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044CC1E764F4A00643EBA /* ReadmeViewController.swift */; };
 		0EA044CF1E76506700643EBA /* ReadmeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044CE1E76506700643EBA /* ReadmeViewModel.swift */; };
+		0EA044D51E76884500643EBA /* ActivitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D41E76884500643EBA /* ActivitiesViewModel.swift */; };
+		0EA044D71E76893E00643EBA /* ActivitiesWatchingDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D61E76893E00643EBA /* ActivitiesWatchingDatasource.swift */; };
+		0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D81E76897D00643EBA /* ActivitiesEventDatasource.swift */; };
 		0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */; };
+		0ECE8A151E77A776001FE48B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A141E77A776001FE48B /* BaseTableViewCell.swift */; };
 		0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460D1E69500900017D28 /* MenuDataSource.swift */; };
 		0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */; };
 		0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6464B1E6950E700017D28 /* ValueCell.swift */; };
@@ -639,6 +643,55 @@
 			remoteGlobalIDString = 0E75C5961BE3CA7900844634;
 			remoteInfo = "SlideMenuControllerSwift-iOS";
 		};
+		0ECE8A531E77C590001FE48B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E43D74D61B8FBBBF00702114;
+			remoteInfo = "Ji iOS";
+		};
+		0ECE8A551E77C590001FE48B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E43A4D831BD838FC003CB3D7;
+			remoteInfo = "Ji OSX";
+		};
+		0ECE8A571E77C590001FE48B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E43A4E241BD842B6003CB3D7;
+			remoteInfo = "Ji tvOS";
+		};
+		0ECE8A591E77C590001FE48B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E43A4DDE1BD83FBF003CB3D7;
+			remoteInfo = "Ji watchOS";
+		};
+		0ECE8A5B1E77C590001FE48B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E43D75061B8FE82100702114;
+			remoteInfo = "Ji iOS Tests";
+		};
+		0ECE8A5D1E77C590001FE48B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E43A4D8C1BD838FD003CB3D7;
+			remoteInfo = "Ji OSX Tests";
+		};
+		0ECE8A5F1E77C590001FE48B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E43A4E2D1BD842B6003CB3D7;
+			remoteInfo = "Ji tvOS Tests";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -750,7 +803,12 @@
 		0EA044971E764F0A00643EBA /* Readme.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Readme.storyboard; sourceTree = "<group>"; };
 		0EA044CC1E764F4A00643EBA /* ReadmeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeViewController.swift; sourceTree = "<group>"; };
 		0EA044CE1E76506700643EBA /* ReadmeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeViewModel.swift; sourceTree = "<group>"; };
+		0EA044D41E76884500643EBA /* ActivitiesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesViewModel.swift; sourceTree = "<group>"; };
+		0EA044D61E76893E00643EBA /* ActivitiesWatchingDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesWatchingDatasource.swift; sourceTree = "<group>"; };
+		0EA044D81E76897D00643EBA /* ActivitiesEventDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesEventDatasource.swift; sourceTree = "<group>"; };
 		0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeCollectionViewCell.swift; sourceTree = "<group>"; };
+		0ECE8A141E77A776001FE48B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		0ECE8A491E77C590001FE48B /* Ji.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ji.xcodeproj; path = Ji/Ji.xcodeproj; sourceTree = "<group>"; };
 		0ED6460D1E69500900017D28 /* MenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
 		0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
 		0ED6464B1E6950E700017D28 /* ValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCell.swift; sourceTree = "<group>"; };
@@ -841,6 +899,7 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0ECE8A491E77C590001FE48B /* Ji.xcodeproj */,
 				0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */,
 				0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */,
 				0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */,
@@ -1001,13 +1060,13 @@
 				0E4B40BF1E70456C004144DC /* DiscoveryViewController.swift */,
 				0E94F3291E65206000E962B6 /* LoginViewController.swift */,
 				0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */,
+				0EA044CC1E764F4A00643EBA /* ReadmeViewController.swift */,
+				0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */,
 				0E50AA421E6849500002A40D /* RootSplitViewController.swift */,
 				0E4B40B91E703C1D004144DC /* RootTabBarViewController.swift */,
 				0E7B7BF01E6EB02C00D50C95 /* SearchFilterViewController.swift */,
 				0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */,
 				0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */,
-				0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */,
-				0EA044CC1E764F4A00643EBA /* ReadmeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1015,16 +1074,17 @@
 		0E94F2FD1E651C2C00E962B6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0EA044D41E76884500643EBA /* ActivitiesViewModel.swift */,
 				0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */,
 				0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */,
 				0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */,
-				0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */,
-				0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */,
-				0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */,
-				0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */,
-				0E4B40BB1E703C4E004144DC /* RootTabBarViewModel.swift */,
-				0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */,
 				0EA044CE1E76506700643EBA /* ReadmeViewModel.swift */,
+				0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */,
+				0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */,
+				0E4B40BB1E703C4E004144DC /* RootTabBarViewModel.swift */,
+				0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */,
+				0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */,
+				0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1109,6 +1169,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0ECE8A4A1E77C590001FE48B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0ECE8A541E77C590001FE48B /* Ji.framework */,
+				0ECE8A561E77C590001FE48B /* Ji.framework */,
+				0ECE8A581E77C590001FE48B /* Ji.framework */,
+				0ECE8A5A1E77C590001FE48B /* Ji.framework */,
+				0ECE8A5C1E77C590001FE48B /* Ji iOS Tests.xctest */,
+				0ECE8A5E1E77C590001FE48B /* Ji OSX Tests.xctest */,
+				0ECE8A601E77C590001FE48B /* Ji tvOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0ED645D91E694FF400017D28 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -1122,6 +1196,8 @@
 				0E7B7BF41E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift */,
 				0E7B7BF61E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift */,
 				0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */,
+				0EA044D61E76893E00643EBA /* ActivitiesWatchingDatasource.swift */,
+				0EA044D81E76897D00643EBA /* ActivitiesEventDatasource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -1141,6 +1217,7 @@
 				0E5BF8B91E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift */,
 				0E5BF8BB1E73B31400EDD841 /* LabelOnlyTableViewCell.swift */,
 				0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */,
+				0ECE8A141E77A776001FE48B /* BaseTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1251,6 +1328,10 @@
 				{
 					ProductGroup = 0E94F2CA1E651B2A00E962B6 /* Products */;
 					ProjectRef = 0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */;
+				},
+				{
+					ProductGroup = 0ECE8A4A1E77C590001FE48B /* Products */;
+					ProjectRef = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
 				},
 				{
 					ProductGroup = 0E94F5AD1E65756C00E962B6 /* Products */;
@@ -1728,6 +1809,55 @@
 			remoteRef = 0E94F5C71E6587D700E962B6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		0ECE8A541E77C590001FE48B /* Ji.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Ji.framework;
+			remoteRef = 0ECE8A531E77C590001FE48B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0ECE8A561E77C590001FE48B /* Ji.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Ji.framework;
+			remoteRef = 0ECE8A551E77C590001FE48B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0ECE8A581E77C590001FE48B /* Ji.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Ji.framework;
+			remoteRef = 0ECE8A571E77C590001FE48B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0ECE8A5A1E77C590001FE48B /* Ji.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Ji.framework;
+			remoteRef = 0ECE8A591E77C590001FE48B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0ECE8A5C1E77C590001FE48B /* Ji iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Ji iOS Tests.xctest";
+			remoteRef = 0ECE8A5B1E77C590001FE48B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0ECE8A5E1E77C590001FE48B /* Ji OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Ji OSX Tests.xctest";
+			remoteRef = 0ECE8A5D1E77C590001FE48B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0ECE8A601E77C590001FE48B /* Ji tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Ji tvOS Tests.xctest";
+			remoteRef = 0ECE8A5F1E77C590001FE48B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1769,6 +1899,7 @@
 				0E4B40BC1E703C4E004144DC /* RootTabBarViewModel.swift in Sources */,
 				0E9EBD181E71000600D3E5A9 /* Image.swift in Sources */,
 				0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */,
+				0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */,
 				0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
 				0E7B7BFB1E6EF71E00D50C95 /* NumberRangeCollectionViewCell.swift in Sources */,
@@ -1782,6 +1913,7 @@
 				0E9EBD4D1E71002600D3E5A9 /* Strings.swift in Sources */,
 				0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */,
 				0E7B7BEB1E6E93A100D50C95 /* SearchUserTableViewCell.swift in Sources */,
+				0ECE8A151E77A776001FE48B /* BaseTableViewCell.swift in Sources */,
 				0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */,
 				0E94F3221E651CBA00E962B6 /* UIViewController-Preparation.swift in Sources */,
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
@@ -1813,7 +1945,9 @@
 				0E9EBD4F1E7100FA00D3E5A9 /* LocalizedString.swift in Sources */,
 				0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
+				0EA044D51E76884500643EBA /* ActivitiesViewModel.swift in Sources */,
 				0EECF63A1E7047B2009600BB /* Colors.swift in Sources */,
+				0EA044D71E76893E00643EBA /* ActivitiesWatchingDatasource.swift in Sources */,
 				0E7B7BF51E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift in Sources */,
 				0E7B7BF31E6EB03B00D50C95 /* SearchFilterViewModel.swift in Sources */,
 				0ED6464E1E695BCD00017D28 /* UIView-Extensions.swift in Sources */,

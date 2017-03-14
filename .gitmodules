@@ -34,3 +34,6 @@
 [submodule "AlamofireImage"]
 	path = AlamofireImage
 	url = https://github.com/Alamofire/AlamofireImage.git
+[submodule "Ji"]
+	path = Ji
+	url = https://github.com/honghaoz/Ji.git

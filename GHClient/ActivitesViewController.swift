@@ -14,26 +14,62 @@ internal final class ActivitesViewController: UIViewController {
         return Storyboard.Activities.instantiate(ActivitesViewController.self)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    fileprivate let viewModel: ActivitesViewModelType = ActivitesViewModel()
+    fileprivate let watchingDatasource = ActivitesWatchingDatasource()
+    fileprivate let eventDatasource = ActivitesEventDatasource()
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segment: UISegmentedControl!
+    
+    @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
+        self.viewModel.inputs.segmentChanged(index: sender.selectedSegmentIndex)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    internal func set(initial segment: ActivitySegment) {
+        self.viewModel.inputs.set(segment: segment)
     }
-    */
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.dataSource = self.watchingDatasource
+        self.viewModel.inputs.viewDidLoad()
+    }
 
+    override func bindStyles() {
+        super.bindStyles()
+    }
+    
+    override func bindViewModel() {
+        super.bindViewModel()
+        self.viewModel.outputs.events.observeForUI().observeValues { [weak self] in
+            self?.watchingDatasource.load(watchings: $0)
+            self?.tableView.reloadData()
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
