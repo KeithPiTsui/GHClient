@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discovery-->
+        <!--Trending Repos-->
         <scene sceneID="j0r-rQ-STy">
             <objects>
-                <viewController storyboardIdentifier="DiscoveryViewController" title="Discovery" id="xEi-rD-u9n" customClass="DiscoveryViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoveryViewController" title="Trending Repos" automaticallyAdjustsScrollViewInsets="NO" id="xEi-rD-u9n" customClass="DiscoveryViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6ww-ys-zyY"/>
                         <viewControllerLayoutGuide type="bottom" id="JM6-n6-h91"/>
@@ -20,15 +20,40 @@
                     <view key="view" contentMode="scaleToFill" id="fFJ-RR-UCb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Ng-pv-Xsd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BaseTableViewCell" id="YAI-ME-AY2" customClass="BaseTableViewCell" customModule="GHClient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YAI-ME-AY2" id="e0y-tn-mkK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Ng-pv-Xsd" secondAttribute="trailing" id="73T-L8-tyR"/>
+                            <constraint firstItem="4Ng-pv-Xsd" firstAttribute="top" secondItem="6ww-ys-zyY" secondAttribute="bottom" id="YJv-8N-Qnh"/>
+                            <constraint firstItem="4Ng-pv-Xsd" firstAttribute="leading" secondItem="fFJ-RR-UCb" secondAttribute="leading" id="b2D-yk-Ysg"/>
+                            <constraint firstItem="4Ng-pv-Xsd" firstAttribute="bottom" secondItem="JM6-n6-h91" secondAttribute="top" id="jfx-mA-2PN"/>
+                        </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="tableView" destination="4Ng-pv-Xsd" id="pjp-HR-bZv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaX-0X-bVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-866" y="41"/>
+            <point key="canvasLocation" x="-2178.4000000000001" y="90.404797601199405"/>
         </scene>
     </scenes>
 </document>

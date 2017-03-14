@@ -104,6 +104,8 @@
 		0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D81E76897D00643EBA /* ActivitiesEventDatasource.swift */; };
 		0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */; };
 		0ECE8A151E77A776001FE48B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A141E77A776001FE48B /* BaseTableViewCell.swift */; };
+		0ECE8A6B1E77FEF2001FE48B /* DiscoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */; };
+		0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */; };
 		0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460D1E69500900017D28 /* MenuDataSource.swift */; };
 		0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */; };
 		0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6464B1E6950E700017D28 /* ValueCell.swift */; };
@@ -809,6 +811,8 @@
 		0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0ECE8A141E77A776001FE48B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		0ECE8A491E77C590001FE48B /* Ji.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ji.xcodeproj; path = Ji/Ji.xcodeproj; sourceTree = "<group>"; };
+		0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewModel.swift; sourceTree = "<group>"; };
+		0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryDatasource.swift; sourceTree = "<group>"; };
 		0ED6460D1E69500900017D28 /* MenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
 		0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
 		0ED6464B1E6950E700017D28 /* ValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCell.swift; sourceTree = "<group>"; };
@@ -1085,6 +1089,7 @@
 				0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */,
 				0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */,
 				0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */,
+				0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1198,6 +1203,7 @@
 				0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */,
 				0EA044D61E76893E00643EBA /* ActivitiesWatchingDatasource.swift */,
 				0EA044D81E76897D00643EBA /* ActivitiesEventDatasource.swift */,
+				0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -1902,6 +1908,7 @@
 				0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */,
 				0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
+				0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */,
 				0E7B7BFB1E6EF71E00D50C95 /* NumberRangeCollectionViewCell.swift in Sources */,
 				0E94F3211E651CBA00E962B6 /* Storyboard.swift in Sources */,
 				0E238F4B1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift in Sources */,
@@ -1934,6 +1941,7 @@
 				0E4B40C01E70456C004144DC /* DiscoveryViewController.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
+				0ECE8A6B1E77FEF2001FE48B /* DiscoveryViewModel.swift in Sources */,
 				0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */,
 				0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */,
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,

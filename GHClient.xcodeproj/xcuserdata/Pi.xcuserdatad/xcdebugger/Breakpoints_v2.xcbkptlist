@@ -6,48 +6,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GHAPI/GHAPITests/GHAPITests.swift"
-            timestampString = "511090994.678446"
+            filePath = "GHAPI/GHAPI/Service.swift"
+            timestampString = "511181980.144843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
-            landmarkName = "testEventJsonEncode()"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "trendingRepository(of:with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GHAPI/GHAPI/GithubTrendingCraper.swift"
-            timestampString = "511167362.462344"
+            filePath = "GHClient/DiscoveryDatasource.swift"
+            timestampString = "511182016.775883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "testJi()"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GHAPI/GHAPITests/GHAPITests.swift"
-            timestampString = "511167365.350405"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "testJiFramework()"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "configureCell(tableCell:withValue:for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
