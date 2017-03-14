@@ -28,6 +28,7 @@ internal final class DiscoveryViewController: UIViewController {
         super.viewDidLoad()
 
         self.tableView.dataSource = self.datasource
+        self.tableView.delegate = self
         
         self.viewModel.inputs.viewDidLoad()
     }
@@ -49,3 +50,39 @@ internal final class DiscoveryViewController: UIViewController {
         }
     }
 }
+
+
+extension DiscoveryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

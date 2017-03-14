@@ -126,8 +126,8 @@ internal final class LoginViewController: UIViewController {
             self?.pushTokenTF.text = $0.pushToken
         }
         
-        self.viewModel.outputs.accountSaved.observeValues {
-            self.dismiss(animated: true, completion: nil)
+        self.viewModel.outputs.accountSaved.observeValues { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
         }
     }
 }

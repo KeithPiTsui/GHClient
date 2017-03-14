@@ -14,6 +14,7 @@
 		0E238F4D1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */; };
 		0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; };
 		0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E3E02E71E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3E02E61E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift */; };
 		0E4B40A31E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */; };
 		0E4B40B81E703BEB004144DC /* RootTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */; };
 		0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B40B91E703C1D004144DC /* RootTabBarViewController.swift */; };
@@ -739,6 +740,7 @@
 		0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileOrganizationTableViewCell.swift; sourceTree = "<group>"; };
 		0E3E02A41E7806F800C1CD84 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		0E3E02A51E7806F800C1CD84 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		0E3E02E61E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularTextFieldCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
 		0E4B40B91E703C1D004144DC /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
@@ -1239,6 +1241,7 @@
 				0E5BF8BB1E73B31400EDD841 /* LabelOnlyTableViewCell.swift */,
 				0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */,
 				0ECE8A141E77A776001FE48B /* BaseTableViewCell.swift */,
+				0E3E02E61E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1986,6 +1989,7 @@
 				0EECF63C1E7047C1009600BB /* TabBarItemStyles.swift in Sources */,
 				0E5BF8BC1E73B31400EDD841 /* LabelOnlyTableViewCell.swift in Sources */,
 				0ED646531E69901200017D28 /* MenuItem.swift in Sources */,
+				0E3E02E71E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift in Sources */,
 				0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */,
 				0EA044CF1E76506700643EBA /* ReadmeViewModel.swift in Sources */,
 				0ED646511E695C4300017D28 /* MenuGeneralCell.swift in Sources */,
