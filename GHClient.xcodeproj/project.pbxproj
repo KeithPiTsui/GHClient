@@ -12,6 +12,8 @@
 		0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F481E6BD669001F493A /* UserProfileOrganizationDatasource.swift */; };
 		0E238F4B1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F4A1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift */; };
 		0E238F4D1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */; };
+		0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; };
+		0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E4B40A31E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */; };
 		0E4B40B81E703BEB004144DC /* RootTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */; };
 		0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B40B91E703C1D004144DC /* RootTabBarViewController.swift */; };
@@ -120,6 +122,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E3E02E41E78071E00C1CD84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E43D74D51B8FBBBF00702114;
+			remoteInfo = "Ji iOS";
+		};
 		0E50AA0F1E67FA3F0002A40D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */;
@@ -715,6 +724,7 @@
 				0E50AA0E1E67FA3F0002A40D /* SlideMenuControllerSwift.framework in Embed Frameworks */,
 				0E94F2E31E651B7E00E962B6 /* ReactiveCocoa.framework in Embed Frameworks */,
 				0E94F2E71E651B7E00E962B6 /* ReactiveExtensions.framework in Embed Frameworks */,
+				0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,6 +737,8 @@
 		0E238F481E6BD669001F493A /* UserProfileOrganizationDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileOrganizationDatasource.swift; sourceTree = "<group>"; };
 		0E238F4A1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEventTableViewCell.swift; sourceTree = "<group>"; };
 		0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileOrganizationTableViewCell.swift; sourceTree = "<group>"; };
+		0E3E02A41E7806F800C1CD84 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		0E3E02A51E7806F800C1CD84 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularTextFieldCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
 		0E4B40B91E703C1D004144DC /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
@@ -840,6 +852,7 @@
 				0E94F2D21E651B7E00E962B6 /* GHAPI.framework in Frameworks */,
 				0E94F2DE1E651B7E00E962B6 /* ReactiveSwift.framework in Frameworks */,
 				0E94F2F61E651B7E00E962B6 /* Argo.framework in Frameworks */,
+				0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */,
 				0E50AA0D1E67FA3F0002A40D /* SlideMenuControllerSwift.framework in Frameworks */,
 				0E94F2E21E651B7E00E962B6 /* ReactiveCocoa.framework in Frameworks */,
 				0E94F2E61E651B7E00E962B6 /* ReactiveExtensions.framework in Frameworks */,
@@ -903,6 +916,8 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E3E02A41E7806F800C1CD84 /* libxml2.2.tbd */,
+				0E3E02A51E7806F800C1CD84 /* libxml2.tbd */,
 				0ECE8A491E77C590001FE48B /* Ji.xcodeproj */,
 				0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */,
 				0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */,
@@ -1264,6 +1279,7 @@
 				0E94F2F91E651B7E00E962B6 /* PBXTargetDependency */,
 				0E94F5BC1E65758400E962B6 /* PBXTargetDependency */,
 				0E50AA101E67FA3F0002A40D /* PBXTargetDependency */,
+				0E3E02E51E78071E00C1CD84 /* PBXTargetDependency */,
 			);
 			name = GHClient;
 			productName = GHClient;
@@ -1987,6 +2003,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0E3E02E51E78071E00C1CD84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Ji iOS";
+			targetProxy = 0E3E02E41E78071E00C1CD84 /* PBXContainerItemProxy */;
+		};
 		0E50AA101E67FA3F0002A40D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SlideMenuControllerSwift-iOS";
