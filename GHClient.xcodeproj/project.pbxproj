@@ -38,6 +38,14 @@
 		0E5BF8BE1E73B38A00EDD841 /* RegularBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */; };
 		0E5BF8C01E73B40400EDD841 /* RepositoryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */; };
 		0E5BF8C21E73B47E00EDD841 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */; };
+		0E7896051E798BE100DB2098 /* Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7895FD1E798BE100DB2098 /* Guitar.swift */; };
+		0E7896061E798BE100DB2098 /* GuitarBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7895FE1E798BE100DB2098 /* GuitarBoolean.swift */; };
+		0E7896071E798BE100DB2098 /* GuitarCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7895FF1E798BE100DB2098 /* GuitarCase.swift */; };
+		0E7896081E798BE100DB2098 /* GuitarCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7896001E798BE100DB2098 /* GuitarCharacter.swift */; };
+		0E7896091E798BE100DB2098 /* GuitarChord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7896011E798BE100DB2098 /* GuitarChord.swift */; };
+		0E78960A1E798BE100DB2098 /* GuitarNSRangeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7896021E798BE100DB2098 /* GuitarNSRangeExtension.swift */; };
+		0E78960B1E798BE100DB2098 /* GuitarPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7896031E798BE100DB2098 /* GuitarPadding.swift */; };
+		0E78960C1E798BE100DB2098 /* GuitarTrimming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7896041E798BE100DB2098 /* GuitarTrimming.swift */; };
 		0E7AF42A1E724E990001C425 /* UICollectionView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7AF4291E724E990001C425 /* UICollectionView-Extension.swift */; };
 		0E7B7BA81E6E572E00D50C95 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E7B7BA71E6E572E00D50C95 /* Search.storyboard */; };
 		0E7B7BDD1E6E575800D50C95 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */; };
@@ -701,6 +709,14 @@
 		0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularBaseTableViewCell.swift; sourceTree = "<group>"; };
 		0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDatasource.swift; sourceTree = "<group>"; };
 		0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
+		0E7895FD1E798BE100DB2098 /* Guitar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guitar.swift; sourceTree = "<group>"; };
+		0E7895FE1E798BE100DB2098 /* GuitarBoolean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarBoolean.swift; sourceTree = "<group>"; };
+		0E7895FF1E798BE100DB2098 /* GuitarCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarCase.swift; sourceTree = "<group>"; };
+		0E7896001E798BE100DB2098 /* GuitarCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarCharacter.swift; sourceTree = "<group>"; };
+		0E7896011E798BE100DB2098 /* GuitarChord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarChord.swift; sourceTree = "<group>"; };
+		0E7896021E798BE100DB2098 /* GuitarNSRangeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarNSRangeExtension.swift; sourceTree = "<group>"; };
+		0E7896031E798BE100DB2098 /* GuitarPadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarPadding.swift; sourceTree = "<group>"; };
+		0E7896041E798BE100DB2098 /* GuitarTrimming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarTrimming.swift; sourceTree = "<group>"; };
 		0E7AF4291E724E990001C425 /* UICollectionView-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView-Extension.swift"; sourceTree = "<group>"; };
 		0E7B7BA71E6E572E00D50C95 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -813,6 +829,21 @@
 				0EDB2CC51E79104A007103A7 /* EventTableViewCell.swift */,
 			);
 			name = EventCells;
+			sourceTree = "<group>";
+		};
+		0E7895FC1E798BCF00DB2098 /* Guitar */ = {
+			isa = PBXGroup;
+			children = (
+				0E7895FD1E798BE100DB2098 /* Guitar.swift */,
+				0E7895FE1E798BE100DB2098 /* GuitarBoolean.swift */,
+				0E7895FF1E798BE100DB2098 /* GuitarCase.swift */,
+				0E7896001E798BE100DB2098 /* GuitarCharacter.swift */,
+				0E7896011E798BE100DB2098 /* GuitarChord.swift */,
+				0E7896021E798BE100DB2098 /* GuitarNSRangeExtension.swift */,
+				0E7896031E798BE100DB2098 /* GuitarPadding.swift */,
+				0E7896041E798BE100DB2098 /* GuitarTrimming.swift */,
+			);
+			name = Guitar;
 			sourceTree = "<group>";
 		};
 		0E94F1E01E65189900E962B6 = {
@@ -1171,6 +1202,7 @@
 		0EDB2CBC1E7909EF007103A7 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				0E7895FC1E798BCF00DB2098 /* Guitar */,
 				0EDB2CBD1E7909FE007103A7 /* TTTAttributedLabel */,
 			);
 			name = Vendor;
@@ -1826,6 +1858,7 @@
 			files = (
 				0E5BF8C21E73B47E00EDD841 /* RepositoryViewModel.swift in Sources */,
 				0E4B40BC1E703C4E004144DC /* RootTabBarViewModel.swift in Sources */,
+				0E7896071E798BE100DB2098 /* GuitarCase.swift in Sources */,
 				0E9EBD181E71000600D3E5A9 /* Image.swift in Sources */,
 				0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */,
 				0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */,
@@ -1834,8 +1867,10 @@
 				0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */,
 				0E7B7BFB1E6EF71E00D50C95 /* NumberRangeCollectionViewCell.swift in Sources */,
 				0E94F3211E651CBA00E962B6 /* Storyboard.swift in Sources */,
+				0E7896061E798BE100DB2098 /* GuitarBoolean.swift in Sources */,
 				0E238F4B1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift in Sources */,
 				0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */,
+				0E78960A1E798BE100DB2098 /* GuitarNSRangeExtension.swift in Sources */,
 				0E5BF8BE1E73B38A00EDD841 /* RegularBaseTableViewCell.swift in Sources */,
 				0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */,
 				0E7B7BE91E6E890000D50C95 /* SearchViewModel.swift in Sources */,
@@ -1857,6 +1892,7 @@
 				0E238F4D1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift in Sources */,
 				0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */,
 				0E5BF8C01E73B40400EDD841 /* RepositoryDatasource.swift in Sources */,
+				0E7896051E798BE100DB2098 /* Guitar.swift in Sources */,
 				0EDB2CC61E79104A007103A7 /* EventTableViewCell.swift in Sources */,
 				0E7AF42A1E724E990001C425 /* UICollectionView-Extension.swift in Sources */,
 				0E238F471E6BD60B001F493A /* UserProfileEventDatasource.swift in Sources */,
@@ -1872,19 +1908,23 @@
 				0E7B7BF11E6EB02C00D50C95 /* SearchFilterViewController.swift in Sources */,
 				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
 				0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */,
+				0E78960B1E798BE100DB2098 /* GuitarPadding.swift in Sources */,
 				0E7B7BE51E6E884800D50C95 /* SearchUserDataSource.swift in Sources */,
 				0EA044CD1E764F4A00643EBA /* ReadmeViewController.swift in Sources */,
 				0E9EBD4F1E7100FA00D3E5A9 /* LocalizedString.swift in Sources */,
+				0E78960C1E798BE100DB2098 /* GuitarTrimming.swift in Sources */,
 				0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
 				0EA044D51E76884500643EBA /* ActivitiesViewModel.swift in Sources */,
 				0EECF63A1E7047B2009600BB /* Colors.swift in Sources */,
 				0E7B7BF51E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift in Sources */,
+				0E7896081E798BE100DB2098 /* GuitarCharacter.swift in Sources */,
 				0E7B7BF31E6EB03B00D50C95 /* SearchFilterViewModel.swift in Sources */,
 				0ED6464E1E695BCD00017D28 /* UIView-Extensions.swift in Sources */,
 				0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */,
 				0E84B5981E67AAF000C5ADF7 /* MenuViewController.swift in Sources */,
 				0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */,
+				0E7896091E798BE100DB2098 /* GuitarChord.swift in Sources */,
 				0E84B59C1E67AB2E00C5ADF7 /* Environment.swift in Sources */,
 				0E5BF8BA1E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift in Sources */,
 				0E7B7BF71E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift in Sources */,

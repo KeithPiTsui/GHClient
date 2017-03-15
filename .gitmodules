@@ -37,3 +37,6 @@
 [submodule "Ji"]
 	path = Ji
 	url = https://github.com/honghaoz/Ji.git
+[submodule "Guitar"]
+	path = Guitar
+	url = https://github.com/ArtSabintsev/Guitar.git

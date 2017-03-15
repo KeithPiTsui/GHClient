@@ -27,6 +27,7 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
 
   func configureWith(value: GHEvent) {
     self.timestamp.text = value.created_at.ISO8601DateRepresentation
+    self.eventDesc.text = value.id
     if let payload = value.payload {
       self.installPayloadDisplay(with: payload)
     } else {
@@ -39,11 +40,8 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
     NSLayoutConstraint.deactivate(displayConstraints)
     /// Remove previous view
     self.payloadDisplay.subviews
-      .forEach { (subview) in
-        subview.removeFromSuperview()
-    }
+      .forEach {$0.removeFromSuperview()}
   }
-
 
   fileprivate func installPayloadDisplay(with payload: EventPayloadType) {
     self.uninstallPayloadDisplay()
@@ -75,34 +73,41 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
   }
 
   internal static func estimatedHeight(with payload: EventPayloadType) -> CGFloat {
-    return 130 + view(for: payload).frame.height
+    return 105 + view(for: payload).frame.height
   }
 }
 
 extension EventTableViewCell {
   internal static func view(for payload: EventPayloadType) -> UIView {
-    let height: CGFloat
-    let color: UIColor
+
+    let payloadView: UIView
     switch payload {
     case let (forkPayload as ForkEventPayload):
-      height = 40
-      color = UIColor.black
+      let lab = UILabel(frame: UIScreen.main.bounds)
+      lab.numberOfLines = 0
+      lab.text = forkPayload.forkee.description ?? ""
+      lab.sizeToFit()
+      payloadView = lab
     case let (createPayload as CreateEventPayload):
-      height = 30
-      color = UIColor.brown
+      payloadView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 30))
+      payloadView.backgroundColor = UIColor.brown
     case let (pushPayload as PushEventPayload):
-      height = 50
-      color = UIColor.red
+      let str = pushPayload.commits.reduce("", { (str, commit) -> String in
+        let sha = commit.sha?.last(8) ?? ""
+        let msg  = commit.message
+        return str + "\n" + sha + " " + msg
+      }).trimmingCharacters(in: .whitespacesAndNewlines)
+      let lab = UILabel(frame: UIScreen.main.bounds)
+      lab.numberOfLines = 0
+      lab.font = UIFont.systemFont(ofSize: 12)
+      lab.text = str
+      lab.sizeToFit()
+      payloadView = lab
     case let (watchPayload as WatchEventPayload):
-      height = 160
-      color = UIColor.cyan
+      payloadView = UIView(frame: CGRect.zero)
     default:
-      height = 20
-      color = UIColor.blue
+      payloadView = UIView(frame: CGRect.zero)
     }
-    let payloadView = UIView()
-    payloadView.backgroundColor = color
-    payloadView.frame = CGRect(x: 0, y: 0, width: 0, height: height)
     return payloadView
   }
 }
