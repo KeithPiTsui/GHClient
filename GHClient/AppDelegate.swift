@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SlideMenuControllerSwift
 
 @UIApplicationMain
 internal final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,6 +32,6 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
     return self.viewModel.outputs.applicationDidFinishLaunchingReturnValue
   }
   private func bindViewModel() {
-    //        self.viewModel.outputs.user.observeValues {AppEnvironment.updateCurrentUser($0)}
+    
   }
 }

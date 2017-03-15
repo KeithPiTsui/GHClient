@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GHAPI
 
 internal final class ActivitesViewController: UIViewController {
 
@@ -15,7 +16,6 @@ internal final class ActivitesViewController: UIViewController {
   }
 
   fileprivate let viewModel: ActivitesViewModelType = ActivitesViewModel()
-  fileprivate let watchingDatasource = ActivitesWatchingDatasource()
   fileprivate let eventDatasource = ActivitesEventDatasource()
 
   @IBOutlet weak var tableView: UITableView!
@@ -31,7 +31,8 @@ internal final class ActivitesViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.tableView.dataSource = self.watchingDatasource
+    self.tableView.dataSource = self.eventDatasource
+    self.tableView.delegate = self
     self.viewModel.inputs.viewDidLoad()
   }
 
@@ -42,13 +43,22 @@ internal final class ActivitesViewController: UIViewController {
   override func bindViewModel() {
     super.bindViewModel()
     self.viewModel.outputs.events.observeForUI().observeValues { [weak self] in
-      self?.watchingDatasource.load(watchings: $0)
+      self?.eventDatasource.load(watchings: $0)
       self?.tableView.reloadData()
     }
   }
 }
 
-
+extension ActivitesViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    var height: CGFloat = 120
+    if let value = self.eventDatasource[indexPath] as? GHEvent,
+      let payload = value.payload {
+      height = EventTableViewCell.estimatedHeight(with: payload)
+    }
+    return height
+  }
+}
 
 
 
