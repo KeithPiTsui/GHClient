@@ -9,5 +9,4 @@
 import Foundation
 
 internal final class ActivitesEventDatasource: ValueCellDataSource {
-    
 }

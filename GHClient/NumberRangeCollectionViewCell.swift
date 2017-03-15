@@ -11,60 +11,60 @@ import GHAPI
 
 
 internal final class NumberRangeCollectionViewCell: UICollectionViewCell, ValueCell {
-    
-    internal var section: Int = 0
-    internal var row: Int = 0
-    internal weak var dataSource: ValueCellDataSource? = nil
-    
-    internal func configureWith(value: ComparativeArgument<UInt>) {
-        switch value {
-        case .none:
-            self.leftNumberTF.text = nil
-            self.rightNumberTF.text = nil
-        default:
-            break
-        }
-        
-        if let leftNum = value.lower {
-            self.leftNumberTF.text = "\(leftNum)"
-        }
-        if let rightNum = value.upper {
-            self.rightNumberTF.text = "\(rightNum)"
-        }
+
+  internal var section: Int = 0
+  internal var row: Int = 0
+  internal weak var dataSource: ValueCellDataSource? = nil
+
+  internal func configureWith(value: ComparativeArgument<UInt>) {
+    switch value {
+    case .none:
+      self.leftNumberTF.text = nil
+      self.rightNumberTF.text = nil
+    default:
+      break
     }
-    
-    @IBOutlet weak var leftNumberTF: UITextField!
-    
-    @IBOutlet weak var rightNumberTF: UITextField!
+
+    if let leftNum = value.lower {
+      self.leftNumberTF.text = "\(leftNum)"
+    }
+    if let rightNum = value.upper {
+      self.rightNumberTF.text = "\(rightNum)"
+    }
+  }
+
+  @IBOutlet weak var leftNumberTF: UITextField!
+
+  @IBOutlet weak var rightNumberTF: UITextField!
 }
 
 extension NumberRangeCollectionViewCell: UITextFieldDelegate {
-    internal func textFieldDidEndEditing(_ textField: UITextField) {
-        print("textFieldDidEndEditing")
-        let leftNum = UInt(leftNumberTF.text ?? "")
-        let rightNum = UInt(rightNumberTF.text ?? "")
-        
-        var ca: ComparativeArgument<UInt>? = nil
-        switch (leftNum, rightNum) {
-        case let (l?, r?):
-            if l == r {
-                ca = ComparativeArgument.equal(l)
-            } else {
-                ca = ComparativeArgument.between(l, r)
-            }
-        case let (l?, nil):
-            ca = ComparativeArgument.biggerAndEqualThan(l)
-        case let (nil, r?):
-            ca = ComparativeArgument.lessAndEqualThan(r)
-        default:
-            break
-        }
-        guard let ca0 = ca else { return }
-        
-        self.dataSource?.set(value: ca0,
-                             cellClass: NumberRangeCollectionViewCell.self,
-                             inSection: self.section,
-                             row: self.row)
-        
+  internal func textFieldDidEndEditing(_ textField: UITextField) {
+    print("textFieldDidEndEditing")
+    let leftNum = UInt(leftNumberTF.text ?? "")
+    let rightNum = UInt(rightNumberTF.text ?? "")
+
+    var ca: ComparativeArgument<UInt>? = nil
+    switch (leftNum, rightNum) {
+    case let (l?, r?):
+      if l == r {
+        ca = ComparativeArgument.equal(l)
+      } else {
+        ca = ComparativeArgument.between(l, r)
+      }
+    case let (l?, nil):
+      ca = ComparativeArgument.biggerAndEqualThan(l)
+    case let (nil, r?):
+      ca = ComparativeArgument.lessAndEqualThan(r)
+    default:
+      break
     }
+    guard let ca0 = ca else { return }
+
+    self.dataSource?.set(value: ca0,
+                         cellClass: NumberRangeCollectionViewCell.self,
+                         inSection: self.section,
+                         row: self.row)
+
+  }
 }

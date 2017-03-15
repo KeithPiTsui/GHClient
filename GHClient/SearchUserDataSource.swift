@@ -10,20 +10,20 @@ import UIKit
 import GHAPI
 
 internal final class SearchUserDataSource: ValueCellDataSource {
-    
-    internal func load(users: [User]) {
-        self.set(values: users,
-                 cellClass: SearchUserTableViewCell.self,
-                 inSection: 0)
-        
+
+  internal func load(users: [User]) {
+    self.set(values: users,
+             cellClass: SearchUserTableViewCell.self,
+             inSection: 0)
+
+  }
+
+  override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
+    switch (cell, value) {
+    case let (cell as SearchUserTableViewCell, item as User):
+      cell.configureWith(value: item)
+    default:
+      assertionFailure("Unrecognized combo: \(cell), \(value)")
     }
-    
-    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
-        switch (cell, value) {
-        case let (cell as SearchUserTableViewCell, item as User):
-            cell.configureWith(value: item)
-        default:
-            assertionFailure("Unrecognized combo: \(cell), \(value)")
-        }
-    }
+  }
 }

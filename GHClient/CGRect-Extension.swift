@@ -9,7 +9,7 @@
 import UIKit
 
 extension CGRect {
-    internal var leftConner: CGPoint {
-        return CGPoint(x: origin.x, y: origin.y + height)
-    }
+  internal var leftConner: CGPoint {
+    return CGPoint(x: origin.x, y: origin.y + height)
+  }
 }

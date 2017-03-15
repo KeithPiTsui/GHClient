@@ -29,9 +29,9 @@ public func activityTabBarItemStyle(isLogin: Bool) -> (UITabBarItem) -> UITabBar
 }
 
 public let searchTabBarItemStyle = baseTabBarItemStyle
-    <> UITabBarItem.lens.image .~ image(named: "tabbar-icon-search")
-    <> UITabBarItem.lens.selectedImage .~ image(named: "tabbar-icon-search-selected")
-    <> UITabBarItem.lens.title %~ { _ in Strings.tabbar_search()
+  <> UITabBarItem.lens.image .~ image(named: "tabbar-icon-search")
+  <> UITabBarItem.lens.selectedImage .~ image(named: "tabbar-icon-search-selected")
+  <> UITabBarItem.lens.title %~ { _ in Strings.tabbar_search()
 }
 
 public func profileTabBarItemStyle(isLoggedIn: Bool) -> (UITabBarItem) -> UITabBarItem {

@@ -308,7 +308,7 @@ extension UIColor {
   public static var ksr_violet_600: UIColor {
     return .hex(0x212E63)
   }
-
+  
   /// 0x141F4A
   public static var ksr_violet_700: UIColor {
     return .hex(0x141F4A)

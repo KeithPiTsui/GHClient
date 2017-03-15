@@ -10,28 +10,28 @@ import UIKit
 
 internal final class IndentedAlignedLabelTableViewCell: UITableViewCell, ValueCell {
 
-    internal var section: Int = 0
-    internal var row: Int = 0
-    internal weak var dataSource: ValueCellDataSource? = nil
-    
-    @IBOutlet weak var left: UILabel!
-    @IBOutlet weak var right: UILabel!
-    
-    func configureWith(value: (String, String)) {
-        left.text = value.0
-        right.text = value.1
-    }
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+  internal var section: Int = 0
+  internal var row: Int = 0
+  internal weak var dataSource: ValueCellDataSource? = nil
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+  @IBOutlet weak var left: UILabel!
+  @IBOutlet weak var right: UILabel!
 
-        // Configure the view for the selected state
-    }
+  func configureWith(value: (String, String)) {
+    left.text = value.0
+    right.text = value.1
+  }
+
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+  }
+
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+
+    // Configure the view for the selected state
+  }
 
 }

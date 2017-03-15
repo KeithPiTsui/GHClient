@@ -1,20 +1,20 @@
 import UIKit
 
-private func swizzle(_ v: UIView.Type) {
+private func swizzle(_ view: UIView.Type) {
 
-  [(#selector(v.traitCollectionDidChange(_:)), #selector(v.ksr_traitCollectionDidChange(_:)))]
+  [(#selector(view.traitCollectionDidChange(_:)), #selector(view.ksr_traitCollectionDidChange(_:)))]
     .forEach { original, swizzled in
 
-      let originalMethod = class_getInstanceMethod(v, original)
-      let swizzledMethod = class_getInstanceMethod(v, swizzled)
+      let originalMethod = class_getInstanceMethod(view, original)
+      let swizzledMethod = class_getInstanceMethod(view, swizzled)
 
-      let didAddViewDidLoadMethod = class_addMethod(v,
+      let didAddViewDidLoadMethod = class_addMethod(view,
                                                     original,
                                                     method_getImplementation(swizzledMethod),
                                                     method_getTypeEncoding(swizzledMethod))
 
       if didAddViewDidLoadMethod {
-        class_replaceMethod(v,
+        class_replaceMethod(view,
                             swizzled,
                             method_getImplementation(originalMethod),
                             method_getTypeEncoding(originalMethod))

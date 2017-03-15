@@ -4,10 +4,10 @@ import Prelude
  Finds a localized string for a provided key and interpolates it with substitutions.
 
  - parameters:
-   - key:           The key of the string to find in a bundle.
-   - defaultValue:  Optional value to use in case a string could not be found for the provided key.
-   - substitutions: A dictionary of key/value substitutions to be made.
-   - env:           An app environment to derive the language from.
+ - key:           The key of the string to find in a bundle.
+ - defaultValue:  Optional value to use in case a string could not be found for the provided key.
+ - substitutions: A dictionary of key/value substitutions to be made.
+ - env:           An app environment to derive the language from.
 
  - returns: The localized string. If the key does not exist the `defaultValue` will be returned,
  and if that is not specified an empty string will be returned.

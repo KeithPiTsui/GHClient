@@ -16,46 +16,45 @@ import GHAPI
 
 internal final class DiscoveryViewController: UIViewController {
 
-    internal static func instantiate() -> DiscoveryViewController {
-        return Storyboard.Discovery.instantiate(DiscoveryViewController.self)
-    }
-    
-    fileprivate let viewModel: DiscoveryViewModelType = DiscoveryViewModel()
-    fileprivate let datasource = DiscoveryDatasource()
-    @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  internal static func instantiate() -> DiscoveryViewController {
+    return Storyboard.Discovery.instantiate(DiscoveryViewController.self)
+  }
 
-        self.tableView.dataSource = self.datasource
-        self.tableView.delegate = self
-        
-        self.viewModel.inputs.viewDidLoad()
+  fileprivate let viewModel: DiscoveryViewModelType = DiscoveryViewModel()
+  fileprivate let datasource = DiscoveryDatasource()
+  @IBOutlet weak var tableView: UITableView!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    self.tableView.dataSource = self.datasource
+    self.tableView.delegate = self
+
+    self.viewModel.inputs.viewDidLoad()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.viewModel.inputs.viewWillAppear(animated: animated)
+  }
+
+  override func bindStyles() {
+    super.bindStyles()
+  }
+
+  override func bindViewModel() {
+    super.bindViewModel()
+    self.viewModel.outputs.repositories.observeForUI().observeValues { [weak self] (repos) in
+      self?.datasource.load(repos: repos)
+      self?.tableView.reloadData()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.viewModel.inputs.viewWillAppear(animated: animated)
-    }
-    
-    override func bindStyles() {
-        super.bindStyles()
-    }
-    
-    override func bindViewModel() {
-        super.bindViewModel()
-        self.viewModel.outputs.repositories.observeForUI().observeValues { [weak self] (repos) in
-            self?.datasource.load(repos: repos)
-            self?.tableView.reloadData()
-        }
-    }
+  }
 }
 
-
 extension DiscoveryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 120
+  }
 }
 
 

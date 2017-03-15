@@ -9,20 +9,19 @@
 import UIKit
 
 internal final class UserProfileEventDatasource: ValueCellDataSource {
-    
-    internal func load(events: [UserProfileEventTableViewCellConfig]) {
-        self.set(values: events,
-                 cellClass: UserProfileEventTableViewCell.self,
-                 inSection: 0)
+
+  internal func load(events: [UserProfileEventTableViewCellConfig]) {
+    self.set(values: events,
+             cellClass: UserProfileEventTableViewCell.self,
+             inSection: 0)
+  }
+
+  override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
+    switch (cell, value) {
+    case let (cell as UserProfileEventTableViewCell, item as UserProfileEventTableViewCellConfig):
+      cell.configureWith(value: item)
+    default:
+      assertionFailure("Unrecognized combo: \(cell), \(value)")
     }
-    
-    
-    override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
-        switch (cell, value) {
-        case let (cell as UserProfileEventTableViewCell, item as UserProfileEventTableViewCellConfig):
-            cell.configureWith(value: item)
-        default:
-            assertionFailure("Unrecognized combo: \(cell), \(value)")
-        }
-    }
+  }
 }

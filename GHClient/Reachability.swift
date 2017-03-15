@@ -57,9 +57,9 @@ private func reachabilityFlags(forNetworkReachability networkReachability: SCNet
 
 private func reachability(forFlags flags: SCNetworkReachabilityFlags) -> Reachability {
   #if os(iOS)
-  if flags.contains(.isWWAN) {
-    return .wwan
-  }
+    if flags.contains(.isWWAN) {
+      return .wwan
+    }
   #endif
   if flags.contains(.reachable) {
     return .wifi
