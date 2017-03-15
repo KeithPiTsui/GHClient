@@ -89,7 +89,7 @@ extension EventTableViewCell {
       lab.sizeToFit()
       payloadView = lab
     case let (createPayload as CreateEventPayload):
-      payloadView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 30))
+      payloadView = UIView(frame: CGRect.zero)
       payloadView.backgroundColor = UIColor.brown
     case let (pushPayload as PushEventPayload):
       let str = pushPayload.commits.reduce("", { (str, commit) -> String in

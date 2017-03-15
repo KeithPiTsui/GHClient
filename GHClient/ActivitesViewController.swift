@@ -33,6 +33,7 @@ internal final class ActivitesViewController: UIViewController {
     super.viewDidLoad()
     self.tableView.dataSource = self.eventDatasource
     self.tableView.delegate = self
+    self.tableView.estimatedRowHeight = 80
     self.viewModel.inputs.viewDidLoad()
   }
 
@@ -47,15 +48,22 @@ internal final class ActivitesViewController: UIViewController {
       self?.tableView.reloadData()
     }
   }
+
+  fileprivate var rowHeights: [IndexPath:CGFloat] = [:]
+
 }
 
 extension ActivitesViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if let h = rowHeights[indexPath] {
+      return h
+    }
     var height: CGFloat = 120
     if let value = self.eventDatasource[indexPath] as? GHEvent,
       let payload = value.payload {
       height = EventTableViewCell.estimatedHeight(with: payload)
     }
+    rowHeights[indexPath] = height
     return height
   }
 }
