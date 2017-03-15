@@ -58,7 +58,7 @@ internal protocol ActivitesViewModelType {
 internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewModelInputs, ActivitesViewModelOutputs {
     
     init() {
-        self.events = self.viewDidLoadProperty.signal.map { () -> [GHEvent]? in
+        self.events = self.viewDidLoadProperty.signal.observe(on: QueueScheduler()).map { () -> [GHEvent]? in
             guard let user = AppEnvironment.current.currentUser else { return nil }
             return AppEnvironment.current.apiService.events(of: user).single()?.value
         }.skipNil()

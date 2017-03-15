@@ -26,8 +26,6 @@
 		0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA031E67F56F0002A40D /* DateProtocol.swift */; };
 		0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA091E67F6140002A40D /* Reachability.swift */; };
 		0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */; };
-		0E50AA0D1E67FA3F0002A40D /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5C81E6587D700E962B6 /* SlideMenuControllerSwift.framework */; };
-		0E50AA0E1E67FA3F0002A40D /* SlideMenuControllerSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5C81E6587D700E962B6 /* SlideMenuControllerSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E50AA121E67FCF60002A40D /* AppDelegateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */; };
 		0E50AA301E6843D30002A40D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA2F1E6843D30002A40D /* Notifications.swift */; };
 		0E50AA321E6844700002A40D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA311E6844700002A40D /* Main.storyboard */; };
@@ -93,8 +91,6 @@
 		0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F3291E65206000E962B6 /* LoginViewController.swift */; };
 		0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */; };
 		0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F5AA1E654ABF00E962B6 /* Account.swift */; };
-		0E94F5B91E65758400E962B6 /* M13ProgressSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */; };
-		0E94F5BA1E65758400E962B6 /* M13ProgressSuite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E9EBD181E71000600D3E5A9 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EBD171E71000600D3E5A9 /* Image.swift */; };
 		0E9EBD4D1E71002600D3E5A9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EBD4C1E71002600D3E5A9 /* Strings.swift */; };
 		0E9EBD4F1E7100FA00D3E5A9 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */; };
@@ -129,13 +125,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = E43D74D51B8FBBBF00702114;
 			remoteInfo = "Ji iOS";
-		};
-		0E50AA0F1E67FA3F0002A40D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E75C5951BE3CA7900844634;
-			remoteInfo = "SlideMenuControllerSwift-iOS";
 		};
 		0E94F1FE1E65189900E962B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -606,55 +595,6 @@
 			remoteGlobalIDString = EAD9FACE19D0EAB50031E006;
 			remoteInfo = "Argo-iOS";
 		};
-		0E94F5B31E65756C00E962B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CA2FAF981889907300BCAEF5;
-			remoteInfo = M13ProgressSuiteDemo;
-		};
-		0E94F5B51E65756C00E962B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CA2FAFBC1889907300BCAEF5;
-			remoteInfo = M13ProgressSuiteTests;
-		};
-		0E94F5B71E65756C00E962B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FB2A7BDC1B793E5600FE4E4A;
-			remoteInfo = M13ProgressSuiteFramework;
-		};
-		0E94F5BB1E65758400E962B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FB2A7BDB1B793E5600FE4E4A;
-			remoteInfo = M13ProgressSuiteFramework;
-		};
-		0E94F5C31E6587D700E962B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C539E6411A315E87003B7CC7;
-			remoteInfo = SlideMenuControllerSwift;
-		};
-		0E94F5C51E6587D700E962B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C539E6591A315E87003B7CC7;
-			remoteInfo = SlideMenuControllerSwiftTests;
-		};
-		0E94F5C71E6587D700E962B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E75C5961BE3CA7900844634;
-			remoteInfo = "SlideMenuControllerSwift-iOS";
-		};
 		0ECE8A531E77C590001FE48B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
@@ -716,13 +656,11 @@
 				0E94F2DB1E651B7E00E962B6 /* Result.framework in Embed Frameworks */,
 				0E94F2EF1E651B7E00E962B6 /* Prelude_UIKit.framework in Embed Frameworks */,
 				0E94F2F31E651B7E00E962B6 /* Curry.framework in Embed Frameworks */,
-				0E94F5BA1E65758400E962B6 /* M13ProgressSuite.framework in Embed Frameworks */,
 				0E94F2D71E651B7E00E962B6 /* Runes.framework in Embed Frameworks */,
 				0E94F2EB1E651B7E00E962B6 /* Prelude.framework in Embed Frameworks */,
 				0E94F2D31E651B7E00E962B6 /* GHAPI.framework in Embed Frameworks */,
 				0E94F2DF1E651B7E00E962B6 /* ReactiveSwift.framework in Embed Frameworks */,
 				0E94F2F71E651B7E00E962B6 /* Argo.framework in Embed Frameworks */,
-				0E50AA0E1E67FA3F0002A40D /* SlideMenuControllerSwift.framework in Embed Frameworks */,
 				0E94F2E31E651B7E00E962B6 /* ReactiveCocoa.framework in Embed Frameworks */,
 				0E94F2E71E651B7E00E962B6 /* ReactiveExtensions.framework in Embed Frameworks */,
 				0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */,
@@ -738,8 +676,6 @@
 		0E238F481E6BD669001F493A /* UserProfileOrganizationDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileOrganizationDatasource.swift; sourceTree = "<group>"; };
 		0E238F4A1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEventTableViewCell.swift; sourceTree = "<group>"; };
 		0E238F4C1E6BD777001F493A /* UserProfileOrganizationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileOrganizationTableViewCell.swift; sourceTree = "<group>"; };
-		0E3E02A41E7806F800C1CD84 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
-		0E3E02A51E7806F800C1CD84 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		0E3E02E61E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularTextFieldCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
@@ -810,8 +746,6 @@
 		0E94F3291E65206000E962B6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0E94F5AA1E654ABF00E962B6 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = M13ProgressSuite.xcodeproj; path = M13ProgressSuite/M13ProgressSuite.xcodeproj; sourceTree = "<group>"; };
-		0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SlideMenuControllerSwift.xcodeproj; path = SlideMenuControllerSwift/SlideMenuControllerSwift.xcodeproj; sourceTree = "<group>"; };
 		0E9EBD171E71000600D3E5A9 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		0E9EBD4C1E71002600D3E5A9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
@@ -848,14 +782,12 @@
 				0E94F2DA1E651B7E00E962B6 /* Result.framework in Frameworks */,
 				0E94F2EE1E651B7E00E962B6 /* Prelude_UIKit.framework in Frameworks */,
 				0E94F2F21E651B7E00E962B6 /* Curry.framework in Frameworks */,
-				0E94F5B91E65758400E962B6 /* M13ProgressSuite.framework in Frameworks */,
 				0E94F2D61E651B7E00E962B6 /* Runes.framework in Frameworks */,
 				0E94F2EA1E651B7E00E962B6 /* Prelude.framework in Frameworks */,
 				0E94F2D21E651B7E00E962B6 /* GHAPI.framework in Frameworks */,
 				0E94F2DE1E651B7E00E962B6 /* ReactiveSwift.framework in Frameworks */,
 				0E94F2F61E651B7E00E962B6 /* Argo.framework in Frameworks */,
 				0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */,
-				0E50AA0D1E67FA3F0002A40D /* SlideMenuControllerSwift.framework in Frameworks */,
 				0E94F2E21E651B7E00E962B6 /* ReactiveCocoa.framework in Frameworks */,
 				0E94F2E61E651B7E00E962B6 /* ReactiveExtensions.framework in Frameworks */,
 			);
@@ -918,11 +850,7 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0E3E02A41E7806F800C1CD84 /* libxml2.2.tbd */,
-				0E3E02A51E7806F800C1CD84 /* libxml2.tbd */,
 				0ECE8A491E77C590001FE48B /* Ji.xcodeproj */,
-				0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */,
-				0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */,
 				0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */,
 				0E94F2B11E651AF100E962B6 /* Runes.xcodeproj */,
 				0E94F2961E651AE900E962B6 /* Result.xcodeproj */,
@@ -1171,26 +1099,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		0E94F5AD1E65756C00E962B6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0E94F5B41E65756C00E962B6 /* M13ProgressSuiteDemo.app */,
-				0E94F5B61E65756C00E962B6 /* M13ProgressSuiteTests.xctest */,
-				0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		0E94F5BE1E6587D700E962B6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0E94F5C41E6587D700E962B6 /* SlideMenuControllerSwift.app */,
-				0E94F5C61E6587D700E962B6 /* SlideMenuControllerSwiftTests.xctest */,
-				0E94F5C81E6587D700E962B6 /* SlideMenuControllerSwift.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0ECE8A4A1E77C590001FE48B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1280,8 +1188,6 @@
 				0E94F2F11E651B7E00E962B6 /* PBXTargetDependency */,
 				0E94F2F51E651B7E00E962B6 /* PBXTargetDependency */,
 				0E94F2F91E651B7E00E962B6 /* PBXTargetDependency */,
-				0E94F5BC1E65758400E962B6 /* PBXTargetDependency */,
-				0E50AA101E67FA3F0002A40D /* PBXTargetDependency */,
 				0E3E02E51E78071E00C1CD84 /* PBXTargetDependency */,
 			);
 			name = GHClient;
@@ -1359,10 +1265,6 @@
 					ProjectRef = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
 				},
 				{
-					ProductGroup = 0E94F5AD1E65756C00E962B6 /* Products */;
-					ProjectRef = 0E94F5AC1E65756C00E962B6 /* M13ProgressSuite.xcodeproj */;
-				},
-				{
 					ProductGroup = 0E94F2351E651ABE00E962B6 /* Products */;
 					ProjectRef = 0E94F2341E651ABE00E962B6 /* Prelude.xcodeproj */;
 				},
@@ -1385,10 +1287,6 @@
 				{
 					ProductGroup = 0E94F2B21E651AF100E962B6 /* Products */;
 					ProjectRef = 0E94F2B11E651AF100E962B6 /* Runes.xcodeproj */;
-				},
-				{
-					ProductGroup = 0E94F5BE1E6587D700E962B6 /* Products */;
-					ProjectRef = 0E94F5BD1E6587D700E962B6 /* SlideMenuControllerSwift.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1792,48 +1690,6 @@
 			remoteRef = 0E94F2D01E651B2B00E962B6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0E94F5B41E65756C00E962B6 /* M13ProgressSuiteDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = M13ProgressSuiteDemo.app;
-			remoteRef = 0E94F5B31E65756C00E962B6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E94F5B61E65756C00E962B6 /* M13ProgressSuiteTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = M13ProgressSuiteTests.xctest;
-			remoteRef = 0E94F5B51E65756C00E962B6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E94F5B81E65756C00E962B6 /* M13ProgressSuite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = M13ProgressSuite.framework;
-			remoteRef = 0E94F5B71E65756C00E962B6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E94F5C41E6587D700E962B6 /* SlideMenuControllerSwift.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = SlideMenuControllerSwift.app;
-			remoteRef = 0E94F5C31E6587D700E962B6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E94F5C61E6587D700E962B6 /* SlideMenuControllerSwiftTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SlideMenuControllerSwiftTests.xctest;
-			remoteRef = 0E94F5C51E6587D700E962B6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E94F5C81E6587D700E962B6 /* SlideMenuControllerSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SlideMenuControllerSwift.framework;
-			remoteRef = 0E94F5C71E6587D700E962B6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		0ECE8A541E77C590001FE48B /* Ji.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -2012,11 +1868,6 @@
 			name = "Ji iOS";
 			targetProxy = 0E3E02E41E78071E00C1CD84 /* PBXContainerItemProxy */;
 		};
-		0E50AA101E67FA3F0002A40D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SlideMenuControllerSwift-iOS";
-			targetProxy = 0E50AA0F1E67FA3F0002A40D /* PBXContainerItemProxy */;
-		};
 		0E94F1FF1E65189900E962B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0E94F1E81E65189900E962B6 /* GHClient */;
@@ -2071,11 +1922,6 @@
 			isa = PBXTargetDependency;
 			name = "Argo-iOS";
 			targetProxy = 0E94F2F81E651B7E00E962B6 /* PBXContainerItemProxy */;
-		};
-		0E94F5BC1E65758400E962B6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = M13ProgressSuiteFramework;
-			targetProxy = 0E94F5BB1E65758400E962B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
