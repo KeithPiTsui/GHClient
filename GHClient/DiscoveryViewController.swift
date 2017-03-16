@@ -48,12 +48,20 @@ internal final class DiscoveryViewController: UIViewController {
       self?.datasource.load(repos: repos)
       self?.tableView.reloadData()
     }
+    self.viewModel.outputs.pushRepoViewController.observeForControllerAction().observeValues { [weak self] (vc) in
+      self?.navigationController?.pushViewController(vc, animated: true)
+    }
   }
 }
 
 extension DiscoveryViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 120
+  }
+  internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let value = self.datasource[indexPath] as? TrendingRepository {
+      self.viewModel.inputs.userTapped(on: value)
+    }
   }
 }
 

@@ -25,18 +25,21 @@ internal final class RepositoryDatasource: ValueCellDataSource {
   fileprivate let titleSections: [Int] = [Section.Branchs.rawValue, Section.Commits.rawValue]
 
   internal func setBrief(a: String, b: String, c: String, d: String) {
+    self.clearValues(section: Section.Brief.rawValue)
     self.appendRow(value: (a,b), cellClass: IndentedAlignedLabelTableViewCell.self, toSection: Section.Brief.rawValue)
     self.appendRow(value: c, cellClass: LabelOnlyTableViewCell.self, toSection: Section.Brief.rawValue)
     self.appendRow(value: (nil,d), cellClass: RegularBaseTableViewCell.self, toSection: Section.Brief.rawValue)
   }
 
   internal func setDetailDiveIn(values: [(UIImage?, String)]) {
+    self.clearValues(section: Section.DetailDiveIn.rawValue)
     values.forEach {
       self.appendRow(value: $0, cellClass: RegularBaseTableViewCell.self, toSection: Section.DetailDiveIn.rawValue)
     }
   }
 
   internal func set(branches: [Branch]) {
+    self.clearValues(section: Section.Branchs.rawValue)
     branches.forEach { (branch) in
       let value: (UIImage?, String) = (nil, branch.name)
       self.appendRow(value: value,
@@ -46,6 +49,7 @@ internal final class RepositoryDatasource: ValueCellDataSource {
   }
 
   internal func setCommit(on branches: [Branch]) {
+    self.clearValues(section: Section.Commits.rawValue)
     branches.forEach { (branch) in
       let value: (UIImage?, String) = (nil, branch.name)
       self.appendRow(value: value,
