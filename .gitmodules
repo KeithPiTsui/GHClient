@@ -19,12 +19,6 @@
 [submodule "GHAPI"]
 	path = GHAPI
 	url = https://github.com/KeithPiTsui/GHAPI.git
-[submodule "M13ProgressSuite"]
-	path = M13ProgressSuite
-	url = https://github.com/Marxon13/M13ProgressSuite.git
-[submodule "SlideMenuControllerSwift"]
-	path = SlideMenuControllerSwift
-	url = https://github.com/dekatotoro/SlideMenuControllerSwift.git
 [submodule "ios-twitter-image-pipeline"]
 	path = ios-twitter-image-pipeline
 	url = https://github.com/twitter/ios-twitter-image-pipeline.git
