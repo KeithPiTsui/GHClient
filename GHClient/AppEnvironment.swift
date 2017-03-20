@@ -26,30 +26,22 @@ public struct AppEnvironment {
    */
   fileprivate static var stack: [Environment] = [Environment()]
 
-  /**
-   Invoke when an access token has been acquired and you want to log the user in. Replaces the current
-   environment with a new one that has the authenticated api service and current user model.
-
-   - parameter envelope: An access token envelope with the api access token and user.
-   */
-  public static func login(_ envelope: UserPasswordEnvelope) {
-    replaceCurrentEnvironment(
-      apiService: current.apiService.login(username: envelope.user.name!, password: envelope.password),
-      currentUser: envelope.user
-    )
-  }
-
   public static func login(username: String, password: String) {
     let service = current.apiService.login(username: username, password: password)
-    replaceCurrentEnvironment( apiService: service )
-    service.userProfile(name: username).startWithResult { result in
-      if let user = result.value {
-        loginSucceedProperty.value = true
-        updateCurrentUser(user)
-        NotificationCenter.default.post(Notification(name: Notification.Name.gh_sessionStarted))
-      } else {
-        loginSucceedProperty.value = false
+    service.observeInBackground().startWithResult { (result) in
+      guard
+        let user = result.value?.0, let serv = result.value?.1
+        else {
+          var errors: [String:Any] = [:]
+          errors[NotificationKeys.loginFailedError] = result.error
+          NotificationCenter.default.post(name: Notification.Name.gh_userLoginFailed,
+                                          object: nil,
+                                          userInfo: errors)
+          return
       }
+      NotificationCenter.default.post(Notification(name: Notification.Name.gh_sessionStarted))
+      AppEnvironment.replaceCurrentEnvironment(apiService: serv)
+      AppEnvironment.updateCurrentUser(user)
     }
   }
 

@@ -88,7 +88,7 @@ extension EventTableViewCell {
       lab.text = forkPayload.forkee.description ?? ""
       lab.sizeToFit()
       payloadView = lab
-    case let (createPayload as CreateEventPayload):
+    case (_ as CreateEventPayload):
       payloadView = UIView(frame: CGRect.zero)
       payloadView.backgroundColor = UIColor.brown
     case let (pushPayload as PushEventPayload):
@@ -103,7 +103,7 @@ extension EventTableViewCell {
       lab.text = str
       lab.sizeToFit()
       payloadView = lab
-    case let (watchPayload as WatchEventPayload):
+    case (_ as WatchEventPayload):
       payloadView = UIView(frame: CGRect.zero)
     default:
       payloadView = UIView(frame: CGRect.zero)

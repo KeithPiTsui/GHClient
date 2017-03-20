@@ -60,7 +60,7 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
   init() {
     self.events = self.viewDidLoadProperty.signal.observe(on: QueueScheduler()).map { () -> [GHEvent]? in
       guard let user = AppEnvironment.current.currentUser else { return nil }
-      return AppEnvironment.current.apiService.events(of: user).single()?.value
+      return AppEnvironment.current.apiService.events(of: user.login).single()?.value
       }.skipNil()
   }
 
