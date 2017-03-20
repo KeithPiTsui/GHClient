@@ -79,7 +79,6 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
 
 extension EventTableViewCell {
   internal static func view(for payload: EventPayloadType) -> UIView {
-
     let payloadView: UIView
     switch payload {
     case let (forkPayload as ForkEventPayload):

@@ -103,7 +103,8 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
     let standardViewControllers = self.viewDidLoadProperty.signal
       .map { _ in
         [
-          DiscoveryViewController.instantiate(),
+          HighlighterViewController.instantiate(),
+//          DiscoveryViewController.instantiate(),
           ActivitesViewController.instantiate(),
           SearchViewController.instantiate()
         ]

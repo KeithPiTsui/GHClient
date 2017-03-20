@@ -35,6 +35,7 @@ public enum Storyboard: String {
   case WatchedRepositories
   case Repository
   case Readme
+  case Highlighter
 
   public func instantiate<VC: UIViewController>(
     _ viewController: VC.Type,

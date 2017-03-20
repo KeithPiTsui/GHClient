@@ -38,6 +38,11 @@
 		0E5BF8BE1E73B38A00EDD841 /* RegularBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */; };
 		0E5BF8C01E73B40400EDD841 /* RepositoryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */; };
 		0E5BF8C21E73B47E00EDD841 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */; };
+		0E71A4EA1E7FAC8C00D8EED6 /* Highlighter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */; };
+		0E71A4EB1E7FAC8C00D8EED6 /* Highlighter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E71A4EF1E7FAD0700D8EED6 /* Highlighter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */; };
+		0E71A4F11E7FAE1800D8EED6 /* HighlighterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */; };
+		0E71A4F31E7FB03300D8EED6 /* sampleCode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E71A4F21E7FB03300D8EED6 /* sampleCode.txt */; };
 		0E7896051E798BE100DB2098 /* Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7895FD1E798BE100DB2098 /* Guitar.swift */; };
 		0E7896061E798BE100DB2098 /* GuitarBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7895FE1E798BE100DB2098 /* GuitarBoolean.swift */; };
 		0E7896071E798BE100DB2098 /* GuitarCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7895FF1E798BE100DB2098 /* GuitarCase.swift */; };
@@ -134,6 +139,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = E43D74D51B8FBBBF00702114;
 			remoteInfo = "Ji iOS";
+		};
+		0E71A4BC1E7FAC7C00D8EED6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0E71A2811E7FABAC00D8EED6;
+			remoteInfo = Highlighter;
+		};
+		0E71A4BE1E7FAC7C00D8EED6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0E71A28A1E7FABAC00D8EED6;
+			remoteInfo = HighlighterTests;
+		};
+		0E71A4EC1E7FAC8C00D8EED6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E71A2801E7FABAC00D8EED6;
+			remoteInfo = Highlighter;
 		};
 		0E94F1FE1E65189900E962B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -670,6 +696,7 @@
 				0E94F2D31E651B7E00E962B6 /* GHAPI.framework in Embed Frameworks */,
 				0E94F2DF1E651B7E00E962B6 /* ReactiveSwift.framework in Embed Frameworks */,
 				0E94F2F71E651B7E00E962B6 /* Argo.framework in Embed Frameworks */,
+				0E71A4EB1E7FAC8C00D8EED6 /* Highlighter.framework in Embed Frameworks */,
 				0E94F2E31E651B7E00E962B6 /* ReactiveCocoa.framework in Embed Frameworks */,
 				0E94F2E71E651B7E00E962B6 /* ReactiveExtensions.framework in Embed Frameworks */,
 				0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */,
@@ -709,6 +736,10 @@
 		0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularBaseTableViewCell.swift; sourceTree = "<group>"; };
 		0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDatasource.swift; sourceTree = "<group>"; };
 		0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
+		0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Highlighter.xcodeproj; path = Highlighter/Highlighter.xcodeproj; sourceTree = "<group>"; };
+		0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Highlighter.storyboard; sourceTree = "<group>"; };
+		0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlighterViewController.swift; sourceTree = "<group>"; };
+		0E71A4F21E7FB03300D8EED6 /* sampleCode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sampleCode.txt; sourceTree = "<group>"; };
 		0E7895FD1E798BE100DB2098 /* Guitar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guitar.swift; sourceTree = "<group>"; };
 		0E7895FE1E798BE100DB2098 /* GuitarBoolean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarBoolean.swift; sourceTree = "<group>"; };
 		0E7895FF1E798BE100DB2098 /* GuitarCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarCase.swift; sourceTree = "<group>"; };
@@ -807,6 +838,7 @@
 				0E94F2D21E651B7E00E962B6 /* GHAPI.framework in Frameworks */,
 				0E94F2DE1E651B7E00E962B6 /* ReactiveSwift.framework in Frameworks */,
 				0E94F2F61E651B7E00E962B6 /* Argo.framework in Frameworks */,
+				0E71A4EA1E7FAC8C00D8EED6 /* Highlighter.framework in Frameworks */,
 				0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */,
 				0E94F2E21E651B7E00E962B6 /* ReactiveCocoa.framework in Frameworks */,
 				0E94F2E61E651B7E00E962B6 /* ReactiveExtensions.framework in Frameworks */,
@@ -823,6 +855,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E71A4AE1E7FAC7C00D8EED6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */,
+				0E71A4BF1E7FAC7C00D8EED6 /* HighlighterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0E7895FB1E791B3A00DB2098 /* EventCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -894,6 +935,7 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */,
 				0ECE8A491E77C590001FE48B /* Ji.xcodeproj */,
 				0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */,
 				0E94F2B11E651AF100E962B6 /* Runes.xcodeproj */,
@@ -1030,6 +1072,7 @@
 		0E94F2FB1E651C1800E962B6 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */,
 				0E94F1F51E65189900E962B6 /* LaunchScreen.storyboard */,
 				0E94F3271E651FE000E962B6 /* Login.storyboard */,
 				0E50AA311E6844700002A40D /* Main.storyboard */,
@@ -1051,6 +1094,7 @@
 			children = (
 				0EECF6361E704608009600BB /* ActivitesViewController.swift */,
 				0E4B40BF1E70456C004144DC /* DiscoveryViewController.swift */,
+				0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */,
 				0E94F3291E65206000E962B6 /* LoginViewController.swift */,
 				0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */,
 				0EA044CC1E764F4A00643EBA /* ReadmeViewController.swift */,
@@ -1105,6 +1149,7 @@
 		0E94F3011E651C5000E962B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0E71A4F21E7FB03300D8EED6 /* sampleCode.txt */,
 				0E94F1F31E65189900E962B6 /* Assets.xcassets */,
 			);
 			name = Resources;
@@ -1253,6 +1298,7 @@
 				0E94F2F51E651B7E00E962B6 /* PBXTargetDependency */,
 				0E94F2F91E651B7E00E962B6 /* PBXTargetDependency */,
 				0E3E02E51E78071E00C1CD84 /* PBXTargetDependency */,
+				0E71A4ED1E7FAC8C00D8EED6 /* PBXTargetDependency */,
 			);
 			name = GHClient;
 			productName = GHClient;
@@ -1325,6 +1371,10 @@
 					ProjectRef = 0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */;
 				},
 				{
+					ProductGroup = 0E71A4AE1E7FAC7C00D8EED6 /* Products */;
+					ProjectRef = 0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */;
+				},
+				{
 					ProductGroup = 0ECE8A4A1E77C590001FE48B /* Products */;
 					ProjectRef = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
 				},
@@ -1362,6 +1412,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Highlighter.framework;
+			remoteRef = 0E71A4BC1E7FAC7C00D8EED6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E71A4BF1E7FAC7C00D8EED6 /* HighlighterTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = HighlighterTests.xctest;
+			remoteRef = 0E71A4BE1E7FAC7C00D8EED6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0E94F2181E651AA600E962B6 /* Argo.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1812,6 +1876,7 @@
 			files = (
 				0E4B40B81E703BEB004144DC /* RootTabBar.storyboard in Resources */,
 				0E94F3281E651FE000E962B6 /* Login.storyboard in Resources */,
+				0E71A4EF1E7FAD0700D8EED6 /* Highlighter.storyboard in Resources */,
 				0E94F1F71E65189900E962B6 /* LaunchScreen.storyboard in Resources */,
 				0E7B7BEF1E6EB01300D50C95 /* SearchFilter.storyboard in Resources */,
 				0E5BF8831E73AD6200EDD841 /* Repository.storyboard in Resources */,
@@ -1819,6 +1884,7 @@
 				0EA044981E764F0A00643EBA /* Readme.storyboard in Resources */,
 				0E4B40BE1E70453A004144DC /* Discovery.storyboard in Resources */,
 				0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */,
+				0E71A4F31E7FB03300D8EED6 /* sampleCode.txt in Resources */,
 				0EECF6351E7045F0009600BB /* Activities.storyboard in Resources */,
 				0E7B7BA81E6E572E00D50C95 /* Search.storyboard in Resources */,
 				0E84B5A01E67C3DE00C5ADF7 /* UserProfile.storyboard in Resources */,
@@ -1865,6 +1931,7 @@
 				0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
 				0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */,
+				0E71A4F11E7FAE1800D8EED6 /* HighlighterViewController.swift in Sources */,
 				0E7B7BFB1E6EF71E00D50C95 /* NumberRangeCollectionViewCell.swift in Sources */,
 				0E94F3211E651CBA00E962B6 /* Storyboard.swift in Sources */,
 				0E7896061E798BE100DB2098 /* GuitarBoolean.swift in Sources */,
@@ -1956,6 +2023,11 @@
 			isa = PBXTargetDependency;
 			name = "Ji iOS";
 			targetProxy = 0E3E02E41E78071E00C1CD84 /* PBXContainerItemProxy */;
+		};
+		0E71A4ED1E7FAC8C00D8EED6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Highlighter;
+			targetProxy = 0E71A4EC1E7FAC8C00D8EED6 /* PBXContainerItemProxy */;
 		};
 		0E94F1FF1E65189900E962B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
