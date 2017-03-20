@@ -13,7 +13,6 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 import GHAPI
-import M13ProgressSuite
 
 internal final class LoginViewController: UIViewController {
 
