@@ -14,9 +14,10 @@ import Result
 import GHAPI
 
 internal enum ActivitySegment: String {
-  case Watchings
   case Events
+  case ReceivedEvents
 }
+extension ActivitySegment: HashableEnumCaseIterating{}
 
 internal protocol ActivitesViewModelInputs {
   /// Call when a user session ends.
@@ -36,18 +37,24 @@ internal protocol ActivitesViewModelInputs {
 
   /// Call when vc is set with an segment value
   func set(segment: ActivitySegment)
+
+  /// Call when user request lastest event
+  func refreshEvents()
 }
 
 internal protocol ActivitesViewModelOutputs {
 
-  //    var segments: Signal<[ActivitySegment], NoError> { get }
-  //
-  //    var selectedSegment: Signal<ActivitySegment, NoError> {get}
-  //
-  var events: Signal<[GHEvent], NoError> {get}
-  //
-  //    var watchings: Signal<[Watching], NoError> {get}
+  var segments: Signal<[ActivitySegment], NoError> { get }
 
+  var selectedSegment: Signal<Int, NoError> {get}
+
+  var events: Signal<[GHEvent], NoError> {get}
+
+  var receivedEvents: Signal<[GHEvent], NoError> {get}
+
+  var loading: Signal<(), NoError> { get }
+
+  var loaded: Signal<(), NoError> { get }
 }
 
 internal protocol ActivitesViewModelType {
@@ -57,11 +64,61 @@ internal protocol ActivitesViewModelType {
 
 internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewModelInputs, ActivitesViewModelOutputs {
 
+  fileprivate static let allSegments = ActivitySegment.allCases
+
   init() {
-    self.events = self.viewDidLoadProperty.signal.observe(on: QueueScheduler()).map { () -> [GHEvent]? in
-      guard let user = AppEnvironment.current.currentUser else { return nil }
-      return AppEnvironment.current.apiService.events(of: user.login).single()?.value
+    let eventRequest = Signal.merge(self.viewDidLoadProperty.signal, self.refreshEventsProperty.signal)
+    self.loading = eventRequest
+
+    let events = eventRequest.observe(on: QueueScheduler())
+      .map { () -> [GHEvent]? in
+        guard let user = AppEnvironment.current.currentUser else { return nil }
+        return AppEnvironment.current.apiService.events(of: user.login).single()?.value
       }.skipNil()
+
+    let receivedEvents = eventRequest.observe(on: QueueScheduler())
+      .map { () -> [GHEvent]? in
+        guard let user = AppEnvironment.current.currentUser else { return nil }
+        return AppEnvironment.current.apiService.receivedEvents(of: user.login).single()?.value
+      }.skipNil()
+
+    let initialSelectedSegment = self.viewDidLoadProperty.signal
+      .map {ActivitesViewModel.allSegments.index(of: .Events)}
+      .skipNil()
+
+    let laterSelectedSegment = self.setSegmentProperty.signal.skipNil()
+      .map{ActivitesViewModel.allSegments.index(of: $0)}
+      .skipNil()
+
+    let selectedSegment = Signal.merge(initialSelectedSegment, laterSelectedSegment)
+    let eventLoaded = Signal
+      .combineLatest(
+        events,
+        self.viewWillAppearProperty.signal.skipNil(),
+        selectedSegment)
+
+    self.events = eventLoaded
+      .filter {ActivitesViewModel.allSegments[$0.2] == ActivitySegment.Events}
+      .map(first)
+
+    let receivedEventLoaded = Signal
+      .combineLatest(
+        receivedEvents,
+        self.viewWillAppearProperty.signal.skipNil(),
+        selectedSegment)
+    self.receivedEvents = receivedEventLoaded
+      .filter {ActivitesViewModel.allSegments[$0.2] == ActivitySegment.ReceivedEvents}
+      .map(first)
+
+    self.loaded = Signal.merge(self.events, self.receivedEvents).map{_ in ()}
+
+    self.segments = self.viewDidLoadProperty.signal.map {ActivitesViewModel.allSegments}
+    self.selectedSegment = Signal.combineLatest(selectedSegment, self.viewWillAppearProperty.signal).map(first)
+  }
+
+  fileprivate let refreshEventsProperty = MutableProperty()
+  internal func refreshEvents() {
+    self.refreshEventsProperty.value = ()
   }
 
   fileprivate let setSegmentProperty = MutableProperty<ActivitySegment?>(nil)
@@ -69,9 +126,8 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
     self.setSegmentProperty.value = segment
   }
 
-  fileprivate let segmentChangedProperty = MutableProperty<Int?>(nil)
   internal func segmentChanged(index: Int) {
-    self.segmentChangedProperty.value = index
+    self.setSegmentProperty.value = ActivitesViewModel.allSegments[index]
   }
 
   fileprivate let userSessionStartedProperty = MutableProperty(())
@@ -93,7 +149,12 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
     self.viewWillAppearProperty.value = animated
   }
 
+  internal let loading: Signal<(), NoError>
+  internal let loaded: Signal<(), NoError>
+  internal let segments: Signal<[ActivitySegment], NoError>
+  internal let selectedSegment: Signal<Int, NoError>
   internal let events: Signal<[GHEvent], NoError>
+  internal let receivedEvents: Signal<[GHEvent], NoError>
 
   internal var inputs: ActivitesViewModelInputs { return self }
   internal var outputs: ActivitesViewModelOutputs { return self }

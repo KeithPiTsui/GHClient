@@ -10,8 +10,12 @@ import UIKit
 import GHAPI
 
 internal final class ActivitesEventDatasource: ValueCellDataSource {
-  internal func load(watchings: [GHEvent]) {
-    self.set(values: watchings, cellClass: EventTableViewCell.self, inSection: 0)
+  internal func load(events: [GHEvent]) {
+    self.set(values: events, cellClass: EventTableViewCell.self, inSection: 0)
+  }
+
+  internal func load(receivedEvents: [GHEvent]) {
+    self.set(values: receivedEvents, cellClass: EventTableViewCell.self, inSection: 0)
   }
 
   override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {

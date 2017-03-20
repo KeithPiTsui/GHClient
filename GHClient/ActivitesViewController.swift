@@ -21,6 +21,8 @@ internal final class ActivitesViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var segment: UISegmentedControl!
 
+  fileprivate let refreshControl = UIRefreshControl()
+
   @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
     self.viewModel.inputs.segmentChanged(index: sender.selectedSegmentIndex)
   }
@@ -33,8 +35,22 @@ internal final class ActivitesViewController: UIViewController {
     super.viewDidLoad()
     self.tableView.dataSource = self.eventDatasource
     self.tableView.delegate = self
-    self.tableView.estimatedRowHeight = 80
+    self.refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+    if #available(iOS 10.0, *) {
+      self.tableView.refreshControl = self.refreshControl
+    } else {
+      self.tableView.backgroundView = self.refreshControl
+    }
     self.viewModel.inputs.viewDidLoad()
+  }
+
+  func refresh(_ refreshControl: UIRefreshControl) {
+    self.viewModel.inputs.refreshEvents()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.viewModel.inputs.viewWillAppear(animated: animated)
   }
 
   override func bindStyles() {
@@ -44,8 +60,26 @@ internal final class ActivitesViewController: UIViewController {
   override func bindViewModel() {
     super.bindViewModel()
     self.viewModel.outputs.events.observeForUI().observeValues { [weak self] in
-      self?.eventDatasource.load(watchings: $0)
+      self?.eventDatasource.load(events: $0)
       self?.tableView.reloadData()
+    }
+    self.viewModel.outputs.segments.observeForUI().observeValues { [weak self] in
+      for (idx, seg) in $0.enumerated() {
+        self?.segment.setTitle(seg.rawValue, forSegmentAt: idx)
+      }
+    }
+    self.viewModel.outputs.selectedSegment.observeForUI().observeValues { [weak self] in
+      self?.segment.selectedSegmentIndex = $0
+    }
+    self.viewModel.outputs.receivedEvents.observeForUI().observeValues { [weak self] in
+      self?.eventDatasource.load(receivedEvents: $0)
+      self?.tableView.reloadData()
+    }
+    self.viewModel.outputs.loading.observeForUI().observeValues { [weak self] in
+      self?.refreshControl.beginRefreshing()
+    }
+    self.viewModel.outputs.loaded.observeForUI().observeValues { [weak self] in
+      self?.refreshControl.endRefreshing()
     }
   }
 
