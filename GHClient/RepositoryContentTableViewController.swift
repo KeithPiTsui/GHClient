@@ -61,7 +61,8 @@ internal final class RepositoryContentTableViewController: UITableViewController
       self?.navigationController?.pushViewController($0, animated: true)
     }
 
-    self.viewModel.outpus.presentDocumentController.observeForControllerAction().observeValues {
+    self.viewModel.outpus.presentDocumentController.observeForControllerAction().observeValues { [weak self] in
+      $0.delegate = self
       $0.presentPreview(animated: true)
     }
 
@@ -93,6 +94,12 @@ extension RepositoryContentTableViewController {
   }
 }
 
+extension RepositoryContentTableViewController: UIDocumentInteractionControllerDelegate {
+  func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController)
+    -> UIViewController {
+    return self
+  }
+}
 
 
 

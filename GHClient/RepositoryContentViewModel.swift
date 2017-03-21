@@ -91,7 +91,6 @@ RepositoryContentViewModelOutputs {
         (FileTypeCategorizer.fileTypeCategory(of: content.name), content.download_url)}
 
     let dir = self.tappedOnContentProperty.signal.skipNil().filter{$0.type == "dir"}
-//    let submodule = self.tappedOnContentProperty.signal.skipNil().filter{$0.type == "submodule"}
 
     let markup = fileTypeAndUrl.filter{$0.0 == .markup}.map(second).skipNil()
     let audio = fileTypeAndUrl.filter{ $0.0 == .audio}.map(second).skipNil()
@@ -142,8 +141,13 @@ RepositoryContentViewModelOutputs {
 
     self.presentSourceCodeViewer = sourceCodeViewer.skipNil()
 
-    self.presentDocumentController = Signal.merge(documment,image)
-      .map(UIDocumentInteractionController.init)
+     self.presentDocumentController = Signal.merge(documment,image)
+      .map { (url) -> URL? in
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        let tmpDirURL = FileManager.default.temporaryDirectory.appendingPathComponent(url.lastPathComponent)
+        try? data.write(to: tmpDirURL)
+        return tmpDirURL
+    }.skipNil().map(UIDocumentInteractionController.init)
 
     let noSourceCodeViewer = sourceCodeViewer.filter{$0 == nil}.map {_ in ()}
 
