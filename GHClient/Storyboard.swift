@@ -24,7 +24,6 @@ public enum Storyboard: String {
   case Menu
   case PersonalGists
   case PersonalRepositories
-  case RepositoryDetail
   case Search
   case SearchFilter
   case Settings
@@ -34,8 +33,10 @@ public enum Storyboard: String {
   case UserProfile
   case WatchedRepositories
   case Repository
+  case RepositoryContent
   case Readme
   case Highlighter
+
 
   public func instantiate<VC: UIViewController>(
     _ viewController: VC.Type,

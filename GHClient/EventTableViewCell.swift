@@ -84,7 +84,7 @@ extension EventTableViewCell {
     case let (forkPayload as ForkEventPayload):
       let lab = UILabel(frame: UIScreen.main.bounds)
       lab.numberOfLines = 0
-      lab.text = forkPayload.forkee.description ?? ""
+      lab.text = forkPayload.forkee.desc ?? ""
       lab.sizeToFit()
       payloadView = lab
     case (_ as CreateEventPayload):

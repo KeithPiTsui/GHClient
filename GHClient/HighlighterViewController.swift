@@ -17,9 +17,10 @@ internal final class HighlighterViewController: UIViewController {
 
   @IBOutlet weak var codeViewContainer: UIView!
 
-  var highlightr : Highlightr!
-  let textStorage = CodeAttributedString()
-  var textView: UITextView!
+  internal var highlightr : Highlightr!
+  internal let textStorage = CodeAttributedString()
+  internal var textView: UITextView!
+  internal var code: String = try! String.init(contentsOfFile: Bundle.main.path(forResource: "sampleCode", ofType: "txt")!)
 
 
   override func viewDidLoad() {
@@ -38,9 +39,7 @@ internal final class HighlighterViewController: UIViewController {
     self.textView.autocapitalizationType = .none
     self.textView.textColor = UIColor.white
     self.codeViewContainer.addSubview(self.textView)
-
-    let code = try! String.init(contentsOfFile: Bundle.main.path(forResource: "sampleCode", ofType: "txt")!)
-    self.textView.text = code
+    self.textView.text = self.code
 
     self.highlightr = self.textStorage.highlightr
     self.updateColors()

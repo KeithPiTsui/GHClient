@@ -34,26 +34,27 @@ internal final class RepositoryDatasource: ValueCellDataSource {
   internal func setDetailDiveIn(values: [(UIImage?, String)]) {
     self.clearValues(section: Section.DetailDiveIn.rawValue)
     values.forEach {
-      self.appendRow(value: $0, cellClass: RegularBaseTableViewCell.self, toSection: Section.DetailDiveIn.rawValue)
+      self.appendRow(
+        value: $0,
+        cellClass: RegularBaseTableViewCell.self,
+        toSection: Section.DetailDiveIn.rawValue)
     }
   }
 
-  internal func set(branches: [Branch]) {
+  internal func set(branchLites: [BranchLite]) {
     self.clearValues(section: Section.Branchs.rawValue)
-    branches.forEach { (branch) in
-      let value: (UIImage?, String) = (nil, branch.name)
-      self.appendRow(value: value,
-                     cellClass: RegularBaseTableViewCell.self,
+    branchLites.forEach { (branchLite) in
+      self.appendRow(value: branchLite,
+                     cellClass: BranchLiteTableViewCell.self,
                      toSection: Section.Branchs.rawValue)
     }
   }
 
-  internal func setCommit(on branches: [Branch]) {
+  internal func setCommit(on branchLites: [BranchLite]) {
     self.clearValues(section: Section.Commits.rawValue)
-    branches.forEach { (branch) in
-      let value: (UIImage?, String) = (nil, branch.name)
-      self.appendRow(value: value,
-                     cellClass: RegularBaseTableViewCell.self,
+    branchLites.forEach { (branchLite) in
+      self.appendRow(value: branchLite,
+                     cellClass: BranchLiteTableViewCell.self,
                      toSection: Section.Commits.rawValue)
     }
   }
@@ -63,6 +64,8 @@ internal final class RepositoryDatasource: ValueCellDataSource {
     case let (cell as IndentedAlignedLabelTableViewCell, item as (String, String)):
       cell.configureWith(value: item)
     case let (cell as LabelOnlyTableViewCell, item as String):
+      cell.configureWith(value: item)
+    case let (cell as BranchLiteTableViewCell, item as BranchLite):
       cell.configureWith(value: item)
     case let (cell as RegularBaseTableViewCell, item as (UIImage?, String)):
       cell.configureWith(value: item)

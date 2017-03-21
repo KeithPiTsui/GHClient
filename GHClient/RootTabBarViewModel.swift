@@ -100,11 +100,16 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
       .map { $0 != nil }
       .skipRepeats(==)
 
+    let vc = RepositoryViewController.instantiate()
+    vc.set(repoURL: URL(string: "https://api.github.com/repos/apple/swift")!)
+
     let standardViewControllers = self.viewDidLoadProperty.signal
       .map { _ in
         [
-          HighlighterViewController.instantiate(),
+//          HighlighterViewController.instantiate(),
 //          DiscoveryViewController.instantiate(),
+//          RepositoryViewController.instantiate(),
+          vc,
           ActivitesViewController.instantiate(),
           SearchViewController.instantiate()
         ]

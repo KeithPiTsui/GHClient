@@ -33,6 +33,9 @@ internal protocol RepositoryViewModelInputs {
 
   /// Call when user tapped on readme option
   func gotoReadme()
+
+  /// Call when user tapped on a branch
+  func goto(branch: BranchLite)
 }
 
 internal protocol RepositoryViewModelOutputs {
@@ -41,13 +44,15 @@ internal protocol RepositoryViewModelOutputs {
 
   var repository: Signal<Repository,NoError> { get }
 
-  var branches: Signal<[Branch], NoError> {get}
+  var branchLites: Signal<[BranchLite], NoError> {get}
 
   var commits: Signal<[Commit], NoError> {get}
 
   var details: Signal<[(UIImage?, String)], NoError> {get}
 
   var gotoReadmeVC: Signal<UIViewController, NoError> {get}
+
+  var gotoBranchVC: Signal<RepositoryContentTableViewController, NoError> { get }
 }
 
 internal protocol RepositoryViewModelType {
@@ -71,12 +76,12 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
       AppEnvironment.current.apiService.commits(referredBy: repo.urls.commits_url).single()?.value
       }.skipNil()
 
-    self.branches = repoDisplay.observe(on: QueueScheduler()).map { (repo) -> [Branch]? in
-      AppEnvironment.current.apiService.branches(referredBy: repo.urls.branches_url).single()?.value
+    self.branchLites = repoDisplay.observe(on: QueueScheduler()).map { (repo) -> [BranchLite]? in
+      AppEnvironment.current.apiService.branchLites(referredBy: repo.urls.branches_url).single()?.value
       }.skipNil()
 
     self.brief = repoDisplay.map{ (repo) -> (a:String, b: String, c: String, d: String) in
-      ("owner", repo.owner.login, repo.description ?? "No Description", "README")
+      ("owner", repo.owner.login, repo.desc ?? "No Description", "README")
     }
 
     self.details = self.viewWillAppearProperty.signal.map {_ in
@@ -104,6 +109,21 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
       return vc
     }
     self.gotoReadmeVC = Signal.combineLatest(readmeVC, self.gotoReadmeProperty.signal).map(first)
+
+
+    self.gotoBranchVC =
+      Signal.combineLatest(self.gotoBranchProperty.signal.skipNil(), repoDisplay)
+        .map { (branch, repo) -> RepositoryContentTableViewController in
+          let rc = RepositoryContentTableViewController.instantiate()
+          rc.set(repo: repo, and: branch)
+          return rc
+    }
+
+  }
+
+  fileprivate let gotoBranchProperty = MutableProperty<BranchLite?>(nil)
+  public func goto(branch: BranchLite) {
+    self.gotoBranchProperty.value = branch
   }
 
   fileprivate let gotoReadmeProperty = MutableProperty()
@@ -144,9 +164,10 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
   internal let details: Signal<[(UIImage?, String)], NoError>
 
   internal let repository: Signal<Repository, NoError>
-  internal let branches: Signal<[Branch], NoError>
+  internal let branchLites: Signal<[BranchLite], NoError>
   internal let commits: Signal<[Commit], NoError>
   internal let gotoReadmeVC: Signal<UIViewController, NoError>
+  internal let gotoBranchVC: Signal<RepositoryContentTableViewController, NoError>
 
   internal var inputs: RepositoryViewModelInputs { return self }
   internal var outputs: RepositoryViewModelOutputs { return self }

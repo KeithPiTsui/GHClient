@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GHAPI
 
 internal final class ReadmeViewController: UIViewController {
   internal static func instantiate() -> ReadmeViewController {

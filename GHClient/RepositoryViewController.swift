@@ -54,12 +54,12 @@ internal final class RepositoryViewController: UIViewController {
     self.viewModel.outputs.repository.observeForUI().observeValues { [weak self] (repo) in
       self?.repoName.text = repo.name
       self?.stars.text = "\(repo.stargazers_count)"
-      self?.forks.text = "\(repo.forks_count)"
+      self?.forks.text = "\(repo.others.forks_count)"
     }
 
-    self.viewModel.outputs.branches.observeForUI().observeValues { [weak self] (branches) in
-      self?.datasource.set(branches: branches)
-      self?.datasource.setCommit(on: branches)
+    self.viewModel.outputs.branchLites.observeForUI().observeValues { [weak self] (branchLites) in
+      self?.datasource.set(branchLites: branchLites)
+      self?.datasource.setCommit(on: branchLites)
       self?.tableView.reloadData()
     }
 
@@ -72,10 +72,12 @@ internal final class RepositoryViewController: UIViewController {
       self?.datasource.setDetailDiveIn(values: $0)
       self?.tableView.reloadData()
     }
-    self.viewModel.outputs.gotoReadmeVC.observeForUI().observeValues { [weak self] in
+    self.viewModel.outputs.gotoReadmeVC.observeForControllerAction().observeValues { [weak self] in
       self?.navigationController?.pushViewController($0, animated: true)
     }
-
+    self.viewModel.outputs.gotoBranchVC.observeForControllerAction().observeValues { [weak self] in
+      self?.navigationController?.pushViewController($0, animated: true)
+    }
   }
 
 }
@@ -85,6 +87,9 @@ extension RepositoryViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 0 && indexPath.row == 2 {
       self.viewModel.inputs.gotoReadme()
+    }
+    if indexPath.section == 2, let branchLite = self.datasource[indexPath] as? BranchLite {
+      self.viewModel.inputs.goto(branch: branchLite)
     }
   }
 
