@@ -50,6 +50,8 @@
 		0E6AAC791E81356600E94429 /* MarkupViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6AAC781E81356600E94429 /* MarkupViewerViewModel.swift */; };
 		0E6AAC7A1E81363200E94429 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; };
 		0E6AAC7B1E81363200E94429 /* Down.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E6AAC8B1E8151CF00E94429 /* FileTypeCategorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6AAC8A1E8151CF00E94429 /* FileTypeCategorizer.swift */; };
+		0E6AACC61E815B7000E94429 /* SouceCodeFileExtension.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E6AACC51E815B7000E94429 /* SouceCodeFileExtension.txt */; };
 		0E71A4EA1E7FAC8C00D8EED6 /* Highlighter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */; };
 		0E71A4EB1E7FAC8C00D8EED6 /* Highlighter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E71A4EF1E7FAD0700D8EED6 /* Highlighter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */; };
@@ -802,6 +804,8 @@
 		0E6AAC741E8134A900E94429 /* MarkupViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MarkupViewer.storyboard; sourceTree = "<group>"; };
 		0E6AAC761E81350C00E94429 /* MarkupViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupViewerViewController.swift; sourceTree = "<group>"; };
 		0E6AAC781E81356600E94429 /* MarkupViewerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupViewerViewModel.swift; sourceTree = "<group>"; };
+		0E6AAC8A1E8151CF00E94429 /* FileTypeCategorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTypeCategorizer.swift; sourceTree = "<group>"; };
+		0E6AACC51E815B7000E94429 /* SouceCodeFileExtension.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SouceCodeFileExtension.txt; sourceTree = "<group>"; };
 		0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Highlighter.xcodeproj; path = Highlighter/Highlighter.xcodeproj; sourceTree = "<group>"; };
 		0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Highlighter.storyboard; sourceTree = "<group>"; };
 		0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlighterViewController.swift; sourceTree = "<group>"; };
@@ -1263,7 +1267,9 @@
 				0E7AF4291E724E990001C425 /* UICollectionView-Extension.swift */,
 				0EECF63D1E70482C009600BB /* UIColor.swift */,
 				0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */,
+				0E6AACC51E815B7000E94429 /* SouceCodeFileExtension.txt */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
+				0E6AAC8A1E8151CF00E94429 /* FileTypeCategorizer.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -2011,6 +2017,7 @@
 				0E7B7BEF1E6EB01300D50C95 /* SearchFilter.storyboard in Resources */,
 				0E5BF8831E73AD6200EDD841 /* Repository.storyboard in Resources */,
 				0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */,
+				0E6AACC61E815B7000E94429 /* SouceCodeFileExtension.txt in Resources */,
 				0EA044981E764F0A00643EBA /* Readme.storyboard in Resources */,
 				0E4B40BE1E70453A004144DC /* Discovery.storyboard in Resources */,
 				0E84B5621E67AADA00C5ADF7 /* Menu.storyboard in Resources */,
@@ -2099,6 +2106,7 @@
 				0E238F471E6BD60B001F493A /* UserProfileEventDatasource.swift in Sources */,
 				0EECF6371E704608009600BB /* ActivitesViewController.swift in Sources */,
 				0E7B7BE71E6E88AB00D50C95 /* SearchRepositoryDataSource.swift in Sources */,
+				0E6AAC8B1E8151CF00E94429 /* FileTypeCategorizer.swift in Sources */,
 				0E4B40C01E70456C004144DC /* DiscoveryViewController.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,

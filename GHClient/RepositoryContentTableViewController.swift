@@ -52,9 +52,37 @@ internal final class RepositoryContentTableViewController: UITableViewController
       self?.datasource.load(contents: contents)
       self?.tableView.reloadData()
     }
-    self.viewModel.outpus.pushViewContoller.observeForControllerAction().observeValues { [weak self] in
+
+    self.viewModel.outpus.presentAlert.observeForControllerAction().observeValues { [weak self] in
+      self?.present($0, animated: true, completion: nil)
+    }
+
+    self.viewModel.outpus.presentSourceCodeViewer.observeForControllerAction().observeValues { [weak self] in
       self?.navigationController?.pushViewController($0, animated: true)
     }
+
+    self.viewModel.outpus.presentDocumentController.observeForControllerAction().observeValues {
+      $0.presentPreview(animated: true)
+    }
+
+    self.viewModel.outpus.presentMediaVC.observeForControllerAction().observeValues { [weak self] (playerVC) in
+      self?.present(playerVC, animated: true) {
+        playerVC.player?.play()
+      }
+    }
+
+    self.viewModel.outpus.pushNextDirectory.observeForControllerAction().observeValues { [weak self] in
+      self?.navigationController?.pushViewController($0, animated: true)
+    }
+
+    self.viewModel.outpus.presentMarkupViewer.observeForControllerAction().observeValues { [weak self] in
+      self?.navigationController?.pushViewController($0, animated: true)
+    }
+
+
+
+
+
   }
 }
 
