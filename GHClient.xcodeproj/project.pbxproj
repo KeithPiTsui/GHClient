@@ -27,6 +27,7 @@
 		0E4BCFB51E80D95600BF6135 /* RepositoryContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4BCFB41E80D95600BF6135 /* RepositoryContentViewModel.swift */; };
 		0E4BCFB71E80DE7B00BF6135 /* BranchLiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4BCFB61E80DE7B00BF6135 /* BranchLiteTableViewCell.swift */; };
 		0E4BCFB91E80EC3300BF6135 /* RepositoryContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4BCFB81E80EC3300BF6135 /* RepositoryContentTableViewCell.swift */; };
+		0E4BCFBB1E80F9E500BF6135 /* GuitarCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4BCFBA1E80F9E500BF6135 /* GuitarCodec.swift */; };
 		0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50A9CB1E67F5210002A40D /* KSCache.swift */; };
 		0E50AA021E67F55B0002A40D /* NSHTTPCookieStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */; };
 		0E50AA041E67F56F0002A40D /* DateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA031E67F56F0002A40D /* DateProtocol.swift */; };
@@ -731,6 +732,7 @@
 		0E4BCFB41E80D95600BF6135 /* RepositoryContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryContentViewModel.swift; sourceTree = "<group>"; };
 		0E4BCFB61E80DE7B00BF6135 /* BranchLiteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchLiteTableViewCell.swift; sourceTree = "<group>"; };
 		0E4BCFB81E80EC3300BF6135 /* RepositoryContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryContentTableViewCell.swift; sourceTree = "<group>"; };
+		0E4BCFBA1E80F9E500BF6135 /* GuitarCodec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarCodec.swift; sourceTree = "<group>"; };
 		0E50A9CB1E67F5210002A40D /* KSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSCache.swift; sourceTree = "<group>"; };
 		0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSHTTPCookieStorageType.swift; sourceTree = "<group>"; };
 		0E50AA031E67F56F0002A40D /* DateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProtocol.swift; sourceTree = "<group>"; };
@@ -895,6 +897,7 @@
 				0E7896021E798BE100DB2098 /* GuitarNSRangeExtension.swift */,
 				0E7896031E798BE100DB2098 /* GuitarPadding.swift */,
 				0E7896041E798BE100DB2098 /* GuitarTrimming.swift */,
+				0E4BCFBA1E80F9E500BF6135 /* GuitarCodec.swift */,
 			);
 			name = Guitar;
 			sourceTree = "<group>";
@@ -1999,6 +2002,7 @@
 				0E78960B1E798BE100DB2098 /* GuitarPadding.swift in Sources */,
 				0E7B7BE51E6E884800D50C95 /* SearchUserDataSource.swift in Sources */,
 				0E4BCFB51E80D95600BF6135 /* RepositoryContentViewModel.swift in Sources */,
+				0E4BCFBB1E80F9E500BF6135 /* GuitarCodec.swift in Sources */,
 				0EA044CD1E764F4A00643EBA /* ReadmeViewController.swift in Sources */,
 				0E9EBD4F1E7100FA00D3E5A9 /* LocalizedString.swift in Sources */,
 				0E78960C1E798BE100DB2098 /* GuitarTrimming.swift in Sources */,

@@ -112,7 +112,7 @@ open class CodeAttributedString : NSTextStorage {
 
 
   fileprivate func highlight(_ range: NSRange) {
-    guard let language = self.language else { return }
+    //guard let language = self.language else { return }
     if let highlightDelegate = highlightDelegate,
       let shouldHighlight = highlightDelegate.shouldHighlight?(range),
       shouldHighlight == false { return }
@@ -120,7 +120,7 @@ open class CodeAttributedString : NSTextStorage {
     let string = (self.string as NSString)
     let line = string.substring(with: range)
     DispatchQueue.global().async {
-      guard let tmpStrg = self.highlightr.highlight(line, as: language) else { return }
+      guard let tmpStrg = self.highlightr.highlight(line, as: self.language) else { return }
       DispatchQueue.main.async {
         //Checks to see if this highlighting is still valid.
         if((range.location + range.length) > self.stringStorage.length) {

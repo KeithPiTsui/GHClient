@@ -76,6 +76,13 @@ RepositoryContentViewModelOutputs {
       .map { (content) -> UIViewController in
         if content.type == "file" {
           let vc = HighlighterViewController.instantiate()
+          if let contentStr = content.plainContent {
+            vc.code = contentStr
+          } else if let downloadURL = content.download_url,
+            let sourceCode = try? String(contentsOf: downloadURL) {
+            vc.code = sourceCode
+          }
+          vc.language = (content.name as NSString).pathExtension
           return vc
         } else {
           let vc = RepositoryContentTableViewController.instantiate()

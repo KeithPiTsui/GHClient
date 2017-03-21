@@ -101,7 +101,7 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
       .skipRepeats(==)
 
     let vc = RepositoryViewController.instantiate()
-    vc.set(repoURL: URL(string: "https://api.github.com/repos/apple/swift")!)
+    vc.set(repoURL: URL(string: "https://api.github.com/repos/keithPiTsui/GHAPI")!)
 
     let standardViewControllers = self.viewDidLoadProperty.signal
       .map { _ in
