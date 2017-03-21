@@ -34,3 +34,6 @@
 [submodule "Guitar"]
 	path = Guitar
 	url = https://github.com/ArtSabintsev/Guitar.git
+[submodule "Down"]
+	path = Down
+	url = https://github.com/iwasrobbed/Down.git

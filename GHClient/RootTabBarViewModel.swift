@@ -100,8 +100,9 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
       .map { $0 != nil }
       .skipRepeats(==)
 
-    let vc = RepositoryViewController.instantiate()
-    vc.set(repoURL: URL(string: "https://api.github.com/repos/keithPiTsui/GHAPI")!)
+    let vc = MarkupViewerViewController.instantiate() //RepositoryViewController.instantiate()
+//    vc.set(repoURL: URL(string: "https://api.github.com/repos/keithPiTsui/GHAPI")!)
+    vc.set(markup: URL(string:"https://raw.githubusercontent.com/iwasrobbed/Down/master/README.md")!)
 
     let standardViewControllers = self.viewDidLoadProperty.signal
       .map { _ in

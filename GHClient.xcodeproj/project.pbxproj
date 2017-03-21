@@ -45,6 +45,11 @@
 		0E5BF8BE1E73B38A00EDD841 /* RegularBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */; };
 		0E5BF8C01E73B40400EDD841 /* RepositoryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */; };
 		0E5BF8C21E73B47E00EDD841 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */; };
+		0E6AAC751E8134A900E94429 /* MarkupViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6AAC741E8134A900E94429 /* MarkupViewer.storyboard */; };
+		0E6AAC771E81350C00E94429 /* MarkupViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6AAC761E81350C00E94429 /* MarkupViewerViewController.swift */; };
+		0E6AAC791E81356600E94429 /* MarkupViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6AAC781E81356600E94429 /* MarkupViewerViewModel.swift */; };
+		0E6AAC7A1E81363200E94429 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; };
+		0E6AAC7B1E81363200E94429 /* Down.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E71A4EA1E7FAC8C00D8EED6 /* Highlighter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */; };
 		0E71A4EB1E7FAC8C00D8EED6 /* Highlighter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E71A4EF1E7FAD0700D8EED6 /* Highlighter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */; };
@@ -146,6 +151,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = E43D74D51B8FBBBF00702114;
 			remoteInfo = "Ji iOS";
+		};
+		0E6AAC3E1E81265300E94429 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6AAC2D1E81265200E94429 /* Down.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D4201E801CFA5151008EEC6E;
+			remoteInfo = "Down-iOS";
+		};
+		0E6AAC401E81265300E94429 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6AAC2D1E81265200E94429 /* Down.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 24F833AA1E62706000590E90;
+			remoteInfo = "Down-tvOS";
+		};
+		0E6AAC421E81265300E94429 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6AAC2D1E81265200E94429 /* Down.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8A569F401E6B3E50008BE2AC;
+			remoteInfo = Down;
+		};
+		0E6AAC441E81265300E94429 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6AAC2D1E81265200E94429 /* Down.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D4201E8A1CFA5151008EEC6E;
+			remoteInfo = DownTests;
+		};
+		0E6AAC461E81265300E94429 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6AAC2D1E81265200E94429 /* Down.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8AFAEAFB1E6E32E900E09B68;
+			remoteInfo = "DownTests-macOS";
+		};
+		0E6AAC7C1E81363200E94429 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6AAC2D1E81265200E94429 /* Down.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D4201E7F1CFA5151008EEC6E;
+			remoteInfo = "Down-iOS";
 		};
 		0E71A4BC1E7FAC7C00D8EED6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -704,6 +751,7 @@
 				0E94F2DF1E651B7E00E962B6 /* ReactiveSwift.framework in Embed Frameworks */,
 				0E94F2F71E651B7E00E962B6 /* Argo.framework in Embed Frameworks */,
 				0E71A4EB1E7FAC8C00D8EED6 /* Highlighter.framework in Embed Frameworks */,
+				0E6AAC7B1E81363200E94429 /* Down.framework in Embed Frameworks */,
 				0E94F2E31E651B7E00E962B6 /* ReactiveCocoa.framework in Embed Frameworks */,
 				0E94F2E71E651B7E00E962B6 /* ReactiveExtensions.framework in Embed Frameworks */,
 				0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */,
@@ -750,6 +798,10 @@
 		0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularBaseTableViewCell.swift; sourceTree = "<group>"; };
 		0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDatasource.swift; sourceTree = "<group>"; };
 		0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
+		0E6AAC2D1E81265200E94429 /* Down.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Down.xcodeproj; path = Down/Down.xcodeproj; sourceTree = "<group>"; };
+		0E6AAC741E8134A900E94429 /* MarkupViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MarkupViewer.storyboard; sourceTree = "<group>"; };
+		0E6AAC761E81350C00E94429 /* MarkupViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupViewerViewController.swift; sourceTree = "<group>"; };
+		0E6AAC781E81356600E94429 /* MarkupViewerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupViewerViewModel.swift; sourceTree = "<group>"; };
 		0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Highlighter.xcodeproj; path = Highlighter/Highlighter.xcodeproj; sourceTree = "<group>"; };
 		0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Highlighter.storyboard; sourceTree = "<group>"; };
 		0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlighterViewController.swift; sourceTree = "<group>"; };
@@ -853,6 +905,7 @@
 				0E94F2DE1E651B7E00E962B6 /* ReactiveSwift.framework in Frameworks */,
 				0E94F2F61E651B7E00E962B6 /* Argo.framework in Frameworks */,
 				0E71A4EA1E7FAC8C00D8EED6 /* Highlighter.framework in Frameworks */,
+				0E6AAC7A1E81363200E94429 /* Down.framework in Frameworks */,
 				0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */,
 				0E94F2E21E651B7E00E962B6 /* ReactiveCocoa.framework in Frameworks */,
 				0E94F2E61E651B7E00E962B6 /* ReactiveExtensions.framework in Frameworks */,
@@ -869,6 +922,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E6AAC2E1E81265200E94429 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E6AAC3F1E81265300E94429 /* Down.framework */,
+				0E6AAC411E81265300E94429 /* Down.framework */,
+				0E6AAC431E81265300E94429 /* Down.framework */,
+				0E6AAC451E81265300E94429 /* DownTests.xctest */,
+				0E6AAC471E81265300E94429 /* DownTests-macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0E71A4AE1E7FAC7C00D8EED6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -950,6 +1015,7 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E6AAC2D1E81265200E94429 /* Down.xcodeproj */,
 				0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */,
 				0ECE8A491E77C590001FE48B /* Ji.xcodeproj */,
 				0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */,
@@ -1101,6 +1167,7 @@
 				0E7B7BA71E6E572E00D50C95 /* Search.storyboard */,
 				0E7B7BEE1E6EB01300D50C95 /* SearchFilter.storyboard */,
 				0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */,
+				0E6AAC741E8134A900E94429 /* MarkupViewer.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1109,6 +1176,7 @@
 			isa = PBXGroup;
 			children = (
 				0EECF6361E704608009600BB /* ActivitesViewController.swift */,
+				0E6AAC761E81350C00E94429 /* MarkupViewerViewController.swift */,
 				0E4B40BF1E70456C004144DC /* DiscoveryViewController.swift */,
 				0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */,
 				0E94F3291E65206000E962B6 /* LoginViewController.swift */,
@@ -1129,6 +1197,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA044D41E76884500643EBA /* ActivitiesViewModel.swift */,
+				0E6AAC781E81356600E94429 /* MarkupViewerViewModel.swift */,
 				0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */,
 				0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */,
 				0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */,
@@ -1320,6 +1389,7 @@
 				0E94F2F91E651B7E00E962B6 /* PBXTargetDependency */,
 				0E3E02E51E78071E00C1CD84 /* PBXTargetDependency */,
 				0E71A4ED1E7FAC8C00D8EED6 /* PBXTargetDependency */,
+				0E6AAC7D1E81363200E94429 /* PBXTargetDependency */,
 			);
 			name = GHClient;
 			productName = GHClient;
@@ -1388,6 +1458,10 @@
 					ProjectRef = 0E94F2251E651AAE00E962B6 /* Curry.xcodeproj */;
 				},
 				{
+					ProductGroup = 0E6AAC2E1E81265200E94429 /* Products */;
+					ProjectRef = 0E6AAC2D1E81265200E94429 /* Down.xcodeproj */;
+				},
+				{
 					ProductGroup = 0E94F2CA1E651B2A00E962B6 /* Products */;
 					ProjectRef = 0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */;
 				},
@@ -1433,6 +1507,41 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0E6AAC3F1E81265300E94429 /* Down.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Down.framework;
+			remoteRef = 0E6AAC3E1E81265300E94429 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E6AAC411E81265300E94429 /* Down.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Down.framework;
+			remoteRef = 0E6AAC401E81265300E94429 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E6AAC431E81265300E94429 /* Down.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Down.framework;
+			remoteRef = 0E6AAC421E81265300E94429 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E6AAC451E81265300E94429 /* DownTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DownTests.xctest;
+			remoteRef = 0E6AAC441E81265300E94429 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E6AAC471E81265300E94429 /* DownTests-macOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "DownTests-macOS.xctest";
+			remoteRef = 0E6AAC461E81265300E94429 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1908,6 +2017,7 @@
 				0E71A4F31E7FB03300D8EED6 /* sampleCode.txt in Resources */,
 				0EECF6351E7045F0009600BB /* Activities.storyboard in Resources */,
 				0E7B7BA81E6E572E00D50C95 /* Search.storyboard in Resources */,
+				0E6AAC751E8134A900E94429 /* MarkupViewer.storyboard in Resources */,
 				0E84B5A01E67C3DE00C5ADF7 /* UserProfile.storyboard in Resources */,
 				0E4BCFAD1E80D70200BF6135 /* RepositoryContent.storyboard in Resources */,
 				0E50AA321E6844700002A40D /* Main.storyboard in Resources */,
@@ -1958,6 +2068,7 @@
 				0E94F3211E651CBA00E962B6 /* Storyboard.swift in Sources */,
 				0E7896061E798BE100DB2098 /* GuitarBoolean.swift in Sources */,
 				0E238F4B1E6BD6DB001F493A /* UserProfileEventTableViewCell.swift in Sources */,
+				0E6AAC771E81350C00E94429 /* MarkupViewerViewController.swift in Sources */,
 				0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */,
 				0E4BCFB71E80DE7B00BF6135 /* BranchLiteTableViewCell.swift in Sources */,
 				0E78960A1E798BE100DB2098 /* GuitarNSRangeExtension.swift in Sources */,
@@ -1991,6 +2102,7 @@
 				0E4B40C01E70456C004144DC /* DiscoveryViewController.swift in Sources */,
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
+				0E6AAC791E81356600E94429 /* MarkupViewerViewModel.swift in Sources */,
 				0E4BCFB11E80D78800BF6135 /* RepositoryContentDatasource.swift in Sources */,
 				0ECE8A6B1E77FEF2001FE48B /* DiscoveryViewModel.swift in Sources */,
 				0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */,
@@ -2051,6 +2163,11 @@
 			isa = PBXTargetDependency;
 			name = "Ji iOS";
 			targetProxy = 0E3E02E41E78071E00C1CD84 /* PBXContainerItemProxy */;
+		};
+		0E6AAC7D1E81363200E94429 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Down-iOS";
+			targetProxy = 0E6AAC7C1E81363200E94429 /* PBXContainerItemProxy */;
 		};
 		0E71A4ED1E7FAC8C00D8EED6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
