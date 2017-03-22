@@ -10,13 +10,6 @@ import UIKit
 import GHAPI
 
 internal final class RegularCollectionViewCell: UICollectionViewCell, ValueCell {
-
-
-  internal var section: Int = 0
-  internal var row: Int = 0
-  internal weak var dataSource: ValueCellDataSource? = nil
-
-
   @IBOutlet weak var textLabel: UILabel!
 
   func configureWith(value: CustomStringConvertible) {

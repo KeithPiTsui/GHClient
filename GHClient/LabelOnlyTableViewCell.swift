@@ -9,24 +9,7 @@
 import UIKit
 
 internal final class LabelOnlyTableViewCell: UITableViewCell, ValueCell {
-
-  internal var section: Int = 0
-  internal var row: Int = 0
-  internal weak var dataSource: ValueCellDataSource? = nil
-
   func configureWith(value: String) {
     self.textLabel?.text = value
   }
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
-
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-
-    // Configure the view for the selected state
-  }
-
 }

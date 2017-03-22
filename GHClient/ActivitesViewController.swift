@@ -102,7 +102,11 @@ extension ActivitesViewController: UITableViewDelegate {
   }
 }
 
-
+extension ActivitesViewController: TTTAttributedLabelDelegate {
+  @objc func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+    print("\(url)")
+  }
+}
 
 
 

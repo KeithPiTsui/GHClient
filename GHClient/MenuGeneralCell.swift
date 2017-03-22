@@ -10,12 +10,6 @@ import UIKit
 
 
 internal final class MenuGeneralCell: UITableViewCell, ValueCell {
-
-  internal var section: Int = 0
-  internal var row: Int = 0
-  internal weak var dataSource: ValueCellDataSource? = nil
-
-
   @IBOutlet weak var itemName: UILabel!
   @IBOutlet weak var itemIconView: UIImageView!
 

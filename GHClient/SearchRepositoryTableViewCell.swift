@@ -10,11 +10,6 @@ import UIKit
 import GHAPI
 
 internal final class SearchRepositoryTableViewCell: UITableViewCell, ValueCell {
-
-  internal var section: Int = 0
-  internal var row: Int = 0
-  internal weak var dataSource: ValueCellDataSource? = nil
-
   internal func configureWith(value: Repository) {
     self.textLabel?.text = value.full_name
   }

@@ -10,11 +10,6 @@ import UIKit
 import GHAPI
 
 internal final class RepositoryContentTableViewCell: UITableViewCell, ValueCell {
-
-  internal var section: Int = 0
-  internal var row: Int = 0
-  internal weak var dataSource: ValueCellDataSource? = nil
-
   func configureWith(value: Content) {
     self.textLabel?.text = value.name
     if value.type == "dir" {
@@ -24,11 +19,4 @@ internal final class RepositoryContentTableViewCell: UITableViewCell, ValueCell 
     }
   }
 
-  override func awakeFromNib() {
-    super.awakeFromNib()
-  }
-
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-  }
 }

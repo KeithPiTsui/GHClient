@@ -225,12 +225,6 @@ open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableVie
 
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId, for: indexPath)
 
-    if let setableCell = cell as? ValueSetableCell {
-      setableCell.section = indexPath.section
-      setableCell.row = indexPath.item
-      setableCell.dataSource = self
-    }
-
     self.configureCell(collectionCell: cell, withValue: value, for: indexPath)
 
     return cell
@@ -252,12 +246,6 @@ open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableVie
     let (value, reusableId) = self.values[indexPath.section][indexPath.row]
 
     let cell = tableView.dequeueReusableCell(withIdentifier: reusableId, for: indexPath)
-
-    if let setableCell = cell as? ValueSetableCell {
-      setableCell.section = indexPath.section
-      setableCell.row = indexPath.item
-      setableCell.dataSource = self
-    }
 
     self.configureCell(tableCell: cell, withValue: value, for: indexPath)
 

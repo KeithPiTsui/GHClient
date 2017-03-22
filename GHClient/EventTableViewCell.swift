@@ -13,10 +13,6 @@ import Prelude_UIKit
 
 internal final class EventTableViewCell: UITableViewCell , ValueCell {
 
-  internal var section: Int = 0
-  internal var row: Int = 0
-  internal weak var dataSource: ValueCellDataSource? = nil
-
   @IBOutlet weak var timestamp: UILabel!
   @IBOutlet weak var eventIcon: UIImageView!
   @IBOutlet weak var actorAvatar: UIImageView!
@@ -33,7 +29,7 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
     } else {
       self.uninstallPayloadDisplay()
     }
-    let desc = GHEventDescriber.describe(event: value)
+    let desc = value.eventDescription
     if desc.desc.isEmpty == false {
       self.eventDesc.delegate = self
       self.eventDesc.text = desc.desc
@@ -70,18 +66,6 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
        v.rightAnchor.constraint(equalTo: self.payloadDisplay.rightAnchor)]
     /// active constraints
     NSLayoutConstraint.activate(displayConstraints)
-  }
-
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
-
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-
-    // Configure the view for the selected state
   }
 
   internal static func estimatedHeight(with payload: EventPayloadType) -> CGFloat {
@@ -124,7 +108,11 @@ extension EventTableViewCell {
 }
 
 extension EventTableViewCell: TTTAttributedLabelDelegate {
-  
+ @objc func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+    if let delegate = label.tableView?.delegate as? TTTAttributedLabelDelegate {
+      delegate.attributedLabel?(label, didSelectLinkWith: url)
+    }
+  }
 }
 
 

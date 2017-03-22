@@ -21,9 +21,6 @@ internal final class TrendingRepositoryTableViewCell: UITableViewCell, ValueCell
   @IBOutlet weak var forkIcon: UIImageView!
   @IBOutlet weak var starIcon: UIImageView!
 
-  internal var section: Int = 0
-  internal var row: Int = 0
-  internal weak var dataSource: ValueCellDataSource?
   internal var periodDesc: String = ""
 
   func configureWith(value: TrendingRepository) {
@@ -34,16 +31,4 @@ internal final class TrendingRepositoryTableViewCell: UITableViewCell, ValueCell
     self.forks.text = "\(value.forks ?? 0)"
     self.periodStars.text = "\(value.periodStars ?? 0) " + self.periodDesc
   }
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
-
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-
-    // Configure the view for the selected state
-  }
-
 }

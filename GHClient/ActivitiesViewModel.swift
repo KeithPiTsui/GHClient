@@ -73,13 +73,13 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
     let events = eventRequest.observe(on: QueueScheduler())
       .map { () -> [GHEvent]? in
         guard let user = AppEnvironment.current.currentUser else { return nil }
-        return AppEnvironment.current.apiService.events(of: user.login).single()?.value
+        return AppEnvironment.current.apiService.events(of: user).single()?.value
       }.skipNil()
 
     let receivedEvents = eventRequest.observe(on: QueueScheduler())
       .map { () -> [GHEvent]? in
         guard let user = AppEnvironment.current.currentUser else { return nil }
-        return AppEnvironment.current.apiService.receivedEvents(of: user.login).single()?.value
+        return AppEnvironment.current.apiService.receivedEvents(of: user).single()?.value
       }.skipNil()
 
     let initialSelectedSegment = self.viewDidLoadProperty.signal

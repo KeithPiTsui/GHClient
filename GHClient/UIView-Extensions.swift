@@ -55,3 +55,37 @@ extension UIView {
     self.bindStyles()
   }
 }
+
+
+extension UIView {
+  internal var tableView: UITableView? {
+   return UIView.ancestorView(of: self)
+  }
+
+  internal var collectionView: UICollectionView? {
+    return UIView.ancestorView(of: self)
+  }
+
+  internal var tableViewCell: UITableViewCell? {
+    return UIView.ancestorView(of: self)
+  }
+
+  internal var collectionViewCell: UICollectionViewCell? {
+    return UIView.ancestorView(of: self)
+  }
+
+  internal static func ancestorView<ViewType: UIView>(of view: UIView) -> ViewType? {
+    var par: UIView? = view
+    while par != nil || (par is UIWindow) == false {
+      if let tv = par as? ViewType {
+        return tv
+      }
+      par = par?.superview
+    }
+    return nil
+  }
+}
+
+
+
+
