@@ -120,49 +120,10 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
     self.segments = self.viewDidLoadProperty.signal.map {ActivitesViewModel.allSegments}
     self.selectedSegment = Signal.combineLatest(selectedSegment, self.viewWillAppearProperty.signal).map(first)
 
-    let repoEvent = self.tappOnEventWithLinkProperty.signal.skipNil()
-      .filter {$0.1.pathComponents.contains("repo")}
-      .map(first)
-    let userEvent = self.tappOnEventWithLinkProperty.signal.skipNil()
-      .filter {$0.1.pathComponents.contains("user")}
-      .map(first)
-    let branchEvent = self.tappOnEventWithLinkProperty.signal.skipNil()
-      .filter {$0.1.pathComponents.contains("branch")}
-      .map(first)
-
-    let repo = repoEvent.map { (event) -> UIViewController? in
-      guard let repoURL = event.repo?.url else { return nil }
-      let vc = RepositoryViewController.instantiate()
-      vc.set(repoURL: repoURL)
-      return vc
+    self.pushViewController = self.tappOnEventWithLinkProperty.signal.skipNil()
+      .map { (event, link) -> UIViewController? in
+        return viewController(for: event, with: link)
       }.skipNil()
-
-    let user = userEvent.map { (event) -> UIViewController? in
-      let username = event.actor.login
-      let url = AppEnvironment.current.apiService.userURL(with: username)
-      let vc = UserProfileViewController.instantiate()
-      vc.set(userUrl: url)
-      return vc
-      }.skipNil()
-
-    let branch = branchEvent.map { (event) -> UIViewController? in
-
-      guard let repoURL = event.repo?.url else { return nil }
-      guard let branch = (event.payload as? PushEventPayload)?.ref.components(separatedBy: "/").last
-        else { return nil }
-
-      guard let repo = AppEnvironment.current.apiService.repository(referredBy: repoURL).single()?.value
-        else { return nil}
-
-      let url = AppEnvironment.current.apiService.contentURL(of: repo, ref: branch)
-
-      let vc = RepositoryContentTableViewController.instantiate()
-      vc.set(contentURL: url)
-      return vc
-      }.skipNil()
-
-    self.pushViewController = Signal.merge(repo, user, branch)
-
   }
 
   fileprivate let tappOnEventWithLinkProperty = MutableProperty<(GHEvent, URL)?>(nil)
@@ -210,7 +171,38 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
   internal let events: Signal<[GHEvent], NoError>
   internal let receivedEvents: Signal<[GHEvent], NoError>
   internal let pushViewController: Signal<UIViewController, NoError>
-  
+
   internal var inputs: ActivitesViewModelInputs { return self }
   internal var outputs: ActivitesViewModelOutputs { return self }
 }
+
+fileprivate func viewController(for event: GHEvent, with link: URL) -> UIViewController? {
+  let components = link.pathComponents
+  if components.contains("user") {
+    let userUrl = event.userUrl
+    let vc = UserProfileViewController.instantiate()
+    vc.set(userUrl: userUrl)
+    return vc
+  } else if components.contains("repo") {
+    guard let repoUrl = event.repoUrl else { return nil }
+    let vc = RepositoryViewController.instantiate()
+    vc.set(repoURL: repoUrl)
+    return vc
+  } else if components.contains("branch") {
+    guard let branchUrl = event.branchUrl else { return nil }
+    let vc = RepositoryContentTableViewController.instantiate()
+    vc.set(contentURL: branchUrl)
+    return vc
+  } else if components.contains("issue") {
+    
+  } else if components.contains("commit") {
+    
+  }
+  
+
+  return nil
+}
+
+
+
+
