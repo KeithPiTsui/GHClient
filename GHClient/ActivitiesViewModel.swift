@@ -6,7 +6,7 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Prelude
 import ReactiveSwift
 import ReactiveExtensions
@@ -40,6 +40,9 @@ internal protocol ActivitesViewModelInputs {
 
   /// Call when user request lastest event
   func refreshEvents()
+
+  /// Call when user tapped on a link on event
+  func tapped(on event: GHEvent, with link: URL)
 }
 
 internal protocol ActivitesViewModelOutputs {
@@ -55,6 +58,8 @@ internal protocol ActivitesViewModelOutputs {
   var loading: Signal<(), NoError> { get }
 
   var loaded: Signal<(), NoError> { get }
+
+  var pushViewController: Signal<UIViewController, NoError> { get}
 }
 
 internal protocol ActivitesViewModelType {
@@ -114,6 +119,55 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
 
     self.segments = self.viewDidLoadProperty.signal.map {ActivitesViewModel.allSegments}
     self.selectedSegment = Signal.combineLatest(selectedSegment, self.viewWillAppearProperty.signal).map(first)
+
+    let repoEvent = self.tappOnEventWithLinkProperty.signal.skipNil()
+      .filter {$0.1.pathComponents.contains("repo")}
+      .map(first)
+    let userEvent = self.tappOnEventWithLinkProperty.signal.skipNil()
+      .filter {$0.1.pathComponents.contains("user")}
+      .map(first)
+    let branchEvent = self.tappOnEventWithLinkProperty.signal.skipNil()
+      .filter {$0.1.pathComponents.contains("branch")}
+      .map(first)
+
+    let repo = repoEvent.map { (event) -> UIViewController? in
+      guard let repoURL = event.repo?.url else { return nil }
+      let vc = RepositoryViewController.instantiate()
+      vc.set(repoURL: repoURL)
+      return vc
+      }.skipNil()
+
+    let user = userEvent.map { (event) -> UIViewController? in
+      let username = event.actor.login
+      let url = AppEnvironment.current.apiService.userURL(with: username)
+      let vc = UserProfileViewController.instantiate()
+      vc.set(userUrl: url)
+      return vc
+      }.skipNil()
+
+    let branch = branchEvent.map { (event) -> UIViewController? in
+
+      guard let repoURL = event.repo?.url else { return nil }
+      guard let branch = (event.payload as? PushEventPayload)?.ref.components(separatedBy: "/").last
+        else { return nil }
+
+      guard let repo = AppEnvironment.current.apiService.repository(referredBy: repoURL).single()?.value
+        else { return nil}
+
+      let url = AppEnvironment.current.apiService.contentURL(of: repo, ref: branch)
+
+      let vc = RepositoryContentTableViewController.instantiate()
+      vc.set(contentURL: url)
+      return vc
+      }.skipNil()
+
+    self.pushViewController = Signal.merge(repo, user, branch)
+
+  }
+
+  fileprivate let tappOnEventWithLinkProperty = MutableProperty<(GHEvent, URL)?>(nil)
+  internal func tapped(on event: GHEvent, with link: URL) {
+    self.tappOnEventWithLinkProperty.value = (event, link)
   }
 
   fileprivate let refreshEventsProperty = MutableProperty()
@@ -155,7 +209,8 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
   internal let selectedSegment: Signal<Int, NoError>
   internal let events: Signal<[GHEvent], NoError>
   internal let receivedEvents: Signal<[GHEvent], NoError>
-
+  internal let pushViewController: Signal<UIViewController, NoError>
+  
   internal var inputs: ActivitesViewModelInputs { return self }
   internal var outputs: ActivitesViewModelOutputs { return self }
 }

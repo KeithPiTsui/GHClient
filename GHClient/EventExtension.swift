@@ -13,43 +13,36 @@ internal typealias URLAttachedEventDescription = (desc: String, attachedURLs: [S
 internal enum GHEventDescriber {
   internal static func describe(event: GHEvent) -> URLAttachedEventDescription {
     var desc = ""
-        var urls: [String: URL] = [:]
-    
-        switch event.type {
-        case .PushEvent:
-          let actorName = event.actor.login
-          let actorURL = event.actor.url
-          urls[actorName] = actorURL
+    var urls: [String: URL] = [:]
+    let baseURL = AppEnvironment.current.apiService.serverConfig.apiBaseUrl
+    switch event.type {
+    case .PushEvent:
+      let actorName = event.actor.login
+      urls[actorName] = baseURL.appendingPathComponent("user")
 
-          guard
-            let repoName = event.repo?.name,
-            let repoURL = event.repo?.url
-            else  { break }
-          urls[repoName] = repoURL
+      guard
+        let repoName = event.repo?.name
+        else  { break }
+      urls[repoName] = baseURL.appendingPathComponent("repo")
 
-          guard
-            let pushEventPayload = event.payload as? PushEventPayload,
-            let branchName = pushEventPayload.ref.components(separatedBy: "/").last
-            else { break }
-          let components = repoName.components(separatedBy: "/")
-          guard
-            let owner = components.first, let repo = components.last
-            else { break }
-          let branchContentURL = AppEnvironment.current.apiService.serverConfig.apiBaseUrl.appendingPathComponent("\(owner)/\(repo)/\(branchName))")
-          urls[branchName] = branchContentURL
+      guard
+        let pushEventPayload = event.payload as? PushEventPayload,
+        let branchName = pushEventPayload.ref.components(separatedBy: "/").last
+        else { break }
+      urls[branchName] = baseURL.appendingPathComponent("branch")
 
-          desc = "\(actorName) pushed to \(branchName) at \(repoName)"
-        default:
-          break
-        }
-    
-        return (desc, urls)
+      desc = "\(actorName) pushed to \(branchName) at \(repoName)"
+    default:
+      break
+    }
+
+    return (desc, urls)
   }
 }
 
 extension GHEvent {
-    internal var eventDescription: URLAttachedEventDescription {
-      return GHEventDescriber.describe(event: self)
-    }
+  internal var eventDescription: URLAttachedEventDescription {
+    return GHEventDescriber.describe(event: self)
+  }
 }
 

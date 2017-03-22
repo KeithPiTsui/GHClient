@@ -81,6 +81,9 @@ internal final class ActivitesViewController: UIViewController {
     self.viewModel.outputs.loaded.observeForUI().observeValues { [weak self] in
       self?.refreshControl.endRefreshing()
     }
+    self.viewModel.outputs.pushViewController.observeForControllerAction().observeValues { [weak self] in
+      self?.navigationController?.pushViewController($0, animated: true)
+    }
   }
 
   fileprivate var rowHeights: [IndexPath:CGFloat] = [:]
@@ -105,6 +108,12 @@ extension ActivitesViewController: UITableViewDelegate {
 extension ActivitesViewController: TTTAttributedLabelDelegate {
   @objc func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
     print("\(url)")
+    guard
+      let cell = label.tableViewCell,
+      let indexPath = self.tableView.indexPath(for: cell),
+      let event = self.eventDatasource[indexPath] as? GHEvent
+    else { return }
+    self.viewModel.inputs.tapped(on: event, with: url)
   }
 }
 
