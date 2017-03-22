@@ -16,6 +16,7 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
   internal var section: Int = 0
   internal var row: Int = 0
   internal weak var dataSource: ValueCellDataSource? = nil
+
   @IBOutlet weak var timestamp: UILabel!
   @IBOutlet weak var eventIcon: UIImageView!
   @IBOutlet weak var actorAvatar: UIImageView!
@@ -27,11 +28,22 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
 
   func configureWith(value: GHEvent) {
     self.timestamp.text = value.created_at.ISO8601DateRepresentation
-    self.eventDesc.text = value.id
     if let payload = value.payload {
       self.installPayloadDisplay(with: payload)
     } else {
       self.uninstallPayloadDisplay()
+    }
+    let desc = GHEventDescriber.describe(event: value)
+    if desc.desc.isEmpty == false {
+      self.eventDesc.delegate = self
+      self.eventDesc.text = desc.desc
+      let nsDesc = desc.desc as NSString
+      desc.attachedURLs.forEach { (key, url) in
+        let r = nsDesc.range(of: key)
+        self.eventDesc.addLink(to: url, with: r)
+      }
+    } else {
+      self.eventDesc.text = value.id
     }
   }
 
@@ -111,7 +123,9 @@ extension EventTableViewCell {
   }
 }
 
-
+extension EventTableViewCell: TTTAttributedLabelDelegate {
+  
+}
 
 
 

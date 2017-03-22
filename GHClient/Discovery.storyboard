@@ -39,7 +39,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WSC-vt-FIN" id="hOL-uT-ab8">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GO3-0J-QcU">
@@ -177,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaX-0X-bVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3223" y="121"/>
+            <point key="canvasLocation" x="-3791" y="46"/>
         </scene>
     </scenes>
     <resources>
