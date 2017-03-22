@@ -120,10 +120,10 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
     self.segments = self.viewDidLoadProperty.signal.map {ActivitesViewModel.allSegments}
     self.selectedSegment = Signal.combineLatest(selectedSegment, self.viewWillAppearProperty.signal).map(first)
 
-    self.pushViewController = self.tappOnEventWithLinkProperty.signal.skipNil()
-      .map { (event, link) -> UIViewController? in
-        return viewController(for: event, with: link)
-      }.skipNil()
+    self.pushViewController
+      = self.tappOnEventWithLinkProperty.signal.skipNil()
+        .map(GHEventDescriber.viewController)
+        .skipNil()
   }
 
   fileprivate let tappOnEventWithLinkProperty = MutableProperty<(GHEvent, URL)?>(nil)
@@ -175,34 +175,6 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
   internal var inputs: ActivitesViewModelInputs { return self }
   internal var outputs: ActivitesViewModelOutputs { return self }
 }
-
-fileprivate func viewController(for event: GHEvent, with link: URL) -> UIViewController? {
-  let components = link.pathComponents
-  if components.contains("user") {
-    let userUrl = event.userUrl
-    let vc = UserProfileViewController.instantiate()
-    vc.set(userUrl: userUrl)
-    return vc
-  } else if components.contains("repo") {
-    guard let repoUrl = event.repoUrl else { return nil }
-    let vc = RepositoryViewController.instantiate()
-    vc.set(repoURL: repoUrl)
-    return vc
-  } else if components.contains("branch") {
-    guard let branchUrl = event.branchUrl else { return nil }
-    let vc = RepositoryContentTableViewController.instantiate()
-    vc.set(contentURL: branchUrl)
-    return vc
-  } else if components.contains("issue") {
-    
-  } else if components.contains("commit") {
-    
-  }
-  
-
-  return nil
-}
-
 
 
 

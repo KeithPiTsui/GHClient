@@ -129,6 +129,10 @@
 		0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D81E76897D00643EBA /* ActivitiesEventDatasource.swift */; };
 		0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */; };
 		0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6580A1E82168800D48AAE /* EventExtension.swift */; };
+		0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */; };
+		0EB6585D1E828F2200D48AAE /* EventPayloadTypeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */; };
+		0EB6585F1E82903E00D48AAE /* ForkEventPayloadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585E1E82903E00D48AAE /* ForkEventPayloadExtension.swift */; };
+		0EB658611E82909400D48AAE /* IssueCommentEventPayloadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB658601E82909400D48AAE /* IssueCommentEventPayloadExtension.swift */; };
 		0ECE8A6B1E77FEF2001FE48B /* DiscoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */; };
 		0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */; };
 		0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460D1E69500900017D28 /* MenuDataSource.swift */; };
@@ -875,6 +879,10 @@
 		0EA044D81E76897D00643EBA /* ActivitiesEventDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesEventDatasource.swift; sourceTree = "<group>"; };
 		0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0EB6580A1E82168800D48AAE /* EventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventExtension.swift; sourceTree = "<group>"; };
+		0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEventExtension.swift; sourceTree = "<group>"; };
+		0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPayloadTypeDisplay.swift; sourceTree = "<group>"; };
+		0EB6585E1E82903E00D48AAE /* ForkEventPayloadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForkEventPayloadExtension.swift; sourceTree = "<group>"; };
+		0EB658601E82909400D48AAE /* IssueCommentEventPayloadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueCommentEventPayloadExtension.swift; sourceTree = "<group>"; };
 		0ECE8A491E77C590001FE48B /* Ji.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ji.xcodeproj; path = Ji/Ji.xcodeproj; sourceTree = "<group>"; };
 		0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewModel.swift; sourceTree = "<group>"; };
 		0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryDatasource.swift; sourceTree = "<group>"; };
@@ -1278,7 +1286,7 @@
 		0EB657D01E82166000D48AAE /* ModelExtension */ = {
 			isa = PBXGroup;
 			children = (
-				0EB6580A1E82168800D48AAE /* EventExtension.swift */,
+				0EB658621E82974300D48AAE /* EventAndPayload */,
 			);
 			name = ModelExtension;
 			sourceTree = "<group>";
@@ -1302,6 +1310,18 @@
 				0E7B7BF81E6EF68C00D50C95 /* RegularCollectionViewCell.swift */,
 			);
 			name = GeneralCell;
+			sourceTree = "<group>";
+		};
+		0EB658621E82974300D48AAE /* EventAndPayload */ = {
+			isa = PBXGroup;
+			children = (
+				0EB6580A1E82168800D48AAE /* EventExtension.swift */,
+				0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */,
+				0EB6585E1E82903E00D48AAE /* ForkEventPayloadExtension.swift */,
+				0EB658601E82909400D48AAE /* IssueCommentEventPayloadExtension.swift */,
+				0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */,
+			);
+			name = EventAndPayload;
 			sourceTree = "<group>";
 		};
 		0ECE8A4A1E77C590001FE48B /* Products */ = {
@@ -2083,6 +2103,7 @@
 				0E9EBD181E71000600D3E5A9 /* Image.swift in Sources */,
 				0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */,
 				0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */,
+				0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */,
 				0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */,
 				0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
@@ -2108,6 +2129,8 @@
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
 				0E9EBD581E715D1B00D3E5A9 /* CGRect-Extension.swift in Sources */,
 				0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */,
+				0EB6585F1E82903E00D48AAE /* ForkEventPayloadExtension.swift in Sources */,
+				0EB658611E82909400D48AAE /* IssueCommentEventPayloadExtension.swift in Sources */,
 				0EECF63E1E70482C009600BB /* UIColor.swift in Sources */,
 				0E7B7BDD1E6E575800D50C95 /* SearchViewController.swift in Sources */,
 				0E5BF8B81E73AD7D00EDD841 /* RepositoryViewController.swift in Sources */,
@@ -2127,6 +2150,7 @@
 				0E94F3201E651CBA00E962B6 /* NSBundleType.swift in Sources */,
 				0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */,
 				0E6AAC791E81356600E94429 /* MarkupViewerViewModel.swift in Sources */,
+				0EB6585D1E828F2200D48AAE /* EventPayloadTypeDisplay.swift in Sources */,
 				0E4BCFB11E80D78800BF6135 /* RepositoryContentDatasource.swift in Sources */,
 				0ECE8A6B1E77FEF2001FE48B /* DiscoveryViewModel.swift in Sources */,
 				0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */,
