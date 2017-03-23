@@ -10,27 +10,40 @@ import UIKit
 
 extension UIView {
   public var tableView: UITableView? {
-    return UIView.first(UITableView.self)(self)
+    return UIView.firstAncestor(UITableView.self)(self)
   }
 
   public var collectionView: UICollectionView? {
-    return UIView.first(UICollectionView.self)(self)
+    return UIView.firstAncestor(UICollectionView.self)(self)
   }
 
   public var tableViewCell: UITableViewCell? {
-    return UIView.first(UITableViewCell.self)(self)
+    return UIView.firstAncestor(UITableViewCell.self)(self)
   }
 
   public var collectionViewCell: UICollectionViewCell? {
-    return UIView.first(UICollectionViewCell.self)(self)
+    return UIView.firstAncestor(UICollectionViewCell.self)(self)
   }
 
-  public static func first<V: UIView>(_: V.Type) -> (UIView) -> V? {
+  public static func firstAncestor<V: UIView>(_: V.Type) -> (UIView) -> V? {
     return { view in
       var tv: UIView? = view
       while tv != nil && (tv is UIWindow) == false {
         if tv is V { return tv as? V }
         tv = tv?.superview
+      }
+      return nil
+    }
+  }
+
+  public static func firstDescedant<V: UIView>(_: V.Type) -> (UIView) -> V? {
+    return { view in
+      var svs: [UIView] = [view]
+      while svs.isEmpty == false  {
+        for sv in svs {
+          if sv is V { return sv as? V }
+        }
+        svs = svs.flatMap{$0.subviews}
       }
       return nil
     }

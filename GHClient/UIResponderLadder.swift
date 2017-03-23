@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIResponder {
-  public static func first<RPD: UIResponder>(_:RPD.Type) -> (UIResponder) -> RPD? {
+  public static func firstDescedant<RPD: UIResponder>(_:RPD.Type) -> (UIResponder) -> RPD? {
     return { responder in
       var r: UIResponder? = responder
       while r != nil {
