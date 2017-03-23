@@ -109,31 +109,31 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
       .skipRepeats(==)
 
     let defualtViewControllers = self.viewDidLoadProperty.signal
-      .map { _ in [UIViewController()]}
+      .map { () -> ([UIViewController],String) in ([UIViewController()],"default")}
 
     let accountModeControllers = self.userSessionStartedProperty.signal
-      .map { _ in
-        [
+      .map { () -> ([UIViewController],String) in
+        ([
           DiscoveryViewController.instantiate(),
           ActivitesViewController.instantiate(),
           SearchViewController.instantiate(),
           MeTableViewController.instantiate()
-        ]
+        ],"account")
     }
 
     let guestModeControllers = Signal
       .merge(self.appRunOnGuestModeProperty.signal, self.userSessionEndedProperty.signal)
-      .map { _ in
-        [
+      .map { () -> ([UIViewController],String) in
+        ([
           DiscoveryViewController.instantiate(),
           SearchViewController.instantiate(),
           LoginViewController.instantiate()
-        ]
+        ],"guest")
     }
 
     let viewControllers = Signal.merge(defualtViewControllers, accountModeControllers, guestModeControllers)
 
-    self.setViewControllers = viewControllers
+    self.setViewControllers = viewControllers.map(first)
 
     let loginState = userState
     let vcCount = self.setViewControllers.map { $0.count }
@@ -170,9 +170,13 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
       .takePairWhen(selectedTabAgain)
       .map { vcs, idx in vcs[idx] }
 
-    self.tabBarItemsData = Signal.combineLatest(currentUser, self.viewDidLoadProperty.signal)
+//    self.tabBarItemsData = Signal.combineLatest(currentUser, self.viewDidLoadProperty.signal)
+//      .map(first)
+//      .map(tabData(forUser:))
+
+    self.tabBarItemsData = Signal.combineLatest(viewControllers, self.viewDidLoadProperty.signal)
       .map(first)
-      .map(tabData(forUser:))
+      .map(tabData(for: and:))
 
     self.presentAlert = self.userAuthenticationFailedProperty.signal.skipNil().map{ (error) -> UIAlertController in
       let alert = UIAlertController(title: "Cannot authenticate current user",
@@ -249,15 +253,16 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
   internal var outputs: RootTabBarViewModelOutputs { return self }
 }
 
-private func tabData(forUser user: User?) -> TabBarItemsData {
-
-  let isLoggedIn = user != nil
-
-  let items: [TabBarItem] = isLoggedIn
-    ? [.discovery(index:0), .activity(index:1), .search(index: 2), .profile(index: 3)]
-    : [.discovery(index:0), .activity(index:1), .search(index: 2), .login(index: 3)]
-
-  return TabBarItemsData(items: items, isLoggedIn: user != nil)
+private func tabData(for controllers: [UIViewController], and tag: String) -> TabBarItemsData {
+  let items: [TabBarItem]
+  if tag == "default" {
+    items = [.discovery(index:0)]}
+  else if tag == "account" {
+    items = [.discovery(index:0), .activity(index:1), .search(index: 2), .profile(index: 3)]}
+  else {
+    items = [.discovery(index:0), .search(index: 1), .login(index: 2)]
+  }
+  return TabBarItemsData(items: items, isLoggedIn: false)
 }
 
 extension TabBarItemsData: Equatable {}

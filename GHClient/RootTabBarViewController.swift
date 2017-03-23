@@ -118,7 +118,6 @@ internal final class RootTabBarViewController: UITabBarController {
     }
     return nil
   }
-
 }
 
 extension RootTabBarViewController: UITabBarControllerDelegate {
