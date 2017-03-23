@@ -57,35 +57,5 @@ extension UIView {
 }
 
 
-extension UIView {
-  internal var tableView: UITableView? {
-    return UIView.first(UITableView.self)(self)
-  }
-
-  internal var collectionView: UICollectionView? {
-    return UIView.first(UICollectionView.self)(self)
-  }
-
-  internal var tableViewCell: UITableViewCell? {
-    return UIView.first(UITableViewCell.self)(self)
-  }
-
-  internal var collectionViewCell: UICollectionViewCell? {
-    return UIView.first(UICollectionViewCell.self)(self)
-  }
-
-  internal static func first<V: UIView>(_ view: V.Type) -> (UIView) -> V? {
-    return { view in
-      var tv: UIView? = view
-      while tv != nil || (tv is UIWindow) == false {
-        if tv is V { return tv as? V }
-        tv = tv?.superview
-      }
-      return nil
-    }
-  }
-}
-
-
 
 
