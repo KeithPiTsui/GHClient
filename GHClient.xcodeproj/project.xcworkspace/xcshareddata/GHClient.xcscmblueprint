@@ -6,6 +6,7 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "56143BFACBB606C93830EB59176C6A4332845E1D" : 9223372036854775807,
     "445A1697CFE660BF77E849D6FE1F787AAED558F9" : 9223372036854775807,
+    "4AE798DA6300B9335E840B155507BAF9742366D7" : 9223372036854775807,
     "C779AC94AAF26299AC2D478A5DDF7C5A40736560" : 9223372036854775807,
     "E084C86B03F81D63323C9E7510697EA528A758C7" : 9223372036854775807,
     "39CB70283A1C33AFB5FF861E924945826EDC74FE" : 9223372036854775807,
@@ -23,6 +24,7 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "56143BFACBB606C93830EB59176C6A4332845E1D" : "GHClient\/Kickstarter-Prelude\/",
     "445A1697CFE660BF77E849D6FE1F787AAED558F9" : "GHClient\/",
+    "4AE798DA6300B9335E840B155507BAF9742366D7" : "GHClient\/Ladder\/",
     "C779AC94AAF26299AC2D478A5DDF7C5A40736560" : "GHClient\/SlideMenuControllerSwift\/",
     "E084C86B03F81D63323C9E7510697EA528A758C7" : "GHClient\/ReactiveCocoa\/Carthage\/Checkouts\/ReactiveSwift\/Carthage\/Checkouts\/xcconfigs\/",
     "39CB70283A1C33AFB5FF861E924945826EDC74FE" : "GHClient\/Argo\/",
@@ -59,6 +61,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KeithPiTsui\/GHClient.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "445A1697CFE660BF77E849D6FE1F787AAED558F9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KeithPiTsui\/Ladder.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4AE798DA6300B9335E840B155507BAF9742366D7"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ReactiveCocoa\/ReactiveCocoa.git",

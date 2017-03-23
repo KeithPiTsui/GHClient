@@ -37,3 +37,6 @@
 [submodule "Down"]
 	path = Down
 	url = https://github.com/iwasrobbed/Down.git
+[submodule "Ladder"]
+	path = Ladder
+	url = https://github.com/KeithPiTsui/Ladder.git

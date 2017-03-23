@@ -142,9 +142,8 @@
 		0EDB2CC61E79104A007103A7 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB2CC51E79104A007103A7 /* EventTableViewCell.swift */; };
 		0EDCFB151E8403900095F61B /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCFB141E8403900095F61B /* Me.storyboard */; };
 		0EDCFB171E8403AE0095F61B /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCFB161E8403AE0095F61B /* MeTableViewController.swift */; };
-		0EDCFB1D1E8428300095F61B /* UIResponderLadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCFB1C1E8428300095F61B /* UIResponderLadder.swift */; };
-		0EDCFB1F1E8429050095F61B /* UIViewLadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCFB1E1E8429050095F61B /* UIViewLadder.swift */; };
-		0EDCFB211E8429300095F61B /* UIViewControllerLadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCFB201E8429300095F61B /* UIViewControllerLadder.swift */; };
+		0EDCFB561E8432130095F61B /* Ladder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; };
+		0EDCFB571E8432130095F61B /* Ladder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EECF6351E7045F0009600BB /* Activities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EECF6341E7045F0009600BB /* Activities.storyboard */; };
 		0EECF6371E704608009600BB /* ActivitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF6361E704608009600BB /* ActivitesViewController.swift */; };
 		0EECF63A1E7047B2009600BB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF6391E7047B2009600BB /* Colors.swift */; };
@@ -741,6 +740,27 @@
 			remoteGlobalIDString = E43A4E2D1BD842B6003CB3D7;
 			remoteInfo = "Ji tvOS Tests";
 		};
+		0EDCFB521E8431FD0095F61B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EDCFB2C1E842EB60095F61B;
+			remoteInfo = Ladder;
+		};
+		0EDCFB541E8431FD0095F61B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EDCFB351E842EB70095F61B;
+			remoteInfo = LadderTests;
+		};
+		0EDCFB581E8432130095F61B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EDCFB2B1E842EB60095F61B;
+			remoteInfo = Ladder;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -754,6 +774,7 @@
 				0E94F2EF1E651B7E00E962B6 /* Prelude_UIKit.framework in Embed Frameworks */,
 				0E94F2F31E651B7E00E962B6 /* Curry.framework in Embed Frameworks */,
 				0E94F2D71E651B7E00E962B6 /* Runes.framework in Embed Frameworks */,
+				0EDCFB571E8432130095F61B /* Ladder.framework in Embed Frameworks */,
 				0E94F2EB1E651B7E00E962B6 /* Prelude.framework in Embed Frameworks */,
 				0E94F2D31E651B7E00E962B6 /* GHAPI.framework in Embed Frameworks */,
 				0E94F2DF1E651B7E00E962B6 /* ReactiveSwift.framework in Embed Frameworks */,
@@ -897,9 +918,7 @@
 		0EDB2CC51E79104A007103A7 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		0EDCFB141E8403900095F61B /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		0EDCFB161E8403AE0095F61B /* MeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
-		0EDCFB1C1E8428300095F61B /* UIResponderLadder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIResponderLadder.swift; sourceTree = "<group>"; };
-		0EDCFB1E1E8429050095F61B /* UIViewLadder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewLadder.swift; sourceTree = "<group>"; };
-		0EDCFB201E8429300095F61B /* UIViewControllerLadder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerLadder.swift; sourceTree = "<group>"; };
+		0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ladder.xcodeproj; path = Ladder/Ladder.xcodeproj; sourceTree = "<group>"; };
 		0EECF6341E7045F0009600BB /* Activities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
 		0EECF6361E704608009600BB /* ActivitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitesViewController.swift; sourceTree = "<group>"; };
 		0EECF6391E7047B2009600BB /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -916,6 +935,7 @@
 				0E94F2EE1E651B7E00E962B6 /* Prelude_UIKit.framework in Frameworks */,
 				0E94F2F21E651B7E00E962B6 /* Curry.framework in Frameworks */,
 				0E94F2D61E651B7E00E962B6 /* Runes.framework in Frameworks */,
+				0EDCFB561E8432130095F61B /* Ladder.framework in Frameworks */,
 				0E94F2EA1E651B7E00E962B6 /* Prelude.framework in Frameworks */,
 				0E94F2D21E651B7E00E962B6 /* GHAPI.framework in Frameworks */,
 				0E94F2DE1E651B7E00E962B6 /* ReactiveSwift.framework in Frameworks */,
@@ -1024,6 +1044,7 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */,
 				0E6AAC2D1E81265200E94429 /* Down.xcodeproj */,
 				0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */,
 				0ECE8A491E77C590001FE48B /* Ji.xcodeproj */,
@@ -1261,7 +1282,6 @@
 				0E9EBD171E71000600D3E5A9 /* Image.swift */,
 				0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */,
 				0E50A9CB1E67F5210002A40D /* KSCache.swift */,
-				0EDCFB181E84257B0095F61B /* Ladder */,
 				0E9EBD4E1E7100FA00D3E5A9 /* LocalizedString.swift */,
 				0E50AA2F1E6843D30002A40D /* Notifications.swift */,
 				0E94F31D1E651CBA00E962B6 /* NSBundleType.swift */,
@@ -1398,14 +1418,13 @@
 			path = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
-		0EDCFB181E84257B0095F61B /* Ladder */ = {
+		0EDCFB4E1E8431FC0095F61B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0EDCFB1C1E8428300095F61B /* UIResponderLadder.swift */,
-				0EDCFB201E8429300095F61B /* UIViewControllerLadder.swift */,
-				0EDCFB1E1E8429050095F61B /* UIViewLadder.swift */,
+				0EDCFB531E8431FD0095F61B /* Ladder.framework */,
+				0EDCFB551E8431FD0095F61B /* LadderTests.xctest */,
 			);
-			name = Ladder;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		0EECF6381E70479F009600BB /* Style */ = {
@@ -1446,6 +1465,7 @@
 				0E3E02E51E78071E00C1CD84 /* PBXTargetDependency */,
 				0E71A4ED1E7FAC8C00D8EED6 /* PBXTargetDependency */,
 				0E6AAC7D1E81363200E94429 /* PBXTargetDependency */,
+				0EDCFB591E8432130095F61B /* PBXTargetDependency */,
 			);
 			name = GHClient;
 			productName = GHClient;
@@ -1528,6 +1548,10 @@
 				{
 					ProductGroup = 0ECE8A4A1E77C590001FE48B /* Products */;
 					ProjectRef = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
+				},
+				{
+					ProductGroup = 0EDCFB4E1E8431FC0095F61B /* Products */;
+					ProjectRef = 0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */;
 				},
 				{
 					ProductGroup = 0E94F2351E651ABE00E962B6 /* Products */;
@@ -2053,6 +2077,20 @@
 			remoteRef = 0ECE8A5F1E77C590001FE48B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		0EDCFB531E8431FD0095F61B /* Ladder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Ladder.framework;
+			remoteRef = 0EDCFB521E8431FD0095F61B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0EDCFB551E8431FD0095F61B /* LadderTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LadderTests.xctest;
+			remoteRef = 0EDCFB541E8431FD0095F61B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -2137,7 +2175,6 @@
 				0E9EBD4D1E71002600D3E5A9 /* Strings.swift in Sources */,
 				0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */,
 				0E7B7BEB1E6E93A100D50C95 /* SearchUserTableViewCell.swift in Sources */,
-				0EDCFB1F1E8429050095F61B /* UIViewLadder.swift in Sources */,
 				0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */,
 				0E94F3221E651CBA00E962B6 /* UIViewController-Preparation.swift in Sources */,
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
@@ -2146,7 +2183,6 @@
 				0EDCFB171E8403AE0095F61B /* MeTableViewController.swift in Sources */,
 				0EB6585F1E82903E00D48AAE /* ForkEventPayloadExtension.swift in Sources */,
 				0EB658611E82909400D48AAE /* IssueCommentEventPayloadExtension.swift in Sources */,
-				0EDCFB1D1E8428300095F61B /* UIResponderLadder.swift in Sources */,
 				0EECF63E1E70482C009600BB /* UIColor.swift in Sources */,
 				0E7B7BDD1E6E575800D50C95 /* SearchViewController.swift in Sources */,
 				0E5BF8B81E73AD7D00EDD841 /* RepositoryViewController.swift in Sources */,
@@ -2203,7 +2239,6 @@
 				0ED646531E69901200017D28 /* MenuItem.swift in Sources */,
 				0EDB2CC01E7909FE007103A7 /* TTTAttributedLabel.m in Sources */,
 				0E4BCFAF1E80D73700BF6135 /* RepositoryContentTableViewController.swift in Sources */,
-				0EDCFB211E8429300095F61B /* UIViewControllerLadder.swift in Sources */,
 				0E3E02E71E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift in Sources */,
 				0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */,
 				0E4BCFB91E80EC3300BF6135 /* RepositoryContentTableViewCell.swift in Sources */,
@@ -2292,6 +2327,11 @@
 			isa = PBXTargetDependency;
 			name = "Argo-iOS";
 			targetProxy = 0E94F2F81E651B7E00E962B6 /* PBXContainerItemProxy */;
+		};
+		0EDCFB591E8432130095F61B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Ladder;
+			targetProxy = 0EDCFB581E8432130095F61B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

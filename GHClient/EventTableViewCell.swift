@@ -10,6 +10,7 @@ import UIKit
 import GHAPI
 import ReactiveCocoa
 import Prelude_UIKit
+import Ladder
 
 internal final class EventTableViewCell: UITableViewCell , ValueCell {
 
