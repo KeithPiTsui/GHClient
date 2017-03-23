@@ -116,7 +116,8 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
         [
           DiscoveryViewController.instantiate(),
           ActivitesViewController.instantiate(),
-          SearchViewController.instantiate()
+          SearchViewController.instantiate(),
+          MeTableViewController.instantiate()
         ]
     }
 
@@ -133,7 +134,6 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
     let viewControllers = Signal.merge(defualtViewControllers, accountModeControllers, guestModeControllers)
 
     self.setViewControllers = viewControllers
-      .map { $0.map(UINavigationController.init(rootViewController:)) }
 
     let loginState = userState
     let vcCount = self.setViewControllers.map { $0.count }

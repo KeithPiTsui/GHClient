@@ -70,8 +70,10 @@ internal final class RootTabBarViewController: UITabBarController {
     super.bindViewModel()
 
     self.viewModel.outputs.setViewControllers
-      .observeForUI()
-      .observeValues { [weak self] in self?.setViewControllers($0, animated: false) }
+      .observeForControllerAction()
+      .observeValues { [weak self] (viewControllers) in
+        let vcs = viewControllers.map(UINavigationController.init(rootViewController:))
+        self?.setViewControllers(vcs, animated: true) }
 
     self.viewModel.outputs.selectedIndex
       .observeForUI()

@@ -141,6 +141,8 @@
 		0ED646531E69901200017D28 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED646521E69901200017D28 /* MenuItem.swift */; };
 		0EDB2CC01E7909FE007103A7 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB2CBF1E7909FE007103A7 /* TTTAttributedLabel.m */; };
 		0EDB2CC61E79104A007103A7 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB2CC51E79104A007103A7 /* EventTableViewCell.swift */; };
+		0EDCFB151E8403900095F61B /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EDCFB141E8403900095F61B /* Me.storyboard */; };
+		0EDCFB171E8403AE0095F61B /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCFB161E8403AE0095F61B /* MeTableViewController.swift */; };
 		0EECF6351E7045F0009600BB /* Activities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EECF6341E7045F0009600BB /* Activities.storyboard */; };
 		0EECF6371E704608009600BB /* ActivitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF6361E704608009600BB /* ActivitesViewController.swift */; };
 		0EECF63A1E7047B2009600BB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF6391E7047B2009600BB /* Colors.swift */; };
@@ -892,6 +894,8 @@
 		0EDB2CBF1E7909FE007103A7 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		0EDB2CC41E790BA8007103A7 /* ObjectiveC-Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjectiveC-Bridge.h"; sourceTree = "<group>"; };
 		0EDB2CC51E79104A007103A7 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		0EDCFB141E8403900095F61B /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		0EDCFB161E8403AE0095F61B /* MeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		0EECF6341E7045F0009600BB /* Activities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
 		0EECF6361E704608009600BB /* ActivitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitesViewController.swift; sourceTree = "<group>"; };
 		0EECF6391E7047B2009600BB /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -1169,6 +1173,7 @@
 				0E7B7BEE1E6EB01300D50C95 /* SearchFilter.storyboard */,
 				0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */,
 				0E6AAC741E8134A900E94429 /* MarkupViewer.storyboard */,
+				0EDCFB141E8403900095F61B /* Me.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1179,6 +1184,7 @@
 				0EECF6361E704608009600BB /* ActivitesViewController.swift */,
 				0E6AAC761E81350C00E94429 /* MarkupViewerViewController.swift */,
 				0E4B40BF1E70456C004144DC /* DiscoveryViewController.swift */,
+				0EDCFB161E8403AE0095F61B /* MeTableViewController.swift */,
 				0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */,
 				0E94F3291E65206000E962B6 /* LoginViewController.swift */,
 				0E84B5971E67AAF000C5ADF7 /* MenuViewController.swift */,
@@ -2042,6 +2048,7 @@
 			files = (
 				0E4B40B81E703BEB004144DC /* RootTabBar.storyboard in Resources */,
 				0E94F3281E651FE000E962B6 /* Login.storyboard in Resources */,
+				0EDCFB151E8403900095F61B /* Me.storyboard in Resources */,
 				0E71A4EF1E7FAD0700D8EED6 /* Highlighter.storyboard in Resources */,
 				0E94F1F71E65189900E962B6 /* LaunchScreen.storyboard in Resources */,
 				0E7B7BEF1E6EB01300D50C95 /* SearchFilter.storyboard in Resources */,
@@ -2122,6 +2129,7 @@
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
 				0E9EBD581E715D1B00D3E5A9 /* CGRect-Extension.swift in Sources */,
 				0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */,
+				0EDCFB171E8403AE0095F61B /* MeTableViewController.swift in Sources */,
 				0EB6585F1E82903E00D48AAE /* ForkEventPayloadExtension.swift in Sources */,
 				0EB658611E82909400D48AAE /* IssueCommentEventPayloadExtension.swift in Sources */,
 				0EECF63E1E70482C009600BB /* UIColor.swift in Sources */,
