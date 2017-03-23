@@ -12,10 +12,6 @@ final class MenuViewController: UITableViewController {
 
   internal static func instantiate() -> MenuViewController { return Storyboard.Menu.instantiate(MenuViewController.self)}
 
-  fileprivate var rootSplitViewController: RootSplitViewController? {
-    return self.splitViewController as? RootSplitViewController
-  }
-
   fileprivate let viewModel: MenuViewModelType = MenuViewModel()
   fileprivate let datasource = MenuDataSource()
 
@@ -76,13 +72,13 @@ final class MenuViewController: UITableViewController {
       self?.tableView.reloadData()
     }
 
-    self.viewModel.outpus.gotoUserProfile.observeForUI().observeValues{ [weak self] _ in
-      self?.rootSplitViewController?.gotoUserProfile()
-    }
-
-    self.viewModel.outpus.gotoSearching.observeForUI().observeValues { [weak self] in
-      self?.rootSplitViewController?.gotoSearch()
-    }
+//    self.viewModel.outpus.gotoUserProfile.observeForUI().observeValues{ [weak self] _ in
+//      self?.rootSplitViewController?.gotoUserProfile()
+//    }
+//
+//    self.viewModel.outpus.gotoSearching.observeForUI().observeValues { [weak self] in
+//      self?.rootSplitViewController?.gotoSearch()
+//    }
 
   }
 

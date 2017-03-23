@@ -36,8 +36,6 @@
 		0E50AA121E67FCF60002A40D /* AppDelegateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */; };
 		0E50AA301E6843D30002A40D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA2F1E6843D30002A40D /* Notifications.swift */; };
 		0E50AA321E6844700002A40D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E50AA311E6844700002A40D /* Main.storyboard */; };
-		0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA421E6849500002A40D /* RootSplitViewController.swift */; };
-		0E50AA781E6849B00002A40D /* RootSplitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */; };
 		0E5BF8831E73AD6200EDD841 /* Repository.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E5BF8821E73AD6200EDD841 /* Repository.storyboard */; };
 		0E5BF8B81E73AD7D00EDD841 /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */; };
 		0E5BF8BA1E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8B91E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift */; };
@@ -795,8 +793,6 @@
 		0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateViewModel.swift; sourceTree = "<group>"; };
 		0E50AA2F1E6843D30002A40D /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0E50AA311E6844700002A40D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0E50AA421E6849500002A40D /* RootSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitViewController.swift; sourceTree = "<group>"; };
-		0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootSplitViewModel.swift; sourceTree = "<group>"; };
 		0E5BF8821E73AD6200EDD841 /* Repository.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repository.storyboard; sourceTree = "<group>"; };
 		0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		0E5BF8B91E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndentedAlignedLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -1189,7 +1185,6 @@
 				0EA044CC1E764F4A00643EBA /* ReadmeViewController.swift */,
 				0E4BCFAE1E80D73700BF6135 /* RepositoryContentTableViewController.swift */,
 				0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */,
-				0E50AA421E6849500002A40D /* RootSplitViewController.swift */,
 				0E4B40B91E703C1D004144DC /* RootTabBarViewController.swift */,
 				0E7B7BF01E6EB02C00D50C95 /* SearchFilterViewController.swift */,
 				0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */,
@@ -1209,7 +1204,6 @@
 				0EA044CE1E76506700643EBA /* ReadmeViewModel.swift */,
 				0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */,
 				0E4BCFB41E80D95600BF6135 /* RepositoryContentViewModel.swift */,
-				0E50AA771E6849B00002A40D /* RootSplitViewModel.swift */,
 				0E4B40BB1E703C4E004144DC /* RootTabBarViewModel.swift */,
 				0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */,
 				0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */,
@@ -2105,7 +2099,6 @@
 				0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */,
 				0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */,
 				0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */,
-				0E50AA431E6849500002A40D /* RootSplitViewController.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
 				0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */,
 				0E71A4F11E7FAE1800D8EED6 /* HighlighterViewController.swift in Sources */,
@@ -2182,7 +2175,6 @@
 				0E5BF8BA1E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift in Sources */,
 				0E7B7BF71E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift in Sources */,
 				0E4B40A31E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift in Sources */,
-				0E50AA781E6849B00002A40D /* RootSplitViewModel.swift in Sources */,
 				0EECF63C1E7047C1009600BB /* TabBarItemStyles.swift in Sources */,
 				0E5BF8BC1E73B31400EDD841 /* LabelOnlyTableViewCell.swift in Sources */,
 				0ED646531E69901200017D28 /* MenuItem.swift in Sources */,

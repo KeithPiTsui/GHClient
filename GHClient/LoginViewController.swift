@@ -27,10 +27,9 @@ internal final class LoginViewController: UIViewController {
   @IBOutlet weak var saveAccountBtn: UIButton!
   @IBOutlet weak var removeAccountBtn: UIButton!
 
-  @IBAction func tapOnCancelBarBtn(_ sender: UIBarButtonItem) {
-    self.dismiss(animated: true, completion: nil)
+  @IBAction func tapOnView(_ sender: UITapGestureRecognizer) {
+    firstResponderTextField?.resignFirstResponder()
   }
-  @IBAction func tapOnView(_ sender: UITapGestureRecognizer) { firstResponderTextField?.resignFirstResponder() }
 
   internal static func instantiate() -> LoginViewController {
     return Storyboard.Login.instantiate(LoginViewController.self)
@@ -39,6 +38,14 @@ internal final class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.bindUIAction()
+
+    NotificationCenter.default
+      .addObserver(forName: NSNotification.Name.gh_userLoginFailed, object: nil, queue: nil)
+      { [weak self] (notification) in
+      guard let error = notification.userInfo?[NotificationKeys.loginFailedError] as? ErrorEnvelope else { return }
+      self?.viewModel.inputs.userLoginFailed(with: error)
+    }
+
     self.viewModel.inputs.viewDidLoad()
   }
 
@@ -124,8 +131,13 @@ internal final class LoginViewController: UIViewController {
       self?.pushTokenTF.text = $0.pushToken
     }
 
-    self.viewModel.outputs.accountSaved.observeValues { [weak self] in
+//    self.viewModel.outputs.accountSaved.observeValues { [weak self] in
+//      self?.dismiss(animated: true, completion: nil)
+//    }
+
+    self.viewModel.outputs.presentAlert.observeForControllerAction().observeValues { [weak self] in
       self?.dismiss(animated: true, completion: nil)
+      self?.present($0, animated: true, completion: nil)
     }
   }
 }

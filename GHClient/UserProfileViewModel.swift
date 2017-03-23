@@ -64,8 +64,13 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
 
 
     let user1 = userUrl.observe(on: QueueScheduler())
-      .map { AppEnvironment.current.apiService.user(referredBy: $0).single()}
-      .map {$0?.value}.skipNil().map { (u) -> User in
+      .map {
+        AppEnvironment.current.apiService.user(referredBy: $0).single()
+      }
+      .map {(result) -> User? in
+        let r = result
+        return r?.value
+      }.skipNil().map { (u) -> User in
 
         /// This map contains side effect, need to refactor this code
 

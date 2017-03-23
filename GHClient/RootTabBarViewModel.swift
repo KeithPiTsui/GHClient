@@ -57,6 +57,12 @@ internal protocol RootTabBarViewModelInputs {
   /// Call when the controller has received a user session started notification.
   func userSessionStarted()
 
+  /// Call when the controller has received an app run on guest mode notification.
+  func appRunOnGuestMode()
+
+  /// Call when app failed to authenticate current user
+  func userAuthenticationFailed(with error: ErrorEnvelope)
+
   /// Call from the controller's `viewDidLoad` method.
   func viewDidLoad()
 }
@@ -77,6 +83,8 @@ internal protocol RootTabBarViewModelOutputs {
 
   /// Emits data for setting tab bar item styles.
   var tabBarItemsData: Signal<TabBarItemsData, NoError> { get }
+
+  var presentAlert: Signal<UIAlertController, NoError> {get}
 }
 
 internal protocol RootTabBarViewModelType {
@@ -100,7 +108,10 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
       .map { $0 != nil }
       .skipRepeats(==)
 
-    let standardViewControllers = self.viewDidLoadProperty.signal
+    let defualtViewControllers = self.viewDidLoadProperty.signal
+      .map { _ in [UIViewController()]}
+
+    let accountModeControllers = self.userSessionStartedProperty.signal
       .map { _ in
         [
           DiscoveryViewController.instantiate(),
@@ -109,20 +120,17 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
         ]
     }
 
-    let personalizedViewControllers = userState
-      .map { (loggedIn) -> [UIViewController?] in
-        let vc = UserProfileViewController.instantiate()
-        if let user = AppEnvironment.current.currentUser {
-          vc.set(userUrl: user.urls.url)
-        }
-        return [
-          loggedIn ? vc : nil,
-          loggedIn ? nil : LoginViewController.instantiate() as UIViewController?
+    let guestModeControllers = Signal
+      .merge(self.appRunOnGuestModeProperty.signal, self.userSessionEndedProperty.signal)
+      .map { _ in
+        [
+          DiscoveryViewController.instantiate(),
+          SearchViewController.instantiate(),
+          LoginViewController.instantiate()
         ]
-      }
-      .map { $0.compact() }
+    }
 
-    let viewControllers = Signal.combineLatest(standardViewControllers, personalizedViewControllers).map(+)
+    let viewControllers = Signal.merge(defualtViewControllers, accountModeControllers, guestModeControllers)
 
     self.setViewControllers = viewControllers
       .map { $0.map(UINavigationController.init(rootViewController:)) }
@@ -139,12 +147,6 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
       .takeWhen(self.switchToProfileProperty.signal)
       .filter { isTrue($1) }
       .map(first)
-
-    _ = viewControllers
-      .map(first(MenuViewController.self))
-      .skipNil()
-
-
 
     self.selectedIndex =
       Signal.combineLatest(
@@ -171,9 +173,26 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
     self.tabBarItemsData = Signal.combineLatest(currentUser, self.viewDidLoadProperty.signal)
       .map(first)
       .map(tabData(forUser:))
-    //        self.tabBarItemsData = self.viewDidLoadProperty.signal.map{["1","2","3","4"]}
+
+    self.presentAlert = self.userAuthenticationFailedProperty.signal.skipNil().map{ (error) -> UIAlertController in
+      let alert = UIAlertController(title: "Cannot authenticate current user",
+                                    message: "Try to login again",
+                                    preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "Cancle", style: .cancel, handler: nil))
+      alert.addAction(UIAlertAction(title: "Login", style: .default, handler: {_ in print("go to login")}))
+      return alert
+    }
   }
 
+  fileprivate let userAuthenticationFailedProperty = MutableProperty<ErrorEnvelope?>(nil)
+  internal func userAuthenticationFailed(with error: ErrorEnvelope) {
+    self.userAuthenticationFailedProperty.value = error
+  }
+
+  fileprivate let appRunOnGuestModeProperty = MutableProperty(())
+  internal func appRunOnGuestMode() {
+    self.appRunOnGuestModeProperty.value = ()
+  }
 
   fileprivate let currentUserUpdatedProperty = MutableProperty(())
   internal func currentUserUpdated() {
@@ -223,6 +242,7 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
   internal let selectedIndex: Signal<Int, NoError>
   internal let setViewControllers: Signal<[UIViewController], NoError>
   internal let tabBarItemsData: Signal<TabBarItemsData, NoError>
+  internal let presentAlert: Signal<UIAlertController, NoError>
 
 
   internal var inputs: RootTabBarViewModelInputs { return self }

@@ -24,6 +24,20 @@ internal final class RootTabBarViewController: UITabBarController {
 
     NotificationCenter
       .default
+      .addObserver(forName: Notification.Name.gh_userAuthenticationFailed, object: nil, queue: nil)
+      { [weak self] (notification) in
+        guard let error = notification.userInfo?[NotificationKeys.loginFailedError] as? ErrorEnvelope else { return }
+         self?.viewModel.inputs.userAuthenticationFailed(with: error)
+    }
+
+    NotificationCenter
+      .default
+      .addObserver(forName: Notification.Name.appRunOnGuestMode, object: nil, queue: nil) { [weak self] _ in
+        self?.viewModel.inputs.appRunOnGuestMode()
+    }
+
+    NotificationCenter
+      .default
       .addObserver(forName: Notification.Name.gh_sessionStarted, object: nil, queue: nil) { [weak self] _ in
         self?.viewModel.inputs.userSessionStarted()
     }
@@ -41,6 +55,8 @@ internal final class RootTabBarViewController: UITabBarController {
     }
 
     self.viewModel.inputs.viewDidLoad()
+
+    AppEnvironment.authenticateCurrentAccount()
   }
 
   override func bindStyles() {
@@ -65,7 +81,13 @@ internal final class RootTabBarViewController: UITabBarController {
     self.viewModel.outputs.tabBarItemsData
       .observeForUI()
       .observeValues { [weak self] in self?.setTabBarItemStyles(withData: $0) }
-    //
+
+    self.viewModel.outputs.presentAlert
+      .observeForControllerAction()
+      .observeValues { [weak self] in
+      self?.dismiss(animated: true, completion: nil)
+      self?.present($0, animated: true, completion: nil)
+    }
 
   }
 

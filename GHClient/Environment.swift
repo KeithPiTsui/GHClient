@@ -66,6 +66,18 @@ public struct Environment {
   /// A user defaults key-value store. Default value is `NSUserDefaults.standard`.
   public let userDefaults: KeyValueStoreType
 
+  public enum AppMode {
+    case guest
+    case account
+  }
+
+  /// A type that specify this mode this app should run in. Default is unknown mode
+  public var appMode: Environment.AppMode {
+    return self.currentUser != nil
+      ? .account
+      : .guest
+  }
+
   public init(
     apiService: ServiceType = Service(),
     apiDelayInterval: DispatchTimeInterval = .seconds(0),

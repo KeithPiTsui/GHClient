@@ -171,13 +171,7 @@
                         </connections>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="pkD-a6-ffd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Hw1-9x-ejo">
-                            <connections>
-                                <action selector="tapOnCancelBarBtn:" destination="6ur-lx-WzX" id="Csv-DK-22A"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="pkD-a6-ffd"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -197,7 +191,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-646" y="118"/>
+            <point key="canvasLocation" x="-756" y="113"/>
         </scene>
     </scenes>
 </document>

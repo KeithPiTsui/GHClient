@@ -26,6 +26,28 @@ public struct AppEnvironment {
    */
   fileprivate static var stack: [Environment] = [Environment()]
 
+  public static func authenticateCurrentAccount() {
+    guard let user = AppEnvironment.current.currentUser else {
+      NotificationCenter.default.post(Notification(name: Notification.Name.appRunOnGuestMode))
+      return 
+    }
+    AppEnvironment.current.apiService.user(referredBy: user.urls.url).observeInBackground().startWithResult { (result) in
+      switch result {
+      case let .success(user):
+        AppEnvironment.updateCurrentUser(user)
+        NotificationCenter.default.post(Notification(name: Notification.Name.gh_sessionStarted))
+      case let .failure(error):
+        AppEnvironment.logout()
+        NotificationCenter.default.post(Notification(name: Notification.Name.gh_sessionEnded))
+        var errors: [String:Any] = [:]
+        errors[NotificationKeys.loginFailedError] = error
+        NotificationCenter.default.post(name: Notification.Name.gh_userAuthenticationFailed,
+                                        object: nil,
+                                        userInfo: errors)
+      }
+    }
+  }
+
   public static func login(username: String, password: String) {
     let service = current.apiService.login(username: username, password: password)
     service.observeInBackground().startWithResult { (result) in

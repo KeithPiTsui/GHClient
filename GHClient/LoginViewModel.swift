@@ -6,7 +6,7 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Prelude
 import ReactiveSwift
 import ReactiveExtensions
@@ -44,6 +44,9 @@ public protocol LoginViewModelInputs {
 
   /// Call when the view will appear with animated property.
   func viewWillAppear(animated: Bool)
+
+  /// 
+  func userLoginFailed(with error: ErrorEnvelope)
 }
 
 public protocol LoginViewModelOutputs {
@@ -51,6 +54,7 @@ public protocol LoginViewModelOutputs {
   var saveAccountButtonEnable: Signal<Bool, NoError> {get}
   var removeAccountButtonEnable: Signal<Bool, NoError> {get}
   var accountSaved: Signal<(), NoError> {get}
+  var presentAlert: Signal<UIAlertController, NoError> {get}
 }
 
 public protocol LoginViewModelType {
@@ -78,6 +82,13 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
       return true
     }
 
+    self.presentAlert = self.userLoginFailedWithErrorProperty.signal.skipNil().map{ (error) -> UIAlertController in
+      let alert = UIAlertController(title: "User login failed",
+                                    message: "Username or password is incorrect",
+                                    preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OKay", style: .cancel, handler: nil))
+      return alert
+    }
 
     self.removeAccountButtonEnable = self.account.map{$0 != nil}
     self.accountSaved = self.accountSavedProperty.signal
@@ -97,15 +108,17 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
       self?.accountProperty.value = $0
       _ = Account.save(account: $0)
       if let password = $0.password {
-        AppEnvironment.loginSucceedProperty.signal.skipNil().observeValues {
-          let msg = $0 ? "succeed" : "failed"
-          print(msg)
-          self?.accountSavedProperty.value = ()
-        }
         AppEnvironment.login(username: $0.username, password: password)
       }
     }
 
+
+
+  }
+
+  fileprivate let userLoginFailedWithErrorProperty = MutableProperty<ErrorEnvelope?>(nil)
+  public func userLoginFailed(with error: ErrorEnvelope) {
+    self.userLoginFailedWithErrorProperty.value = error
   }
 
   fileprivate let usernameProperty = MutableProperty<String?>(nil)
@@ -161,6 +174,8 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
   fileprivate let accountProperty = MutableProperty<Account?>(nil)
   fileprivate let accountSavedProperty = MutableProperty()
 
+
+  public let presentAlert: Signal<UIAlertController, NoError>
   public let account: Signal<Account?, NoError>
   public let saveAccountButtonEnable: Signal<Bool, NoError>
   public let removeAccountButtonEnable: Signal<Bool, NoError>

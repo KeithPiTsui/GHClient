@@ -14,6 +14,16 @@ public struct Account {
   let accessToken: String?
   let pushToken: String?
 
+  init(username: String = "",
+       password: String? = nil,
+       accessToken: String? = nil,
+       pushToken: String? = nil) {
+    self.username = username
+    self.password = password
+    self.accessToken = accessToken
+    self.pushToken = pushToken
+  }
+
   public static func saved() -> Account? {
     guard let username = UserDefaults.standard.value(forKey: "username") as? String else { return nil }
     let password = UserDefaults.standard.value(forKey: "password") as? String
