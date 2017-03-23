@@ -71,18 +71,20 @@ internal final class RootTabBarViewController: UITabBarController {
 
     self.viewModel.outputs.setViewControllers
       .observeForControllerAction()
-      .observeValues { [weak self] (viewControllers) in
+      .observeValues { [weak self] (viewControllers, data) in
         let vcs = viewControllers.map(UINavigationController.init(rootViewController:))
-        self?.setViewControllers(vcs, animated: true) }
+        self?.setViewControllers(vcs, animated: true)
+        self?.setTabBarItemStyles(withData: data)
+    }
 
     self.viewModel.outputs.selectedIndex
       .observeForUI()
       .observeValues { [weak self] in self?.selectedIndex = $0 }
 
 
-    self.viewModel.outputs.tabBarItemsData
-      .observeForUI()
-      .observeValues { [weak self] in self?.setTabBarItemStyles(withData: $0) }
+//    self.viewModel.outputs.tabBarItemsData
+//      .observeForUI()
+//      .observeValues { [weak self] in self?.setTabBarItemStyles(withData: $0) }
 
     self.viewModel.outputs.presentAlert
       .observeForControllerAction()
@@ -90,7 +92,6 @@ internal final class RootTabBarViewController: UITabBarController {
       self?.dismiss(animated: true, completion: nil)
       self?.present($0, animated: true, completion: nil)
     }
-
   }
 
   fileprivate func setTabBarItemStyles(withData data: TabBarItemsData) {

@@ -59,30 +59,30 @@ extension UIView {
 
 extension UIView {
   internal var tableView: UITableView? {
-   return UIView.ancestorView(of: self)
+    return UIView.first(UITableView.self)(self)
   }
 
   internal var collectionView: UICollectionView? {
-    return UIView.ancestorView(of: self)
+    return UIView.first(UICollectionView.self)(self)
   }
 
   internal var tableViewCell: UITableViewCell? {
-    return UIView.ancestorView(of: self)
+    return UIView.first(UITableViewCell.self)(self)
   }
 
   internal var collectionViewCell: UICollectionViewCell? {
-    return UIView.ancestorView(of: self)
+    return UIView.first(UICollectionViewCell.self)(self)
   }
 
-  internal static func ancestorView<ViewType: UIView>(of view: UIView) -> ViewType? {
-    var par: UIView? = view
-    while par != nil || (par is UIWindow) == false {
-      if let tv = par as? ViewType {
-        return tv
+  internal static func first<V: UIView>(_ view: V.Type) -> (UIView) -> V? {
+    return { view in
+      var tv: UIView? = view
+      while tv != nil || (tv is UIWindow) == false {
+        if tv is V { return tv as? V }
+        tv = tv?.superview
       }
-      par = par?.superview
+      return nil
     }
-    return nil
   }
 }
 

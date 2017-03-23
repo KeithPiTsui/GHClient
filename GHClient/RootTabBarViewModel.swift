@@ -79,10 +79,7 @@ internal protocol RootTabBarViewModelOutputs {
   var selectedIndex: Signal<Int, NoError> { get }
 
   /// Emits the array of view controllers that should be set on the tab bar.
-  var setViewControllers: Signal<[UIViewController], NoError> { get }
-
-  /// Emits data for setting tab bar item styles.
-  var tabBarItemsData: Signal<TabBarItemsData, NoError> { get }
+  var setViewControllers: Signal<([UIViewController],TabBarItemsData), NoError> { get }
 
   var presentAlert: Signal<UIAlertController, NoError> {get}
 }
@@ -133,10 +130,12 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
 
     let viewControllers = Signal.merge(defualtViewControllers, accountModeControllers, guestModeControllers)
 
-    self.setViewControllers = viewControllers.map(first)
+    self.setViewControllers = viewControllers.map{ (vcs, tag) -> ([UIViewController], TabBarItemsData) in
+      (vcs, tabData(for: vcs, and: tag))
+    }
 
     let loginState = userState
-    let vcCount = self.setViewControllers.map { $0.count }
+    let vcCount = self.setViewControllers.map { $0.0.count }
 
     let switchToLogin = Signal.combineLatest(vcCount, loginState)
       .takeWhen(self.switchToLoginProperty.signal)
@@ -158,7 +157,7 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
           switchToLogin,
           switchToProfile
         ),
-        self.setViewControllers,
+        self.setViewControllers.map(first),
         self.viewDidLoadProperty.signal)
         .map { idx, vcs, _ in clamp(0, vcs.count - 1)(idx) }
 
@@ -167,16 +166,10 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
       .skipNil()
 
     self.scrollToTop = self.setViewControllers
+      .map(first)
       .takePairWhen(selectedTabAgain)
       .map { vcs, idx in vcs[idx] }
 
-//    self.tabBarItemsData = Signal.combineLatest(currentUser, self.viewDidLoadProperty.signal)
-//      .map(first)
-//      .map(tabData(forUser:))
-
-    self.tabBarItemsData = Signal.combineLatest(viewControllers, self.viewDidLoadProperty.signal)
-      .map(first)
-      .map(tabData(for: and:))
 
     self.presentAlert = self.userAuthenticationFailedProperty.signal.skipNil().map{ (error) -> UIAlertController in
       let alert = UIAlertController(title: "Cannot authenticate current user",
@@ -187,6 +180,8 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
       return alert
     }
   }
+
+
 
   fileprivate let userAuthenticationFailedProperty = MutableProperty<ErrorEnvelope?>(nil)
   internal func userAuthenticationFailed(with error: ErrorEnvelope) {
@@ -244,8 +239,7 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
 
   internal let scrollToTop: Signal<UIViewController, NoError>
   internal let selectedIndex: Signal<Int, NoError>
-  internal let setViewControllers: Signal<[UIViewController], NoError>
-  internal let tabBarItemsData: Signal<TabBarItemsData, NoError>
+  internal let setViewControllers: Signal<([UIViewController], TabBarItemsData), NoError>
   internal let presentAlert: Signal<UIAlertController, NoError>
 
 
@@ -296,9 +290,6 @@ private func first<VC: UIViewController>(_ viewController: VC.Type) -> ([UIViewC
       .flatMap { viewControllers[$0] as? VC }
   }
 }
-
-
-
 
 
 
