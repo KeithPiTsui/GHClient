@@ -807,6 +807,7 @@
 		0E1AAB211E84D42D00BFD36C /* IssueLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueLabelTableViewCell.swift; sourceTree = "<group>"; };
 		0E1AAB231E84D4AE00BFD36C /* IssueBodyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueBodyTableViewCell.swift; sourceTree = "<group>"; };
 		0E1AAB251E84D4EB00BFD36C /* IssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
+		0E1AAB271E856CD600BFD36C /* GHClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GHClient.playground; sourceTree = "<group>"; };
 		0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		0E238F461E6BD60B001F493A /* UserProfileEventDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileEventDatasource.swift; sourceTree = "<group>"; };
 		0E238F481E6BD669001F493A /* UserProfileOrganizationDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileOrganizationDatasource.swift; sourceTree = "<group>"; };
@@ -1033,6 +1034,7 @@
 		0E94F1EB1E65189900E962B6 /* GHClient */ = {
 			isa = PBXGroup;
 			children = (
+				0E1AAB271E856CD600BFD36C /* GHClient.playground */,
 				0EB657D01E82166000D48AAE /* ModelExtension */,
 				0ED645D91E694FF400017D28 /* DataSource */,
 				0E94F31C1E651CA300E962B6 /* Library */,

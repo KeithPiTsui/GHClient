@@ -76,6 +76,17 @@ extension IssueTableViewController {
   
 }
 
+extension IssueTableViewController: TTTAttributedLabelDelegate {
+  @objc func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+    print("\(url)")
+    guard
+      let cell = label.tableViewCell,
+      let indexPath = self.tableView.indexPath(for: cell),
+      let event = self.datasource[indexPath] as? GHEvent
+      else { return }
+  }
+}
+
 
 
 

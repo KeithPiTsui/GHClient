@@ -11,6 +11,10 @@ import Foundation
 /// Trimming Operations
 public extension String {
 
+  func trim() -> String {
+    return self.trimmingCharacters(in: .whitespacesAndNewlines)
+  }
+
     /// Returns a prefixed version of the string.
     ///
     ///     let string = "Hello World"
