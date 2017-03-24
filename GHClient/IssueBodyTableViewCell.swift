@@ -27,6 +27,7 @@ internal final class IssueBodyTableViewCell: UITableViewCell, ValueCell {
     self.bodyLabel = TTTAttributedLabel(frame: CGRect.zero)
     if let v = self.bodyLabel {
       v.delegate = self
+      v.font = UIFont.systemFont(ofSize: 14)
       v.numberOfLines = 0
       v.translatesAutoresizingMaskIntoConstraints = false
       self.bodyContainer.addSubview(v)
@@ -46,7 +47,9 @@ internal final class IssueBodyTableViewCell: UITableViewCell, ValueCell {
 
 extension IssueBodyTableViewCell: TTTAttributedLabelDelegate {
   internal func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-    print("\(url)")
+    if let delegate = self.tableView?.delegate as? TTTAttributedLabelDelegate {
+      delegate.attributedLabel?(label, didSelectLinkWith: url)
+    }
   }
 }
 

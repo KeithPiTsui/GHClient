@@ -100,9 +100,6 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSc-C4-AYX">
                                             <rect key="frame" x="8" y="0.0" width="359" height="35"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="Hzh-Tv-LYL"/>
-                                            </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -114,7 +111,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="bodyContainer" destination="bSc-C4-AYX" id="yx4-tW-3Ng"/>
-                                    <outlet property="containerHeight" destination="Hzh-Tv-LYL" id="rOU-xl-oUQ"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueCommentTableViewCell" rowHeight="141" id="oGM-Hn-dds" customClass="IssueCommentTableViewCell" customModule="GHClient" customModuleProvider="target">
