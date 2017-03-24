@@ -61,6 +61,7 @@ extension DiscoveryViewController: UITableViewDelegate {
     if let value = self.datasource[indexPath] as? TrendingRepository {
       self.viewModel.inputs.userTapped(on: value)
     }
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 }
 
