@@ -67,10 +67,6 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
     /// active constraints
     NSLayoutConstraint.activate(displayConstraints)
   }
-
-  internal static func estimatedHeight(with payload: EventPayloadType) -> CGFloat {
-    return 105 + payload.payloadView.frame.height
-  }
 }
 
 extension EventTableViewCell: TTTAttributedLabelDelegate {

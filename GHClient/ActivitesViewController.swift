@@ -39,6 +39,8 @@ internal final class ActivitesViewController: UIViewController {
     super.viewDidLoad()
     self.tableView.dataSource = self.eventDatasource
     self.tableView.delegate = self
+    self.tableView.rowHeight = UITableViewAutomaticDimension
+    self.tableView.estimatedRowHeight = 120
     self.refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
     if #available(iOS 10.0, *) {
       self.tableView.refreshControl = self.refreshControl
@@ -89,24 +91,9 @@ internal final class ActivitesViewController: UIViewController {
       self?.navigationController?.pushViewController($0, animated: true)
     }
   }
-
-  fileprivate var rowHeights: [IndexPath:CGFloat] = [:]
-
 }
 
 extension ActivitesViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if let h = rowHeights[indexPath] {
-      return h
-    }
-    var height: CGFloat = 120
-    if let value = self.eventDatasource[indexPath] as? GHEvent,
-      let payload = value.payload {
-      height = EventTableViewCell.estimatedHeight(with: payload)
-    }
-    rowHeights[indexPath] = height
-    return height
-  }
 }
 
 extension ActivitesViewController: TTTAttributedLabelDelegate {

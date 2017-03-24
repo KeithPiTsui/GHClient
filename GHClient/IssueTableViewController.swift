@@ -32,6 +32,8 @@ internal final class IssueTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.dataSource = self.datasource
+    self.tableView.rowHeight = UITableViewAutomaticDimension
+    self.tableView.estimatedRowHeight = 120
     self.viewModel.inputs.viewDidLoad()
   }
 
@@ -73,3 +75,42 @@ internal final class IssueTableViewController: UITableViewController {
 extension IssueTableViewController {
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

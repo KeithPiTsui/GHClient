@@ -29,6 +29,8 @@ internal final class DiscoveryViewController: UIViewController {
 
     self.tableView.dataSource = self.datasource
     self.tableView.delegate = self
+    self.tableView.rowHeight = UITableViewAutomaticDimension
+    self.tableView.estimatedRowHeight = 120
 
     self.viewModel.inputs.viewDidLoad()
   }
@@ -55,9 +57,6 @@ internal final class DiscoveryViewController: UIViewController {
 }
 
 extension DiscoveryViewController: UITableViewDelegate {
-  internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 120
-  }
   internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let value = self.datasource[indexPath] as? TrendingRepository {
       self.viewModel.inputs.userTapped(on: value)

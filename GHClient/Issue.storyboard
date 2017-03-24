@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,7 +53,34 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nQd-Cb-J7M" id="uZx-wa-nrh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w95-jP-lMX">
+                                            <rect key="frame" x="8" y="8" width="27" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="27" id="f1Z-cb-ijf"/>
+                                                <constraint firstAttribute="height" constant="27" id="hSc-XK-XHA"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzg-Q9-5PD" customClass="TTTAttributedLabel">
+                                            <rect key="frame" x="43" y="8" width="324" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Gzg-Q9-5PD" secondAttribute="bottom" id="294-ur-TBo"/>
+                                        <constraint firstItem="Gzg-Q9-5PD" firstAttribute="trailing" secondItem="uZx-wa-nrh" secondAttribute="trailingMargin" id="9ms-VG-RIr"/>
+                                        <constraint firstItem="w95-jP-lMX" firstAttribute="leading" secondItem="uZx-wa-nrh" secondAttribute="leadingMargin" id="MPz-XX-Q6v"/>
+                                        <constraint firstItem="Gzg-Q9-5PD" firstAttribute="leading" secondItem="w95-jP-lMX" secondAttribute="trailing" constant="8" symbolic="YES" id="QMI-m0-y5c"/>
+                                        <constraint firstItem="Gzg-Q9-5PD" firstAttribute="top" secondItem="uZx-wa-nrh" secondAttribute="topMargin" id="cX8-tM-YUF"/>
+                                        <constraint firstItem="w95-jP-lMX" firstAttribute="top" secondItem="uZx-wa-nrh" secondAttribute="topMargin" id="lTn-yx-uZq"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="IssueBrief" destination="Gzg-Q9-5PD" id="eZ4-mp-8EP"/>
+                                    <outlet property="userAvatar" destination="w95-jP-lMX" id="eEO-hy-oVb"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueLabelTableViewCell" id="pTP-fJ-Uta" customClass="IssueLabelTableViewCell" customModule="GHClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="162" width="375" height="44"/>
@@ -95,7 +123,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duh-nR-D7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-431" y="-444"/>
+            <point key="canvasLocation" x="-681" y="-585"/>
         </scene>
     </scenes>
 </document>

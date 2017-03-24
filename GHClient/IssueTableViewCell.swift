@@ -13,7 +13,12 @@ import Prelude_UIKit
 import Ladder
 
 internal final class IssueTableViewCell: UITableViewCell, ValueCell {
+
+  @IBOutlet weak var userAvatar: UIImageView!
+  @IBOutlet weak var IssueBrief: TTTAttributedLabel!
+
   func configureWith(value: Issue) {
-    self.textLabel?.text = value.title
+    self.IssueBrief.text = value.body
   }
+
 }
