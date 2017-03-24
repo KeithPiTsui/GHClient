@@ -18,7 +18,7 @@ internal final class IssueTableViewCell: UITableViewCell, ValueCell {
   @IBOutlet weak var IssueBrief: TTTAttributedLabel!
 
   func configureWith(value: Issue) {
-    self.IssueBrief.text = value.body
+    self.IssueBrief.text = value.user.login
   }
 
 }
