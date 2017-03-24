@@ -20,7 +20,7 @@ internal final class HighlighterViewController: UIViewController {
   internal var highlightr : Highlightr!
   internal let textStorage = CodeAttributedString()
   internal var textView: UITextView!
-  internal var code = try! String.init(contentsOfFile: Bundle.main.path(forResource: "sampleCode", ofType: "txt")!)
+  internal var code = ""
   internal var language: String?
 
   override func viewDidLoad() {
