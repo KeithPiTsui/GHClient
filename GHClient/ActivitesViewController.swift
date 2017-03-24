@@ -8,6 +8,10 @@
 
 import UIKit
 import GHAPI
+import ReactiveExtensions
+import ReactiveSwift
+import ReactiveCocoa
+import Result
 
 internal final class ActivitesViewController: UIViewController {
 

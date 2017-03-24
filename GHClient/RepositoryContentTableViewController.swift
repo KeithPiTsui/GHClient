@@ -80,10 +80,6 @@ internal final class RepositoryContentTableViewController: UITableViewController
       self?.navigationController?.pushViewController($0, animated: true)
     }
 
-
-
-
-
   }
 }
 

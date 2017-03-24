@@ -38,6 +38,7 @@ public enum Storyboard: String {
   case Highlighter
   case MarkupViewer
   case Me
+  case Issue
 
 
   public func instantiate<VC: UIViewController>(

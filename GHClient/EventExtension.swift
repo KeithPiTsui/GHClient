@@ -57,7 +57,7 @@ internal enum GHEventDescriber {
 // MARK: -
 // MARK: ViewController for display content of part of event
 extension GHEventDescriber {
- internal static func viewController(for event: GHEvent, with link: URL) -> UIViewController? {
+  internal static func viewController(for event: GHEvent, with link: URL) -> UIViewController? {
     let components = link.pathComponents
     if components.contains("user") {
       let userUrl = event.userUrl
@@ -75,9 +75,18 @@ extension GHEventDescriber {
       vc.set(contentURL: branchUrl)
       return vc
     } else if components.contains("issue") {
+      guard let issueUrl = event.issueURL else { return nil }
+      let vc = IssueTableViewController.instantiate()
+      vc.set(issue: issueUrl)
+      return vc
 
     } else if components.contains("commit") {
-      
+
+    } else if components.contains("issue_comment"){
+      guard let issueUrl = event.issueURL else { return nil }
+      let vc = IssueTableViewController.instantiate()
+      vc.set(issue: issueUrl)
+      return vc
     }
 
     return nil
@@ -100,6 +109,11 @@ extension GHEvent {
       else { return nil}
     let url = AppEnvironment.current.apiService.contentURL(of: repo, ref: branch)
     return url
+  }
+
+  internal var issueURL: URL? {
+    return (self.payload as? IssueCommentEventPayload)?.issue.urls.url
+      ?? (self.payload as? IssueEventPayload)?.issue.urls.url
   }
 }
 
