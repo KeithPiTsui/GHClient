@@ -70,13 +70,15 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
 }
 
 extension EventTableViewCell: TTTAttributedLabelDelegate {
- @objc func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-    if let delegate = label.tableView?.delegate as? TTTAttributedLabelDelegate {
-      delegate.attributedLabel?(label, didSelectLinkWith: url)
-    }
+  @objc func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+    guard
+      let starter = self.superview,
+      let vc = UIResponder.firstDescedant(TTTAttributedLabelDelegate.self)(starter),
+      vc !== self
+      else { return }
+    vc.attributedLabel?(label, didSelectLinkWith: url)
   }
 }
-
 
 
 

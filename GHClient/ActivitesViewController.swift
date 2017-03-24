@@ -104,7 +104,7 @@ extension ActivitesViewController: TTTAttributedLabelDelegate {
       let indexPath = self.tableView.indexPath(for: cell),
       let event = self.eventDatasource[indexPath] as? GHEvent
     else { return }
-    self.viewModel.inputs.tapped(on: event, with: url)
+    //self.viewModel.inputs.tapped(on: event, with: url)
   }
 }
 
