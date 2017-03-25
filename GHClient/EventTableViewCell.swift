@@ -32,7 +32,6 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
     }
     let desc = value.eventDescription
     if desc.desc.isEmpty == false {
-      self.eventDesc.delegate = self
       self.eventDesc.text = desc.desc
       let nsDesc = desc.desc as NSString
       desc.attachedURLs.forEach { (key, url) in
@@ -66,17 +65,6 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
        v.rightAnchor.constraint(equalTo: self.payloadDisplay.rightAnchor)]
     /// active constraints
     NSLayoutConstraint.activate(displayConstraints)
-  }
-}
-
-extension EventTableViewCell: TTTAttributedLabelDelegate {
-  @objc func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-    guard
-      let starter = self.superview,
-      let vc = UIResponder.firstDescedant(TTTAttributedLabelDelegate.self)(starter),
-      vc !== self
-      else { return }
-    vc.attributedLabel?(label, didSelectLinkWith: url)
   }
 }
 

@@ -56,6 +56,21 @@ extension UIView {
   }
 }
 
+extension UIView {
+  /// Let four edges of this view to attach its super view
+  ///
+  /// If superview is nil, do nothing
+  internal func fillupSuperView() {
+    guard let sv = self.superview else { return }
+    self.translatesAutoresizingMaskIntoConstraints = false
+    self.topAnchor.constraint(equalTo: sv.topAnchor).isActive = true
+    self.bottomAnchor.constraint(equalTo: sv.bottomAnchor).isActive = true
+    self.leftAnchor.constraint(equalTo: sv.leftAnchor).isActive = true
+    self.rightAnchor.constraint(equalTo: sv.rightAnchor).isActive = true
+  }
+}
+
+
 
 
 

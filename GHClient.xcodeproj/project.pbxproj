@@ -62,6 +62,7 @@
 		0E71A4EB1E7FAC8C00D8EED6 /* Highlighter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E71A4EF1E7FAD0700D8EED6 /* Highlighter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */; };
 		0E71A4F11E7FAE1800D8EED6 /* HighlighterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */; };
+		0E7358061E86162D005C5002 /* GHCAttributedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7358051E86162D005C5002 /* GHCAttributedLabel.swift */; };
 		0E7896051E798BE100DB2098 /* Guitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7895FD1E798BE100DB2098 /* Guitar.swift */; };
 		0E7896061E798BE100DB2098 /* GuitarBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7895FE1E798BE100DB2098 /* GuitarBoolean.swift */; };
 		0E7896071E798BE100DB2098 /* GuitarCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7895FF1E798BE100DB2098 /* GuitarCase.swift */; };
@@ -851,6 +852,7 @@
 		0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Highlighter.xcodeproj; path = Highlighter/Highlighter.xcodeproj; sourceTree = "<group>"; };
 		0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Highlighter.storyboard; sourceTree = "<group>"; };
 		0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlighterViewController.swift; sourceTree = "<group>"; };
+		0E7358051E86162D005C5002 /* GHCAttributedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHCAttributedLabel.swift; sourceTree = "<group>"; };
 		0E7895FD1E798BE100DB2098 /* Guitar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guitar.swift; sourceTree = "<group>"; };
 		0E7895FE1E798BE100DB2098 /* GuitarBoolean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarBoolean.swift; sourceTree = "<group>"; };
 		0E7895FF1E798BE100DB2098 /* GuitarCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarCase.swift; sourceTree = "<group>"; };
@@ -1316,6 +1318,7 @@
 				0EECF63D1E70482C009600BB /* UIColor.swift */,
 				0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
+				0E7358051E86162D005C5002 /* GHCAttributedLabel.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -2241,6 +2244,7 @@
 				0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */,
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
 				0E7B7BF11E6EB02C00D50C95 /* SearchFilterViewController.swift in Sources */,
+				0E7358061E86162D005C5002 /* GHCAttributedLabel.swift in Sources */,
 				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
 				0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */,
 				0E78960B1E798BE100DB2098 /* GuitarPadding.swift in Sources */,
