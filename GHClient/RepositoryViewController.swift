@@ -57,6 +57,8 @@ internal final class RepositoryViewController: UIViewController {
       self?.repoName.text = repo.name
       self?.stars.text = "\(repo.stargazers_count)"
       self?.forks.text = "\(repo.others.forks_count)"
+      self?.datasource.set(repo: repo)
+      self?.tableView.reloadData()
     }
 
     self.viewModel.outputs.branchLites.observeForUI().observeValues { [weak self] (branchLites) in
@@ -65,15 +67,6 @@ internal final class RepositoryViewController: UIViewController {
       self?.tableView.reloadData()
     }
 
-    self.viewModel.outputs.brief.observeForUI().observeValues { [weak self] in
-      self?.datasource.setBrief(a: $0.a, b: $0.b, c: $0.c, d: $0.d)
-      self?.tableView.reloadData()
-    }
-
-    self.viewModel.outputs.details.observeForUI().observeValues { [weak self] in
-      self?.datasource.setDetailDiveIn(values: $0)
-      self?.tableView.reloadData()
-    }
     self.viewModel.outputs.gotoReadmeVC.observeForControllerAction().observeValues { [weak self] in
       self?.navigationController?.pushViewController($0, animated: true)
     }
