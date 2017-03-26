@@ -18,7 +18,8 @@ internal final class GHCAttributedLabel: TTTAttributedLabel {
 
   internal func set(markup: String) throws {
     let attributedString = try Down(markdownString: markup).toAttributedString()
-    super.setText(attributedString)
+//    super.setText(attributedString)
+    super.setText(attributedString) {$0}
     let plain = attributedString.string as NSString
     try self.detectors.keys
       .forEach { (chord) in

@@ -1,8 +1,8 @@
 //
-//  IssueBodyTableViewCell.swift
+//  RepositoryDescriptionTableViewCell.swift
 //  GHClient
 //
-//  Created by Pi on 24/03/2017.
+//  Created by Pi on 26/03/2017.
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
@@ -11,15 +11,15 @@ import GHAPI
 import ReactiveCocoa
 import Prelude_UIKit
 import Ladder
-import Down
 
-internal final class IssueBodyTableViewCell: UITableViewCell, ValueCell {
+internal final class RepositoryDescriptionTableViewCell: UITableViewCell, ValueCell {
 
   internal var bodyLabel = GHCAttributedLabel(frame: CGRect.zero)
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.bodyLabel.font = UIFont.systemFont(ofSize: 14)
+    self.bodyLabel.font = UIFont.systemFont(ofSize: 18)
+    self.bodyLabel.lineBreakMode = .byWordWrapping
     self.bodyLabel.numberOfLines = 0
     self.bodyLabel.detectors = [GuitarChord.atUser:"users"]
     self.contentView.addSubview(self.bodyLabel)
@@ -30,11 +30,3 @@ internal final class IssueBodyTableViewCell: UITableViewCell, ValueCell {
     try? self.bodyLabel.set(markup: value)
   }
 }
-
-
-
-
-
-
-
-

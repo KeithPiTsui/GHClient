@@ -96,22 +96,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tc2-a3-j0G" id="AJt-u2-0Pk">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSc-C4-AYX">
-                                            <rect key="frame" x="8" y="0.0" width="359" height="35"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="bSc-C4-AYX" firstAttribute="top" secondItem="AJt-u2-0Pk" secondAttribute="top" id="5dF-8E-Op0"/>
-                                        <constraint firstItem="bSc-C4-AYX" firstAttribute="bottom" secondItem="AJt-u2-0Pk" secondAttribute="bottomMargin" id="G09-x6-gR8"/>
-                                        <constraint firstItem="bSc-C4-AYX" firstAttribute="trailing" secondItem="AJt-u2-0Pk" secondAttribute="trailingMargin" id="eYF-gd-Wgx"/>
-                                        <constraint firstItem="bSc-C4-AYX" firstAttribute="leading" secondItem="AJt-u2-0Pk" secondAttribute="leadingMargin" id="uBZ-ao-brE"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="bodyContainer" destination="bSc-C4-AYX" id="yx4-tW-3Ng"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueCommentTableViewCell" rowHeight="141" id="oGM-Hn-dds" customClass="IssueCommentTableViewCell" customModule="GHClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="250" width="375" height="141"/>
@@ -179,7 +164,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duh-nR-D7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2372" y="-575"/>
+            <point key="canvasLocation" x="-2783" y="-658"/>
         </scene>
     </scenes>
 </document>

@@ -27,7 +27,7 @@ internal final class RepositoryDatasource: ValueCellDataSource {
   internal func setBrief(a: String, b: String, c: String, d: String) {
     self.clearValues(section: Section.Brief.rawValue)
     self.appendRow(value: (a,b), cellClass: IndentedAlignedLabelTableViewCell.self, toSection: Section.Brief.rawValue)
-    self.appendRow(value: c, cellClass: LabelOnlyTableViewCell.self, toSection: Section.Brief.rawValue)
+    self.appendRow(value: c, cellClass: RepositoryDescriptionTableViewCell.self, toSection: Section.Brief.rawValue)
     self.appendRow(value: (nil,d), cellClass: RegularBaseTableViewCell.self, toSection: Section.Brief.rawValue)
   }
 
@@ -63,7 +63,7 @@ internal final class RepositoryDatasource: ValueCellDataSource {
     switch (cell, value) {
     case let (cell as IndentedAlignedLabelTableViewCell, item as (String, String)):
       cell.configureWith(value: item)
-    case let (cell as LabelOnlyTableViewCell, item as String):
+    case let (cell as RepositoryDescriptionTableViewCell, item as String):
       cell.configureWith(value: item)
     case let (cell as BranchLiteTableViewCell, item as BranchLite):
       cell.configureWith(value: item)

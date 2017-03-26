@@ -124,7 +124,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="IndentedAlignedLabelTableViewCell" id="3Do-F2-euE" customClass="IndentedAlignedLabelTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="212" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="213" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Do-F2-euE" id="Pun-97-bAk">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
@@ -159,8 +159,8 @@
                                             <outlet property="right" destination="Cjk-oq-YND" id="jNB-WF-IiL"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelOnlyTableViewCell" id="CLG-v6-WVK" customClass="LabelOnlyTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="256" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryDescriptionTableViewCell" id="CLG-v6-WVK" customClass="RepositoryDescriptionTableViewCell" customModule="GHClient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="257" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CLG-v6-WVK" id="C25-8C-Glr">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -168,7 +168,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BranchLiteTableViewCell" id="Efj-w0-OZL" customClass="BranchLiteTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="300" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="301" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Efj-w0-OZL" id="T1N-uW-Myu">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
@@ -176,7 +176,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegularBaseTableViewCell" id="60N-bm-9ji" customClass="RegularBaseTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="344" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="345" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="60N-bm-9ji" id="8Hc-gZ-Zxr">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>

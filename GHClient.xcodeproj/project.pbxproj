@@ -47,7 +47,6 @@
 		0E5BF8831E73AD6200EDD841 /* Repository.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E5BF8821E73AD6200EDD841 /* Repository.storyboard */; };
 		0E5BF8B81E73AD7D00EDD841 /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */; };
 		0E5BF8BA1E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8B91E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift */; };
-		0E5BF8BC1E73B31400EDD841 /* LabelOnlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BB1E73B31400EDD841 /* LabelOnlyTableViewCell.swift */; };
 		0E5BF8BE1E73B38A00EDD841 /* RegularBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */; };
 		0E5BF8C01E73B40400EDD841 /* RepositoryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */; };
 		0E5BF8C21E73B47E00EDD841 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */; };
@@ -153,6 +152,7 @@
 		0EDCFB171E8403AE0095F61B /* MeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDCFB161E8403AE0095F61B /* MeTableViewController.swift */; };
 		0EDCFB561E8432130095F61B /* Ladder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; };
 		0EDCFB571E8432130095F61B /* Ladder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EE749BB1E87560900262014 /* RepositoryDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE749BA1E87560900262014 /* RepositoryDescriptionTableViewCell.swift */; };
 		0EECF6351E7045F0009600BB /* Activities.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EECF6341E7045F0009600BB /* Activities.storyboard */; };
 		0EECF6371E704608009600BB /* ActivitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF6361E704608009600BB /* ActivitesViewController.swift */; };
 		0EECF63A1E7047B2009600BB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EECF6391E7047B2009600BB /* Colors.swift */; };
@@ -839,7 +839,6 @@
 		0E5BF8821E73AD6200EDD841 /* Repository.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repository.storyboard; sourceTree = "<group>"; };
 		0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		0E5BF8B91E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndentedAlignedLabelTableViewCell.swift; sourceTree = "<group>"; };
-		0E5BF8BB1E73B31400EDD841 /* LabelOnlyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelOnlyTableViewCell.swift; sourceTree = "<group>"; };
 		0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularBaseTableViewCell.swift; sourceTree = "<group>"; };
 		0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDatasource.swift; sourceTree = "<group>"; };
 		0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
@@ -938,6 +937,7 @@
 		0EDCFB141E8403900095F61B /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		0EDCFB161E8403AE0095F61B /* MeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ladder.xcodeproj; path = Ladder/Ladder.xcodeproj; sourceTree = "<group>"; };
+		0EE749BA1E87560900262014 /* RepositoryDescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		0EECF6341E7045F0009600BB /* Activities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
 		0EECF6361E704608009600BB /* ActivitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitesViewController.swift; sourceTree = "<group>"; };
 		0EECF6391E7047B2009600BB /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -1353,7 +1353,6 @@
 			isa = PBXGroup;
 			children = (
 				0E5BF8B91E73B21200EDD841 /* IndentedAlignedLabelTableViewCell.swift */,
-				0E5BF8BB1E73B31400EDD841 /* LabelOnlyTableViewCell.swift */,
 				0E5BF8BD1E73B38A00EDD841 /* RegularBaseTableViewCell.swift */,
 				0E7B7BF81E6EF68C00D50C95 /* RegularCollectionViewCell.swift */,
 			);
@@ -1416,6 +1415,7 @@
 				0E1AAB231E84D4AE00BFD36C /* IssueBodyTableViewCell.swift */,
 				0E1AAB251E84D4EB00BFD36C /* IssueTableViewCell.swift */,
 				0E1AAB1F1E84D09400BFD36C /* IssueCommentTableViewCell.swift */,
+				0EE749BA1E87560900262014 /* RepositoryDescriptionTableViewCell.swift */,
 				0E1AAB211E84D42D00BFD36C /* IssueLabelTableViewCell.swift */,
 				0ED646501E695C4300017D28 /* MenuGeneralCell.swift */,
 				0EB658581E8267A200D48AAE /* ReadWriteCell */,
@@ -2245,6 +2245,7 @@
 				0E94F5AB1E654ABF00E962B6 /* Account.swift in Sources */,
 				0E7B7BF11E6EB02C00D50C95 /* SearchFilterViewController.swift in Sources */,
 				0E7358061E86162D005C5002 /* GHCAttributedLabel.swift in Sources */,
+				0EE749BB1E87560900262014 /* RepositoryDescriptionTableViewCell.swift in Sources */,
 				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
 				0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */,
 				0E78960B1E798BE100DB2098 /* GuitarPadding.swift in Sources */,
@@ -2273,7 +2274,6 @@
 				0E7B7BF71E6EB0F600D50C95 /* SearchFilterUsersDatasource.swift in Sources */,
 				0E4B40A31E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift in Sources */,
 				0EECF63C1E7047C1009600BB /* TabBarItemStyles.swift in Sources */,
-				0E5BF8BC1E73B31400EDD841 /* LabelOnlyTableViewCell.swift in Sources */,
 				0ED646531E69901200017D28 /* MenuItem.swift in Sources */,
 				0EDB2CC01E7909FE007103A7 /* TTTAttributedLabel.m in Sources */,
 				0E4BCFAF1E80D73700BF6135 /* RepositoryContentTableViewController.swift in Sources */,

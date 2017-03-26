@@ -28,6 +28,8 @@ internal final class RepositoryViewController: UIViewController {
     super.viewDidLoad()
     self.tableView.dataSource = self.datasource
     self.tableView.delegate = self
+    self.tableView.rowHeight = UITableViewAutomaticDimension
+    self.tableView.estimatedRowHeight = 120
     self.viewModel.inputs.viewDidLoad()
   }
 
