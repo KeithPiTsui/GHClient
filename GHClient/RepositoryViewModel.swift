@@ -36,19 +36,34 @@ internal protocol RepositoryViewModelInputs {
 
   /// Call when user tapped on a branch
   func goto(branch: BranchLite)
+
+  ///
+  func datasourceInitialized()
 }
 
 internal protocol RepositoryViewModelOutputs {
 
-  var brief: Signal<(a:String, b: String, c: String, d: String), NoError> {get}
-
   var repository: Signal<Repository,NoError> { get }
+
+  var repoReadme: Signal<Readme?, NoError> {get}
+
+  var repoForks: Signal<[Repository], NoError> {get}
+
+  var repoReleases: Signal<[Release], NoError> {get}
+
+  var repoActivities: Signal<[GHEvent], NoError> {get}
+
+  var repoContributors: Signal<[UserLite], NoError> {get}
+
+  var repoStargazers: Signal<[UserLite], NoError> {get}
+
+  var repoPullRequests: Signal<[PullRequest], NoError> { get }
+
+  var repoIssues: Signal<[Issue], NoError> { get }
 
   var branchLites: Signal<[BranchLite], NoError> {get}
 
   var commits: Signal<[Commit], NoError> {get}
-
-  var details: Signal<[(UIImage?, String)], NoError> {get}
 
   var gotoReadmeVC: Signal<UIViewController, NoError> {get}
 
@@ -63,37 +78,63 @@ internal protocol RepositoryViewModelType {
 internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryViewModelInputs, RepositoryViewModelOutputs {
 
   init() {
-    let repo1 = self.setRepoURLProperty.signal.skipNil().observe(on: QueueScheduler())
+    let repo1 = self.setRepoURLProperty.signal.skipNil().observeInBackground()
       .map {AppEnvironment.current.apiService.repository(referredBy: $0).single()}
       .map {$0?.value}.skipNil()
     let repo2 = self.setRepoProperty.signal.skipNil()
     let repo = Signal.merge(repo1, repo2)
-    let repoDisplay = Signal.combineLatest(repo, self.viewDidLoadProperty.signal).map(first)
+    self.repository = Signal.combineLatest(repo, self.viewDidLoadProperty.signal).map(first)
 
-    self.repository = repoDisplay
+    let repoDisplay = Signal.combineLatest(self.repository, self.datasourceInitializedProperty.signal).map(first)
 
-    self.commits = repoDisplay.observe(on: QueueScheduler()).map { (repo) -> [Commit]? in
-      AppEnvironment.current.apiService.commits(referredBy: repo.urls.commits_url).single()?.value
+    self.repoReadme = repoDisplay.map { (repo) -> Readme? in
+      let rmURL = repo.urls.url.appendingPathComponent("/readme")
+      return AppEnvironment.current.apiService.readme(referredBy: rmURL).single()?.value}
+
+    self.repoForks = repoDisplay.observeInBackground()
+      .map{ (repo) -> [Repository]? in
+        AppEnvironment.current.apiService.forks(of: repo).single()?.value
       }.skipNil()
 
-    self.branchLites = repoDisplay.observe(on: QueueScheduler()).map { (repo) -> [BranchLite]? in
-      AppEnvironment.current.apiService.branchLites(referredBy: repo.urls.branches_url).single()?.value
+    self.repoReleases = repoDisplay.observeInBackground()
+      .map{ (repo) -> [Release]? in
+        AppEnvironment.current.apiService.releases(of: repo).single()?.value
       }.skipNil()
 
-    self.brief = repoDisplay.map{ (repo) -> (a:String, b: String, c: String, d: String) in
-      ("owner", repo.owner.login, repo.desc ?? "No Description", "README")
-    }
+    self.repoActivities = repoDisplay.observeInBackground()
+    .map { (repo) -> [GHEvent]? in
+      AppEnvironment.current.apiService.events(of: repo).single()?.value
+    }.skipNil()
 
-    self.details = self.viewWillAppearProperty.signal.map {_ in
-      guard let img = UIImage(named: "phone-icon") else { fatalError("No such image phone_icon") }
-      return [(img, "Forks"),
-              (img, "Releases"),
-              (img, "Recent Activity"),
-              (img, "Contributors"),
-              (img, "Stargazers"),
-              (img, "Pull Requests"),
-              (img, "Issues")]
-    }
+    self.repoContributors = repoDisplay.observeInBackground()
+      .map { (repo) -> [UserLite]? in
+        AppEnvironment.current.apiService.contributors(of: repo).single()?.value
+    }.skipNil()
+
+    self.repoStargazers = repoDisplay.observeInBackground()
+      .map { (repo) -> [UserLite]? in
+        AppEnvironment.current.apiService.stargazers(of: repo).single()?.value
+    }.skipNil()
+
+    self.repoPullRequests = repoDisplay.observeInBackground()
+      .map { (repo) -> [PullRequest]? in
+        AppEnvironment.current.apiService.pullRequests(of: repo).single()?.value
+      }.skipNil()
+
+    self.repoIssues = repoDisplay.observeInBackground()
+      .map { (repo) -> [Issue]? in
+        AppEnvironment.current.apiService.issues(of: repo).single()?.value
+      }.skipNil()
+
+    self.commits = repoDisplay.observeInBackground()
+      .map { (repo) -> [Commit]? in
+        AppEnvironment.current.apiService.commits(referredBy: repo.urls.commits_url).single()?.value
+      }.skipNil()
+
+    self.branchLites = repoDisplay.observeInBackground()
+      .map { (repo) -> [BranchLite]? in
+        AppEnvironment.current.apiService.branchLites(referredBy: repo.urls.branches_url).single()?.value
+      }.skipNil()
 
     let vc = self.viewDidLoadProperty.signal.map { () -> ReadmeViewController in
       ReadmeViewController.instantiate()
@@ -118,7 +159,11 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
           rc.set(repo: repo, and: branch)
           return rc
     }
+  }
 
+  fileprivate let datasourceInitializedProperty = MutableProperty()
+  public func datasourceInitialized() {
+    self.datasourceInitializedProperty.value = ()
   }
 
   fileprivate let gotoBranchProperty = MutableProperty<BranchLite?>(nil)
@@ -160,10 +205,15 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
     self.viewWillAppearProperty.value = animated
   }
 
-  internal let brief: Signal<(a: String, b: String, c: String, d: String), NoError>
-  internal let details: Signal<[(UIImage?, String)], NoError>
-
   internal let repository: Signal<Repository, NoError>
+  internal let repoReadme: Signal<Readme?, NoError>
+  internal let repoForks: Signal<[Repository], NoError>
+  internal let repoReleases: Signal<[Release], NoError>
+  internal let repoActivities: Signal<[GHEvent], NoError>
+  internal let repoContributors: Signal<[UserLite], NoError>
+  internal let repoStargazers: Signal<[UserLite], NoError>
+  internal let repoPullRequests: Signal<[PullRequest], NoError>
+  internal let repoIssues: Signal<[Issue], NoError>
   internal let branchLites: Signal<[BranchLite], NoError>
   internal let commits: Signal<[Commit], NoError>
   internal let gotoReadmeVC: Signal<UIViewController, NoError>

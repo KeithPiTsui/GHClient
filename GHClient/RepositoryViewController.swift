@@ -53,18 +53,53 @@ internal final class RepositoryViewController: UIViewController {
 
   override func bindViewModel() {
     super.bindViewModel()
-    self.viewModel.outputs.repository.observeForUI().observeValues { [weak self] (repo) in
+    self.viewModel.outputs.repository.observeForControllerAction().observeValues { [weak self] (repo) in
       self?.repoName.text = repo.name
       self?.stars.text = "\(repo.stargazers_count)"
       self?.forks.text = "\(repo.others.forks_count)"
-      self?.datasource.set(repo: repo)
-      self?.tableView.reloadData()
+      DispatchQueue.main.async {
+        self?.datasource.set(repo: repo)
+        self?.tableView.reloadData()
+        self?.viewModel.inputs.datasourceInitialized()
+      }
     }
 
-    self.viewModel.outputs.branchLites.observeForUI().observeValues { [weak self] (branchLites) in
+    self.viewModel.outputs.branchLites.observeForControllerAction().observeValues { [weak self] (branchLites) in
       self?.datasource.set(branchLites: branchLites)
       self?.datasource.setCommit(on: branchLites)
       self?.tableView.reloadData()
+    }
+
+    self.viewModel.outputs.repoReadme.observeForControllerAction().observeValues { [weak self] (readme) in
+      self?.datasource.set(readme: readme)
+    }
+
+    self.viewModel.outputs.repoForks.observeForControllerAction().observeValues { [weak self] (forks) in
+      self?.datasource.set(forks: forks)
+    }
+
+    self.viewModel.outputs.repoReleases.observeForControllerAction().observeValues { [weak self] (releases) in
+      self?.datasource.set(release: releases)
+    }
+
+    self.viewModel.outputs.repoActivities.observeForControllerAction().observeValues { [weak self] (activities) in
+      self?.datasource.set(activities: activities)
+    }
+
+    self.viewModel.outputs.repoContributors.observeForControllerAction().observeValues { [weak self] (contributors) in
+      self?.datasource.set(contributors: contributors)
+    }
+
+    self.viewModel.outputs.repoStargazers.observeForControllerAction().observeValues { [weak self] (stargazers) in
+      self?.datasource.set(stargazers: stargazers)
+    }
+
+    self.viewModel.outputs.repoPullRequests.observeForControllerAction().observeValues { [weak self] (pullRequests) in
+      self?.datasource.set(pullRequests: pullRequests)
+    }
+
+    self.viewModel.outputs.repoIssues.observeForControllerAction().observeValues { [weak self] (issues) in
+      self?.datasource.set(issues: issues)
     }
 
     self.viewModel.outputs.gotoReadmeVC.observeForControllerAction().observeValues { [weak self] in
@@ -74,7 +109,6 @@ internal final class RepositoryViewController: UIViewController {
       self?.navigationController?.pushViewController($0, animated: true)
     }
   }
-
 }
 
 extension RepositoryViewController: UITableViewDelegate {

@@ -44,10 +44,9 @@ internal final class RepositoryDatasource: ValueCellDataSource {
     self.appendRow(value: ((), nil), cellClass: RepositoryStargazersTableViewCell.self, toSection: Section.DetailDiveIn.rawValue)
     self.appendRow(value: ((), nil), cellClass: RepositoryPullRequestsTableViewCell.self, toSection: Section.DetailDiveIn.rawValue)
     self.appendRow(value: ((), nil), cellClass: RepositoryIssuesTableViewCell.self, toSection: Section.DetailDiveIn.rawValue)
-
   }
 
-  internal func set(readme: Readme) {
+  internal func set(readme: Readme?) {
     let r = self.valueSnapshot[Section.Brief.rawValue].count - 1
     self.set(value: ((), readme), cellClass: RepositoryReadmeTableViewCell.self, inSection: Section.Brief.rawValue, row: r)
   }
