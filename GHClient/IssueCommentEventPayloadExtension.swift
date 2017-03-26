@@ -11,9 +11,9 @@ import GHAPI
 
 extension IssueCommentEventPayload: EventPayloadTypeDisplay {
   internal var payloadView: UIView {
-    let lab = UILabel(frame: UIScreen.main.bounds)
+    let lab = GHCAttributedLabel()
     lab.numberOfLines = 0
-    lab.text = self.comment.body
+    try? lab.set(markup: self.comment.body)
     lab.sizeToFit()
     return lab
   }

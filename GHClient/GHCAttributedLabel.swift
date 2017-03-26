@@ -13,6 +13,14 @@ import Prelude
 
 internal final class GHCAttributedLabel: TTTAttributedLabel {
 
+  override init(frame: CGRect = CGRect.zero) {
+    super.init(frame: frame)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
   var baseURL: URL = AppEnvironment.current.apiService.serverConfig.apiBaseUrl
   var detectors: [GuitarChord:String] = [:]
 
