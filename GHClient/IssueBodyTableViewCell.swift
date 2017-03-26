@@ -21,7 +21,7 @@ internal final class IssueBodyTableViewCell: UITableViewCell, ValueCell {
     super.awakeFromNib()
     self.bodyLabel.font = UIFont.systemFont(ofSize: 14)
     self.bodyLabel.numberOfLines = 0
-    self.bodyLabel.detectors = [GuitarChord.atUser:"users"]
+    self.bodyLabel.detectors = [GuitarChord.atUser:"users", GuitarChord.url:""]
     self.contentView.addSubview(self.bodyLabel)
     self.bodyLabel.fillupSuperView()
   }

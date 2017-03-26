@@ -9,10 +9,12 @@
     "4AE798DA6300B9335E840B155507BAF9742366D7" : 9223372036854775807,
     "C779AC94AAF26299AC2D478A5DDF7C5A40736560" : 9223372036854775807,
     "E084C86B03F81D63323C9E7510697EA528A758C7" : 9223372036854775807,
+    "2CC69C7EFC439AC727F09E33B49EFBD1D2365CBA" : 9223372036854775807,
     "39CB70283A1C33AFB5FF861E924945826EDC74FE" : 9223372036854775807,
     "E139BF47DAAF0281292F8A8A85F2631B9D6680F3" : 9223372036854775807,
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : 9223372036854775807,
     "CCB02F62BD05252A9CDF3FAECA34BF4FA5882DCF" : 9223372036854775807,
+    "F501F6253A6AEB746530F92C6B0EA8E3AD06410B" : 9223372036854775807,
     "93283886EC4825DF8E5FE1458E1E4238DD692370" : 9223372036854775807,
     "5E7FCDF539B2F3BC45CA957A3D11B8C34E9B20E9" : 9223372036854775807,
     "8FD8F7B1FD76A28DE77193D7D058AFD5380E5269" : 9223372036854775807,
@@ -27,10 +29,12 @@
     "4AE798DA6300B9335E840B155507BAF9742366D7" : "GHClient\/Ladder\/",
     "C779AC94AAF26299AC2D478A5DDF7C5A40736560" : "GHClient\/SlideMenuControllerSwift\/",
     "E084C86B03F81D63323C9E7510697EA528A758C7" : "GHClient\/ReactiveCocoa\/Carthage\/Checkouts\/ReactiveSwift\/Carthage\/Checkouts\/xcconfigs\/",
+    "2CC69C7EFC439AC727F09E33B49EFBD1D2365CBA" : "GHClient\/DTCoreText\/",
     "39CB70283A1C33AFB5FF861E924945826EDC74FE" : "GHClient\/Argo\/",
     "E139BF47DAAF0281292F8A8A85F2631B9D6680F3" : "GHClient\/Kickstarter-ReactiveExtensions\/",
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : "GHClient\/ReactiveCocoa\/Carthage\/Checkouts\/ReactiveSwift\/",
     "CCB02F62BD05252A9CDF3FAECA34BF4FA5882DCF" : "GHClient\/M13ProgressSuite\/",
+    "F501F6253A6AEB746530F92C6B0EA8E3AD06410B" : "GHClient\/DTCoreText\/Externals\/DTFoundation\/",
     "93283886EC4825DF8E5FE1458E1E4238DD692370" : "GHClient\/Down\/",
     "5E7FCDF539B2F3BC45CA957A3D11B8C34E9B20E9" : "GHClient\/GHAPI\/",
     "8FD8F7B1FD76A28DE77193D7D058AFD5380E5269" : "GHClient\/Ji\/",
@@ -51,6 +55,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/thoughtbot\/Curry.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "194A7A54F3CE0138A6C320E0643B7C60F8218891"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cocoanetics\/DTCoreText.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2CC69C7EFC439AC727F09E33B49EFBD1D2365CBA"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/thoughtbot\/Argo.git",
@@ -116,6 +125,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kickstarter\/Kickstarter-ReactiveExtensions.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E139BF47DAAF0281292F8A8A85F2631B9D6680F3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cocoanetics\/DTFoundation.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F501F6253A6AEB746530F92C6B0EA8E3AD06410B"
     }
   ]
 }

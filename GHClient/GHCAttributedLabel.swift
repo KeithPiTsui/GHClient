@@ -26,8 +26,7 @@ internal final class GHCAttributedLabel: TTTAttributedLabel {
 
   internal func set(markup: String) throws {
     let attributedString = try Down(markdownString: markup).toAttributedString()
-//    super.setText(attributedString)
-    super.setText(attributedString) {$0}
+    super.setText(attributedString)
     let plain = attributedString.string as NSString
     try self.detectors.keys
       .forEach { (chord) in
@@ -46,13 +45,18 @@ internal final class GHCAttributedLabel: TTTAttributedLabel {
   private func url(for chord: GuitarChord, with id: String) -> URL {
     var url = self.baseURL
     let pathComponent = self.detectors[chord]!
+    var cs = CharacterSet.punctuationCharacters
+    cs.formUnion(.whitespacesAndNewlines)
+    let trimedId = id.trimmingCharacters(in: cs)
     switch chord {
     case .atUser:
       url.appendPathComponent(pathComponent)
+      url.appendPathComponent("\(trimedId)")
+    case .url:
+      url = URL(string: trimedId) ?? url
     default:
       break
     }
-    url.appendPathComponent("\(id.trim())")
     return url
   }
 }

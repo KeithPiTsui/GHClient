@@ -20,6 +20,7 @@ internal final class IssueCommentTableViewCell: UITableViewCell, ValueCell {
   @IBOutlet weak var userAvatar: UIImageView!
 
 
+
   internal var bodyLabel: GHCAttributedLabel?
 
   override func awakeFromNib() {
@@ -28,7 +29,7 @@ internal final class IssueCommentTableViewCell: UITableViewCell, ValueCell {
     self.bodyLabel = GHCAttributedLabel(frame: CGRect.zero)
     if let v = self.bodyLabel {
       v.font = UIFont.systemFont(ofSize: 22)
-      v.detectors = [GuitarChord.atUser:"users"]
+      v.detectors = [GuitarChord.atUser:"users", GuitarChord.url: ""]
       v.numberOfLines = 0
       self.commentContainer.addSubview(v)
       v.fillupSuperView()
@@ -41,6 +42,18 @@ internal final class IssueCommentTableViewCell: UITableViewCell, ValueCell {
     try? self.bodyLabel?.set(markup: value.body)
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
