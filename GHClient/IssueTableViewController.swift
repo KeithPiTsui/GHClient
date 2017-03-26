@@ -82,7 +82,7 @@ extension IssueTableViewController: TTTAttributedLabelDelegate {
     guard
       let cell = label.tableViewCell,
       let indexPath = self.tableView.indexPath(for: cell),
-      let event = self.datasource[indexPath] as? GHEvent
+      let _ = self.datasource[indexPath] as? GHEvent
       else { return }
   }
 }

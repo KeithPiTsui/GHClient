@@ -20,8 +20,17 @@ internal final class TrendingRepositoryTableViewCell: UITableViewCell, ValueCell
   @IBOutlet weak var langIcon: UIImageView!
   @IBOutlet weak var forkIcon: UIImageView!
   @IBOutlet weak var starIcon: UIImageView!
+  @IBOutlet weak var periodStarIcon: UIImageView!
 
-  internal var periodDesc: String = ""
+  internal var periodDesc: String = "today"
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.langIcon.tintColor = UIColor.orange
+    self.starIcon.tintColor = UIColor.yellow
+    self.forkIcon.tintColor = UIColor.darkGray
+    self.periodStarIcon.tintColor = UIColor.yellow
+  }
 
   func configureWith(value: TrendingRepository) {
     self.repoFullName.text = "\(value.repoOwner ?? "")\\\(value.repoName ?? "")"
@@ -29,6 +38,6 @@ internal final class TrendingRepositoryTableViewCell: UITableViewCell, ValueCell
     self.language.text = value.programmingLanguage ?? ""
     self.stars.text = "\(value.totoalStars ?? 0)"
     self.forks.text = "\(value.forks ?? 0)"
-    self.periodStars.text = "\(value.periodStars ?? 0) " + self.periodDesc
+    self.periodStars.text = "\(value.periodStars ?? 0) stars " + self.periodDesc
   }
 }
