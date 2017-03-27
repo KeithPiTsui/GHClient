@@ -170,6 +170,18 @@
 		0EB582BE1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582BD1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift */; };
 		0EB582C01E890C9E0082AA09 /* RepositoryCommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582BF1E890C9E0082AA09 /* RepositoryCommitsViewModel.swift */; };
 		0EB582C21E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582C11E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift */; };
+		0EB582C41E893A420082AA09 /* MeUserBriefTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582C31E893A420082AA09 /* MeUserBriefTableViewCell.swift */; };
+		0EB582C61E893A8C0082AA09 /* MePersonalRepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582C51E893A8C0082AA09 /* MePersonalRepositoriesTableViewCell.swift */; };
+		0EB582C81E893AAF0082AA09 /* MeWatchedRepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582C71E893AAF0082AA09 /* MeWatchedRepositoriesTableViewCell.swift */; };
+		0EB582CB1E893ACC0082AA09 /* MeStarredRepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582CA1E893ACC0082AA09 /* MeStarredRepositoriesTableViewCell.swift */; };
+		0EB582CD1E893ADA0082AA09 /* MeIssuesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582CC1E893ADA0082AA09 /* MeIssuesTableViewCell.swift */; };
+		0EB582CF1E893AE70082AA09 /* MePullRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582CE1E893AE70082AA09 /* MePullRequestsTableViewCell.swift */; };
+		0EB582D11E893AFA0082AA09 /* MePersonalGistsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582D01E893AFA0082AA09 /* MePersonalGistsTableViewCell.swift */; };
+		0EB582D31E893B0C0082AA09 /* MeStarredGistsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582D21E893B0C0082AA09 /* MeStarredGistsTableViewCell.swift */; };
+		0EB582D51E893B1F0082AA09 /* MeSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582D41E893B1F0082AA09 /* MeSettingTableViewCell.swift */; };
+		0EB582D71E893C180082AA09 /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582D61E893C180082AA09 /* MeViewModel.swift */; };
+		0EB582D91E893C520082AA09 /* MeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582D81E893C520082AA09 /* MeDatasource.swift */; };
+		0EB582DB1E893DE00082AA09 /* MeLogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582DA1E893DE00082AA09 /* MeLogoutTableViewCell.swift */; };
 		0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6580A1E82168800D48AAE /* EventExtension.swift */; };
 		0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */; };
 		0EB6585D1E828F2200D48AAE /* EventPayloadTypeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */; };
@@ -1001,6 +1013,18 @@
 		0EB582BD1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCommitsTableViewController.swift; sourceTree = "<group>"; };
 		0EB582BF1E890C9E0082AA09 /* RepositoryCommitsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCommitsViewModel.swift; sourceTree = "<group>"; };
 		0EB582C11E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCommitTableViewCell2.swift; sourceTree = "<group>"; };
+		0EB582C31E893A420082AA09 /* MeUserBriefTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeUserBriefTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582C51E893A8C0082AA09 /* MePersonalRepositoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MePersonalRepositoriesTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582C71E893AAF0082AA09 /* MeWatchedRepositoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeWatchedRepositoriesTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582CA1E893ACC0082AA09 /* MeStarredRepositoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeStarredRepositoriesTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582CC1E893ADA0082AA09 /* MeIssuesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeIssuesTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582CE1E893AE70082AA09 /* MePullRequestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MePullRequestsTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582D01E893AFA0082AA09 /* MePersonalGistsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MePersonalGistsTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582D21E893B0C0082AA09 /* MeStarredGistsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeStarredGistsTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582D41E893B1F0082AA09 /* MeSettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeSettingTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582D61E893C180082AA09 /* MeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
+		0EB582D81E893C520082AA09 /* MeDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeDatasource.swift; sourceTree = "<group>"; };
+		0EB582DA1E893DE00082AA09 /* MeLogoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeLogoutTableViewCell.swift; sourceTree = "<group>"; };
 		0EB6580A1E82168800D48AAE /* EventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventExtension.swift; sourceTree = "<group>"; };
 		0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEventExtension.swift; sourceTree = "<group>"; };
 		0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPayloadTypeDisplay.swift; sourceTree = "<group>"; };
@@ -1301,29 +1325,29 @@
 			children = (
 				0EECF6341E7045F0009600BB /* Activities.storyboard */,
 				0E4B40BD1E70453A004144DC /* Discovery.storyboard */,
-				0EB582AB1E8901CA0082AA09 /* PullRequests.storyboard */,
 				0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */,
+				0E1AAAD71E84C23300BFD36C /* Issue.storyboard */,
 				0E94F1F51E65189900E962B6 /* LaunchScreen.storyboard */,
 				0E94F3271E651FE000E962B6 /* Login.storyboard */,
-				0EB5827B1E88EB930082AA09 /* RepositoryReleases.storyboard */,
-				0EB582B91E890C540082AA09 /* RepositoryCommits.storyboard */,
-				0EB582AF1E8904790082AA09 /* RepositoryIssues.storyboard */,
-				0EB582871E88F0BB0082AA09 /* RepositoryEvents.storyboard */,
 				0E50AA311E6844700002A40D /* Main.storyboard */,
+				0E6AAC741E8134A900E94429 /* MarkupViewer.storyboard */,
+				0EDCFB141E8403900095F61B /* Me.storyboard */,
 				0E84B5611E67AADA00C5ADF7 /* Menu.storyboard */,
+				0EB582AB1E8901CA0082AA09 /* PullRequests.storyboard */,
 				0EA044971E764F0A00643EBA /* Readme.storyboard */,
 				0E5BF8821E73AD6200EDD841 /* Repository.storyboard */,
+				0EB582B91E890C540082AA09 /* RepositoryCommits.storyboard */,
 				0E4BCFAC1E80D70200BF6135 /* RepositoryContent.storyboard */,
-				0EB582A31E88FEDB0082AA09 /* RepositoryStargazers.storyboard */,
 				0EB582911E88F5E10082AA09 /* RepositoryContributors.storyboard */,
+				0EB582871E88F0BB0082AA09 /* RepositoryEvents.storyboard */,
+				0EB5826E1E88E0440082AA09 /* RepositoryForks.storyboard */,
+				0EB582AF1E8904790082AA09 /* RepositoryIssues.storyboard */,
+				0EB5827B1E88EB930082AA09 /* RepositoryReleases.storyboard */,
+				0EB582A31E88FEDB0082AA09 /* RepositoryStargazers.storyboard */,
 				0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */,
 				0E7B7BA71E6E572E00D50C95 /* Search.storyboard */,
 				0E7B7BEE1E6EB01300D50C95 /* SearchFilter.storyboard */,
 				0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */,
-				0E6AAC741E8134A900E94429 /* MarkupViewer.storyboard */,
-				0EDCFB141E8403900095F61B /* Me.storyboard */,
-				0E1AAAD71E84C23300BFD36C /* Issue.storyboard */,
-				0EB5826E1E88E0440082AA09 /* RepositoryForks.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1362,27 +1386,28 @@
 			isa = PBXGroup;
 			children = (
 				0EA044D41E76884500643EBA /* ActivitiesViewModel.swift */,
-				0EB582BF1E890C9E0082AA09 /* RepositoryCommitsViewModel.swift */,
+				0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */,
+				0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */,
+				0EB582D61E893C180082AA09 /* MeViewModel.swift */,
 				0E1AAB151E84C26C00BFD36C /* IssueViewModel.swift */,
+				0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */,
+				0E6AAC781E81356600E94429 /* MarkupViewerViewModel.swift */,
+				0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */,
 				0EB582A71E8901930082AA09 /* PullRequestsViewModel.swift */,
+				0EA044CE1E76506700643EBA /* ReadmeViewModel.swift */,
+				0EB582BF1E890C9E0082AA09 /* RepositoryCommitsViewModel.swift */,
+				0E4BCFB41E80D95600BF6135 /* RepositoryContentViewModel.swift */,
+				0EB582971E88F61E0082AA09 /* RepositoryContributorsViewModel.swift */,
 				0EB5828B1E88F0F30082AA09 /* RepositoryEventsViewModel.swift */,
 				0EB582721E88E0850082AA09 /* RepositoryForksViewModel.swift */,
-				0E6AAC781E81356600E94429 /* MarkupViewerViewModel.swift */,
-				0EB5827F1E88EBEB0082AA09 /* RepositoryReleasesViewModel.swift */,
 				0EB582B51E8904B00082AA09 /* RepositoryIssuesViewModel.swift */,
-				0E50AA111E67FCF60002A40D /* AppDelegateViewModel.swift */,
-				0E94F32B1E652B4500E962B6 /* LoginViewModel.swift */,
-				0E84B5991E67AB1300C5ADF7 /* MenuViewModel.swift */,
-				0EA044CE1E76506700643EBA /* ReadmeViewModel.swift */,
+				0EB5827F1E88EBEB0082AA09 /* RepositoryReleasesViewModel.swift */,
 				0EB5829F1E88FE270082AA09 /* RepositoryStargazersViewModel.swift */,
-				0EB582971E88F61E0082AA09 /* RepositoryContributorsViewModel.swift */,
 				0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */,
-				0E4BCFB41E80D95600BF6135 /* RepositoryContentViewModel.swift */,
 				0E4B40BB1E703C4E004144DC /* RootTabBarViewModel.swift */,
 				0E7B7BF21E6EB03B00D50C95 /* SearchFilterViewModel.swift */,
 				0E7B7BE81E6E890000D50C95 /* SearchViewModel.swift */,
 				0E238F0D1E6BAA28001F493A /* UserProfileViewModel.swift */,
-				0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -1489,6 +1514,23 @@
 			name = UserProfile;
 			sourceTree = "<group>";
 		};
+		0EB582C91E893AB30082AA09 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				0EB582C31E893A420082AA09 /* MeUserBriefTableViewCell.swift */,
+				0EB582C51E893A8C0082AA09 /* MePersonalRepositoriesTableViewCell.swift */,
+				0EB582C71E893AAF0082AA09 /* MeWatchedRepositoriesTableViewCell.swift */,
+				0EB582CA1E893ACC0082AA09 /* MeStarredRepositoriesTableViewCell.swift */,
+				0EB582CC1E893ADA0082AA09 /* MeIssuesTableViewCell.swift */,
+				0EB582CE1E893AE70082AA09 /* MePullRequestsTableViewCell.swift */,
+				0EB582D01E893AFA0082AA09 /* MePersonalGistsTableViewCell.swift */,
+				0EB582D21E893B0C0082AA09 /* MeStarredGistsTableViewCell.swift */,
+				0EB582D41E893B1F0082AA09 /* MeSettingTableViewCell.swift */,
+				0EB582DA1E893DE00082AA09 /* MeLogoutTableViewCell.swift */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
 		0EB657D01E82166000D48AAE /* ModelExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -1548,6 +1590,7 @@
 				0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */,
 				0E1AAB171E84C2D700BFD36C /* IssueDatasource.swift */,
 				0ED6460D1E69500900017D28 /* MenuDataSource.swift */,
+				0EB582D81E893C520082AA09 /* MeDatasource.swift */,
 				0EB582BB1E890C6B0082AA09 /* RepositoryCommitsDatasource.swift */,
 				0E4BCFB01E80D78800BF6135 /* RepositoryContentDatasource.swift */,
 				0EB5829B1E88FDB40082AA09 /* RepositoryStargazersDatasource.swift */,
@@ -1573,6 +1616,7 @@
 		0ED6464F1E695BFD00017D28 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0EB582C91E893AB30082AA09 /* Me */,
 				0EB582781E88E8100082AA09 /* UserProfile */,
 				0EB582771E88E8010082AA09 /* Search */,
 				0EB582761E88E7EE0082AA09 /* Issue */,
@@ -1581,14 +1625,6 @@
 				0EB658591E82680000D48AAE /* GeneralCell */,
 				0ED646501E695C4300017D28 /* MenuGeneralCell.swift */,
 				0EB658581E8267A200D48AAE /* ReadWriteCell */,
-				0E4BCFB81E80EC3300BF6135 /* RepositoryContentTableViewCell.swift */,
-				0EB582831E88EC5B0082AA09 /* RepositoryReleaseTableViewCell.swift */,
-				0EB582B71E8904C30082AA09 /* RepositoryIssueTableViewCell.swift */,
-				0EB5829D1E88FDEB0082AA09 /* RepositoryStargazerTableViewCell.swift */,
-				0EB582991E88F62B0082AA09 /* RepositoryContributorTableViewCell.swift */,
-				0EB582A51E8901540082AA09 /* PullRequestTableViewCell.swift */,
-				0EB582C11E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift */,
-				0EB582791E88E84A0082AA09 /* RepositoryForkTableViewCell.swift */,
 				0E3E02E61E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift */,
 			);
 			name = Cells;
@@ -1624,18 +1660,26 @@
 		0EE74A0E1E87A1DA00262014 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				0EB582A51E8901540082AA09 /* PullRequestTableViewCell.swift */,
 				0EE749ED1E878CD600262014 /* RepositoryActivitiesTableViewCell.swift */,
 				0EE749F71E878D6000262014 /* RepositoryBranchTableViewCell.swift */,
 				0EE749F91E878D7400262014 /* RepositoryCommitTableViewCell.swift */,
+				0EB582C11E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift */,
+				0E4BCFB81E80EC3300BF6135 /* RepositoryContentTableViewCell.swift */,
 				0EE749EF1E878CEE00262014 /* RepositoryContributorsTableViewCell.swift */,
+				0EB582991E88F62B0082AA09 /* RepositoryContributorTableViewCell.swift */,
 				0EE749BA1E87560900262014 /* RepositoryDescriptionTableViewCell.swift */,
 				0EE749E91E878C6700262014 /* RepositoryForksTableViewCell.swift */,
+				0EB582791E88E84A0082AA09 /* RepositoryForkTableViewCell.swift */,
 				0EE749F51E878D2600262014 /* RepositoryIssuesTableViewCell.swift */,
+				0EB582B71E8904C30082AA09 /* RepositoryIssueTableViewCell.swift */,
 				0EE749E51E878BD700262014 /* RepositoryOwerTableViewCell.swift */,
 				0EE749F31E878D1800262014 /* RepositoryPullRequestsTableViewCell.swift */,
 				0EE749E71E878C2400262014 /* RepositoryReadmeTableViewCell.swift */,
 				0EE749EB1E878CB800262014 /* RepositoryReleasesTableViewCell.swift */,
+				0EB582831E88EC5B0082AA09 /* RepositoryReleaseTableViewCell.swift */,
 				0EE749F11E878D0300262014 /* RepositoryStargazersTableViewCell.swift */,
+				0EB5829D1E88FDEB0082AA09 /* RepositoryStargazerTableViewCell.swift */,
 			);
 			name = Repository;
 			sourceTree = "<group>";
@@ -2381,6 +2425,7 @@
 				0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */,
 				0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */,
 				0EB582A21E88FE870082AA09 /* RepositoryStargazersTableViewController.swift in Sources */,
+				0EB582D11E893AFA0082AA09 /* MePersonalGistsTableViewCell.swift in Sources */,
 				0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
 				0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */,
@@ -2395,13 +2440,16 @@
 				0E6AAC771E81350C00E94429 /* MarkupViewerViewController.swift in Sources */,
 				0E50AA0C1E67F6310002A40D /* KeyValueStoreType.swift in Sources */,
 				0E1AAB241E84D4AE00BFD36C /* IssueBodyTableViewCell.swift in Sources */,
+				0EB582D71E893C180082AA09 /* MeViewModel.swift in Sources */,
 				0EB582AE1E8901F20082AA09 /* PullRequestsDatasource.swift in Sources */,
+				0EB582D31E893B0C0082AA09 /* MeStarredGistsTableViewCell.swift in Sources */,
 				0E78960A1E798BE100DB2098 /* GuitarNSRangeExtension.swift in Sources */,
 				0EB582901E88F1130082AA09 /* RepositoryEventsDatasource.swift in Sources */,
 				0EE749F61E878D2600262014 /* RepositoryIssuesTableViewCell.swift in Sources */,
 				0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */,
 				0E7B7BE91E6E890000D50C95 /* SearchViewModel.swift in Sources */,
 				0EB582C01E890C9E0082AA09 /* RepositoryCommitsViewModel.swift in Sources */,
+				0EB582CF1E893AE70082AA09 /* MePullRequestsTableViewCell.swift in Sources */,
 				0EB5828C1E88F0F30082AA09 /* RepositoryEventsViewModel.swift in Sources */,
 				0EB582C21E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift in Sources */,
 				0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */,
@@ -2456,6 +2504,7 @@
 				0EB582801E88EBEB0082AA09 /* RepositoryReleasesViewModel.swift in Sources */,
 				0E4BCFB11E80D78800BF6135 /* RepositoryContentDatasource.swift in Sources */,
 				0ECE8A6B1E77FEF2001FE48B /* DiscoveryViewModel.swift in Sources */,
+				0EB582C41E893A420082AA09 /* MeUserBriefTableViewCell.swift in Sources */,
 				0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */,
 				0EB582961E88F6110082AA09 /* RepositoryContributorsTableViewController.swift in Sources */,
 				0EB5829A1E88F62B0082AA09 /* RepositoryContributorTableViewCell.swift in Sources */,
@@ -2466,6 +2515,7 @@
 				0EE749BB1E87560900262014 /* RepositoryDescriptionTableViewCell.swift in Sources */,
 				0EB5827A1E88E84A0082AA09 /* RepositoryForkTableViewCell.swift in Sources */,
 				0E238F0E1E6BAA28001F493A /* UserProfileViewModel.swift in Sources */,
+				0EB582D91E893C520082AA09 /* MeDatasource.swift in Sources */,
 				0E4B40BA1E703C1D004144DC /* RootTabBarViewController.swift in Sources */,
 				0EB582AA1E8901AD0082AA09 /* PullRequestsTableViewController.swift in Sources */,
 				0E78960B1E798BE100DB2098 /* GuitarPadding.swift in Sources */,
@@ -2482,10 +2532,12 @@
 				0E7B7BED1E6E9A1E00D50C95 /* SearchRepositoryTableViewCell.swift in Sources */,
 				0E50AA301E6843D30002A40D /* Notifications.swift in Sources */,
 				0EA044D51E76884500643EBA /* ActivitiesViewModel.swift in Sources */,
+				0EB582C81E893AAF0082AA09 /* MeWatchedRepositoriesTableViewCell.swift in Sources */,
 				0EB582A61E8901540082AA09 /* PullRequestTableViewCell.swift in Sources */,
 				0EECF63A1E7047B2009600BB /* Colors.swift in Sources */,
 				0E1AAB141E84C24E00BFD36C /* IssueTableViewController.swift in Sources */,
 				0E7B7BF51E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift in Sources */,
+				0EB582C61E893A8C0082AA09 /* MePersonalRepositoriesTableViewCell.swift in Sources */,
 				0EB582BE1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift in Sources */,
 				0EB582BC1E890C6B0082AA09 /* RepositoryCommitsDatasource.swift in Sources */,
 				0E7896081E798BE100DB2098 /* GuitarCharacter.swift in Sources */,
@@ -2505,12 +2557,16 @@
 				0EE749EA1E878C6700262014 /* RepositoryForksTableViewCell.swift in Sources */,
 				0E4B40A31E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift in Sources */,
 				0EECF63C1E7047C1009600BB /* TabBarItemStyles.swift in Sources */,
+				0EB582DB1E893DE00082AA09 /* MeLogoutTableViewCell.swift in Sources */,
 				0ED646531E69901200017D28 /* MenuItem.swift in Sources */,
 				0EDB2CC01E7909FE007103A7 /* TTTAttributedLabel.m in Sources */,
 				0E4BCFAF1E80D73700BF6135 /* RepositoryContentTableViewController.swift in Sources */,
 				0E3E02E71E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift in Sources */,
 				0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */,
 				0EB582751E88E12A0082AA09 /* RepositoryForksDatasource.swift in Sources */,
+				0EB582D51E893B1F0082AA09 /* MeSettingTableViewCell.swift in Sources */,
+				0EB582CD1E893ADA0082AA09 /* MeIssuesTableViewCell.swift in Sources */,
+				0EB582CB1E893ACC0082AA09 /* MeStarredRepositoriesTableViewCell.swift in Sources */,
 				0E4BCFB91E80EC3300BF6135 /* RepositoryContentTableViewCell.swift in Sources */,
 				0EA044CF1E76506700643EBA /* ReadmeViewModel.swift in Sources */,
 				0ED646511E695C4300017D28 /* MenuGeneralCell.swift in Sources */,
