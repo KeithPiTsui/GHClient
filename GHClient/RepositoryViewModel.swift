@@ -292,6 +292,14 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         return vc
     }
 
+    let callForCommits = self.clickCommitsOnBranchProperty.signal.skipNil()
+    let pushCommitsVC = Signal.combineLatest(callForCommits, repoDisplay)
+      .map { (branch, repo) -> UIViewController in
+        let vc = RepositoryCommitsTableViewController.instantiate()
+        vc.set(commitsBelongTo: repo, on: branch)
+        return vc
+    }
+
     self.pushViewController = Signal.merge(pushReadmeVC,
                                            pushBranchContent,
                                            pushOwnerVC,
@@ -301,7 +309,8 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
                                            pushContributorsVC,
                                            pushStargazersVC,
                                            pushPullRequestsVC,
-                                           pushIssuesVC)
+                                           pushIssuesVC,
+                                           pushCommitsVC)
   }
 
   fileprivate let clickRepoOwnerProperty = MutableProperty<UserLite?> (nil)

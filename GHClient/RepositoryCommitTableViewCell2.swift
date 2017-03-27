@@ -15,6 +15,6 @@ import Ladder
 internal final class RepositoryCommitTableViewCell2: UITableViewCell, ValueCell {
 
   func configureWith(value: Commit) {
-
+    self.textLabel?.text = value.sha
   }
 }

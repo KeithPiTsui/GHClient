@@ -12,7 +12,7 @@
         <!--Repository Commits Table View Controller-->
         <scene sceneID="dE5-Gg-cLQ">
             <objects>
-                <tableViewController storyboardIdentifier="RepositoryCommitsTableViewController" id="llw-Ue-NsJ" customClass="RepositoryCommitsTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RepositoryCommitsTableViewController" id="llw-Ue-NsJ" customClass="RepositoryCommitsTableViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LIR-TK-Jv1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
