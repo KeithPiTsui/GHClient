@@ -14,7 +14,7 @@ import Ladder
 
 internal final class RepositoryPullRequestsTableViewCell: UITableViewCell, ValueCell {
 
-  func configureWith(value: (Void, [PullRequest]?)) {
+  func configureWith(value: [PullRequest]?) {
     self.textLabel?.text = "Pull Requests"
   }
 }

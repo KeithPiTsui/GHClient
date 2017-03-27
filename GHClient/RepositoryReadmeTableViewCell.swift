@@ -15,8 +15,7 @@ import Ladder
 
 internal final class RepositoryReadmeTableViewCell: UITableViewCell, ValueCell {
 
-  func configureWith(value: (Void, Readme?)) {
-    let value = second(value)
+  func configureWith(value: Readme?) {
     let text = value == nil ? "No Readme" : "Readme"
     self.textLabel?.text = text
   }

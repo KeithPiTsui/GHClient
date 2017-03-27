@@ -39,6 +39,19 @@ internal protocol RepositoryViewModelInputs {
 
   ///
   func datasourceInitialized()
+
+  func click (repoOwner: UserLite)
+  func click (readme: Readme?)
+  func click (forks: [Repository]?)
+  func click (releases: [Release]?)
+  func click (activities: [GHEvent]?)
+  func click (contributors: [UserLite]?)
+  func click (stargazers: [UserLite]?)
+  func click (pullRequests: [PullRequest]?)
+  func click (issues: [Issue]?)
+  func click (branch: BranchLite)
+  func clickCommits(on branch: BranchLite)
+
 }
 
 internal protocol RepositoryViewModelOutputs {
@@ -65,9 +78,9 @@ internal protocol RepositoryViewModelOutputs {
 
   var commits: Signal<[Commit], NoError> {get}
 
-  var gotoReadmeVC: Signal<UIViewController, NoError> {get}
+  var pushViewController: Signal<UIViewController, NoError> { get }
 
-  var gotoBranchVC: Signal<RepositoryContentTableViewController, NoError> { get }
+  var popupViewController: Signal<UIViewController, NoError> {get}
 }
 
 internal protocol RepositoryViewModelType {
@@ -102,19 +115,19 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
       }.skipNil()
 
     self.repoActivities = repoDisplay.observeInBackground()
-    .map { (repo) -> [GHEvent]? in
-      AppEnvironment.current.apiService.events(of: repo).single()?.value
-    }.skipNil()
+      .map { (repo) -> [GHEvent]? in
+        AppEnvironment.current.apiService.events(of: repo).single()?.value
+      }.skipNil()
 
     self.repoContributors = repoDisplay.observeInBackground()
       .map { (repo) -> [UserLite]? in
         AppEnvironment.current.apiService.contributors(of: repo).single()?.value
-    }.skipNil()
+      }.skipNil()
 
     self.repoStargazers = repoDisplay.observeInBackground()
       .map { (repo) -> [UserLite]? in
         AppEnvironment.current.apiService.stargazers(of: repo).single()?.value
-    }.skipNil()
+      }.skipNil()
 
     self.repoPullRequests = repoDisplay.observeInBackground()
       .map { (repo) -> [PullRequest]? in
@@ -136,29 +149,121 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         AppEnvironment.current.apiService.branchLites(referredBy: repo.urls.branches_url).single()?.value
       }.skipNil()
 
-    let vc = self.viewDidLoadProperty.signal.map { () -> ReadmeViewController in
-      ReadmeViewController.instantiate()
+
+    let alertVC = self.viewDidLoadProperty.signal.map {
+      return UIAlertController(title: "", message: "", preferredStyle: .alert)
     }
 
-    let readmeURL = repoDisplay.map { (repo) -> URL? in
-      let rmURL = repo.urls.url.appendingPathComponent("/readme")
-      return AppEnvironment.current.apiService.readme(referredBy: rmURL).single()?.value?.html_url
-      }.skipNil()
+    let alertSituation1 = self.clickReadmeProperty.signal.filter{$0.isNil}.map{_ in "No Readme"}
+    let alertSituation2 = self.clickForksProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Forks"}
+    let alertSituation3 = self.clickReleasesProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Releases"}
+    let alertSituation4 = self.clickActivitiesProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Activities"}
+    let alertSituation5 = self.clickContributorsProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Contributors"}
+    let alertSituation6 = self.clickStargazersProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Contributors"}
+    let alertSituation7 = self.clickPullRequestsProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Contributors"}
+    let alertSituation8 = self.clickIssuesProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Contributors"}
 
-    let readmeVC = Signal.combineLatest(vc, readmeURL).map { (vc, url) -> UIViewController in
-      vc.set(readmeUrl: url)
-      return vc
+    let alertSituations = Signal.merge(alertSituation1,
+                                       alertSituation2,
+                                       alertSituation3,
+                                       alertSituation4,
+                                       alertSituation5,
+                                       alertSituation6,
+                                       alertSituation7,
+                                       alertSituation8)
+
+    self.popupViewController = Signal.combineLatest(alertVC, alertSituations)
+      .map { (altVC, message) -> UIViewController in
+        altVC.message = message
+        return altVC
     }
-    self.gotoReadmeVC = Signal.combineLatest(readmeVC, self.gotoReadmeProperty.signal).map(first)
 
 
-    self.gotoBranchVC =
-      Signal.combineLatest(self.gotoBranchProperty.signal.skipNil(), repoDisplay)
-        .map { (branch, repo) -> RepositoryContentTableViewController in
+    let readmeVC = self.viewDidLoadProperty.signal
+      .map { () -> ReadmeViewController in
+        ReadmeViewController.instantiate()
+    }
+
+    let pushReadmeVC = Signal.combineLatest(readmeVC, self.clickReadmeProperty.signal.skipNil())
+      .map { (vc, readme) -> UIViewController in
+        vc.set(readmeUrl: readme.html_url)
+        return vc
+    }
+
+    let pushBranchContent =
+      Signal.combineLatest(self.clickBranchProperty.signal.skipNil(), repoDisplay)
+        .map { (branch, repo) -> UIViewController in
           let rc = RepositoryContentTableViewController.instantiate()
           rc.set(repo: repo, and: branch)
           return rc
     }
+
+    let ownerVC = self.viewDidLoadProperty.signal.map { () -> UserProfileViewController in
+      UserProfileViewController.instantiate()
+    }
+
+    let pushOwnerVC = Signal.combineLatest(ownerVC, self.clickRepoOwnerProperty.signal.skipNil())
+      .map { (userVC, owner) -> UIViewController in
+        userVC.set(userUrl: owner.urls.url)
+        return userVC
+    }
+
+    self.pushViewController = Signal.merge(pushReadmeVC, pushBranchContent, pushOwnerVC)
+  }
+
+  fileprivate let clickRepoOwnerProperty = MutableProperty<UserLite?> (nil)
+  func click(repoOwner: UserLite) {
+    self.clickRepoOwnerProperty.value = repoOwner
+  }
+
+  fileprivate let clickReadmeProperty = MutableProperty<Readme?>(nil)
+  func click (readme: Readme?) {
+    self.clickReadmeProperty.value = readme
+  }
+
+  fileprivate let clickForksProperty = MutableProperty<[Repository]?>(nil)
+  func click (forks: [Repository]?) {
+    self.clickForksProperty.value = forks
+  }
+
+  fileprivate let clickReleasesProperty = MutableProperty<[Release]?>(nil)
+  func click (releases: [Release]?) {
+    self.clickReleasesProperty.value = releases
+  }
+
+  fileprivate let clickActivitiesProperty = MutableProperty<[GHEvent]?>(nil)
+  func click (activities: [GHEvent]?) {
+    self.clickActivitiesProperty.value = activities
+  }
+
+  fileprivate let clickContributorsProperty = MutableProperty<[UserLite]?>(nil)
+  func click (contributors: [UserLite]?) {
+    self.clickContributorsProperty.value = contributors
+  }
+
+  fileprivate let clickStargazersProperty = MutableProperty<[UserLite]?>(nil)
+  func click (stargazers: [UserLite]?) {
+    self.clickStargazersProperty.value = stargazers
+  }
+
+  fileprivate let clickPullRequestsProperty = MutableProperty<[PullRequest]?>(nil)
+  func click (pullRequests: [PullRequest]?){
+    self.clickPullRequestsProperty.value = pullRequests
+  }
+
+  fileprivate let clickIssuesProperty = MutableProperty<[Issue]?>(nil)
+  func click (issues: [Issue]?) {
+    self.clickIssuesProperty.value = issues
+  }
+
+  fileprivate let clickBranchProperty = MutableProperty<BranchLite?>(nil)
+  func click (branch: BranchLite) {
+    self.clickBranchProperty.value = branch
+  }
+
+  fileprivate let clickCommitsOnBranchProperty = MutableProperty<BranchLite?>(nil)
+  func clickCommits(on branch: BranchLite) {
+    self.clickCommitsOnBranchProperty.value = branch
   }
 
   fileprivate let datasourceInitializedProperty = MutableProperty()
@@ -216,9 +321,10 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
   internal let repoIssues: Signal<[Issue], NoError>
   internal let branchLites: Signal<[BranchLite], NoError>
   internal let commits: Signal<[Commit], NoError>
-  internal let gotoReadmeVC: Signal<UIViewController, NoError>
-  internal let gotoBranchVC: Signal<RepositoryContentTableViewController, NoError>
 
+  internal let pushViewController: Signal<UIViewController, NoError>
+  internal let popupViewController: Signal<UIViewController, NoError>
+  
   internal var inputs: RepositoryViewModelInputs { return self }
   internal var outputs: RepositoryViewModelOutputs { return self }
 }

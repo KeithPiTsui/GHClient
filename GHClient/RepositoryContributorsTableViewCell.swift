@@ -14,7 +14,7 @@ import Ladder
 
 internal final class RepositoryContributorsTableViewCell: UITableViewCell, ValueCell {
 
-  func configureWith(value: (Void, [UserLite]?)) {
+  func configureWith(value: [UserLite]?) {
     self.textLabel?.text = "Contributors"
   }
 }

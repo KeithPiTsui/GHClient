@@ -14,7 +14,7 @@ import Ladder
 
 internal final class RepositoryActivitiesTableViewCell: UITableViewCell, ValueCell {
 
-  func configureWith(value: (Void, [GHEvent]?)) {
+  func configureWith(value: [GHEvent]?) {
     self.textLabel?.text = "Activities"
   }
 }

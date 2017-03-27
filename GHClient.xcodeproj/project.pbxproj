@@ -133,6 +133,7 @@
 		0EA044D51E76884500643EBA /* ActivitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D41E76884500643EBA /* ActivitiesViewModel.swift */; };
 		0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D81E76897D00643EBA /* ActivitiesEventDatasource.swift */; };
 		0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */; };
+		0EB5826D1E88B37B0082AA09 /* OptionalUnwraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB5826C1E88B37B0082AA09 /* OptionalUnwraper.swift */; };
 		0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6580A1E82168800D48AAE /* EventExtension.swift */; };
 		0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */; };
 		0EB6585D1E828F2200D48AAE /* EventPayloadTypeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */; };
@@ -927,6 +928,7 @@
 		0EA044D41E76884500643EBA /* ActivitiesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesViewModel.swift; sourceTree = "<group>"; };
 		0EA044D81E76897D00643EBA /* ActivitiesEventDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesEventDatasource.swift; sourceTree = "<group>"; };
 		0EAA7AB61E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeCollectionViewCell.swift; sourceTree = "<group>"; };
+		0EB5826C1E88B37B0082AA09 /* OptionalUnwraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalUnwraper.swift; sourceTree = "<group>"; };
 		0EB6580A1E82168800D48AAE /* EventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventExtension.swift; sourceTree = "<group>"; };
 		0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEventExtension.swift; sourceTree = "<group>"; };
 		0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPayloadTypeDisplay.swift; sourceTree = "<group>"; };
@@ -1319,6 +1321,7 @@
 		0E94F31C1E651CA300E962B6 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0EB582311E88B35F0082AA09 /* SilverBullet */,
 				0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */,
 				0E9EBD571E715D1B00D3E5A9 /* CGRect-Extension.swift */,
 				0E50AA031E67F56F0002A40D /* DateProtocol.swift */,
@@ -1351,6 +1354,14 @@
 				0ED6464F1E695BFD00017D28 /* Cells */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		0EB582311E88B35F0082AA09 /* SilverBullet */ = {
+			isa = PBXGroup;
+			children = (
+				0EB5826C1E88B37B0082AA09 /* OptionalUnwraper.swift */,
+			);
+			name = SilverBullet;
 			sourceTree = "<group>";
 		};
 		0EB657D01E82166000D48AAE /* ModelExtension */ = {
@@ -2272,6 +2283,7 @@
 				0EE749E61E878BD700262014 /* RepositoryOwerTableViewCell.swift in Sources */,
 				0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */,
 				0E5BF8C01E73B40400EDD841 /* RepositoryDatasource.swift in Sources */,
+				0EB5826D1E88B37B0082AA09 /* OptionalUnwraper.swift in Sources */,
 				0E7896051E798BE100DB2098 /* Guitar.swift in Sources */,
 				0EDB2CC61E79104A007103A7 /* EventTableViewCell.swift in Sources */,
 				0EE749F21E878D0300262014 /* RepositoryStargazersTableViewCell.swift in Sources */,

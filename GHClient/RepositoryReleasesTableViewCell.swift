@@ -14,7 +14,7 @@ import Ladder
 
 internal final class RepositoryReleasesTableViewCell: UITableViewCell, ValueCell {
 
-  func configureWith(value: (Void, [Release]?)) {
+  func configureWith(value: [Release]?) {
     self.textLabel?.text = "Release"
   }
 }

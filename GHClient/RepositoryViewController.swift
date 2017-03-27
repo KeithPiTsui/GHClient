@@ -102,26 +102,61 @@ internal final class RepositoryViewController: UIViewController {
       self?.datasource.set(issues: issues)
     }
 
-    self.viewModel.outputs.gotoReadmeVC.observeForControllerAction().observeValues { [weak self] in
+    self.viewModel.outputs.pushViewController.observeForControllerAction().observeValues { [weak self] in
       self?.navigationController?.pushViewController($0, animated: true)
     }
-    self.viewModel.outputs.gotoBranchVC.observeForControllerAction().observeValues { [weak self] in
-      self?.navigationController?.pushViewController($0, animated: true)
+
+    self.viewModel.outputs.popupViewController.observeForControllerAction().observeValues { [weak self] in
+      self?.dismiss(animated: true, completion: nil)
+      self?.present($0, animated: true, completion: nil)
     }
   }
 }
 
 extension RepositoryViewController: UITableViewDelegate {
 
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.section == 0 && indexPath.row == 2 {
-      self.viewModel.inputs.gotoReadme()
-    }
-    if indexPath.section == 2, let branchLite = self.datasource[indexPath] as? BranchLite {
-      self.viewModel.inputs.goto(branch: branchLite)
+  internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let value = self.datasource[indexPath]
+    switch value {
+    case let item as UserLite: /// Click on owner
+      self.viewModel.inputs.click(repoOwner: item)
+    case let value where (unwrap(value: value) as (Readme?, Bool)).1: // Click readme
+      let item = (unwrap(value: value) as (Readme?, Bool)).0
+      self.viewModel.inputs.click(readme: item)
+    case let value where (unwrap(value: value) as ([Repository]?, Bool)).1: // click forks
+      let item = (unwrap(value: value) as ([Repository]?, Bool)).0
+      self.viewModel.inputs.click(forks: item)
+    case let value where (unwrap(value: value) as ([Release]?, Bool)).1: // click releases
+      let item = (unwrap(value: value) as ([Release]?, Bool)).0
+      self.viewModel.inputs.click(releases: item)
+    case let value where (unwrap(value: value) as ([GHEvent]?, Bool)).1: // click activities
+      let item = (unwrap(value: value) as ([GHEvent]?, Bool)).0
+      self.viewModel.inputs.click(activities: item)
+    case let value where (unwrap(value: value) as ([UserLite]?, Bool)).1: // click contributors or stargazers
+      let item = (unwrap(value: value) as ([UserLite]?, Bool)).0
+      if indexPath.section == RepositoryDatasource.Section.DetailDiveIn.rawValue
+        && indexPath.row == RepositoryDatasource.Section.RepoPorperty.contributors.rawValue {
+        self.viewModel.inputs.click(contributors: item)
+      } else if indexPath.section == RepositoryDatasource.Section.DetailDiveIn.rawValue
+        && indexPath.row == RepositoryDatasource.Section.RepoPorperty.stargazers.rawValue{
+        self.viewModel.inputs.click(stargazers: item)
+      }
+    case let value where (unwrap(value: value) as ([PullRequest]?, Bool)).1: // click pull requests
+      let item = (unwrap(value: value) as ([PullRequest]?, Bool)).0
+      self.viewModel.inputs.click(pullRequests: item)
+    case let value where (unwrap(value: value) as ([Issue]?, Bool)).1: // click issue
+      let item = (unwrap(value: value) as ([Issue]?, Bool)).0
+      self.viewModel.inputs.click(issues: item)
+    case let item as BranchLite: // click branches or commits
+      if indexPath.section == RepositoryDatasource.Section.Branchs.rawValue {
+        self.viewModel.inputs.click(branch: item)
+      } else if indexPath.section == RepositoryDatasource.Section.Commits.rawValue {
+        self.viewModel.inputs.clickCommits(on: item)
+      }
+    default:
+      break
     }
   }
-
 }
 
 

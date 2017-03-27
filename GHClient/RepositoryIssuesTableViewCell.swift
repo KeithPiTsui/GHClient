@@ -14,7 +14,7 @@ import Ladder
 
 internal final class RepositoryIssuesTableViewCell: UITableViewCell, ValueCell {
 
-  func configureWith(value: (Void, [Issue]?)) {
+  func configureWith(value: [Issue]?) {
     self.textLabel?.text = "Issues"
   }
 }

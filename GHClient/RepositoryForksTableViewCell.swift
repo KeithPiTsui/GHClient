@@ -14,7 +14,7 @@ import Ladder
 
 internal final class RepositoryForksTableViewCell: UITableViewCell, ValueCell {
 
-  func configureWith(value: (Void, [Repository]?)) {
+  func configureWith(value: [Repository]?) {
     self.textLabel?.text = "Forks"
   }
 }
