@@ -165,6 +165,11 @@
 		0EB582B41E8904A00082AA09 /* RepositoryIssuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582B31E8904A00082AA09 /* RepositoryIssuesTableViewController.swift */; };
 		0EB582B61E8904B00082AA09 /* RepositoryIssuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582B51E8904B00082AA09 /* RepositoryIssuesViewModel.swift */; };
 		0EB582B81E8904C30082AA09 /* RepositoryIssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582B71E8904C30082AA09 /* RepositoryIssueTableViewCell.swift */; };
+		0EB582BA1E890C540082AA09 /* RepositoryCommits.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB582B91E890C540082AA09 /* RepositoryCommits.storyboard */; };
+		0EB582BC1E890C6B0082AA09 /* RepositoryCommitsDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582BB1E890C6B0082AA09 /* RepositoryCommitsDatasource.swift */; };
+		0EB582BE1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582BD1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift */; };
+		0EB582C01E890C9E0082AA09 /* RepositoryCommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582BF1E890C9E0082AA09 /* RepositoryCommitsViewModel.swift */; };
+		0EB582C21E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582C11E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift */; };
 		0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6580A1E82168800D48AAE /* EventExtension.swift */; };
 		0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */; };
 		0EB6585D1E828F2200D48AAE /* EventPayloadTypeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */; };
@@ -991,6 +996,11 @@
 		0EB582B31E8904A00082AA09 /* RepositoryIssuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryIssuesTableViewController.swift; sourceTree = "<group>"; };
 		0EB582B51E8904B00082AA09 /* RepositoryIssuesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryIssuesViewModel.swift; sourceTree = "<group>"; };
 		0EB582B71E8904C30082AA09 /* RepositoryIssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryIssueTableViewCell.swift; sourceTree = "<group>"; };
+		0EB582B91E890C540082AA09 /* RepositoryCommits.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RepositoryCommits.storyboard; sourceTree = "<group>"; };
+		0EB582BB1E890C6B0082AA09 /* RepositoryCommitsDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCommitsDatasource.swift; sourceTree = "<group>"; };
+		0EB582BD1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCommitsTableViewController.swift; sourceTree = "<group>"; };
+		0EB582BF1E890C9E0082AA09 /* RepositoryCommitsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCommitsViewModel.swift; sourceTree = "<group>"; };
+		0EB582C11E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCommitTableViewCell2.swift; sourceTree = "<group>"; };
 		0EB6580A1E82168800D48AAE /* EventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventExtension.swift; sourceTree = "<group>"; };
 		0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEventExtension.swift; sourceTree = "<group>"; };
 		0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPayloadTypeDisplay.swift; sourceTree = "<group>"; };
@@ -1296,6 +1306,7 @@
 				0E94F1F51E65189900E962B6 /* LaunchScreen.storyboard */,
 				0E94F3271E651FE000E962B6 /* Login.storyboard */,
 				0EB5827B1E88EB930082AA09 /* RepositoryReleases.storyboard */,
+				0EB582B91E890C540082AA09 /* RepositoryCommits.storyboard */,
 				0EB582AF1E8904790082AA09 /* RepositoryIssues.storyboard */,
 				0EB582871E88F0BB0082AA09 /* RepositoryEvents.storyboard */,
 				0E50AA311E6844700002A40D /* Main.storyboard */,
@@ -1326,6 +1337,7 @@
 				0EB582B31E8904A00082AA09 /* RepositoryIssuesTableViewController.swift */,
 				0EB582A91E8901AD0082AA09 /* PullRequestsTableViewController.swift */,
 				0EB582A11E88FE870082AA09 /* RepositoryStargazersTableViewController.swift */,
+				0EB582BD1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift */,
 				0EB5827D1E88EBBF0082AA09 /* RepositoryReleasesTableViewController.swift */,
 				0E1AAB131E84C24E00BFD36C /* IssueTableViewController.swift */,
 				0EB582951E88F6110082AA09 /* RepositoryContributorsTableViewController.swift */,
@@ -1350,6 +1362,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA044D41E76884500643EBA /* ActivitiesViewModel.swift */,
+				0EB582BF1E890C9E0082AA09 /* RepositoryCommitsViewModel.swift */,
 				0E1AAB151E84C26C00BFD36C /* IssueViewModel.swift */,
 				0EB582A71E8901930082AA09 /* PullRequestsViewModel.swift */,
 				0EB5828B1E88F0F30082AA09 /* RepositoryEventsViewModel.swift */,
@@ -1535,6 +1548,7 @@
 				0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */,
 				0E1AAB171E84C2D700BFD36C /* IssueDatasource.swift */,
 				0ED6460D1E69500900017D28 /* MenuDataSource.swift */,
+				0EB582BB1E890C6B0082AA09 /* RepositoryCommitsDatasource.swift */,
 				0E4BCFB01E80D78800BF6135 /* RepositoryContentDatasource.swift */,
 				0EB5829B1E88FDB40082AA09 /* RepositoryStargazersDatasource.swift */,
 				0EB582931E88F5FB0082AA09 /* RepositoryContributorsDatasource.swift */,
@@ -1573,6 +1587,7 @@
 				0EB5829D1E88FDEB0082AA09 /* RepositoryStargazerTableViewCell.swift */,
 				0EB582991E88F62B0082AA09 /* RepositoryContributorTableViewCell.swift */,
 				0EB582A51E8901540082AA09 /* PullRequestTableViewCell.swift */,
+				0EB582C11E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift */,
 				0EB582791E88E84A0082AA09 /* RepositoryForkTableViewCell.swift */,
 				0E3E02E61E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift */,
 			);
@@ -2322,6 +2337,7 @@
 				0EB582881E88F0BB0082AA09 /* RepositoryEvents.storyboard in Resources */,
 				0E4BCFAD1E80D70200BF6135 /* RepositoryContent.storyboard in Resources */,
 				0E50AA321E6844700002A40D /* Main.storyboard in Resources */,
+				0EB582BA1E890C540082AA09 /* RepositoryCommits.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2385,7 +2401,9 @@
 				0EE749F61E878D2600262014 /* RepositoryIssuesTableViewCell.swift in Sources */,
 				0EAA7AB71E6EFB0E00A14030 /* DateRangeCollectionViewCell.swift in Sources */,
 				0E7B7BE91E6E890000D50C95 /* SearchViewModel.swift in Sources */,
+				0EB582C01E890C9E0082AA09 /* RepositoryCommitsViewModel.swift in Sources */,
 				0EB5828C1E88F0F30082AA09 /* RepositoryEventsViewModel.swift in Sources */,
+				0EB582C21E890CC60082AA09 /* RepositoryCommitTableViewCell2.swift in Sources */,
 				0E94F32C1E652B4500E962B6 /* LoginViewModel.swift in Sources */,
 				0EB582981E88F61E0082AA09 /* RepositoryContributorsViewModel.swift in Sources */,
 				0E9EBD4D1E71002600D3E5A9 /* Strings.swift in Sources */,
@@ -2468,6 +2486,8 @@
 				0EECF63A1E7047B2009600BB /* Colors.swift in Sources */,
 				0E1AAB141E84C24E00BFD36C /* IssueTableViewController.swift in Sources */,
 				0E7B7BF51E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift in Sources */,
+				0EB582BE1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift in Sources */,
+				0EB582BC1E890C6B0082AA09 /* RepositoryCommitsDatasource.swift in Sources */,
 				0E7896081E798BE100DB2098 /* GuitarCharacter.swift in Sources */,
 				0E7B7BF31E6EB03B00D50C95 /* SearchFilterViewModel.swift in Sources */,
 				0ED6464E1E695BCD00017D28 /* UIView-Extensions.swift in Sources */,
