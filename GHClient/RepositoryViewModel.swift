@@ -239,9 +239,45 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         }
         return vc
     }
+
+    let activitiesVC = self.viewDidLoadProperty.signal
+      .map { () -> RepositoryEventsTableViewController in
+        RepositoryEventsTableViewController.instantiate()
+    }
+    let callForActivities = self.clickActivitiesProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
+    let pushActivitiesVC = Signal.combineLatest(activitiesVC, callForActivities, repoDisplay)
+      .map { (vc, activities, repo) -> UIViewController in
+        if let activities = activities {
+          vc.set(events: activities, of: repo)
+        } else {
+          vc.set(eventsBelongTo: repo)
+        }
+        return vc
+    }
+
+    let contributorsVC = self.viewDidLoadProperty.signal
+      .map { () -> RepositoryContributorsTableViewController in
+        RepositoryContributorsTableViewController.instantiate()
+    }
+    let callForContributors = self.clickContributorsProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
+    let pushContributorsVC = Signal.combineLatest(contributorsVC, callForContributors, repoDisplay)
+      .map { (vc, contributors, repo) -> UIViewController in
+        if let contributors = contributors {
+          vc.set(contributors: contributors, of: repo)
+        } else {
+          vc.set(contributorsBelongTo: repo)
+        }
+        return vc
+    }
+
     
-    
-    self.pushViewController = Signal.merge(pushReadmeVC, pushBranchContent, pushOwnerVC, pushForksVC, pushReleasesVC)
+    self.pushViewController = Signal.merge(pushReadmeVC,
+                                           pushBranchContent,
+                                           pushOwnerVC,
+                                           pushForksVC,
+                                           pushReleasesVC,
+                                           pushActivitiesVC,
+                                           pushContributorsVC)
   }
 
   fileprivate let clickRepoOwnerProperty = MutableProperty<UserLite?> (nil)
