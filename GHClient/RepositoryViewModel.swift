@@ -157,13 +157,13 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
     }
 
     let alertSituation1 = self.clickReadmeProperty.signal.filter{$0.isNil}.map{_ in "No Readme"}
-    let alertSituation2 = self.clickForksProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Forks"}
-    let alertSituation3 = self.clickReleasesProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Releases"}
-    let alertSituation4 = self.clickActivitiesProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Activities"}
-    let alertSituation5 = self.clickContributorsProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Contributors"}
-    let alertSituation6 = self.clickStargazersProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Contributors"}
-    let alertSituation7 = self.clickPullRequestsProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Contributors"}
-    let alertSituation8 = self.clickIssuesProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Contributors"}
+    let alertSituation2 = self.clickForksProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Fork"}
+    let alertSituation3 = self.clickReleasesProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Release"}
+    let alertSituation4 = self.clickActivitiesProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Activity"}
+    let alertSituation5 = self.clickContributorsProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Contributor"}
+    let alertSituation6 = self.clickStargazersProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Stargazers"}
+    let alertSituation7 = self.clickPullRequestsProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Pull Request"}
+    let alertSituation8 = self.clickIssuesProperty.signal.skipNil().filter{$0.isEmpty}.map{_ in "No Issue"}
 
     let alertSituations = Signal.merge(alertSituation1,
                                        alertSituation2,
@@ -180,14 +180,9 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         return altVC
     }
 
-
-    let readmeVC = self.viewDidLoadProperty.signal
-      .map { () -> ReadmeViewController in
-        ReadmeViewController.instantiate()
-    }
-
-    let pushReadmeVC = Signal.combineLatest(readmeVC, self.clickReadmeProperty.signal.skipNil())
-      .map { (vc, readme) -> UIViewController in
+    let pushReadmeVC = self.clickReadmeProperty.signal.skipNil()
+      .map { (readme) -> UIViewController in
+        let vc = ReadmeViewController.instantiate()
         vc.set(readmeUrl: readme.html_url)
         return vc
     }
@@ -200,23 +195,20 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
           return rc
     }
 
-    let ownerVC = self.viewDidLoadProperty.signal.map { () -> UserProfileViewController in
-      UserProfileViewController.instantiate()
-    }
 
-    let pushOwnerVC = Signal.combineLatest(ownerVC, self.clickRepoOwnerProperty.signal.skipNil())
-      .map { (userVC, owner) -> UIViewController in
+
+    let pushOwnerVC = self.clickRepoOwnerProperty.signal.skipNil()
+      .map { (owner) -> UIViewController in
+        let userVC =  UserProfileViewController.instantiate()
         userVC.set(userUrl: owner.urls.url)
         return userVC
     }
 
-    let forksVC = self.viewDidLoadProperty.signal
-      .map { () -> RepositoryForksTableViewController in
-        RepositoryForksTableViewController.instantiate()
-    }
+
     let callForForks = self.clickForksProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
-    let pushForksVC = Signal.combineLatest(forksVC, callForForks, repoDisplay)
-      .map { (vc, forks, repo) -> UIViewController in
+    let pushForksVC = Signal.combineLatest(callForForks, repoDisplay)
+      .map { (forks, repo) -> UIViewController in
+        let vc = RepositoryForksTableViewController.instantiate()
         if let forks = forks {
           vc.set(forks: forks, of: repo)
         } else {
@@ -225,13 +217,10 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         return vc
     }
 
-    let releasesVC = self.viewDidLoadProperty.signal
-      .map { () -> RepositoryReleasesTableViewController in
-        RepositoryReleasesTableViewController.instantiate()
-    }
     let callForReleases = self.clickReleasesProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
-    let pushReleasesVC = Signal.combineLatest(releasesVC, callForReleases, repoDisplay)
-      .map { (vc, releases, repo) -> UIViewController in
+    let pushReleasesVC = Signal.combineLatest(callForReleases, repoDisplay)
+      .map { (releases, repo) -> UIViewController in
+        let vc = RepositoryReleasesTableViewController.instantiate()
         if let releases = releases {
           vc.set(releases: releases, of: repo)
         } else {
@@ -240,13 +229,11 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         return vc
     }
 
-    let activitiesVC = self.viewDidLoadProperty.signal
-      .map { () -> RepositoryEventsTableViewController in
-        RepositoryEventsTableViewController.instantiate()
-    }
+
     let callForActivities = self.clickActivitiesProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
-    let pushActivitiesVC = Signal.combineLatest(activitiesVC, callForActivities, repoDisplay)
-      .map { (vc, activities, repo) -> UIViewController in
+    let pushActivitiesVC = Signal.combineLatest(callForActivities, repoDisplay)
+      .map { (activities, repo) -> UIViewController in
+        let vc = RepositoryEventsTableViewController.instantiate()
         if let activities = activities {
           vc.set(events: activities, of: repo)
         } else {
@@ -255,13 +242,11 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         return vc
     }
 
-    let contributorsVC = self.viewDidLoadProperty.signal
-      .map { () -> RepositoryContributorsTableViewController in
-        RepositoryContributorsTableViewController.instantiate()
-    }
+
     let callForContributors = self.clickContributorsProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
-    let pushContributorsVC = Signal.combineLatest(contributorsVC, callForContributors, repoDisplay)
-      .map { (vc, contributors, repo) -> UIViewController in
+    let pushContributorsVC = Signal.combineLatest(callForContributors, repoDisplay)
+      .map { (contributors, repo) -> UIViewController in
+        let vc = RepositoryContributorsTableViewController.instantiate()
         if let contributors = contributors {
           vc.set(contributors: contributors, of: repo)
         } else {
@@ -270,14 +255,53 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         return vc
     }
 
-    
+
+    let callForStargazers = self.clickStargazersProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
+    let pushStargazersVC = Signal.combineLatest(callForStargazers, repoDisplay)
+      .map { (stargazers, repo) -> UIViewController in
+        let vc = RepositoryStargazersTableViewController.instantiate()
+        if let stargazers = stargazers {
+          vc.set(stargazers: stargazers, of: repo)
+        } else {
+          vc.set(stargazersBelongTo: repo)
+        }
+        return vc
+    }
+
+    let callForPullRequests = self.clickPullRequestsProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
+    let pushPullRequestsVC = Signal.combineLatest(callForPullRequests, repoDisplay)
+      .map { (prs, repo) -> UIViewController in
+        let vc = PullRequestsTableViewController.instantiate()
+        if let prs = prs {
+          vc.set(pullRequests: prs, of: repo)
+        } else {
+          vc.set(pullRequestsBelongTo: repo)
+        }
+        return vc
+    }
+
+    let callForIssues = self.clickIssuesProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
+    let pushIssuesVC = Signal.combineLatest(callForIssues, repoDisplay)
+      .map { (issues, repo) -> UIViewController in
+        let vc = RepositoryIssuesTableViewController.instantiate()
+        if let issues = issues {
+          vc.set(issues: issues, of: repo)
+        } else {
+          vc.set(issuesBelongTo: repo)
+        }
+        return vc
+    }
+
     self.pushViewController = Signal.merge(pushReadmeVC,
                                            pushBranchContent,
                                            pushOwnerVC,
                                            pushForksVC,
                                            pushReleasesVC,
                                            pushActivitiesVC,
-                                           pushContributorsVC)
+                                           pushContributorsVC,
+                                           pushStargazersVC,
+                                           pushPullRequestsVC,
+                                           pushIssuesVC)
   }
 
   fileprivate let clickRepoOwnerProperty = MutableProperty<UserLite?> (nil)

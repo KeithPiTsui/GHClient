@@ -49,8 +49,6 @@ internal final class DiscoveryViewModel: DiscoveryViewModelType, DiscoveryViewMo
       .map { _ in AppEnvironment.current.apiService.trendingRepository(of: .daily, with: "swift").single()?.value}
       .skipNil()
     self.repositories = Signal.combineLatest(repos, self.viewWillAppearProperty.signal).map(first)
-
-    let repoVC = self.viewDidLoadProperty.signal.map{ RepositoryViewController.instantiate()}
     
     let repoUrl = self.userTappedTrendingOnRepoProperty.signal.skipNil().map { (trendingRepo) -> URL? in
       guard
@@ -60,8 +58,9 @@ internal final class DiscoveryViewModel: DiscoveryViewModelType, DiscoveryViewMo
       return AppEnvironment.current.apiService.repositoryUrl(of: owner, and: repo)
     }.skipNil()
 
-    self.pushRepoViewController = Signal.combineLatest(repoVC, repoUrl)
-      .map{ (vc, url) -> RepositoryViewController in
+    self.pushRepoViewController = repoUrl
+      .map{ (url) -> RepositoryViewController in
+        let vc = RepositoryViewController.instantiate()
         vc.set(repoURL: url); return vc
     }
   }
