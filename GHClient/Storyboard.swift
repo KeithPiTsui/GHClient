@@ -39,6 +39,7 @@ public enum Storyboard: String {
   case MarkupViewer
   case Me
   case Issue
+  case RepositoryForks
 
 
   public func instantiate<VC: UIViewController>(

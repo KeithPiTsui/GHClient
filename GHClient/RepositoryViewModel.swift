@@ -150,8 +150,10 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
       }.skipNil()
 
 
-    let alertVC = self.viewDidLoadProperty.signal.map {
-      return UIAlertController(title: "", message: "", preferredStyle: .alert)
+    let alertVC = self.viewDidLoadProperty.signal.map {() -> UIAlertController in
+      let vc = UIAlertController(title: "", message: "", preferredStyle: .alert)
+      vc.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+      return vc
     }
 
     let alertSituation1 = self.clickReadmeProperty.signal.filter{$0.isNil}.map{_ in "No Readme"}
@@ -208,7 +210,20 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         return userVC
     }
 
-    self.pushViewController = Signal.merge(pushReadmeVC, pushBranchContent, pushOwnerVC)
+    let forksVC = self.viewDidLoadProperty.signal.map { () -> RepositoryForksTableViewController in
+      RepositoryForksTableViewController.instantiate()
+    }
+    let callForForks = self.clickForksProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
+    let pushForksVC = Signal.combineLatest(forksVC, callForForks, repoDisplay).map { (vc, forks, repo) -> UIViewController in
+      if let forks = forks {
+        vc.set(forks: forks, of: repo)
+      } else {
+        vc.set(forksBelongTo: repo)
+      }
+      return vc
+    }
+
+    self.pushViewController = Signal.merge(pushReadmeVC, pushBranchContent, pushOwnerVC, pushForksVC)
   }
 
   fileprivate let clickRepoOwnerProperty = MutableProperty<UserLite?> (nil)

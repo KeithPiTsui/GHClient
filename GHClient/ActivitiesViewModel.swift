@@ -146,21 +146,21 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
   }
 
   fileprivate let userSessionStartedProperty = MutableProperty(())
-  public func userSessionStarted() {
+  internal func userSessionStarted() {
     self.userSessionStartedProperty.value = ()
   }
   fileprivate let userSessionEndedProperty = MutableProperty(())
-  public func userSessionEnded() {
+  internal func userSessionEnded() {
     self.userSessionEndedProperty.value = ()
   }
 
   fileprivate let viewDidLoadProperty = MutableProperty()
-  public func viewDidLoad() {
+  internal func viewDidLoad() {
     self.viewDidLoadProperty.value = ()
   }
 
   fileprivate let viewWillAppearProperty = MutableProperty<Bool?>(nil)
-  public func viewWillAppear(animated: Bool) {
+  internal func viewWillAppear(animated: Bool) {
     self.viewWillAppearProperty.value = animated
   }
 
