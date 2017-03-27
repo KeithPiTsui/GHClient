@@ -210,20 +210,38 @@ internal final class RepositoryViewModel: RepositoryViewModelType, RepositoryVie
         return userVC
     }
 
-    let forksVC = self.viewDidLoadProperty.signal.map { () -> RepositoryForksTableViewController in
-      RepositoryForksTableViewController.instantiate()
+    let forksVC = self.viewDidLoadProperty.signal
+      .map { () -> RepositoryForksTableViewController in
+        RepositoryForksTableViewController.instantiate()
     }
     let callForForks = self.clickForksProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
-    let pushForksVC = Signal.combineLatest(forksVC, callForForks, repoDisplay).map { (vc, forks, repo) -> UIViewController in
-      if let forks = forks {
-        vc.set(forks: forks, of: repo)
-      } else {
-        vc.set(forksBelongTo: repo)
-      }
-      return vc
+    let pushForksVC = Signal.combineLatest(forksVC, callForForks, repoDisplay)
+      .map { (vc, forks, repo) -> UIViewController in
+        if let forks = forks {
+          vc.set(forks: forks, of: repo)
+        } else {
+          vc.set(forksBelongTo: repo)
+        }
+        return vc
     }
 
-    self.pushViewController = Signal.merge(pushReadmeVC, pushBranchContent, pushOwnerVC, pushForksVC)
+    let releasesVC = self.viewDidLoadProperty.signal
+      .map { () -> RepositoryReleasesTableViewController in
+        RepositoryReleasesTableViewController.instantiate()
+    }
+    let callForReleases = self.clickReleasesProperty.signal.filter { $0.isNil || ($0!.isEmpty == false) }
+    let pushReleasesVC = Signal.combineLatest(releasesVC, callForReleases, repoDisplay)
+      .map { (vc, releases, repo) -> UIViewController in
+        if let releases = releases {
+          vc.set(releases: releases, of: repo)
+        } else {
+          vc.set(releasesBelongTo: repo)
+        }
+        return vc
+    }
+    
+    
+    self.pushViewController = Signal.merge(pushReadmeVC, pushBranchContent, pushOwnerVC, pushForksVC, pushReleasesVC)
   }
 
   fileprivate let clickRepoOwnerProperty = MutableProperty<UserLite?> (nil)
