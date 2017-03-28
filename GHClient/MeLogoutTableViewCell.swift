@@ -15,6 +15,6 @@ import Ladder
 internal final class MeLogoutTableViewCell: UITableViewCell, ValueCell {
 
   func configureWith(value: ()) {
-
+    self.textLabel?.text = "Logout"
   }
 }

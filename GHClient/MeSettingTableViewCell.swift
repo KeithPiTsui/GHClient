@@ -15,6 +15,6 @@ import Ladder
 internal final class MeSettingTableViewCell: UITableViewCell, ValueCell {
 
   func configureWith(value: ()) {
-
+    self.textLabel?.text = "Settings"
   }
 }

@@ -15,6 +15,6 @@ import Ladder
 internal final class MePullRequestsTableViewCell: UITableViewCell, ValueCell {
 
   func configureWith(value: [PullRequest]?) {
-
+    self.textLabel?.text = "Pull Requests"
   }
 }

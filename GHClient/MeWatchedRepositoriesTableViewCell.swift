@@ -15,6 +15,6 @@ import Ladder
 internal final class MeWatchedRepositoriesTableViewCell: UITableViewCell, ValueCell {
 
   func configureWith(value: [Repository]?) {
-
+    self.textLabel?.text = "Watched"
   }
 }

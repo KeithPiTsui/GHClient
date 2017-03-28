@@ -229,7 +229,7 @@ internal final class SearchFilterViewController: UIViewController {
       let ipsCompacted = ips.compact()
       self.filterOptionsCollectionView.selectItems(by: ipsCompacted)
 
-      print("\(self.filterOptionsCollectionView.indexPathsForSelectedItems)")
+      print("\(String(describing: self.filterOptionsCollectionView.indexPathsForSelectedItems))")
     }
   }
 
@@ -270,7 +270,7 @@ internal final class SearchFilterViewController: UIViewController {
       let ipsCompacted = ips.compact()
       self.filterOptionsCollectionView.selectItems(by: ipsCompacted)
 
-      print("\(self.filterOptionsCollectionView.indexPathsForSelectedItems)")
+      print("\(String(describing: self.filterOptionsCollectionView.indexPathsForSelectedItems))")
     }
   }
 
@@ -279,7 +279,7 @@ internal final class SearchFilterViewController: UIViewController {
 extension SearchFilterViewController: UICollectionViewDelegate {
   internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     print("\(indexPath)")
-    print("\(self.filterOptionsCollectionView.indexPathsForSelectedItems)")
+    print("\(String(describing: self.filterOptionsCollectionView.indexPathsForSelectedItems))")
     if let fr = self.firstResponder(in: self.filterOptionsCollectionView) {
       fr.resignFirstResponder()
     }

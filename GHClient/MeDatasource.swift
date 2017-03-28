@@ -101,7 +101,7 @@ internal final class MeDatasource: ValueCellDataSource {
   }
 
   internal func setLogout() {
-    self.set(values: [()], cellClass: MeLogoutTableViewCell.self, inSection: Section.Settings.rawValue)
+    self.set(values: [()], cellClass: MeLogoutTableViewCell.self, inSection: Section.Logout.rawValue)
   }
 
   override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {

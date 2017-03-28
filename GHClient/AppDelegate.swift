@@ -16,6 +16,11 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+    URLCache.shared = URLCache(memoryCapacity: 8 * 1024 * 1024,
+                               diskCapacity: 20 * 1024 * 1024,
+                               diskPath: "GHClientURLCache")
+
     /// Retrieve stored environment states if exists
     AppEnvironment.replaceCurrentEnvironment(
       AppEnvironment.fromStorage(
@@ -28,6 +33,6 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
     return self.viewModel.outputs.applicationDidFinishLaunchingReturnValue
   }
   private func bindViewModel() {
-    
+
   }
 }
