@@ -47,6 +47,7 @@ public enum Storyboard: String {
   case PullRequests
   case RepositoryIssues
   case RepositoryCommits
+  case Commit
 
 
   public func instantiate<VC: UIViewController>(

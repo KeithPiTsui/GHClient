@@ -16,6 +16,18 @@ import Result
  A collection of **all** global variables and singletons that the app wants access to.
  */
 public struct Environment {
+  public struct URLCacheParameters {
+    public let memoryCacheSize: UInt
+    public let diskCacheSize: UInt
+    public let filePathForDiskCache: String?
+
+    public static var defaultParameters: URLCacheParameters {
+      return URLCacheParameters(memoryCacheSize: 8 * 1024 * 1024,
+                                diskCacheSize: 20 * 1024 * 1025,
+                                filePathForDiskCache: nil)
+    }
+  }
+
   /// A type that exposes endpoints for fetching github data.
   public let apiService: ServiceType
 
@@ -66,6 +78,8 @@ public struct Environment {
   /// A user defaults key-value store. Default value is `NSUserDefaults.standard`.
   public let userDefaults: KeyValueStoreType
 
+  public let urlCacheParameters: URLCacheParameters
+
   public enum AppMode {
     case guest
     case account
@@ -94,7 +108,8 @@ public struct Environment {
     reachability: SignalProducer<Reachability, NoError> = Reachability.signalProducer,
     scheduler: DateSchedulerProtocol = QueueScheduler.main,
     ubiquitousStore: KeyValueStoreType = NSUbiquitousKeyValueStore.default(),
-    userDefaults: KeyValueStoreType = UserDefaults.standard) {
+    userDefaults: KeyValueStoreType = UserDefaults.standard,
+    urlCacheParameters: URLCacheParameters = URLCacheParameters.defaultParameters) {
 
     self.apiService = apiService
     self.apiDelayInterval = apiDelayInterval
@@ -112,5 +127,6 @@ public struct Environment {
     self.scheduler = scheduler
     self.ubiquitousStore = ubiquitousStore
     self.userDefaults = userDefaults
+    self.urlCacheParameters = urlCacheParameters
   }
 }

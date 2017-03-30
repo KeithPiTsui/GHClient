@@ -24,6 +24,5 @@ internal final class MenuGeneralCell: UITableViewCell, ValueCell {
 
   override func bindStyles() {
     super.bindStyles()
-
   }
 }

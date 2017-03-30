@@ -17,15 +17,18 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-    URLCache.shared = URLCache(memoryCapacity: 8 * 1024 * 1024,
-                               diskCapacity: 20 * 1024 * 1024,
-                               diskPath: "GHClientURLCache")
+
 
     /// Retrieve stored environment states if exists
     AppEnvironment.replaceCurrentEnvironment(
       AppEnvironment.fromStorage(
         ubiquitousStore: NSUbiquitousKeyValueStore.default(),
         userDefaults: UserDefaults.standard))
+    
+    let urlCacheParameters = AppEnvironment.current.urlCacheParameters
+    URLCache.shared = URLCache(memoryCapacity: Int(urlCacheParameters.memoryCacheSize),
+                               diskCapacity: Int(urlCacheParameters.diskCacheSize),
+                               diskPath: urlCacheParameters.filePathForDiskCache)
 
     self.bindViewModel()
     self.viewModel.inputs.applicationDidFinishLaunching(application: application, launchOptions: launchOptions)
