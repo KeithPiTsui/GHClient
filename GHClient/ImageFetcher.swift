@@ -33,6 +33,15 @@ internal struct ImageFetcher {
   }
 }
 
+internal final class ImageFetcherRequest: NSObject, TIPImageFetchRequest {
+  internal var imageURL: URL
+  init(url: URL) {
+    self.imageURL = url
+  }
+}
+
+
+
 
 
 
