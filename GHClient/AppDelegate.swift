@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TwitterImagePipeline
 
 @UIApplicationMain
 internal final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,11 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
     URLCache.shared = URLCache(memoryCapacity: Int(urlCacheParameters.memoryCacheSize),
                                diskCapacity: Int(urlCacheParameters.diskCacheSize),
                                diskPath: urlCacheParameters.filePathForDiskCache)
+
+    let tipConfig = TIPGlobalConfiguration.sharedInstance()
+    tipConfig.serializeCGContextAccess = true
+    tipConfig.isClearMemoryCachesOnApplicationBackgroundEnabled = true
+
 
     self.bindViewModel()
     self.viewModel.inputs.applicationDidFinishLaunching(application: application, launchOptions: launchOptions)

@@ -11,6 +11,7 @@ import ReactiveSwift
 import Result
 import GHAPI
 import Prelude
+import TwitterImagePipeline
 
 internal protocol UserProfileViewModelInputs {
 
@@ -87,7 +88,7 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
 
     self.user = userDisplay
 
-    self.userAvatar = userDisplay.observe(on: QueueScheduler()).map{ (u) -> UIImage? in
+    self.userAvatar = userDisplay.observeInBackground().map{ (u) -> UIImage? in
       let url = u.avatar.url
       guard let imgData = try? Data(contentsOf: url),
         let image = UIImage(data: imgData)else { return nil }

@@ -13,6 +13,7 @@ import ReactiveCocoa
 import ReactiveSwift
 import Result
 import GHAPI
+import TwitterImagePipeline
 
 final class UserProfileViewController: UIViewController {
 
@@ -77,12 +78,17 @@ final class UserProfileViewController: UIViewController {
       self?.repositories.text = "\($0.publicRepos ?? 0)"
       self?.username.text = $0.login
       self?.userLocation.text = $0.location
+      let url = $0.avatar.url
+      DispatchQueue.main.async {
+        self?.fetchUserAvatar(with: url)
+      }
     }
 
 
-    self.viewModel.outputs.userAvatar.observeForUI().observeValues{ [weak self] in
-      self?.userAvatar.image = $0
-    }
+    //    self.viewModel.outputs.userAvatar.observeForUI().observeValues{ [weak self] in
+    //      self?.userAvatar.image = $0
+    //    }
+
     self.viewModel.outputs.events.observeForUI().observeValues { [weak self] in
       self?.eventDatasource.load(events: $0)
       if let height = self?.events.rowHeight {
@@ -90,6 +96,7 @@ final class UserProfileViewController: UIViewController {
       }
       self?.events.reloadData()
     }
+
     self.viewModel.outputs.organizations.observeForUI().observeValues { [weak self] in
       if $0.isEmpty {
         self?.organizationDatasource.noOrganization(msg: "No Organization")
@@ -112,9 +119,44 @@ final class UserProfileViewController: UIViewController {
       self?.organizations.reloadData()
     }
   }
+
+  fileprivate func fetchUserAvatar(with url: URL) {
+    ImageFetcher.image(of: url).observeForUI().startWithResult { (result) in
+      guard let image = result.value
+        else {
+          print("Error during fetching user avatar: \(String(describing: result.error))")
+          return
+      }
+      self.userAvatar.image = image
+    }
+//    let req = GHCImageFetchRequest(url: url)
+//    let op = AppEnvironment.current.imagePipeline.operation(with: req, context: nil, delegate: self)
+//    AppEnvironment.current.imagePipeline.fetchImage(with: op)
+  }
+
 }
 
+extension UserProfileViewController:  TIPImageFetchDelegate {
+  @objc internal func tip_imageFetchOperation(_ op: TIPImageFetchOperation,
+                                              didLoadPreviewImage previewResult: TIPImageFetchResult,
+                                              completion: @escaping TIPImageFetchDidLoadPreviewCallback) {
+    self.userAvatar.image = previewResult.imageContainer.image
+    completion(.continueLoading)
+  }
 
+  @objc internal func tip_imageFetchOperation(_ op: TIPImageFetchOperation,
+                                              didLoadFinalImage finalResult: TIPImageFetchResult) {
+    self.userAvatar.image = finalResult.imageContainer.image
+  }
+
+}
+
+internal final class GHCImageFetchRequest: NSObject, TIPImageFetchRequest {
+  internal var imageURL: URL
+  init(url: URL) {
+    self.imageURL = url
+  }
+}
 
 
 

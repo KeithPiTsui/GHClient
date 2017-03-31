@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E05DF1C1E8E1C4300736885 /* TwitterImagePipeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E05DF111E8E1C2800736885 /* TwitterImagePipeline.framework */; };
+		0E05DF1D1E8E1C4300736885 /* TwitterImagePipeline.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E05DF111E8E1C2800736885 /* TwitterImagePipeline.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E05DF681E8E661600736885 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E05DF671E8E661600736885 /* ImageFetcher.swift */; };
 		0E1AAAD81E84C23300BFD36C /* Issue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E1AAAD71E84C23300BFD36C /* Issue.storyboard */; };
 		0E1AAB141E84C24E00BFD36C /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1AAB131E84C24E00BFD36C /* IssueTableViewController.swift */; };
 		0E1AAB161E84C26C00BFD36C /* IssueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1AAB151E84C26C00BFD36C /* IssueViewModel.swift */; };
@@ -228,6 +231,62 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E05DF0E1E8E1C2800736885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8BFBD3471AA77DB2007A08DD;
+			remoteInfo = TwitterImagePipeline;
+		};
+		0E05DF101E8E1C2800736885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8BFF176A1DF5B4AD005DE734;
+			remoteInfo = TwitterImagePipeline.framework;
+		};
+		0E05DF121E8E1C2800736885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8BA975531D77E2C900601D70;
+			remoteInfo = TIPTests;
+		};
+		0E05DF141E8E1C2800736885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8BFBD3521AA77DB2007A08DD;
+			remoteInfo = TwitterImagePipelineTests;
+		};
+		0E05DF161E8E1C2800736885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8BE31C831B9A1BF5009BC0B2;
+			remoteInfo = ImageSpeedComparison;
+		};
+		0E05DF181E8E1C2800736885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8BB66A101E450DFB00A8F241;
+			remoteInfo = "TIP Sample App";
+		};
+		0E05DF1A1E8E1C2800736885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8B6301801E68F9B400C9A86A;
+			remoteInfo = "TIP Swift Sample App";
+		};
+		0E05DF1E1E8E1C4300736885 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BFF17691DF5B4AD005DE734;
+			remoteInfo = TwitterImagePipeline.framework;
+		};
 		0E3E02E41E78071E00C1CD84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
@@ -860,6 +919,7 @@
 				0E94F2E31E651B7E00E962B6 /* ReactiveCocoa.framework in Embed Frameworks */,
 				0E94F2E71E651B7E00E962B6 /* ReactiveExtensions.framework in Embed Frameworks */,
 				0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */,
+				0E05DF1D1E8E1C4300736885 /* TwitterImagePipeline.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -867,6 +927,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TwitterImagePipeline.xcodeproj; path = "ios-twitter-image-pipeline/TwitterImagePipeline.xcodeproj"; sourceTree = "<group>"; };
+		0E05DF671E8E661600736885 /* ImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		0E1AAAD71E84C23300BFD36C /* Issue.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Issue.storyboard; sourceTree = "<group>"; };
 		0E1AAB131E84C24E00BFD36C /* IssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
 		0E1AAB151E84C26C00BFD36C /* IssueViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewModel.swift; sourceTree = "<group>"; };
@@ -1098,6 +1160,7 @@
 				0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */,
 				0E94F2E21E651B7E00E962B6 /* ReactiveCocoa.framework in Frameworks */,
 				0E94F2E61E651B7E00E962B6 /* ReactiveExtensions.framework in Frameworks */,
+				0E05DF1C1E8E1C4300736885 /* TwitterImagePipeline.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,6 +1174,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E05DECB1E8E1C2800736885 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E05DF0F1E8E1C2800736885 /* libTwitterImagePipeline.a */,
+				0E05DF111E8E1C2800736885 /* TwitterImagePipeline.framework */,
+				0E05DF131E8E1C2800736885 /* TIPTests.framework */,
+				0E05DF151E8E1C2800736885 /* TwitterImagePipelineTests.xctest */,
+				0E05DF171E8E1C2800736885 /* ImageSpeedComparison.app */,
+				0E05DF191E8E1C2800736885 /* TIP Sample App.app */,
+				0E05DF1B1E8E1C2800736885 /* TIP Swift Sample App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0E6AAC2E1E81265200E94429 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1198,6 +1275,7 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */,
 				0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */,
 				0E6AAC2D1E81265200E94429 /* Down.xcodeproj */,
 				0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */,
@@ -1482,6 +1560,7 @@
 				0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
 				0E7358051E86162D005C5002 /* GHCAttributedLabel.swift */,
+				0E05DF671E8E661600736885 /* ImageFetcher.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -1752,6 +1831,7 @@
 				0E71A4ED1E7FAC8C00D8EED6 /* PBXTargetDependency */,
 				0E6AAC7D1E81363200E94429 /* PBXTargetDependency */,
 				0EDCFB591E8432130095F61B /* PBXTargetDependency */,
+				0E05DF1F1E8E1C4300736885 /* PBXTargetDependency */,
 			);
 			name = GHClient;
 			productName = GHClient;
@@ -1863,6 +1943,10 @@
 					ProductGroup = 0E94F2B21E651AF100E962B6 /* Products */;
 					ProjectRef = 0E94F2B11E651AF100E962B6 /* Runes.xcodeproj */;
 				},
+				{
+					ProductGroup = 0E05DECB1E8E1C2800736885 /* Products */;
+					ProjectRef = 0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1873,6 +1957,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0E05DF0F1E8E1C2800736885 /* libTwitterImagePipeline.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTwitterImagePipeline.a;
+			remoteRef = 0E05DF0E1E8E1C2800736885 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E05DF111E8E1C2800736885 /* TwitterImagePipeline.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TwitterImagePipeline.framework;
+			remoteRef = 0E05DF101E8E1C2800736885 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E05DF131E8E1C2800736885 /* TIPTests.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TIPTests.framework;
+			remoteRef = 0E05DF121E8E1C2800736885 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E05DF151E8E1C2800736885 /* TwitterImagePipelineTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TwitterImagePipelineTests.xctest;
+			remoteRef = 0E05DF141E8E1C2800736885 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E05DF171E8E1C2800736885 /* ImageSpeedComparison.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ImageSpeedComparison.app;
+			remoteRef = 0E05DF161E8E1C2800736885 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E05DF191E8E1C2800736885 /* TIP Sample App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "TIP Sample App.app";
+			remoteRef = 0E05DF181E8E1C2800736885 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E05DF1B1E8E1C2800736885 /* TIP Swift Sample App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "TIP Swift Sample App.app";
+			remoteRef = 0E05DF1A1E8E1C2800736885 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0E6AAC3F1E81265300E94429 /* Down.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -2520,6 +2653,7 @@
 				0E7896051E798BE100DB2098 /* Guitar.swift in Sources */,
 				0EDB2CC61E79104A007103A7 /* EventTableViewCell.swift in Sources */,
 				0EE749F21E878D0300262014 /* RepositoryStargazersTableViewCell.swift in Sources */,
+				0E05DF681E8E661600736885 /* ImageFetcher.swift in Sources */,
 				0E7AF42A1E724E990001C425 /* UICollectionView-Extension.swift in Sources */,
 				0E238F471E6BD60B001F493A /* UserProfileEventDatasource.swift in Sources */,
 				0EECF6371E704608009600BB /* ActivitesViewController.swift in Sources */,
@@ -2620,6 +2754,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0E05DF1F1E8E1C4300736885 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TwitterImagePipeline.framework;
+			targetProxy = 0E05DF1E1E8E1C4300736885 /* PBXContainerItemProxy */;
+		};
 		0E3E02E51E78071E00C1CD84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Ji iOS";

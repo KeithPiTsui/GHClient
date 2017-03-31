@@ -10,7 +10,11 @@ import Foundation
 import GHAPI
 import ReactiveSwift
 import Result
+import TwitterImagePipeline
 
+extension TIPImagePipeline {
+  fileprivate static let defaultPipeline: TIPImagePipeline = TIPImagePipeline(identifier: "GHClientImagePipeline")!
+}
 
 /**
  A collection of **all** global variables and singletons that the app wants access to.
@@ -80,6 +84,8 @@ public struct Environment {
 
   public let urlCacheParameters: URLCacheParameters
 
+  public let imagePipeline: TIPImagePipeline
+
   public enum AppMode {
     case guest
     case account
@@ -109,7 +115,8 @@ public struct Environment {
     scheduler: DateSchedulerProtocol = QueueScheduler.main,
     ubiquitousStore: KeyValueStoreType = NSUbiquitousKeyValueStore.default(),
     userDefaults: KeyValueStoreType = UserDefaults.standard,
-    urlCacheParameters: URLCacheParameters = URLCacheParameters.defaultParameters) {
+    urlCacheParameters: URLCacheParameters = URLCacheParameters.defaultParameters,
+    imagePipeline: TIPImagePipeline = TIPImagePipeline.defaultPipeline) {
 
     self.apiService = apiService
     self.apiDelayInterval = apiDelayInterval
@@ -128,5 +135,6 @@ public struct Environment {
     self.ubiquitousStore = ubiquitousStore
     self.userDefaults = userDefaults
     self.urlCacheParameters = urlCacheParameters
+    self.imagePipeline = imagePipeline
   }
 }
