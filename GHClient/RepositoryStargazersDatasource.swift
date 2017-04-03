@@ -12,13 +12,15 @@ import GHAPI
 internal final class RepositoryStargazersDatasource: ValueCellDataSource {
 
   internal func set(stargazers: [UserLite]) {
-    self.set(values: stargazers, cellClass: RepositoryStargazerTableViewCell.self, inSection: 0)
+    self.set(values: stargazers.map(BasicTableViewValueCell.Style.stargazer),
+             cellClass: BasicTableViewValueCell.self,
+             inSection: 0)
   }
 
 
   override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
     switch (cell, value) {
-    case let (cell as RepositoryStargazerTableViewCell, item as UserLite):
+    case let (cell as BasicTableViewValueCell, item as BasicTableViewValueCell.Style):
       cell.configureWith(value: item)
     default:
       assertionFailure("Unrecognized combo: \(cell), \(value)")

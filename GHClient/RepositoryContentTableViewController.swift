@@ -85,8 +85,9 @@ internal final class RepositoryContentTableViewController: UITableViewController
 
 extension RepositoryContentTableViewController {
   internal override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let value = self.datasource[indexPath] as? Content else { return }
-    self.viewModel.inputs.tapped(on: value)
+    if let content = self.datasource.content(of: indexPath) {
+      self.viewModel.inputs.tapped(on: content)
+    }
   }
 }
 

@@ -10,16 +10,25 @@ import UIKit
 import GHAPI
 
 internal final class RepositoryContentDatasource: ValueCellDataSource {
+
+  internal func content(of indexPath: IndexPath) -> Content? {
+    if let value = self[indexPath] as? BasicTableViewValueCell.Style,
+      case let .repositoryContent(content) = value {
+      return content
+    }
+    return nil
+  }
+
   internal func load(contents: [Content]) {
-    self.set(values: contents,
-             cellClass: RepositoryContentTableViewCell.self,
+    self.set(values: contents.map(BasicTableViewValueCell.Style.repositoryContent),
+             cellClass: BasicTableViewValueCell.self,
              inSection: 0)
 
   }
 
   override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
     switch (cell, value) {
-    case let (cell as RepositoryContentTableViewCell, item as Content):
+    case let (cell as BasicTableViewValueCell, item as BasicTableViewValueCell.Style):
       cell.configureWith(value: item)
     default:
       assertionFailure("Unrecognized combo: \(cell), \(value)")

@@ -12,12 +12,14 @@ import GHAPI
 internal final class PullRequestsDatasource: ValueCellDataSource {
 
   internal func set(pullRequests: [PullRequest]) {
-    self.set(values: pullRequests, cellClass: PullRequestTableViewCell.self, inSection: 0)
+    self.set(values: pullRequests.map(BasicTableViewValueCell.Style.pullRequest),
+             cellClass: BasicTableViewValueCell.self,
+             inSection: 0)
   }
 
   override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
     switch (cell, value) {
-    case let (cell as PullRequestTableViewCell, item as PullRequest):
+    case let (cell as BasicTableViewValueCell, item as BasicTableViewValueCell.Style):
       cell.configureWith(value: item)
     default:
       assertionFailure("Unrecognized combo: \(cell), \(value)")
