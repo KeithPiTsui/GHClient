@@ -55,9 +55,9 @@ internal final class RepositoryCommitsTableViewController: UITableViewController
 
 extension RepositoryCommitsTableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let commit = self.datasource[indexPath] as? Commit else { return }
+    guard let commit = self.datasource.commit(of: indexPath) else { return }
     let vc = CommitTableViewController.instantiate()
-    vc.set(commit: commit)
+    vc.set(commit: commit.url)
     self.navigationController?.pushViewController(vc, animated: true)
   }
 }

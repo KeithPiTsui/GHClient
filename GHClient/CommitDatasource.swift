@@ -10,6 +10,15 @@ import UIKit
 import GHAPI
 
 internal final class CommitDatasource: ValueCellDataSource {
+
+  internal enum CommitChangesType {
+    case additions
+    case deletions
+    case modifications
+    case allFiles
+    case allDiffs
+  }
+
   internal enum Section: Int {
     case commitDescription
     case changes
@@ -24,21 +33,41 @@ internal final class CommitDatasource: ValueCellDataSource {
     
   }
 
+  fileprivate func valueConstructor(for changesType: CommitChangesType)
+    -> ([Commit.CFile]) -> BasicTableViewValueCell.Style {
+      let vc: ([Commit.CFile]) -> BasicTableViewValueCell.Style
+      switch changesType {
+      case .additions:
+        vc = BasicTableViewValueCell.Style.commitChangeAddition
+      case .deletions:
+        vc = BasicTableViewValueCell.Style.commitChangeDeletion
+      case .modifications:
+        vc = BasicTableViewValueCell.Style.commitChangeModification
+      case .allDiffs:
+        vc = BasicTableViewValueCell.Style.commitChangeAllDiff
+      case .allFiles:
+        vc = BasicTableViewValueCell.Style.commitChangeAllFile
+      }
+      return vc
+  }
+
+  fileprivate func valueConstructor(of files: [Commit.CFile]) -> (CommitChangesType) -> BasicTableViewValueCell.Style {
+    return { self.valueConstructor(for: $0)(files) }
+  }
+
   internal func setCommitChanges(files: [Commit.CFile],
-                                 with changesTypes: [CommitChangesTableViewCell.CommitChangesType]) {
-    self.clearValues(section: Section.changes.rawValue)
-    for (idx, changesType) in changesTypes.enumerated() {
-      self.appendRow(value: (files, changesType), cellClass: CommitChangesTableViewCell.self, toSection: idx)
-    }
+                                 with changesTypes: [CommitChangesType]) {
+    let values = changesTypes.map(self.valueConstructor(of: files))
+    self.set(values: values, cellClass: BasicTableViewValueCell.self, inSection: Section.changes.rawValue)
   }
 
   override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
     switch (cell, value) {
-    case let (cell as CommitChangesTableViewCell, item as CommitChangesTableViewCell.CommitChangesConfig):
+    case let (cell as BasicTableViewValueCell, item as BasicTableViewValueCell.Style):
       cell.configureWith(value: item)
     default:
       assertionFailure("Unrecognized combo: \(cell), \(value)")
     }
   }
-  
 }
+extension CommitDatasource.CommitChangesType: HashableEnumCaseIterating {}

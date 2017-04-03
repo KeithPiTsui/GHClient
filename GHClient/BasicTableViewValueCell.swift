@@ -34,6 +34,11 @@ internal final class BasicTableViewValueCell: UITableViewCell, ValueCell {
     case commit(BranchLite)
     case branch(BranchLite)
     case repositoryContent(Content)
+    case commitChangeAddition([Commit.CFile])
+    case commitChangeDeletion([Commit.CFile])
+    case commitChangeModification([Commit.CFile])
+    case commitChangeAllFile([Commit.CFile])
+    case commitChangeAllDiff([Commit.CFile])
   }
 
   override func awakeFromNib() {
@@ -102,6 +107,44 @@ internal final class BasicTableViewValueCell: UITableViewCell, ValueCell {
       self.textLabel?.text = pr.body
     case .issue(let isu):
       self.textLabel?.text = isu.body
+    case .commitChangeAddition( let files ):
+      let files = files.filter{$0.status == "added"}
+      self.textLabel?.text = "\(files.count) added"
+      self.imageView?.image = UIImage(named: "diff-added")!
+    case .commitChangeModification( let files):
+      let files = files.filter{$0.status == "modified"}
+      self.textLabel?.text = "\(files.count) modified"
+      self.imageView?.image = UIImage(named: "diff-modified")!
+    case .commitChangeDeletion(let files):
+      let files = files.filter{$0.status == "removed"}
+      self.textLabel?.text = "\(files.count) removed"
+      self.imageView?.image = UIImage(named: "diff-removed")!
+    case .commitChangeAllDiff(_):
+      self.textLabel?.text = "diffs"
+      self.imageView?.image = UIImage(named: "diff")!
+    case .commitChangeAllFile(_):
+      self.textLabel?.text = "files"
+      self.imageView?.image = UIImage(named: "file")!
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,6 +11,16 @@ import GHAPI
 
 internal final class RepositoryCommitsDatasource: ValueCellDataSource {
 
+  internal func commit(of indexPath: IndexPath) -> Commit? {
+    guard let value = self[indexPath] as? DetailTableViewValueCell.Style else { return nil }
+
+    if case let .commit(cmt) = value {
+      return cmt
+    }
+
+    return nil
+  }
+
   internal func set(commits: [Commit]) {
     self.set(values: commits.map(DetailTableViewValueCell.Style.commit),
              cellClass: DetailTableViewValueCell.self,

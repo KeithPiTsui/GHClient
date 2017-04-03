@@ -23,11 +23,11 @@ internal final class CommitTableViewController: UITableViewController {
   fileprivate let datasource = CommitDatasource()
 
   internal func set(commit: Commit) {
-
+    self.viewModel.inputs.set(commit: commit)
   }
 
   internal func set(commit: URL) {
-
+    self.viewModel.inputs.set(commit: commit)
   }
 
   override func viewDidLoad() {
@@ -48,5 +48,20 @@ internal final class CommitTableViewController: UITableViewController {
 
   override func bindViewModel() {
     super.bindViewModel()
+
+    self.viewModel.outpus.commit.observeForUI().observeValues { [weak self] (commit) in
+      self?.datasource.set(commitDesc: commit.commit.message)
+      self?.tableView.reloadData()
+    }
+
+    self.viewModel.outpus.commitChanges.observeForUI().observeValues { [weak self] (files, changes) in
+      self?.datasource.setCommitChanges(files: files, with: changes)
+      self?.tableView.reloadData()
+    }
+
+    self.viewModel.outpus.commitComments.observeForUI().observeValues { [weak self] (comments) in
+      self?.datasource.set(commitComments: comments)
+      self?.tableView.reloadData()
+    }
   }
 }

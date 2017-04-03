@@ -147,7 +147,6 @@
 		0EB13A561E8D3F2200163750 /* CommitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB13A551E8D3F2200163750 /* CommitTableViewController.swift */; };
 		0EB13A581E8D3F3700163750 /* CommitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB13A571E8D3F3700163750 /* CommitViewModel.swift */; };
 		0EB13A5A1E8D3F4D00163750 /* CommitDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB13A591E8D3F4D00163750 /* CommitDatasource.swift */; };
-		0EB13A6F1E8D484A00163750 /* CommitChangesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB13A6E1E8D484A00163750 /* CommitChangesTableViewCell.swift */; };
 		0EB13A731E8D4BA500163750 /* CommitCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB13A721E8D4BA500163750 /* CommitCommentTableViewCell.swift */; };
 		0EB13A761E8D4BD600163750 /* CommitDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB13A751E8D4BD600163750 /* CommitDescriptionTableViewCell.swift */; };
 		0EB5826D1E88B37B0082AA09 /* OptionalUnwraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB5826C1E88B37B0082AA09 /* OptionalUnwraper.swift */; };
@@ -1048,7 +1047,6 @@
 		0EB13A551E8D3F2200163750 /* CommitTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitTableViewController.swift; sourceTree = "<group>"; };
 		0EB13A571E8D3F3700163750 /* CommitViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitViewModel.swift; sourceTree = "<group>"; };
 		0EB13A591E8D3F4D00163750 /* CommitDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitDatasource.swift; sourceTree = "<group>"; };
-		0EB13A6E1E8D484A00163750 /* CommitChangesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitChangesTableViewCell.swift; sourceTree = "<group>"; };
 		0EB13A721E8D4BA500163750 /* CommitCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitCommentTableViewCell.swift; sourceTree = "<group>"; };
 		0EB13A751E8D4BD600163750 /* CommitDescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		0EB5826C1E88B37B0082AA09 /* OptionalUnwraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalUnwraper.swift; sourceTree = "<group>"; };
@@ -1566,7 +1564,6 @@
 		0EB13A741E8D4BB000163750 /* Commit */ = {
 			isa = PBXGroup;
 			children = (
-				0EB13A6E1E8D484A00163750 /* CommitChangesTableViewCell.swift */,
 				0EB13A751E8D4BD600163750 /* CommitDescriptionTableViewCell.swift */,
 				0EB13A721E8D4BA500163750 /* CommitCommentTableViewCell.swift */,
 			);
@@ -2599,7 +2596,6 @@
 				0EB13A5A1E8D3F4D00163750 /* CommitDatasource.swift in Sources */,
 				0E7B7BEB1E6E93A100D50C95 /* SearchUserTableViewCell.swift in Sources */,
 				0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */,
-				0EB13A6F1E8D484A00163750 /* CommitChangesTableViewCell.swift in Sources */,
 				0E94F3221E651CBA00E962B6 /* UIViewController-Preparation.swift in Sources */,
 				0E50AA0A1E67F6140002A40D /* Reachability.swift in Sources */,
 				0EB582B41E8904A00082AA09 /* RepositoryIssuesTableViewController.swift in Sources */,
