@@ -19,6 +19,9 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
 
+    swizzle(UIViewController.self)
+    swizzle(UIView.self)
+
 
     /// Retrieve stored environment states if exists
     AppEnvironment.replaceCurrentEnvironment(

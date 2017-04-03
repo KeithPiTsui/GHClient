@@ -1,0 +1,22 @@
+This is an attempt to implement [`retryWhen`](http://reactivex.io/documentation/operators/retry.html) in ReactiveSwift.
+I wrote simple version & Rx original version here:
+
+- (1)  8754889: Simpler version with type:
+- `(FlattenStrategy, (Error) -> SignalProducer<(), Error>) -> SignalProducer<Value, Error>`
+- (2) 2f829f8: Rx original version with type:
+- `(FlattenStrategy, (Signal<Error, NoError>) -> Signal<(), Error>) -> SignalProducer<Value, Error>`
+### Use case: Delay retry after error
+```swift
+// Using (1) Simple version\r\nproducer.retry(.merge) { error in
+return timer(3, on: mainScheduler).take(1).map { _ in () } // retry after 3 sec
+}
+// Using (2) Rx original version
+producer.retry(.merge) { errors in
+return errors.flatMap {
+return timer(3, on: mainScheduler).take(1).map { _ in () } // retry after 3 sec
+}.take(5)  // up to 5 times
+}
+```
+(1) is obviously simpler and has a similar type as `flatMap` (which I think is clean), but it does not have error counting logic so (2) might be a better option.
+But to implement (2), I had to change `NSLock` to `NSRecursiveLock` in `Signal.swift`.
+(BTW I personally think using recursive-lock is a better choice in general)

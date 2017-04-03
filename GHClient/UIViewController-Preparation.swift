@@ -3,7 +3,7 @@ import UIKit
 import Prelude
 import Prelude_UIKit
 
-private func swizzle(_ vc: UIViewController.Type) {
+internal func swizzle(_ vc: UIViewController.Type) {
   [
     (#selector(vc.viewDidLoad), #selector(vc.ksr_viewDidLoad)),
     (#selector(vc.viewWillAppear(_:)), #selector(vc.ksr_viewWillAppear(_:))),
@@ -27,11 +27,11 @@ private func swizzle(_ vc: UIViewController.Type) {
 }
 
 extension UIViewController {
-  open override class func initialize() {
-    // make sure this isn't a subclass
-    guard self === UIViewController.self else { return }
-    swizzle(self)
-  }
+//  open override class func initialize() {
+//    // make sure this isn't a subclass
+//    guard self === UIViewController.self else { return }
+//    swizzle(self)
+//  }
   internal func ksr_viewDidLoad() {
     self.ksr_viewDidLoad()
     self.bindViewModel()

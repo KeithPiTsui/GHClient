@@ -10,13 +10,14 @@ import UIKit
 import Down
 import Curry
 import Prelude
+import Ji
 
 internal final class GHCAttributedLabel: TTTAttributedLabel {
 
   override init(frame: CGRect = CGRect.zero) {
     super.init(frame: frame)
   }
-  
+
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -24,8 +25,58 @@ internal final class GHCAttributedLabel: TTTAttributedLabel {
   var baseURL: URL = AppEnvironment.current.apiService.serverConfig.apiBaseUrl
   var detectors: [GuitarChord:String] = [:]
 
+  fileprivate func firstTag(_ tag: String, in html: String) -> Range<String.Index>? {
+    return self.firstPart("<\(tag)", end: ">", in: html)
+  }
+
+  fileprivate func firstAttribute(_ attr: String, in tag: String) -> Range<String.Index>? {
+    return self.firstPart("\(attr)=\"", end: "\"", in: tag)
+  }
+
+  fileprivate func firstPart(_ begin: String,
+                             end: String,
+                             in whole: String,
+                             with searchRange: Range<String.Index>? = nil) -> Range<String.Index>? {
+    guard let range = whole.range(of: begin, options: [], range: searchRange, locale: nil) else { return nil }
+    let endIndex = searchRange?.upperBound ?? whole.endIndex
+    let subRange = Range(uncheckedBounds: (range.upperBound, endIndex))
+    guard let r = whole.range(of: end, options: [], range: subRange, locale: nil) else { return nil }
+    return Range(uncheckedBounds: (range.lowerBound, r.upperBound))
+  }
+
+
   internal func set(markup: String) throws {
-    let attributedString = try Down(markdownString: markup).toAttributedString()
+    let down = Down(markdownString: markup)
+    var html = try down.toHTML()
+
+    while let range = self.firstTag("img", in: html) {
+      let substr = html.substring(with: range)
+      var src = ""
+      if let srcRange = self.firstAttribute("src", in: substr) {
+        src = substr.substring(with: srcRange)
+          .trimLeft(byRemoving: "src=\"".length())
+          .trimRight(byRemoving: 1)
+      }
+      var alt = ""
+      if let altRange = self.firstAttribute("alt", in: substr) {
+        alt = substr.substring(with: altRange)
+          .trimLeft(byRemoving: "alt=\"".length())
+          .trimRight(byRemoving: 1)
+      }
+      let link = "<a href=\(src)>\(alt)</a>"
+      html.replaceSubrange(range, with: link)
+    }
+
+    guard let data = html.data(using: String.Encoding.utf8) else {
+      throw DownErrors.htmlDataConversionError
+    }
+
+    let options: [String: Any] = [
+      NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+      NSCharacterEncodingDocumentAttribute: NSNumber(value: String.Encoding.utf8.rawValue)
+    ]
+    let attributedString = try NSAttributedString(data: data, options: options, documentAttributes: nil)
+
     super.setText(attributedString)
     let plain = attributedString.string as NSString
     try self.detectors.keys

@@ -1,6 +1,6 @@
 import UIKit
 
-private func swizzle(_ view: UIView.Type) {
+internal func swizzle(_ view: UIView.Type) {
 
   [(#selector(view.traitCollectionDidChange(_:)), #selector(view.ksr_traitCollectionDidChange(_:)))]
     .forEach { original, swizzled in
@@ -25,12 +25,12 @@ private func swizzle(_ view: UIView.Type) {
 }
 
 extension UIView {
-  open override class func initialize() {
-    // make sure this isn't a subclass
-    guard self === UIView.self else { return }
-
-    swizzle(self)
-  }
+//  open override class func initialize() {
+//    // make sure this isn't a subclass
+//    guard self === UIView.self else { return }
+//
+//    swizzle(self)
+//  }
 
   open override func awakeFromNib() {
     super.awakeFromNib()
@@ -60,13 +60,13 @@ extension UIView {
   /// Let four edges of this view to attach its super view
   ///
   /// If superview is nil, do nothing
-  internal func fillupSuperView() {
+  internal func fillupSuperView(with margin: CGFloat = 8) {
     guard let sv = self.superview else { return }
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.topAnchor.constraint(equalTo: sv.topAnchor).isActive = true
-    self.bottomAnchor.constraint(equalTo: sv.bottomAnchor).isActive = true
-    self.leftAnchor.constraint(equalTo: sv.leftAnchor).isActive = true
-    self.rightAnchor.constraint(equalTo: sv.rightAnchor).isActive = true
+    self.topAnchor.constraint(equalTo: sv.topAnchor, constant: margin).isActive = true
+    self.bottomAnchor.constraint(equalTo: sv.bottomAnchor, constant: -margin).isActive = true
+    self.leftAnchor.constraint(equalTo: sv.leftAnchor, constant: margin).isActive = true
+    self.rightAnchor.constraint(equalTo: sv.rightAnchor, constant: -margin).isActive = true
   }
 }
 

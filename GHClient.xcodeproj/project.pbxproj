@@ -200,6 +200,8 @@
 		0EB658611E82909400D48AAE /* IssueCommentEventPayloadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB658601E82909400D48AAE /* IssueCommentEventPayloadExtension.swift */; };
 		0ECE8A6B1E77FEF2001FE48B /* DiscoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */; };
 		0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */; };
+		0ED575C71E90CB7500A0BA71 /* WebViewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED575C61E90CB7500A0BA71 /* WebViewTestViewController.swift */; };
+		0ED576091E90CD8000A0BA71 /* test.markup in Resources */ = {isa = PBXBuildFile; fileRef = 0ED576081E90CD8000A0BA71 /* test.markup */; };
 		0ED6460E1E69500900017D28 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460D1E69500900017D28 /* MenuDataSource.swift */; };
 		0ED646101E69508D00017D28 /* ValueCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */; };
 		0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED6464B1E6950E700017D28 /* ValueCell.swift */; };
@@ -1111,6 +1113,8 @@
 		0ECE8A491E77C590001FE48B /* Ji.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ji.xcodeproj; path = Ji/Ji.xcodeproj; sourceTree = "<group>"; };
 		0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewModel.swift; sourceTree = "<group>"; };
 		0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryDatasource.swift; sourceTree = "<group>"; };
+		0ED575C61E90CB7500A0BA71 /* WebViewTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewTestViewController.swift; sourceTree = "<group>"; };
+		0ED576081E90CD8000A0BA71 /* test.markup */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.markup; sourceTree = "<group>"; };
 		0ED6460D1E69500900017D28 /* MenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
 		0ED6460F1E69508D00017D28 /* ValueCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCellDataSource.swift; sourceTree = "<group>"; };
 		0ED6464B1E6950E700017D28 /* ValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueCell.swift; sourceTree = "<group>"; };
@@ -1466,6 +1470,7 @@
 				0E4BCFAE1E80D73700BF6135 /* RepositoryContentTableViewController.swift */,
 				0EB582951E88F6110082AA09 /* RepositoryContributorsTableViewController.swift */,
 				0EB582891E88F0E50082AA09 /* RepositoryEventsTableViewController.swift */,
+				0ED575C61E90CB7500A0BA71 /* WebViewTestViewController.swift */,
 				0EB582701E88E06C0082AA09 /* RepositoryForksTableViewController.swift */,
 				0EB582B31E8904A00082AA09 /* RepositoryIssuesTableViewController.swift */,
 				0EB5827D1E88EBBF0082AA09 /* RepositoryReleasesTableViewController.swift */,
@@ -1524,6 +1529,7 @@
 			children = (
 				0E94F1F81E65189900E962B6 /* Info.plist */,
 				0EDB2CC41E790BA8007103A7 /* ObjectiveC-Bridge.h */,
+				0ED576081E90CD8000A0BA71 /* test.markup */,
 				0E94F1EC1E65189900E962B6 /* AppDelegate.swift */,
 			);
 			name = SupportingFiles;
@@ -2545,6 +2551,7 @@
 				0E6AAC751E8134A900E94429 /* MarkupViewer.storyboard in Resources */,
 				0E84B5A01E67C3DE00C5ADF7 /* UserProfile.storyboard in Resources */,
 				0EB582881E88F0BB0082AA09 /* RepositoryEvents.storyboard in Resources */,
+				0ED576091E90CD8000A0BA71 /* test.markup in Resources */,
 				0E4BCFAD1E80D70200BF6135 /* RepositoryContent.storyboard in Resources */,
 				0E50AA321E6844700002A40D /* Main.storyboard in Resources */,
 				0EB582BA1E890C540082AA09 /* RepositoryCommits.storyboard in Resources */,
@@ -2591,6 +2598,7 @@
 				0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */,
 				0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */,
 				0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */,
+				0ED575C71E90CB7500A0BA71 /* WebViewTestViewController.swift in Sources */,
 				0EB582A21E88FE870082AA09 /* RepositoryStargazersTableViewController.swift in Sources */,
 				0EB582D11E893AFA0082AA09 /* MePersonalGistsTableViewCell.swift in Sources */,
 				0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */,

@@ -12,36 +12,24 @@ import ReactiveCocoa
 import Prelude_UIKit
 import Ladder
 import Down
+import WebKit
 
 internal final class IssueBodyTableViewCell: UITableViewCell, ValueCell {
 
-  internal var bodyLabel: DownView? //UITextView() //GHCAttributedLabel(frame: CGRect.zero)
+  internal var bodyLabel = GHCAttributedLabel()
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.bodyLabel = try? DownView(frame: CGRect.zero, markdownString: "")
-//    self.bodyLabel.font = UIFont.systemFont(ofSize: 14)
-//    self.bodyLabel.translatesAutoresizingMaskIntoConstraints = false
-//    self.bodyLabel.numberOfLines = 0
-//    self.bodyLabel.detectors = [GuitarChord.atUser:"users", GuitarChord.url:""]
-    self.contentView.addSubview(self.bodyLabel!)
-    self.bodyLabel?.fillupSuperView()
-    self.bodyLabel?.scrollView.isScrollEnabled = false
+    self.contentView.addSubview(self.bodyLabel)
+    self.bodyLabel.detectors = [GuitarChord.atUser:"users", GuitarChord.url: ""]
+    self.bodyLabel.numberOfLines = 0
+    self.bodyLabel.fillupSuperView()
   }
 
   func configureWith(value: String) {
-//    try? self.bodyLabel.set(markup: value)
-//    guard let attributedString = try? Down(markdownString: value).toAttributedString() else { return }
-//    self.bodyLabel.attributedText = attributedString
-    try? self.bodyLabel?.update(markdownString: value, didLoadSuccessfully: nil) {
-      DispatchQueue.main.async {
-        self.tableView?.setNeedsLayout()
-      }
-    }
+    try? self.bodyLabel.set(markup: value)
   }
 }
-
-
 
 
 
