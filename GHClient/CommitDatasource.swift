@@ -25,12 +25,16 @@ internal final class CommitDatasource: ValueCellDataSource {
     case comments
   }
 
-  internal func set(commitDesc: String) {
-
+  internal func set(commit: Commit) {
+    self.set(values: [commit],
+             cellClass: CommitDescriptionTableViewCell.self,
+             inSection: Section.commitDescription.rawValue)
   }
 
   internal func set(commitComments: [CommitComment]) {
-    
+    self.set(values: commitComments,
+             cellClass: CommitCommentTableViewCell.self,
+             inSection: Section.comments.rawValue)
   }
 
   fileprivate func valueConstructor(for changesType: CommitChangesType)
@@ -64,6 +68,10 @@ internal final class CommitDatasource: ValueCellDataSource {
   override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
     switch (cell, value) {
     case let (cell as BasicTableViewValueCell, item as BasicTableViewValueCell.Style):
+      cell.configureWith(value: item)
+    case let (cell as CommitDescriptionTableViewCell, item as Commit):
+      cell.configureWith(value: item)
+    case let (cell as CommitCommentTableViewCell, item as CommitComment):
       cell.configureWith(value: item)
     default:
       assertionFailure("Unrecognized combo: \(cell), \(value)")

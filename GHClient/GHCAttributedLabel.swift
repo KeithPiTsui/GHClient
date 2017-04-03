@@ -19,7 +19,7 @@ internal final class GHCAttributedLabel: TTTAttributedLabel {
   }
 
   required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    super.init(coder: aDecoder)
   }
 
   var baseURL: URL = AppEnvironment.current.apiService.serverConfig.apiBaseUrl

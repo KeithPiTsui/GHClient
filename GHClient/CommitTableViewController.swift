@@ -21,6 +21,8 @@ internal final class CommitTableViewController: UITableViewController {
 
   fileprivate let viewModel: CommitViewModelType = CommitViewModel()
   fileprivate let datasource = CommitDatasource()
+  @IBOutlet weak var commitAuthorAvatar: UIImageView!
+  @IBOutlet weak var commitMessage: UILabel!
 
   internal func set(commit: Commit) {
     self.viewModel.inputs.set(commit: commit)
@@ -50,8 +52,17 @@ internal final class CommitTableViewController: UITableViewController {
     super.bindViewModel()
 
     self.viewModel.outpus.commit.observeForUI().observeValues { [weak self] (commit) in
-      self?.datasource.set(commitDesc: commit.commit.message)
+      self?.commitMessage.text = commit.commit.message
+      self?.datasource.set(commit: commit)
       self?.tableView.reloadData()
+      DispatchQueue(label: "background").async {
+        guard let user = AppEnvironment.current.apiService.user(with: commit.commit.author.name).single()?.value,
+         let image = ImageFetcher.image(of: user.avatar.url).single()?.value
+        else { return }
+        DispatchQueue.main.async {
+          self?.commitAuthorAvatar.image = image
+        }
+      }
     }
 
     self.viewModel.outpus.commitChanges.observeForUI().observeValues { [weak self] (files, changes) in

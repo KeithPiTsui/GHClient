@@ -37,7 +37,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="bdO-e8-2ub" firstAttribute="leading" secondItem="4Pc-wN-Ce3" secondAttribute="trailing" constant="8" symbolic="YES" id="8QA-AJ-urU"/>
                                 <constraint firstItem="4Pc-wN-Ce3" firstAttribute="top" secondItem="DBL-fX-hWq" secondAttribute="topMargin" id="8ku-mW-yrg"/>
@@ -49,10 +49,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommitDescriptionTableViewCell" id="AFF-vc-sCW" customClass="CommitDescriptionTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="133.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="134" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AFF-vc-sCW" id="h0f-g0-0gZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rq-DR-hao" customClass="GHCAttributedLabel" customModule="GHClient" customModuleProvider="target">
@@ -74,18 +74,18 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicTableViewValueCell" rowHeight="64" id="lfA-Bf-ie1" customClass="BasicTableViewValueCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="177.5" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="178" width="375" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lfA-Bf-ie1" id="IIJ-0h-y5z">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommitCommentTableViewCell" rowHeight="130" id="QN1-2s-R08" customClass="CommitCommentTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="241.5" width="375" height="130"/>
+                                <rect key="frame" x="0.0" y="242" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QN1-2s-R08" id="Jep-3z-YD7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Cz-JI-LWc">
@@ -144,10 +144,14 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="commitAuthorAvatar" destination="4Pc-wN-Ce3" id="VrQ-ZK-wf6"/>
+                        <outlet property="commitMessage" destination="bdO-e8-2ub" id="bh2-3J-ms2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtN-z1-pwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-673" y="154"/>
+            <point key="canvasLocation" x="-1273" y="145"/>
         </scene>
     </scenes>
 </document>
