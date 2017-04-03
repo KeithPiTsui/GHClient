@@ -44,6 +44,7 @@ public enum Storyboard: String {
   case RepositoryEvents
   case RepositoryContributors
   case RepositoryStargazers
+  case PullRequest
   case PullRequests
   case RepositoryIssues
   case RepositoryCommits

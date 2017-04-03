@@ -15,6 +15,16 @@ extension GHEvent {
   internal var eventDescription: URLAttachedEventDescription { return GHEventDescriber.describe(event: self) }
 }
 
+fileprivate enum URLTargetStrings: String {
+  case user
+  case repository
+  case branchContent
+  case issue
+  case pullRequest
+}
+
+
+
 
 // MARK: -
 // MARK: Event Description for AttributedLabel
@@ -22,29 +32,72 @@ internal enum GHEventDescriber {
   internal static func describe(event: GHEvent) -> URLAttachedEventDescription {
     var desc = ""
     var urls: [String: URL] = [:]
-    let baseURL = AppEnvironment.current.apiService.serverConfig.apiBaseUrl
+
+    let actor = event.actor.login
+    let actorURL = event.actor.url
+    urls[actor] = actorURL.appendingPathComponent(URLTargetStrings.user.rawValue)
+
+    let repoName = event.repo?.name
+    let repoURL = event.repo?.url
+    if let rn = repoName {
+      urls[rn] = repoURL?.appendingPathComponent(URLTargetStrings.repository.rawValue)
+    }
+
 
     switch event.type {
     case .PushEvent:
-      let actorName = event.actor.login
-      urls[actorName] = baseURL.appendingPathComponent("user")
-      guard let repoName = event.repo?.name else  { break }
-      urls[repoName] = baseURL.appendingPathComponent("repo")
       guard
         let pushEventPayload = event.payload as? PushEventPayload,
         let branchName = pushEventPayload.ref.components(separatedBy: "/").last
         else { break }
-      urls[branchName] = baseURL.appendingPathComponent("branch")
-      desc = "\(actorName) pushed to \(branchName) at \(repoName)"
+
+      guard let repo = event.repo else { break }
+      let contentURL = AppEnvironment.current.apiService.contentURL(of: repo.url, ref: branchName)
+      urls[branchName] = contentURL.appendingPathComponent(URLTargetStrings.branchContent.rawValue)
+      desc = "\(actor) pushed to \(branchName) at \(repoName ?? "")"
 
     case .IssueCommentEvent:
-      let actorName = event.actor.login
-      urls[actorName] = baseURL.appendingPathComponent("user")
-      guard let repo = event.repo?.name else { break }
-      guard let issue = (event.payload as? IssueCommentEventPayload)?.issue.number else { break }
-      let issueFullName = "\(repo)#\(issue)"
-      urls[issueFullName] = baseURL.appendingPathComponent("issue_comment")
-      desc = "\(actorName) commented on issue \(issueFullName)"
+      guard let icePayload = event.payload as? IssueCommentEventPayload else { break }
+      guard let repoName = event.repo?.name else { break }
+
+      let action = icePayload.action
+      let issue = icePayload.issue.pull_request == nil
+        ? "issue"
+        : "pull request"
+      let issueURL = icePayload.issue.pull_request?.url ?? icePayload.issue.urls.url
+      let issueName = "\(repoName)#\(icePayload.issue.number)"
+      let targetString = icePayload.issue.pull_request == nil
+        ? URLTargetStrings.issue.rawValue
+        : URLTargetStrings.pullRequest.rawValue
+      urls[issueName] = issueURL.appendingPathComponent(targetString)
+      desc = "\(actor) \(action) comment on \(issue) \(issueName)"
+
+    case .ForkEvent:
+      let pushEventPayload = event.payload as? ForkEventPayload
+      let forkeeName = pushEventPayload?.forkee.full_name
+      if let fn = forkeeName {
+        urls[fn] = pushEventPayload?.forkee.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
+      }
+      desc = "\(actor) forked \(repoName ?? "") to \(forkeeName ?? "")"
+
+    case .DeleteEvent:
+      let deleteEventPayload = event.payload as? DeleteEventPayload
+      let deletedType = deleteEventPayload?.ref_type ?? ""
+      let deletedRef = deleteEventPayload?.ref ?? ""
+      desc = "\(actor) deleted \(deletedType) \(deletedRef) at \(repoName ?? "") "
+
+    case .PullRequestEvent:
+      guard let prPayload = event.payload as? PullRequestEventPayload else { break }
+      var action = prPayload.action
+      if prPayload.pull_request.merged == true && action == "closed" {
+        action = "merged"
+      }
+      let prName = prPayload.pull_request.base.repo.full_name
+      let prNum = "\(prPayload.pull_request.numbers.number)"
+      let prURL = prPayload.pull_request.urls.url
+      let prFullName = "\(prName)#\(prNum)"
+      urls[prFullName] = prURL.appendingPathComponent(URLTargetStrings.pullRequest.rawValue)
+      desc = "\(actor) \(action) pull request \(prFullName)"
 
     default:
       break
@@ -58,65 +111,32 @@ internal enum GHEventDescriber {
 // MARK: ViewController for display content of part of event
 extension GHEventDescriber {
   internal static func viewController(for event: GHEvent, with link: URL) -> UIViewController? {
-    let components = link.pathComponents
-    if components.contains("user") {
-      let userUrl = event.userUrl
+    guard let target = URLTargetStrings.init(rawValue: link.lastPathComponent) else { return nil }
+    let targetURL = link.deletingLastPathComponent()
+    switch target {
+    case .user:
       let vc = UserProfileViewController.instantiate()
-      vc.set(userUrl: userUrl)
+      vc.set(userUrl: targetURL)
       return vc
-    } else if components.contains("repo") {
-      guard let repoUrl = event.repoUrl else { return nil }
+    case .repository:
       let vc = RepositoryViewController.instantiate()
-      vc.set(repoURL: repoUrl)
+      vc.set(repoURL: targetURL)
       return vc
-    } else if components.contains("branch") {
-      guard let branchUrl = event.branchUrl else { return nil }
+    case .branchContent:
       let vc = RepositoryContentTableViewController.instantiate()
-      vc.set(contentURL: branchUrl)
+      vc.set(contentURL: targetURL)
       return vc
-    } else if components.contains("issue") {
-      guard let issueUrl = event.issueURL else { return nil }
+    case .issue:
       let vc = IssueTableViewController.instantiate()
-      vc.set(issue: issueUrl)
+      vc.set(issue: targetURL)
       return vc
-
-    } else if components.contains("commit") {
-
-    } else if components.contains("issue_comment"){
-      guard let issueUrl = event.issueURL else { return nil }
+    case .pullRequest:
       let vc = IssueTableViewController.instantiate()
-      vc.set(issue: issueUrl)
+      vc.set(issue: targetURL)
       return vc
     }
-
-    return nil
   }
 }
-
-
-// MARK: -
-// MARK: URL for part of event
-extension GHEvent {
-  internal var userUrl: URL { return self.actor.url }
-
-  internal var repoUrl: URL? { return self.repo?.url }
-
-  internal var branchUrl: URL? {
-    guard let repoURL = self.repo?.url else { return nil }
-    guard let branch = (self.payload as? PushEventPayload)?.ref.components(separatedBy: "/").last
-      else { return nil }
-    guard let repo = AppEnvironment.current.apiService.repository(referredBy: repoURL).single()?.value
-      else { return nil}
-    let url = AppEnvironment.current.apiService.contentURL(of: repo, ref: branch)
-    return url
-  }
-
-  internal var issueURL: URL? {
-    return (self.payload as? IssueCommentEventPayload)?.issue.urls.url
-      ?? (self.payload as? IssueEventPayload)?.issue.urls.url
-  }
-}
-
 
 
 

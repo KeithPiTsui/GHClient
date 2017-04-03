@@ -52,3 +52,28 @@ internal final class RepositoryCommitsTableViewController: UITableViewController
     }
   }
 }
+
+extension RepositoryCommitsTableViewController {
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard let commit = self.datasource[indexPath] as? Commit else { return }
+    let vc = CommitTableViewController.instantiate()
+    vc.set(commit: commit)
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

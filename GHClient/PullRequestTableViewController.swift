@@ -1,8 +1,8 @@
 //
-//  CommitTableViewController.swift
+//  PullRequestTableViewController.swift
 //  GHClient
 //
-//  Created by Pi on 30/03/2017.
+//  Created by Pi on 03/04/2017.
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
@@ -13,28 +13,18 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 
-internal final class CommitTableViewController: UITableViewController {
+internal final class PullRequestTableViewController: UITableViewController {
 
-  internal static func instantiate() -> CommitTableViewController {
-    return Storyboard.Commit.instantiate(CommitTableViewController.self)
+  internal static func instantiate() -> PullRequestTableViewController {
+    return Storyboard.PullRequest.instantiate(PullRequestTableViewController.self)
   }
 
-  fileprivate let viewModel: CommitViewModelType = CommitViewModel()
-  fileprivate let datasource = CommitDatasource()
-
-  internal func set(commit: Commit) {
-
-  }
-
-  internal func set(commit: URL) {
-
-  }
+  fileprivate let viewModel: PullRequestViewModelType = PullRequestViewModel()
+  fileprivate let datasource = PullRequestDatasource()
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.dataSource = self.datasource
-    self.tableView.rowHeight = UITableViewAutomaticDimension
-    self.tableView.estimatedRowHeight = 120
     self.viewModel.inputs.viewDidLoad()
   }
   override func viewWillAppear(_ animated: Bool) {
