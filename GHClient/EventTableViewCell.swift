@@ -11,6 +11,7 @@ import GHAPI
 import ReactiveCocoa
 import Prelude_UIKit
 import Ladder
+import AlamofireImage
 
 internal final class EventTableViewCell: UITableViewCell , ValueCell {
 
@@ -24,6 +25,10 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
   fileprivate var displayConstraints: [NSLayoutConstraint] = []
 
   func configureWith(value: GHEvent) {
+
+    self.actorAvatar.af_cancelImageRequest()
+    self.actorAvatar.ksr_setImageWithURL(value.actor.avatar_url)
+
     self.timestamp.text = value.created_at.ISO8601DateRepresentation
     if let payload = value.payload {
       self.installPayloadDisplay(with: payload)
@@ -46,8 +51,7 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
     /// Deactive constraints of previous view
     NSLayoutConstraint.deactivate(displayConstraints)
     /// Remove previous view
-    self.payloadDisplay.subviews
-      .forEach {$0.removeFromSuperview()}
+    self.payloadDisplay.subviews.forEach {$0.removeFromSuperview()}
   }
 
   fileprivate func installPayloadDisplay(with payload: EventPayloadType) {

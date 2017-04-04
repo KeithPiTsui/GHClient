@@ -22,6 +22,14 @@ internal final class PullRequestTableViewController: UITableViewController {
   fileprivate let viewModel: PullRequestViewModelType = PullRequestViewModel()
   fileprivate let datasource = PullRequestDatasource()
 
+  internal func set(pullRequest: PullRequest) {
+
+  }
+
+  internal func set(pullRequest: URL) {
+    
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.dataSource = self.datasource

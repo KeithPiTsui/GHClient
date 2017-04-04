@@ -17,7 +17,7 @@ extension PushEventPayload: EventPayloadTypeDisplay {
       return str + "\n" + sha + " " + msg
     }).trimmingCharacters(in: .whitespacesAndNewlines)
     let lab = UILabel(frame: UIScreen.main.bounds)
-    lab.numberOfLines = 0
+    lab.numberOfLines = 5
     lab.font = UIFont.systemFont(ofSize: 12)
     lab.text = str
     lab.sizeToFit()

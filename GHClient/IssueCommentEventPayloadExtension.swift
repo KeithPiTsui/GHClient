@@ -12,7 +12,7 @@ import GHAPI
 extension IssueCommentEventPayload: EventPayloadTypeDisplay {
   internal var payloadView: UIView {
     let lab = GHCAttributedLabel()
-    lab.numberOfLines = 0
+    lab.numberOfLines = 5
     try? lab.set(markup: self.comment.body)
     lab.sizeToFit()
     return lab

@@ -20,12 +20,20 @@ internal final class ActivitesViewController: UIViewController {
   }
 
   fileprivate let viewModel: ActivitesViewModelType = ActivitesViewModel()
-  fileprivate let eventDatasource = ActivitesEventDatasource()
+  fileprivate let datasource = EventDatasource()
+  fileprivate let redatasource = EventDatasource()
+  fileprivate let refreshControl = UIRefreshControl()
+
+  fileprivate var selectedDatasource: EventDatasource {
+    if self.segment.selectedSegmentIndex == 0 {
+      return self.datasource
+    } else {
+      return self.redatasource
+    }
+  }
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var segment: UISegmentedControl!
-
-  fileprivate let refreshControl = UIRefreshControl()
 
   @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
     self.viewModel.inputs.segmentChanged(index: sender.selectedSegmentIndex)
@@ -37,7 +45,7 @@ internal final class ActivitesViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.tableView.dataSource = self.eventDatasource
+    self.tableView.dataSource = self.datasource
     self.tableView.delegate = self
     self.tableView.rowHeight = UITableViewAutomaticDimension
     self.tableView.estimatedRowHeight = 120
@@ -66,21 +74,30 @@ internal final class ActivitesViewController: UIViewController {
   override func bindViewModel() {
     super.bindViewModel()
     self.viewModel.outputs.events.observeForUI().observeValues { [weak self] in
-      self?.eventDatasource.load(events: $0)
+      self?.datasource.load(events: $0)
       self?.tableView.reloadData()
     }
+    self.viewModel.outputs.receivedEvents.observeForUI().observeValues { [weak self] in
+      self?.redatasource.load(events: $0)
+      self?.tableView.reloadData()
+    }
+
+    self.viewModel.outputs.selectedSegment.observeForUI().observeValues { [weak self] in
+      self?.segment.selectedSegmentIndex = $0
+      if $0 == 0 {
+        self?.tableView.dataSource = self?.datasource
+      } else if $0 == 1 {
+        self?.tableView.dataSource = self?.redatasource
+      }
+      self?.tableView.reloadData()
+    }
+
     self.viewModel.outputs.segments.observeForUI().observeValues { [weak self] in
       for (idx, seg) in $0.enumerated() {
         self?.segment.setTitle(seg.rawValue, forSegmentAt: idx)
       }
     }
-    self.viewModel.outputs.selectedSegment.observeForUI().observeValues { [weak self] in
-      self?.segment.selectedSegmentIndex = $0
-    }
-    self.viewModel.outputs.receivedEvents.observeForUI().observeValues { [weak self] in
-      self?.eventDatasource.load(receivedEvents: $0)
-      self?.tableView.reloadData()
-    }
+
     self.viewModel.outputs.loading.observeForUI().observeValues { [weak self] in
       self?.refreshControl.beginRefreshing()
     }
@@ -102,13 +119,11 @@ extension ActivitesViewController: TTTAttributedLabelDelegate {
     guard
       let cell = label.tableViewCell,
       let indexPath = self.tableView.indexPath(for: cell),
-      let event = self.eventDatasource[indexPath] as? GHEvent
+      let event = self.datasource[indexPath] as? GHEvent
     else { return }
     self.viewModel.inputs.tapped(on: event, with: url)
   }
 }
-
-
 
 
 

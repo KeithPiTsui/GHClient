@@ -9,13 +9,19 @@
 import UIKit
 import GHAPI
 
-internal final class ActivitesEventDatasource: ValueCellDataSource {
+internal final class EventDatasource: ValueCellDataSource {
+
   internal func load(events: [GHEvent]) {
-    self.set(values: events, cellClass: EventTableViewCell.self, inSection: 0)
+    self.set(values: events,
+             cellClass: EventTableViewCell.self,
+             inSection: 0)
   }
 
-  internal func load(receivedEvents: [GHEvent]) {
-    self.set(values: receivedEvents, cellClass: EventTableViewCell.self, inSection: 0)
+  fileprivate func set(event: GHEvent, and image: UIImage, at indexPath: IndexPath) {
+    self.set(value: event,
+             cellClass: EventTableViewCell.self,
+             inSection: indexPath.section,
+             row: indexPath.row)
   }
 
   override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
@@ -26,5 +32,4 @@ internal final class ActivitesEventDatasource: ValueCellDataSource {
       assertionFailure("Unrecognized combo: \(cell), \(value)")
     }
   }
-
 }

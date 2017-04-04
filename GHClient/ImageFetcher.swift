@@ -15,19 +15,13 @@ internal struct ImageFetcher {
   internal static func image(of url: URL) -> SignalProducer<UIImage, AnyError> {
     return SignalProducer{ (observer, disposable) in
       let req = ImageFetcherRequest(url: url)
-      let op = AppEnvironment.current.imagePipeline.operation(with: req, context: nil, completion: { (result, error) in
-        guard
-          let image = result?.imageContainer.image
-          else {
-            observer.send(error: AnyError(error!))
-            return
-        }
+      let op = AppEnvironment.current.imagePipeline.operation(with: req, context: nil) { (result, error) in
+        guard let image = result?.imageContainer.image
+          else {observer.send(error: AnyError(error!));return}
         observer.send(value: image)
         observer.sendCompleted()
-      })
-      disposable += {
-        op.cancel()
       }
+      disposable += { op.cancel() }
       AppEnvironment.current.imagePipeline.fetchImage(with: op)
     }
   }

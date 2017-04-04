@@ -99,6 +99,28 @@ internal enum GHEventDescriber {
       urls[prFullName] = prURL.appendingPathComponent(URLTargetStrings.pullRequest.rawValue)
       desc = "\(actor) \(action) pull request \(prFullName)"
 
+    case .IssuesEvent:
+      guard let iePayload = event.payload as? IssueEventPayload else { break }
+      let action = iePayload.action
+      desc = "\(actor) \(action) issue \(repoName ?? "")"
+
+    case .PullRequestReviewCommentEvent:
+      guard let icePayload = event.payload as? PullRequestReviewCommentEventPayload else { break }
+      let action = icePayload.action
+      let repo = icePayload.pull_request.base.repo.full_name
+      let prNumber = icePayload.pull_request.numbers.number
+      let prName = "\(repo)#\(prNumber)"
+      let prURL = icePayload.pull_request.urls.url
+      urls[prName] = prURL.appendingPathComponent(URLTargetStrings.pullRequest.rawValue)
+      desc = "\(actor) \(action) comment on pull request \(prName)"
+
+    case .CreateEvent:
+      guard let payload = event.payload as? CreateEventPayload else { break }
+      desc = "\(actor) created \(payload.ref_type) \(payload.ref ?? "") at \(repoName ?? "")"
+
+    case .ReleaseEvent:
+      desc = "\(actor) released at \(repoName ?? "")"
+
     default:
       break
     }
@@ -131,8 +153,8 @@ extension GHEventDescriber {
       vc.set(issue: targetURL)
       return vc
     case .pullRequest:
-      let vc = IssueTableViewController.instantiate()
-      vc.set(issue: targetURL)
+      let vc = PullRequestTableViewController.instantiate()
+      vc.set(pullRequest: targetURL)
       return vc
     }
   }
