@@ -35,7 +35,7 @@ internal final class EventTableViewCell: UITableViewCell , ValueCell {
     } else {
       self.uninstallPayloadDisplay()
     }
-    let desc = value.eventDescription
+    let desc = value.summary
     if desc.desc.isEmpty == false {
       self.eventDesc.text = desc.desc
       let nsDesc = desc.desc as NSString

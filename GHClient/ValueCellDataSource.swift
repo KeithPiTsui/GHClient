@@ -237,7 +237,6 @@ open class ValueCellDataSource: NSObject, UICollectionViewDataSource, UITableVie
   }
 
   public final func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print("rows number: \(self.values[section].count)")
     return self.values[section].count
   }
 
