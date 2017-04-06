@@ -20,9 +20,17 @@ extension GHEvent {
 fileprivate enum URLTargetStrings: String {
   case user
   case repository
-  case branchContent
   case issue
+  case commit
+  case branchContent
   case pullRequest
+  case organization
+  case team
+  case label
+  case milestone
+  case projectCard
+  case project
+  case projectColumn
 }
 
 
@@ -36,13 +44,13 @@ internal enum GHEventDescriber {
     var urls: [String: URL] = [:]
 
     let actor = event.actor.login
-    let actorURL = event.actor.url
-    urls[actor] = actorURL.appendingPathComponent(URLTargetStrings.user.rawValue)
+    let actorURL = event.actor.url.appendingPathComponent(URLTargetStrings.user.rawValue)
+    urls[actor] = actorURL
 
     let repoName = event.repo?.name
-    let repoURL = event.repo?.url
+    let repoURL = event.repo?.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
     if let rn = repoName {
-      urls[rn] = repoURL?.appendingPathComponent(URLTargetStrings.repository.rawValue)
+      urls[rn] = repoURL
     }
 
     switch event.type {
@@ -123,52 +131,49 @@ internal enum GHEventDescriber {
     case .CommitCommentEvent:
       guard let payload = event.payload as? CommitCommentEventPayload else { break }
       let commitID = payload.comment.commit_id.last(8)
-      let commitURL = payload.repository?.urls.commits_url.appendingPathComponent(payload.comment.commit_id)
+      let commitURL = payload.repository?.urls.commits_url
+        .appendingPathComponent(payload.comment.commit_id)
+        .appendingPathComponent(URLTargetStrings.commit.rawValue)
       urls[commitID] = commitURL
       desc = "\(actor) commented on commit \(commitID) of \(repoName ?? "")"
 
     case .GollumEvent:
       desc = "\(actor) updated pages on \(repoName ?? "")"
 
-    case .IssuesEvent:
-      guard  let payload = event.payload as? IssueEventPayload else { break }
-      urls["issue"] = payload.issue.urls.url
-      desc = "\(actor) \(payload.action) issue on \(repoName ?? "")"
-
     case .LabelEvent:
       guard  let payload = event.payload as? LabelEventPayload else { break }
       let label = payload.label.name
-      let labelURL = payload.label.url
+      let labelURL = payload.label.url.appendingPathComponent(URLTargetStrings.label.rawValue)
       urls[label] = labelURL
       let repoName = payload.repository.full_name
-      let repoURL = payload.repository.urls.url
+      let repoURL = payload.repository.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
       urls[repoName] = repoURL
       desc = "\(actor) \(payload.action) label \(label) on \(repoName)"
 
     case .MemberEvent:
       guard let payload = event.payload as? MemberEventPayload else { break }
       let user = payload.member.login
-      let userURL = payload.member.urls.url
+      let userURL = payload.member.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[user] = userURL
       desc = "\(actor) \(payload.action) \(user) to \(repoName ?? "")"
 
     case .MembershipEvent:
       guard let payload = event.payload as? MembershipEventPayload else { break }
       let member = payload.member.login
-      let memberURL = payload.member.urls.url
+      let memberURL = payload.member.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[member] = memberURL
       let team = payload.team.name
-      let teamURL =  payload.team.url
+      let teamURL =  payload.team.url.appendingPathComponent(URLTargetStrings.team.rawValue)
       urls[team] = teamURL
       let org = payload.organization.login
-      let orgURL = payload.organization.url
+      let orgURL = payload.organization.url.appendingPathComponent(URLTargetStrings.organization.rawValue)
       urls[org] = orgURL
       desc = "\(actor) \(payload.action) \(member) of \(team) in \(org)"
 
     case .MilestoneEvent:
       guard let payload = event.payload as? MilestoneEventPayload else { break }
       let milestone = "mile stone"
-      let miletoneURL = payload.milestone.url
+      let miletoneURL = payload.milestone.url.appendingPathComponent(URLTargetStrings.milestone.rawValue)
       urls[milestone] = miletoneURL
       desc = "\(actor) \(payload.action) \(milestone) of \(repoName ?? "")"
 
@@ -176,10 +181,10 @@ internal enum GHEventDescriber {
       guard let payload = event.payload as? OrganizationEventPayload else { break }
       let action = payload.action
       let member = payload.membership.user.login
-      let memberURL = payload.membership.user.urls.url
+      let memberURL = payload.membership.user.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[member] = memberURL
       let org = payload.organization.login
-      let orgURL = payload.organization.url
+      let orgURL = payload.organization.url.appendingPathComponent(URLTargetStrings.organization.rawValue)
       urls[org] = orgURL
 
       if action == "member_added" {
@@ -188,7 +193,7 @@ internal enum GHEventDescriber {
         desc = "\(actor) remove \(member) from \(org)"
       } else if action == "member_invited" {
         let user = payload.invitation.login
-        let userURL = AppEnvironment.current.apiService.userURL(with: user)
+        let userURL = AppEnvironment.current.apiService.userURL(with: user).appendingPathComponent(URLTargetStrings.user.rawValue)
         urls[user] = userURL
         desc = "\(actor) invited \(user) to \(org)"
       }
@@ -196,91 +201,96 @@ internal enum GHEventDescriber {
     case .OrgBlockEvent:
       guard let payload = event.payload as? OrgBlockEventPayload else { break }
       let org = payload.organization.login
-      let orgURL = payload.organization.url
+      let orgURL = payload.organization.url.appendingPathComponent(URLTargetStrings.organization.rawValue)
       urls[org] = orgURL
       let user = payload.blocked_user.login
-      let userURL = payload.blocked_user.urls.url
+      let userURL = payload.blocked_user.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[user] = userURL
       desc = "\(org) \(payload.action) \(user)"
 
     case .ProjectCardEvent:
       guard let payload = event.payload as? ProjectCardEventPayload else { break }
       let projectCard = "project card"
-      let projectCardURL = payload.project_card.url
+      let projectCardURL = payload.project_card.url.appendingPathComponent(URLTargetStrings.projectCard.rawValue)
       urls[projectCard] = projectCardURL
       let org = payload.organization.login
-      let orgURL = payload.organization.url
+      let orgURL = payload.organization.url.appendingPathComponent(URLTargetStrings.organization.rawValue)
       urls[org] = orgURL
       desc = "\(actor) \(payload.action) \(projectCard) of \(repoName ?? "")"
 
     case .ProjectColumnEvent:
       guard let payload = event.payload as? ProjectColumnEventPayload else { break }
       let user = payload.sender.login
-      let userURL = payload.sender.urls.url
+      let userURL = payload.sender.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[user] = userURL
       let projectColumn = payload.project_column.name
-      let projectColumnURL = payload.project_column.url
+      let projectColumnURL = payload.project_column.url.appendingPathComponent(URLTargetStrings.projectColumn.rawValue)
       urls[projectColumn] = projectColumnURL
       let reponame = payload.repository.full_name
-      let repoURL = payload.repository.urls.url
+      let repoURL = payload.repository.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
       urls[reponame] = repoURL
       desc = "\(user) \(payload.action) project column \(projectColumn) on \(reponame)"
 
     case .ProjectEvent:
       guard let payload = event.payload as? ProjectEventPayload else { break }
       let user = payload.sender.login
-      let userURL = payload.sender.urls.url
+      let userURL = payload.sender.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[user] = userURL
       let project = payload.project.name
-      let projectURL = payload.project.url
+      let projectURL = payload.project.url.appendingPathComponent(URLTargetStrings.project.rawValue)
       urls[project] = projectURL
       let reponame = payload.repository.full_name
-      let repoURL = payload.repository.urls.url
+      let repoURL = payload.repository.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
       urls[reponame] = repoURL
       desc = "\(user) \(payload.action) project \(project) on \(reponame)"
 
     case .PublicEvent:
       guard let payload = event.payload as? PublicEventPayload else { break }
       let user = payload.sender.login
-      let userURL = payload.sender.urls.url
+      let userURL = payload.sender.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[user] = userURL
       let reponame = payload.repository.full_name
-      let repoURL = payload.repository.urls.url
+      let repoURL = payload.repository.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
       urls[reponame] = repoURL
       desc = "\(user) published \(reponame)"
 
     case .PullRequestReviewEvent:
       guard let payload = event.payload as? PullRequestReviewEventPayload else { break }
       let user = payload.sender.login
-      let userURL = payload.sender.urls.url
+      let userURL = payload.sender.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[user] = userURL
       let reponame = payload.repository.full_name
-      let repoURL = payload.repository.urls.url
+      let repoURL = payload.repository.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
       urls[reponame] = repoURL
       let pullRequest = "#\(payload.pull_request.numbers.number)"
-      let pullRequestURL = payload.pull_request.urls.url
+      let pullRequestURL = payload.pull_request.urls.url.appendingPathComponent(URLTargetStrings.pullRequest.rawValue)
       urls[pullRequest] = pullRequestURL
       desc = "\(user) \(payload.action) review of \(reponame)\(pullRequest)"
 
     case .RepositoryEvent:
       guard let payload = event.payload as? RepositoryEventPayload else { break }
       let user = payload.sender.login
-      let userURL = payload.sender.urls.url
+      let userURL = payload.sender.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[user] = userURL
       let reponame = payload.repository.full_name
-      let repoURL = payload.repository.urls.url
+      let repoURL = payload.repository.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
       urls[reponame] = repoURL
       desc = "\(user) \(payload.action) \(reponame)"
 
     case .WatchEvent:
       guard let payload = event.payload as? WatchEventPayload else { break }
       let user = payload.sender.login
-      let userURL = payload.sender.urls.url
+      let userURL = payload.sender.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[user] = userURL
       let reponame = payload.repository.full_name
-      let repoURL = payload.repository.urls.url
+      let repoURL = payload.repository.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
       urls[reponame] = repoURL
       desc = "\(user) starred \(reponame)"
+
+    case .IssuesEvent:
+      guard let payload = event.payload as? IssueEventPayload else { break }
+      urls["issue"] = payload.issue.urls.url.appendingPathComponent(URLTargetStrings.issue.rawValue)
+      desc = "\(actor) \(payload.action) issue on \(repoName ?? "")"
 
     default:
       break
@@ -317,6 +327,8 @@ extension GHEventDescriber {
       let vc = PullRequestTableViewController.instantiate()
       vc.set(pullRequest: targetURL)
       return vc
+    default:
+      return nil
     }
   }
 }
