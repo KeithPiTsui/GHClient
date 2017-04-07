@@ -23,6 +23,12 @@ class ViewController: UIViewController {
     codeTextView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
     guard let str = try? String(contentsOf: Bundle.main.url(forResource: "demo", withExtension: "txt")!) else { return }
     codeTextView.text = str
+
+    let langs = SyntaxHighlightParser.supportedLanguages
+    print("langs: \(langs)")
+
+    let themes = SyntaxHighlightRender.availableThemes
+    print("themes: \(themes)")
   }
 
 }

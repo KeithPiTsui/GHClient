@@ -15,7 +15,7 @@ public final class KTCodeTextStorage: NSTextStorage {
   fileprivate let highlighter = SyntaxHighlightRender()
 
   /// Language syntax to use for highlighting. Providing nil will disable highlighting.
-  public var language : String? { didSet{ highlight(NSMakeRange(0, content.length)) } }
+  public var language : String = "c" { didSet{ highlight(NSMakeRange(0, content.length)) } }
 
   /// Returns a standard String based on the current one.
   public override var string: String { get { return content.string } }
@@ -61,7 +61,7 @@ public final class KTCodeTextStorage: NSTextStorage {
   /// Called internally everytime the string is modified.
   public override func processEditing() {
     super.processEditing()
-    if language != nil && self.editedMask.contains(.editedCharacters) {
+    if self.editedMask.contains(.editedCharacters) {
       let string = self.string as NSString
       let range = string.paragraphRange(for: editedRange)
       self.highlight(range)

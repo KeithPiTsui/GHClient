@@ -280,6 +280,8 @@
 		0EBA39471E9775C400C9D0A1 /* Highlighter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A2811E7FABAC00D8EED6 /* Highlighter.framework */; };
 		0EBA39481E9775C400C9D0A1 /* Highlighter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A2811E7FABAC00D8EED6 /* Highlighter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EBA394C1E9777AC00C9D0A1 /* demo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0EBA391F1E97739100C9D0A1 /* demo.txt */; };
+		0EBA394E1E97787000C9D0A1 /* SyntaxHighlightParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA394D1E97787000C9D0A1 /* SyntaxHighlightParser.swift */; };
+		0EBA39501E97789500C9D0A1 /* SyntaxHighlightRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA394F1E97789500C9D0A1 /* SyntaxHighlightRender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -598,6 +600,8 @@
 		0EBA393A1E9775AC00C9D0A1 /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EBA393E1E9775AC00C9D0A1 /* DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTests.swift; sourceTree = "<group>"; };
 		0EBA39401E9775AC00C9D0A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EBA394D1E97787000C9D0A1 /* SyntaxHighlightParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntaxHighlightParser.swift; sourceTree = "<group>"; };
+		0EBA394F1E97789500C9D0A1 /* SyntaxHighlightRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntaxHighlightRender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -987,6 +991,8 @@
 				0EBA391B1E975F9000C9D0A1 /* KTCodeLayoutManager.swift */,
 				0EBA391D1E976D1600C9D0A1 /* KTCodeTextContainer.swift */,
 				0EBA39211E9773AA00C9D0A1 /* KTCodeTextView.swift */,
+				0EBA394D1E97787000C9D0A1 /* SyntaxHighlightParser.swift */,
+				0EBA394F1E97789500C9D0A1 /* SyntaxHighlightRender.swift */,
 			);
 			name = KTCode;
 			sourceTree = "<group>";
@@ -1448,8 +1454,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E71A49F1E7FABEB00D8EED6 /* CodeAttributedString.swift in Sources */,
+				0EBA39501E97789500C9D0A1 /* SyntaxHighlightRender.swift in Sources */,
 				0EBA39221E9773AA00C9D0A1 /* KTCodeTextView.swift in Sources */,
 				0E71A4A21E7FABEB00D8EED6 /* Theme.swift in Sources */,
+				0EBA394E1E97787000C9D0A1 /* SyntaxHighlightParser.swift in Sources */,
 				0EBA39191E974BA900C9D0A1 /* KTCodeTextStorage.swift in Sources */,
 				0EBA391E1E976D1600C9D0A1 /* KTCodeTextContainer.swift in Sources */,
 				0EBA391C1E975F9000C9D0A1 /* KTCodeLayoutManager.swift in Sources */,
