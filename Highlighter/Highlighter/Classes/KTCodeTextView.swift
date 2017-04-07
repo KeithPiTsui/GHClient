@@ -11,10 +11,9 @@ import UIKit
 public final class KTCodeTextView: UITextView {
 
   fileprivate let ktTextStorage: KTCodeTextStorage
-  public var language: String = "c" {didSet{self.ktTextStorage.language = self.language}}
 
-  public override init(frame: CGRect = CGRect.zero, textContainer: NSTextContainer? = nil) {
-    self.ktTextStorage = KTCodeTextStorage()
+  public init(language: String) {
+    self.ktTextStorage = KTCodeTextStorage(language: language)
     let layoutManager = KTCodeLayoutManager()
     self.ktTextStorage.addLayoutManager(layoutManager)
     let textContainer = KTCodeTextContainer(size: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
@@ -23,11 +22,8 @@ public final class KTCodeTextView: UITextView {
     layoutManager.lineHeight = 1.1
     layoutManager.showParagraphNumbers = true
     layoutManager.tabWidth = 4
-    self.ktTextStorage.language = self.language
 
-    super.init(frame: frame, textContainer: textContainer)
-
-    self.autocapitalizationType = .none
+    super.init(frame: CGRect.zero, textContainer: textContainer)
   }
   
   required public init?(coder aDecoder: NSCoder) {

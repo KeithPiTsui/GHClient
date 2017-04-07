@@ -30,41 +30,41 @@ public final class KTCodeLayoutManager: NSLayoutManager {
     if self.showParagraphNumbers {
       leftInset += KTCodeLayoutManager.paragraphNumberInset
     }
-    guard let str = self.textStorage?.string else { fatalError("Have not set text storage for this layout manager") }
-    let text = str as NSString
-    let paragraphRange = text.paragraphRange(for: NSRange(location: charaterIndex, length: 0))
-    if paragraphRange.location < charaterIndex {
-      // Get the first glyph index in the paragraph
-      let firstGlyphIndex = self .glyphIndexForCharacter(at: paragraphRange.location)
-
-      // Get the first line of the paragraph
-      var firstLineGlyphRange = NSRange()
-      self .lineFragmentRect(forGlyphAt: firstGlyphIndex, effectiveRange: &firstLineGlyphRange)
-      let firstLineCharRange = self .characterRange(forGlyphRange: firstLineGlyphRange, actualGlyphRange: nil)
-
-      // Find the first wrapping char and wrap one char behind
-      var wrappingCharIndex = NSNotFound
-      let cs = CharacterSet(charactersIn: "({[")
-      wrappingCharIndex = text.rangeOfCharacter(from: cs, 
-                                                options: [],
-                                                range: firstLineCharRange).location
-      if wrappingCharIndex != NSNotFound {
-        wrappingCharIndex += 1
-      } else { // Alternatively, fall back to the first text char
-        wrappingCharIndex = text.rangeOfCharacter(from: CharacterSet.whitespaces.inverted,
-                                                  options: [],
-                                                  range: firstLineCharRange).location
-        if wrappingCharIndex != NSNotFound {
-          wrappingCharIndex += 4
-        }
-      }
-
-      // Wrapping char found, determine indent
-      if wrappingCharIndex != NSNotFound  {
-        let firstTextGlyphIndex = self.glyphIndexForCharacter(at: wrappingCharIndex)
-        leftInset += self.location(forGlyphAt: firstTextGlyphIndex).x - self.location(forGlyphAt: firstGlyphIndex).x
-      }
-    }
+//    guard let str = self.textStorage?.string else { fatalError("Have not set text storage for this layout manager") }
+//    let text = str as NSString
+//    let paragraphRange = text.paragraphRange(for: NSRange(location: charaterIndex, length: 0))
+//    if paragraphRange.location < charaterIndex {
+//      // Get the first glyph index in the paragraph
+//      let firstGlyphIndex = self .glyphIndexForCharacter(at: paragraphRange.location)
+//
+//      // Get the first line of the paragraph
+//      var firstLineGlyphRange = NSRange()
+//      self .lineFragmentRect(forGlyphAt: firstGlyphIndex, effectiveRange: &firstLineGlyphRange)
+//      let firstLineCharRange = self .characterRange(forGlyphRange: firstLineGlyphRange, actualGlyphRange: nil)
+//
+//      // Find the first wrapping char and wrap one char behind
+//      var wrappingCharIndex = NSNotFound
+//      let cs = CharacterSet(charactersIn: "({[")
+//      wrappingCharIndex = text.rangeOfCharacter(from: cs, 
+//                                                options: [],
+//                                                range: firstLineCharRange).location
+//      if wrappingCharIndex != NSNotFound {
+//        wrappingCharIndex += 1
+//      } else { // Alternatively, fall back to the first text char
+//        wrappingCharIndex = text.rangeOfCharacter(from: CharacterSet.whitespaces.inverted,
+//                                                  options: [],
+//                                                  range: firstLineCharRange).location
+//        if wrappingCharIndex != NSNotFound {
+//          wrappingCharIndex += 4
+//        }
+//      }
+//
+//      // Wrapping char found, determine indent
+//      if wrappingCharIndex != NSNotFound  {
+//        let firstTextGlyphIndex = self.glyphIndexForCharacter(at: wrappingCharIndex)
+//        leftInset += self.location(forGlyphAt: firstTextGlyphIndex).x - self.location(forGlyphAt: firstGlyphIndex).x
+//      }
+//    }
 
     return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: 0)
   }

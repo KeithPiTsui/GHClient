@@ -23,18 +23,13 @@ internal final class HighlighterViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    guard  let lang = language else { return }
 
-    self.textView = KTCodeTextView() //UITextView(frame: codeViewContainer.bounds, textContainer: textContainer)
+    self.textView = KTCodeTextView(language: lang)
     self.textView.isEditable = false
-    self.textView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    self.textView.autocorrectionType = .no
-    self.textView.autocapitalizationType = .none
-    self.textView.textColor = UIColor.white
     self.codeViewContainer.addSubview(self.textView)
+    self.textView.fillupSuperView()
     self.textView.text = self.code
-    if let lang = self.language {
-      self.textView.language = lang
-    }
   }
 
   override func viewDidAppear(_ animated: Bool) {

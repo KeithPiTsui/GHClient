@@ -10,12 +10,21 @@ import Foundation
 
 public final class KTCodeTextStorage: NSTextStorage {
   /// Internal Storage
-  fileprivate let content = NSMutableAttributedString()
+  fileprivate let content = NSTextStorage() //NSMutableAttributedString()
 
   fileprivate let highlighter = SyntaxHighlightRender()
 
   /// Language syntax to use for highlighting. Providing nil will disable highlighting.
-  public var language : String = "c" { didSet{ highlight(NSMakeRange(0, content.length)) } }
+  public var language : String { didSet{ highlight(NSMakeRange(0, content.length)) } }
+
+  public init(language: String) {
+    self.language = language
+    super.init()
+  }
+  
+  required public init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   /// Returns a standard String based on the current one.
   public override var string: String { get { return content.string } }
@@ -68,11 +77,15 @@ public final class KTCodeTextStorage: NSTextStorage {
     }
   }
 
+  let serialQueue = DispatchQueue(label: "highlighter_serial_queue")
+
 
   fileprivate func highlight(_ range: NSRange) {
+    guard self.language.isEmpty == false else { return }
+    guard self.content.length > 0 else { return }
     let string = (self.string as NSString)
     let line = string.substring(with: range)
-    DispatchQueue.global().async {
+    self.serialQueue.async {
       guard let tmpStrg = self.highlighter.highlight(line, as: self.language) else { return }
       DispatchQueue.main.async {
         //Checks to see if this highlighting is still valid.

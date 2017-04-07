@@ -34,7 +34,6 @@ public final class SyntaxHighlightParser {
   }()
 
   public static func parse(_ code: String, as languageName: String) -> String? {
-//    guard SyntaxHighlightParser.supportedLanguages.contains(languageName) else { return nil }
     let fixedCode = code
       .replacingOccurrences(of: "\\",with: "\\\\")
       .replacingOccurrences(of: "\'",with: "\\\'")
