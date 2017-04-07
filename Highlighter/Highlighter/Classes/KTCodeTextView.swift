@@ -11,22 +11,24 @@ import UIKit
 public final class KTCodeTextView: UITextView {
 
   fileprivate let ktTextStorage: KTCodeTextStorage
+  public var language: String = "c"
 
   public override init(frame: CGRect = CGRect.zero, textContainer: NSTextContainer? = nil) {
     self.ktTextStorage = KTCodeTextStorage()
     let layoutManager = KTCodeLayoutManager()
-    layoutManager.lineHeight = 1.1
-    layoutManager.showParagraphNumbers = true
-    layoutManager.tabWidth = 4
     self.ktTextStorage.addLayoutManager(layoutManager)
     let textContainer = KTCodeTextContainer(size: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
     layoutManager.addTextContainer(textContainer)
+
+    layoutManager.lineHeight = 1.1
+    layoutManager.showParagraphNumbers = true
+    layoutManager.tabWidth = 4
+    self.ktTextStorage.language = self.language
+
     super.init(frame: frame, textContainer: textContainer)
   }
   
   required public init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-
-
 }

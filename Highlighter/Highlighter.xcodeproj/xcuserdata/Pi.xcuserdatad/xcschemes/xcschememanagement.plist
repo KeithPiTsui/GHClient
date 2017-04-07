@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Demo.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>59</integer>
+		</dict>
 		<key>Highlighter.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>0E71A2891E7FABAC00D8EED6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0EBA39261E9775AC00C9D0A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0EBA39391E9775AC00C9D0A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
