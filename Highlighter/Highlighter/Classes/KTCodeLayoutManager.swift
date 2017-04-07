@@ -9,7 +9,7 @@
 import UIKit
 
 public final class KTCodeLayoutManager: NSLayoutManager {
-  public static let paragraphNumberInset: CGFloat = 16
+  public static let paragraphNumberInset: CGFloat = 24
   public var showParagraphNumbers = false { didSet{ self.invalidateWholeLayout() } }
   public var tabWidth: CGFloat = 2 { didSet{ self.invalidateWholeLayout() } }
   public var lineHeight: CGFloat = 1 { didSet{ self.invalidateWholeLayout() } }
