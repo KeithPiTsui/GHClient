@@ -27,32 +27,48 @@ private typealias RPThemeDict = [String:[String:AnyObject]]
 private typealias RPThemeStringDict = [String:[String:String]]
 
 /// Theme parser, can be used to configure the theme parameters.
-open class Theme {
-  internal let theme : String
+public final class Theme {
+
+  public static let `default` = theme(of: "pojoaque")!
+
+  public static func theme(of name: String) -> Theme? {
+    let bundle = Bundle(for: Theme.self)
+    guard
+    let cssFilePath = bundle.path(forResource: name+".min", ofType: "css"),
+    let css = try? String(contentsOfFile: cssFilePath)
+      else { return nil }
+    return Theme(css: css)
+  }
+
+
+
+
+
+  internal let css : String
   internal var lightTheme : String!
 
   /// Regular font to be used by this theme
-  open var codeFont : RPFont!
+  public var codeFont : RPFont!
   /// Bold font to be used by this theme
-  open var boldCodeFont : RPFont!
+  public var boldCodeFont : RPFont!
   /// Italic font to be used by this theme
-  open var italicCodeFont : RPFont!
+  public var italicCodeFont : RPFont!
 
   fileprivate var themeDict : RPThemeDict!
   fileprivate var strippedTheme : RPThemeStringDict!
 
   /// Default background color for the current theme.
-  open var themeBackgroundColor : RPColor!
+  public var themeBackgroundColor : RPColor!
 
   /**
    Initialize the theme with the given theme name.
 
    - parameter themeString: Theme to use.
    */
-  init(themeString: String) {
-    theme = themeString
+  init(css: String) {
+    self.css = css
     setCodeFont(RPFont(name: "Courier", size: 14)!)
-    strippedTheme = stripTheme(themeString)
+    strippedTheme = stripTheme(css)
     lightTheme = strippedThemeToString(strippedTheme)
     themeDict = strippedThemeToTheme(strippedTheme)
     var bkgColorHex = strippedTheme[".hljs"]?["background"]
@@ -85,7 +101,7 @@ open class Theme {
 
    - parameter font: UIFont (iOS or tvOS) or NSFont (OSX)
    */
-  open func setCodeFont(_ font: RPFont)
+  public func setCodeFont(_ font: RPFont)
   {
     codeFont = font
 

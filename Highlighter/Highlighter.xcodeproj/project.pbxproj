@@ -266,6 +266,11 @@
 		0E71A4A01E7FABEB00D8EED6 /* Highlightr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A39F1E7FABEA00D8EED6 /* Highlightr.swift */; };
 		0E71A4A11E7FABEB00D8EED6 /* HTMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A3A01E7FABEA00D8EED6 /* HTMLUtils.swift */; };
 		0E71A4A21E7FABEB00D8EED6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A3A11E7FABEA00D8EED6 /* Theme.swift */; };
+		0EBA39191E974BA900C9D0A1 /* KTCodeTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA39181E974BA900C9D0A1 /* KTCodeTextStorage.swift */; };
+		0EBA391C1E975F9000C9D0A1 /* KTCodeLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA391B1E975F9000C9D0A1 /* KTCodeLayoutManager.swift */; };
+		0EBA391E1E976D1600C9D0A1 /* KTCodeTextContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA391D1E976D1600C9D0A1 /* KTCodeTextContainer.swift */; };
+		0EBA39201E97739100C9D0A1 /* demo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0EBA391F1E97739100C9D0A1 /* demo.txt */; };
+		0EBA39221E9773AA00C9D0A1 /* KTCodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA39211E9773AA00C9D0A1 /* KTCodeTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -541,6 +546,11 @@
 		0E71A39F1E7FABEA00D8EED6 /* Highlightr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlightr.swift; sourceTree = "<group>"; };
 		0E71A3A01E7FABEA00D8EED6 /* HTMLUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLUtils.swift; sourceTree = "<group>"; };
 		0E71A3A11E7FABEA00D8EED6 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		0EBA39181E974BA900C9D0A1 /* KTCodeTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTCodeTextStorage.swift; sourceTree = "<group>"; };
+		0EBA391B1E975F9000C9D0A1 /* KTCodeLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTCodeLayoutManager.swift; sourceTree = "<group>"; };
+		0EBA391D1E976D1600C9D0A1 /* KTCodeTextContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTCodeTextContainer.swift; sourceTree = "<group>"; };
+		0EBA391F1E97739100C9D0A1 /* demo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo.txt; sourceTree = "<group>"; };
+		0EBA39211E9773AA00C9D0A1 /* KTCodeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTCodeTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -894,12 +904,25 @@
 		0E71A39C1E7FABEA00D8EED6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0EBA391A1E974E8500C9D0A1 /* KTCode */,
 				0E71A39E1E7FABEA00D8EED6 /* CodeAttributedString.swift */,
 				0E71A39F1E7FABEA00D8EED6 /* Highlightr.swift */,
 				0E71A3A01E7FABEA00D8EED6 /* HTMLUtils.swift */,
 				0E71A3A11E7FABEA00D8EED6 /* Theme.swift */,
+				0EBA391F1E97739100C9D0A1 /* demo.txt */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		0EBA391A1E974E8500C9D0A1 /* KTCode */ = {
+			isa = PBXGroup;
+			children = (
+				0EBA39181E974BA900C9D0A1 /* KTCodeTextStorage.swift */,
+				0EBA391B1E975F9000C9D0A1 /* KTCodeLayoutManager.swift */,
+				0EBA391D1E976D1600C9D0A1 /* KTCodeTextContainer.swift */,
+				0EBA39211E9773AA00C9D0A1 /* KTCodeTextView.swift */,
+			);
+			name = KTCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1012,6 +1035,7 @@
 				0E71A49C1E7FABEB00D8EED6 /* xt256.min.css in Resources */,
 				0E71A3DF1E7FABEA00D8EED6 /* gauss.min.js in Resources */,
 				0E71A46E1E7FABEB00D8EED6 /* dark.min.css in Resources */,
+				0EBA39201E97739100C9D0A1 /* demo.txt in Resources */,
 				0E71A4931E7FABEB00D8EED6 /* solarized-light.min.css in Resources */,
 				0E71A3C91E7FABEA00D8EED6 /* dart.min.js in Resources */,
 				0E71A4721E7FABEB00D8EED6 /* dracula.min.css in Resources */,
@@ -1267,7 +1291,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E71A49F1E7FABEB00D8EED6 /* CodeAttributedString.swift in Sources */,
+				0EBA39221E9773AA00C9D0A1 /* KTCodeTextView.swift in Sources */,
 				0E71A4A21E7FABEB00D8EED6 /* Theme.swift in Sources */,
+				0EBA39191E974BA900C9D0A1 /* KTCodeTextStorage.swift in Sources */,
+				0EBA391E1E976D1600C9D0A1 /* KTCodeTextContainer.swift in Sources */,
+				0EBA391C1E975F9000C9D0A1 /* KTCodeLayoutManager.swift in Sources */,
 				0E71A4A11E7FABEB00D8EED6 /* HTMLUtils.swift in Sources */,
 				0E71A4A01E7FABEB00D8EED6 /* Highlightr.swift in Sources */,
 			);
@@ -1474,6 +1502,7 @@
 				0E71A2971E7FABAC00D8EED6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E71A2981E7FABAC00D8EED6 /* Build configuration list for PBXNativeTarget "HighlighterTests" */ = {
 			isa = XCConfigurationList;
@@ -1482,6 +1511,7 @@
 				0E71A29A1E7FABAC00D8EED6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
