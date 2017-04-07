@@ -167,6 +167,15 @@ extension KTCodeLayoutManager {
         self.drawParagraphNumber(for: paragraphRange, lineFragmentRect: lineFragmentRect, at: origin)
       }
 
+      // Draw a vertical line after number
+      var verticalLineRect = CGRect.zero
+      verticalLineRect.size.width = 1
+      verticalLineRect.size.height = lineFragmentRect.height
+      verticalLineRect.origin = lineFragmentRect.origin
+      let path = UIBezierPath(rect: verticalLineRect)
+      UIColor.gray.set()
+      path.stroke()
+
       // Advance
       glyphIndex = NSMaxRange(glyphLineRange)
     }
