@@ -9,13 +9,12 @@
 import UIKit
 
 public final class KTCodeLayoutManager: NSLayoutManager {
-  public static let paragraphNumberInset: CGFloat = 24
+  internal var paragraphNumberInset: CGFloat = 24 { didSet{ self.invalidateWholeLayout() } }
   public var showParagraphNumbers = false { didSet{ self.invalidateWholeLayout() } }
-  public var tabWidth: CGFloat = 2 { didSet{ self.invalidateWholeLayout() } }
   public var lineHeight: CGFloat = 1 { didSet{ self.invalidateWholeLayout() } }
 
 
-  fileprivate func invalidateWholeLayout() {
+  internal func invalidateWholeLayout() {
       guard let textStorage = self.textStorage else { fatalError("Have not set text storage for this layout manager") }
       self.invalidateLayout(forCharacterRange: NSRange(location: 0, length: textStorage.length),
                             actualCharacterRange: nil)
@@ -28,44 +27,8 @@ public final class KTCodeLayoutManager: NSLayoutManager {
   public func insetsForLine(startingAt charaterIndex: Int) -> UIEdgeInsets {
     var leftInset: CGFloat = 0;
     if self.showParagraphNumbers {
-      leftInset += KTCodeLayoutManager.paragraphNumberInset
+      leftInset += self.paragraphNumberInset
     }
-//    guard let str = self.textStorage?.string else { fatalError("Have not set text storage for this layout manager") }
-//    let text = str as NSString
-//    let paragraphRange = text.paragraphRange(for: NSRange(location: charaterIndex, length: 0))
-//    if paragraphRange.location < charaterIndex {
-//      // Get the first glyph index in the paragraph
-//      let firstGlyphIndex = self .glyphIndexForCharacter(at: paragraphRange.location)
-//
-//      // Get the first line of the paragraph
-//      var firstLineGlyphRange = NSRange()
-//      self .lineFragmentRect(forGlyphAt: firstGlyphIndex, effectiveRange: &firstLineGlyphRange)
-//      let firstLineCharRange = self .characterRange(forGlyphRange: firstLineGlyphRange, actualGlyphRange: nil)
-//
-//      // Find the first wrapping char and wrap one char behind
-//      var wrappingCharIndex = NSNotFound
-//      let cs = CharacterSet(charactersIn: "({[")
-//      wrappingCharIndex = text.rangeOfCharacter(from: cs, 
-//                                                options: [],
-//                                                range: firstLineCharRange).location
-//      if wrappingCharIndex != NSNotFound {
-//        wrappingCharIndex += 1
-//      } else { // Alternatively, fall back to the first text char
-//        wrappingCharIndex = text.rangeOfCharacter(from: CharacterSet.whitespaces.inverted,
-//                                                  options: [],
-//                                                  range: firstLineCharRange).location
-//        if wrappingCharIndex != NSNotFound {
-//          wrappingCharIndex += 4
-//        }
-//      }
-//
-//      // Wrapping char found, determine indent
-//      if wrappingCharIndex != NSNotFound  {
-//        let firstTextGlyphIndex = self.glyphIndexForCharacter(at: wrappingCharIndex)
-//        leftInset += self.location(forGlyphAt: firstTextGlyphIndex).x - self.location(forGlyphAt: firstGlyphIndex).x
-//      }
-//    }
-
     return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: 0)
   }
 }
@@ -114,24 +77,6 @@ extension KTCodeLayoutManager: NSLayoutManagerDelegate {
       }
       return action
   }
-
-//  public func layoutManager(_ layoutManager: NSLayoutManager,
-//                            boundingBoxForControlGlyphAt glyphIndex: Int,
-//                            for textContainer: NSTextContainer,
-//                            proposedLineFragment proposedRect: CGRect,
-//                            glyphPosition: CGPoint,
-//                            characterIndex charIndex: Int)
-//    -> CGRect {
-//      guard let textStorage = self.textStorage else { fatalError("Have not set text storage for this layout manager") }
-//
-//
-//      var rect = CGRect.zero
-//      rect.origin = glyphPosition
-//      rect.size.width = glyphPosition.x
-//
-//      return rect
-//  }
-
 }
 
 
@@ -142,22 +87,51 @@ extension KTCodeLayoutManager {
   public override func drawBackground(forGlyphRange glyphsToShow: NSRange, at origin: CGPoint) {
     super.drawBackground(forGlyphRange: glyphsToShow, at: origin)
     if self.showParagraphNumbers {
-      self.drawParagraphNumbers(for: glyphsToShow, at: origin)
+      autoreleasepool{
+        self.drawLineNumberBackground(for: glyphsToShow, at: origin)
+        self.drawParagraphNumbers(for: glyphsToShow, at: origin)
+      }
+    }
+  }
+
+  /// Enumerate all lines for a glyph range
+  internal func enumerateLines(for glyphRange: NSRange, at origin: CGPoint, action: (CGRect, NSRange) -> () ) {
+    var glyphIndex = glyphRange.location
+    while glyphIndex < NSMaxRange(glyphRange) {
+      var glyphLineRange = NSRange()
+      let lineFragmentRect = self.lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: &glyphLineRange)
+      action(lineFragmentRect, glyphLineRange)
+      // Advance
+      glyphIndex = NSMaxRange(glyphLineRange)
+    }
+  }
+
+  internal func drawLineNumberBackground(for glyphRange: NSRange, at origin: CGPoint ) {
+    self.enumerateLines(for: glyphRange, at: origin) { (lineFragmentRect, _) in
+      // Draw a vertical line after number
+      let path = UIBezierPath()
+      path.lineWidth = 1
+      path.move(to: lineFragmentRect.origin)
+      path.addLine(to: CGPoint(x: lineFragmentRect.origin.x, y: lineFragmentRect.origin.y + lineFragmentRect.height))
+      UIColor.gray.set()
+      path.stroke()
+
+      // Draw background color for line number
+      var lineNumberArea = CGRect.zero
+      lineNumberArea.origin = lineFragmentRect.origin
+      lineNumberArea.origin.x = 0
+      lineNumberArea.size.width = lineFragmentRect.origin.x
+      lineNumberArea.size.height = lineFragmentRect.height
+      let area = UIBezierPath(rect: lineNumberArea)
+      UIColor.yellow.set()
+      area.fill()
     }
   }
 
   internal func drawParagraphNumbers(for glyphRange: NSRange, at origin: CGPoint ) {
-
     guard let textStorage = self.textStorage else { fatalError("Have not set text storage for this layout manager") }
     let text = textStorage.string as NSString
-
-    // Enumerate all lines
-    var glyphIndex = glyphRange.location
-
-    while glyphIndex < NSMaxRange(glyphRange) {
-      var glyphLineRange = NSRange()
-      let lineFragmentRect = self.lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: &glyphLineRange)
-
+    self.enumerateLines(for: glyphRange, at: origin) { (lineFragmentRect, glyphLineRange) in
       // Check for paragraph start
       let lineRange = self.characterRange(forGlyphRange: glyphLineRange, actualGlyphRange: nil)
       let paragraphRange = text.paragraphRange(for: lineRange)
@@ -166,18 +140,6 @@ extension KTCodeLayoutManager {
       if lineRange.location == paragraphRange.location {
         self.drawParagraphNumber(for: paragraphRange, lineFragmentRect: lineFragmentRect, at: origin)
       }
-
-      // Draw a vertical line after number
-      var verticalLineRect = CGRect.zero
-      verticalLineRect.size.width = 1
-      verticalLineRect.size.height = lineFragmentRect.height
-      verticalLineRect.origin = lineFragmentRect.origin
-      let path = UIBezierPath(rect: verticalLineRect)
-      UIColor.gray.set()
-      path.stroke()
-
-      // Advance
-      glyphIndex = NSMaxRange(glyphLineRange)
     }
   }
 

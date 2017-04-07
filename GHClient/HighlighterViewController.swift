@@ -27,6 +27,7 @@ internal final class HighlighterViewController: UIViewController {
 
     self.textView = KTCodeTextView(language: lang)
     self.textView.isEditable = false
+    self.textView.showParagraphNumbers = true
     self.codeViewContainer.addSubview(self.textView)
     self.textView.fillupSuperView()
     self.textView.text = self.code
