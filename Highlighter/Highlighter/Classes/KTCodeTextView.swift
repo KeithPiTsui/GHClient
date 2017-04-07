@@ -11,7 +11,7 @@ import UIKit
 public final class KTCodeTextView: UITextView {
 
   fileprivate let ktTextStorage: KTCodeTextStorage
-  public var language: String = "c"
+  public var language: String = "c" {didSet{self.ktTextStorage.language = self.language}}
 
   public override init(frame: CGRect = CGRect.zero, textContainer: NSTextContainer? = nil) {
     self.ktTextStorage = KTCodeTextStorage()
@@ -26,6 +26,8 @@ public final class KTCodeTextView: UITextView {
     self.ktTextStorage.language = self.language
 
     super.init(frame: frame, textContainer: textContainer)
+
+    self.autocapitalizationType = .none
   }
   
   required public init?(coder aDecoder: NSCoder) {

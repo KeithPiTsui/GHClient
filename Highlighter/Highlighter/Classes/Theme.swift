@@ -29,7 +29,7 @@ private typealias RPThemeStringDict = [String:[String:String]]
 /// Theme parser, can be used to configure the theme parameters.
 public final class Theme {
 
-  public static let `default` = theme(of: "pojoaque")!
+  public static let `default` = theme(of: "xcode")!
 
   public static func theme(of name: String) -> Theme? {
     let bundle = Bundle(for: Theme.self)

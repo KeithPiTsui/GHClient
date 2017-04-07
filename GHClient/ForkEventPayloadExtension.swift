@@ -11,7 +11,7 @@ import GHAPI
 
 extension ForkEventPayload: EventPayloadTypeDisplay {
   internal var payloadView: UIView {
-    let lab = UILabel(frame: UIScreen.main.bounds)
+    let lab = UILabel()
     lab.numberOfLines = 5
     lab.text = self.forkee.desc ?? ""
     lab.sizeToFit()

@@ -262,8 +262,6 @@
 		0E71A49B1E7FABEB00D8EED6 /* xcode.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 0E71A3991E7FABEA00D8EED6 /* xcode.min.css */; };
 		0E71A49C1E7FABEB00D8EED6 /* xt256.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 0E71A39A1E7FABEA00D8EED6 /* xt256.min.css */; };
 		0E71A49D1E7FABEB00D8EED6 /* zenburn.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 0E71A39B1E7FABEA00D8EED6 /* zenburn.min.css */; };
-		0E71A49F1E7FABEB00D8EED6 /* CodeAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A39E1E7FABEA00D8EED6 /* CodeAttributedString.swift */; };
-		0E71A4A01E7FABEB00D8EED6 /* Highlightr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A39F1E7FABEA00D8EED6 /* Highlightr.swift */; };
 		0E71A4A11E7FABEB00D8EED6 /* HTMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A3A01E7FABEA00D8EED6 /* HTMLUtils.swift */; };
 		0E71A4A21E7FABEB00D8EED6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A3A11E7FABEA00D8EED6 /* Theme.swift */; };
 		0EBA39191E974BA900C9D0A1 /* KTCodeTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA39181E974BA900C9D0A1 /* KTCodeTextStorage.swift */; };
@@ -581,8 +579,6 @@
 		0E71A3991E7FABEA00D8EED6 /* xcode.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.min.css; sourceTree = "<group>"; };
 		0E71A39A1E7FABEA00D8EED6 /* xt256.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xt256.min.css; sourceTree = "<group>"; };
 		0E71A39B1E7FABEA00D8EED6 /* zenburn.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = zenburn.min.css; sourceTree = "<group>"; };
-		0E71A39E1E7FABEA00D8EED6 /* CodeAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeAttributedString.swift; sourceTree = "<group>"; };
-		0E71A39F1E7FABEA00D8EED6 /* Highlightr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlightr.swift; sourceTree = "<group>"; };
 		0E71A3A01E7FABEA00D8EED6 /* HTMLUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLUtils.swift; sourceTree = "<group>"; };
 		0E71A3A11E7FABEA00D8EED6 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		0EBA39181E974BA900C9D0A1 /* KTCodeTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTCodeTextStorage.swift; sourceTree = "<group>"; };
@@ -975,8 +971,6 @@
 			isa = PBXGroup;
 			children = (
 				0EBA391A1E974E8500C9D0A1 /* KTCode */,
-				0E71A39E1E7FABEA00D8EED6 /* CodeAttributedString.swift */,
-				0E71A39F1E7FABEA00D8EED6 /* Highlightr.swift */,
 				0E71A3A01E7FABEA00D8EED6 /* HTMLUtils.swift */,
 				0E71A3A11E7FABEA00D8EED6 /* Theme.swift */,
 				0EBA391F1E97739100C9D0A1 /* demo.txt */,
@@ -987,9 +981,9 @@
 		0EBA391A1E974E8500C9D0A1 /* KTCode */ = {
 			isa = PBXGroup;
 			children = (
-				0EBA39181E974BA900C9D0A1 /* KTCodeTextStorage.swift */,
 				0EBA391B1E975F9000C9D0A1 /* KTCodeLayoutManager.swift */,
 				0EBA391D1E976D1600C9D0A1 /* KTCodeTextContainer.swift */,
+				0EBA39181E974BA900C9D0A1 /* KTCodeTextStorage.swift */,
 				0EBA39211E9773AA00C9D0A1 /* KTCodeTextView.swift */,
 				0EBA394D1E97787000C9D0A1 /* SyntaxHighlightParser.swift */,
 				0EBA394F1E97789500C9D0A1 /* SyntaxHighlightRender.swift */,
@@ -1453,7 +1447,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E71A49F1E7FABEB00D8EED6 /* CodeAttributedString.swift in Sources */,
 				0EBA39501E97789500C9D0A1 /* SyntaxHighlightRender.swift in Sources */,
 				0EBA39221E9773AA00C9D0A1 /* KTCodeTextView.swift in Sources */,
 				0E71A4A21E7FABEB00D8EED6 /* Theme.swift in Sources */,
@@ -1462,7 +1455,6 @@
 				0EBA391E1E976D1600C9D0A1 /* KTCodeTextContainer.swift in Sources */,
 				0EBA391C1E975F9000C9D0A1 /* KTCodeLayoutManager.swift in Sources */,
 				0E71A4A11E7FABEB00D8EED6 /* HTMLUtils.swift in Sources */,
-				0E71A4A01E7FABEB00D8EED6 /* Highlightr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

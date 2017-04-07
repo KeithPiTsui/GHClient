@@ -16,7 +16,7 @@ extension PushEventPayload: EventPayloadTypeDisplay {
       let msg  = commit.message
       return str + "\n" + sha + " " + msg
     }).trimmingCharacters(in: .whitespacesAndNewlines)
-    let lab = UILabel(frame: UIScreen.main.bounds)
+    let lab = UILabel()
     lab.numberOfLines = 5
     lab.font = UIFont.systemFont(ofSize: 12)
     lab.text = str

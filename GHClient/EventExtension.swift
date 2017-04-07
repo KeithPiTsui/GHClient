@@ -303,6 +303,7 @@ internal enum GHEventDescriber {
 // MARK: -
 // MARK: ViewController for display content of part of event
 extension GHEventDescriber {
+
   internal static func viewController(for event: GHEvent, with link: URL) -> UIViewController? {
     guard let target = URLTargetStrings.init(rawValue: link.lastPathComponent) else { return nil }
     let targetURL = link.deletingLastPathComponent()
@@ -326,6 +327,10 @@ extension GHEventDescriber {
     case .pullRequest:
       let vc = PullRequestTableViewController.instantiate()
       vc.set(pullRequest: targetURL)
+      return vc
+    case .commit:
+      let vc = CommitTableViewController.instantiate()
+      vc.set(commit: targetURL)
       return vc
     default:
       return nil
