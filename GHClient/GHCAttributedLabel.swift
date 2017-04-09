@@ -117,10 +117,17 @@ internal final class GHCAttributedLabel: TTTAttributedLabel {
     self.text = urlAttachedDescription.desc
     let nsDesc = urlAttachedDescription.desc as NSString
     urlAttachedDescription.attachedURLs.forEach { (key, url) in
-      self.addLink(to: url, with: nsDesc.range(of: key))
+      var searchRange = NSRange(location: 0, length: nsDesc.length)
+      var range = nsDesc.range(of: key, options: [], range: searchRange)
+      while range.location != NSNotFound {
+        self.addLink(to: url, with: range)
+        let newLocation = range.location + range.length
+        if newLocation >= nsDesc.length { break }
+        searchRange = NSRange(location: newLocation, length: nsDesc.length - newLocation)
+        range = nsDesc.range(of: key, options: [], range: searchRange)
+      }
     }
   }
-
 }
 
 

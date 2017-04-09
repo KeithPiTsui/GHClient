@@ -25,9 +25,16 @@ internal protocol PullRequestViewModelInputs {
 
   /// Call when a user session has started.
   func userSessionStarted()
+
+  func set(pullRequest: URL)
+
+  func set(pullRequest: PullRequest)
 }
 
 internal protocol PullRequestViewModelOutputs {
+
+  var pullRequest: Signal<PullRequest, NoError> { get }
+  var commemts: Signal<[IssueComment], NoError> { get }
 
 }
 
@@ -43,6 +50,25 @@ PullRequestViewModelInputs,
 PullRequestViewModelOutputs {
 
   init() {
+    let pr1 = self.setPullRequestProperty.signal.skipNil()
+    let pr2 = self.setPullRequestURLProperty.signal.skipNil().observeInBackground()
+      .map { AppEnvironment.current.apiService.pullRequest(of: $0).single()?.value}
+      .skipNil()
+    let pr = Signal.merge(pr1, pr2)
+    self.pullRequest = Signal.combineLatest(pr, self.viewDidLoadProperty.signal).map(first)
+    self.commemts = pr.observeInBackground()
+      .map {AppEnvironment.current.apiService.pullRequestComments(of: $0).single()?.value}
+      .skipNil()
+  }
+
+  fileprivate let setPullRequestURLProperty = MutableProperty<URL?>(nil)
+  internal func set(pullRequest: URL) {
+    self.setPullRequestURLProperty.value = pullRequest
+  }
+
+  fileprivate let setPullRequestProperty = MutableProperty<PullRequest?>(nil)
+  internal func set(pullRequest: PullRequest) {
+    self.setPullRequestProperty.value = pullRequest
   }
 
   fileprivate let userSessionStartedProperty = MutableProperty(())
@@ -63,6 +89,9 @@ PullRequestViewModelOutputs {
   internal func viewWillAppear(animated: Bool) {
     self.viewWillAppearProperty.value = animated
   }
+
+  internal let pullRequest: Signal<PullRequest, NoError>
+  internal let commemts: Signal<[IssueComment], NoError>
 
   internal var inputs: PullRequestViewModelInputs { return self }
   internal var outpus: PullRequestViewModelOutputs { return self }

@@ -22,17 +22,23 @@ internal final class PullRequestTableViewController: UITableViewController {
   fileprivate let viewModel: PullRequestViewModelType = PullRequestViewModel()
   fileprivate let datasource = PullRequestDatasource()
 
-  internal func set(pullRequest: PullRequest) {
+  @IBOutlet weak var pullRequestAvatar: UIImageView!
+  @IBOutlet weak var pullRequestTitle: UILabel!
 
+  internal func set(pullRequest: PullRequest) {
+    self.viewModel.inputs.set(pullRequest: pullRequest)
   }
 
   internal func set(pullRequest: URL) {
-    
+    self.viewModel.inputs.set(pullRequest: pullRequest)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.dataSource = self.datasource
+    self.tableView.rowHeight = UITableViewAutomaticDimension
+    self.tableView.estimatedRowHeight = 120
+    self.pullRequestAvatar.tintColor = UIColor.green
     self.viewModel.inputs.viewDidLoad()
   }
   override func viewWillAppear(_ animated: Bool) {
@@ -46,5 +52,43 @@ internal final class PullRequestTableViewController: UITableViewController {
 
   override func bindViewModel() {
     super.bindViewModel()
+    self.viewModel.outpus.pullRequest.observeForUI().observeValues { [weak self] in
+      self?.pullRequestTitle.text = $0.title
+      self?.datasource.set(pullRequest: $0)
+      self?.tableView.reloadData()
+    }
+
+    self.viewModel.outpus.commemts.observeForUI().observeValues { [weak self] in
+      self?.datasource.set(comments: $0)
+      self?.tableView.reloadData()
+    }
   }
 }
+
+extension PullRequestTableViewController {
+  internal override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let value = self.datasource[indexPath]
+  }
+}
+
+extension PullRequestTableViewController: TTTAttributedLabelDelegate {
+  @objc func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+    print("\(url)")
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

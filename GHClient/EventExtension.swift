@@ -15,7 +15,7 @@ extension GHEvent {
 
 /// The cases of different strings which will be attached at the end of a url 
 /// for identifying the target view controller to go when user tapped on link.
-fileprivate enum URLTargetStrings: String {
+internal enum URLTargetStrings: String {
   case user
   case repository
   case issue
@@ -30,6 +30,7 @@ fileprivate enum URLTargetStrings: String {
   case project
   case projectColumn
   case html
+  case content
 }
 
 
@@ -104,11 +105,6 @@ internal enum GHEventDescriber {
       let prFullName = "\(prName)#\(prNum)"
       urls[prFullName] = prURL.appendingPathComponent(URLTargetStrings.pullRequest.rawValue)
       desc = "\(actor) \(action) pull request \(prFullName)"
-
-    case .IssuesEvent:
-      guard let iePayload = event.payload as? IssueEventPayload else { break }
-      let action = iePayload.action
-      desc = "\(actor) \(action) issue \(repoName ?? "")"
 
     case .PullRequestReviewCommentEvent:
       guard let icePayload = event.payload as? PullRequestReviewCommentEventPayload else { break }
@@ -288,8 +284,9 @@ internal enum GHEventDescriber {
 
     case .IssuesEvent:
       guard let payload = event.payload as? IssueEventPayload else { break }
-      urls["issue"] = payload.issue.urls.url.appendingPathComponent(URLTargetStrings.issue.rawValue)
-      desc = "\(actor) \(payload.action) issue on \(repoName ?? "")"
+      let issue = "issue#\(payload.issue.number)"
+      urls[issue] = payload.issue.urls.url.appendingPathComponent(URLTargetStrings.issue.rawValue)
+      desc = "\(actor) \(payload.action) \(issue) on \(repoName ?? "")"
 
     default:
       break

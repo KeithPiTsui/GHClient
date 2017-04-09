@@ -18,27 +18,34 @@ internal enum PullRequestDatasourceSection: Int {
 
 internal final class PullRequestDatasource: ValueCellDataSource {
 
-  internal func load(issue: Issue) {
-    let section = PullRequestDatasourceSection.details.rawValue
-    self.clearValues(section: section)
-    self.appendRow(value: issue, cellClass: IssueTableViewCell.self, toSection: section)
-    self.appendRow(value: issue.labels, cellClass: IssueLabelTableViewCell.self, toSection: section)
-    self.appendRow(value: issue.body, cellClass: IssueBodyTableViewCell.self, toSection: section)
-
+  internal func set(pullRequest: PullRequest) {
+    self.set(values: [pullRequest],
+             cellClass: PullRequestTableViewCell.self,
+             inSection: PullRequestDatasourceSection.details.rawValue)
+    let changesSection = PullRequestDatasourceSection.changes.rawValue
+    self.clearValues(section: changesSection)
+    self.appendRow(value: BasicTableViewValueCell.Style.commits,
+                   cellClass: BasicTableViewValueCell.self,
+                   toSection: changesSection)
+    self.appendRow(value: BasicTableViewValueCell.Style.files,
+                   cellClass: BasicTableViewValueCell.self,
+                   toSection: changesSection)
+    self.appendRow(value: BasicTableViewValueCell.Style.diff,
+                   cellClass: BasicTableViewValueCell.self,
+                   toSection: changesSection)
   }
 
-  internal func loadd(issueComments: [IssueComment]) {
+
+  internal func set(comments: [IssueComment]) {
     let section = PullRequestDatasourceSection.comments.rawValue
-    self.set(values: issueComments, cellClass: IssueCommentTableViewCell.self, inSection: section)
+    self.set(values: comments, cellClass: IssueCommentTableViewCell.self, inSection: section)
   }
 
   override func configureCell(tableCell cell: UITableViewCell, withValue value: Any, for indexPath: IndexPath) {
     switch (cell, value) {
-    case let (cell as IssueTableViewCell, item as Issue):
+    case let (cell as PullRequestTableViewCell, item as PullRequest):
       cell.configureWith(value: item)
-    case let (cell as IssueLabelTableViewCell, item as [Issue.ILabel]):
-      cell.configureWith(value: item)
-    case let (cell as IssueBodyTableViewCell, item as String):
+    case let (cell as BasicTableViewValueCell, item as BasicTableViewValueCell.Style):
       cell.configureWith(value: item)
     case let (cell as IssueCommentTableViewCell, item as IssueComment):
       cell.configureWith(value: item)

@@ -39,6 +39,9 @@ internal final class BasicTableViewValueCell: UITableViewCell, ValueCell {
     case commitChangeModification([Commit.CFile])
     case commitChangeAllFile([Commit.CFile])
     case commitChangeAllDiff([Commit.CFile])
+    case commits
+    case files
+    case diff
   }
 
   override func awakeFromNib() {
@@ -125,6 +128,15 @@ internal final class BasicTableViewValueCell: UITableViewCell, ValueCell {
     case .commitChangeAllFile(_):
       self.textLabel?.text = "files"
       self.imageView?.image = UIImage(named: "file")!
+    case .commits:
+      self.textLabel?.text = "Commits"
+      self.imageView?.image = UIImage(named: "git-commit")!
+    case .files:
+      self.textLabel?.text = "Files"
+      self.imageView?.image = UIImage(named: "file")!
+    case .diff:
+      self.textLabel?.text = "Diff"
+      self.imageView?.image = UIImage(named: "diff")!
     }
   }
 }

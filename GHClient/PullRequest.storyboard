@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +23,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MVA-Nz-p3H">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="git-pull-request" translatesAutoresizingMaskIntoConstraints="NO" id="MVA-Nz-p3H">
                                     <rect key="frame" x="8" y="18" width="22" height="27"/>
+                                    <color key="tintColor" red="0.0" green="0.86688267949999998" blue="0.00026537341430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="22" id="m3m-W3-QGj"/>
                                         <constraint firstAttribute="height" constant="27" id="vIe-11-nx3"/>
@@ -47,59 +49,51 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueTableViewCell" id="nQd-Cb-J7M" customClass="IssueTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="118" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PullRequestTableViewCell" rowHeight="105" id="f19-3z-pVd" customClass="PullRequestTableViewCell" customModule="GHClient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="118" width="375" height="105"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nQd-Cb-J7M" id="uZx-wa-nrh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f19-3z-pVd" id="qpV-oM-V91">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w95-jP-lMX">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9qG-jH-OW5">
                                             <rect key="frame" x="8" y="8" width="27" height="27"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="27" id="f1Z-cb-ijf"/>
-                                                <constraint firstAttribute="height" constant="27" id="hSc-XK-XHA"/>
+                                                <constraint firstAttribute="width" secondItem="9qG-jH-OW5" secondAttribute="height" multiplier="1:1" id="GZH-5P-I1H"/>
+                                                <constraint firstAttribute="width" constant="27" id="W6e-nl-B2b"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzg-Q9-5PD" customClass="TTTAttributedLabel">
-                                            <rect key="frame" x="43" y="8" width="324" height="35"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfv-NK-hDT" customClass="GHCAttributedLabel" customModule="GHClient" customModuleProvider="target">
+                                            <rect key="frame" x="43" y="8" width="324" height="88.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Gzg-Q9-5PD" secondAttribute="bottom" id="294-ur-TBo"/>
-                                        <constraint firstItem="Gzg-Q9-5PD" firstAttribute="trailing" secondItem="uZx-wa-nrh" secondAttribute="trailingMargin" id="9ms-VG-RIr"/>
-                                        <constraint firstItem="w95-jP-lMX" firstAttribute="leading" secondItem="uZx-wa-nrh" secondAttribute="leadingMargin" id="MPz-XX-Q6v"/>
-                                        <constraint firstItem="Gzg-Q9-5PD" firstAttribute="leading" secondItem="w95-jP-lMX" secondAttribute="trailing" constant="8" symbolic="YES" id="QMI-m0-y5c"/>
-                                        <constraint firstItem="Gzg-Q9-5PD" firstAttribute="top" secondItem="uZx-wa-nrh" secondAttribute="topMargin" id="cX8-tM-YUF"/>
-                                        <constraint firstItem="w95-jP-lMX" firstAttribute="top" secondItem="uZx-wa-nrh" secondAttribute="topMargin" id="lTn-yx-uZq"/>
+                                        <constraint firstItem="Yfv-NK-hDT" firstAttribute="trailing" secondItem="qpV-oM-V91" secondAttribute="trailingMargin" id="7qr-NA-cux"/>
+                                        <constraint firstItem="9qG-jH-OW5" firstAttribute="leading" secondItem="qpV-oM-V91" secondAttribute="leadingMargin" id="F0l-4I-dKd"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Yfv-NK-hDT" secondAttribute="bottom" id="KYE-yO-gez"/>
+                                        <constraint firstItem="Yfv-NK-hDT" firstAttribute="top" secondItem="9qG-jH-OW5" secondAttribute="top" id="UqK-WB-WYx"/>
+                                        <constraint firstItem="9qG-jH-OW5" firstAttribute="top" secondItem="qpV-oM-V91" secondAttribute="topMargin" id="Wuj-Re-bU4"/>
+                                        <constraint firstItem="Yfv-NK-hDT" firstAttribute="leading" secondItem="9qG-jH-OW5" secondAttribute="trailing" constant="8" symbolic="YES" id="chl-hv-Sxv"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="IssueBrief" destination="Gzg-Q9-5PD" id="eZ4-mp-8EP"/>
-                                    <outlet property="userAvatar" destination="w95-jP-lMX" id="eEO-hy-oVb"/>
+                                    <outlet property="pullRequestDesc" destination="Yfv-NK-hDT" id="Kc8-po-Ia8"/>
+                                    <outlet property="userAvatar" destination="9qG-jH-OW5" id="rUH-Vm-9s4"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueLabelTableViewCell" id="pTP-fJ-Uta" customClass="IssueLabelTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="162" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicTableViewValueCell" id="DrC-oL-MZh" customClass="BasicTableViewValueCell" customModule="GHClient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="223" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pTP-fJ-Uta" id="91K-Qp-yDv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueBodyTableViewCell" id="tc2-a3-j0G" customClass="IssueBodyTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="206" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tc2-a3-j0G" id="AJt-u2-0Pk">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DrC-oL-MZh" id="3Ee-xw-6II">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueCommentTableViewCell" rowHeight="141" id="oGM-Hn-dds" customClass="IssueCommentTableViewCell" customModule="GHClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="250" width="375" height="141"/>
+                                <rect key="frame" x="0.0" y="267" width="375" height="141"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oGM-Hn-dds" id="hIU-V4-aEt">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
@@ -158,13 +152,16 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="issueIcon" destination="MVA-Nz-p3H" id="nGz-Sf-zeD"/>
-                        <outlet property="issueTitle" destination="dtu-Gh-bXl" id="kPQ-U0-NoJ"/>
+                        <outlet property="pullRequestAvatar" destination="MVA-Nz-p3H" id="KSd-Yf-iT6"/>
+                        <outlet property="pullRequestTitle" destination="dtu-Gh-bXl" id="bCc-UP-qBx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duh-nR-D7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2783" y="-658"/>
+            <point key="canvasLocation" x="-4313" y="-868"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="git-pull-request" width="12" height="16"/>
+    </resources>
 </document>
