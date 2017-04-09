@@ -12,6 +12,8 @@ import Curry
 import Prelude
 import Ji
 
+internal typealias URLAttachedDescription = (desc: String, attachedURLs: [String: URL])
+
 internal final class GHCAttributedLabel: TTTAttributedLabel {
 
   override init(frame: CGRect = CGRect.zero) {
@@ -110,4 +112,40 @@ internal final class GHCAttributedLabel: TTTAttributedLabel {
     }
     return url
   }
+
+  internal func set(_ urlAttachedDescription: URLAttachedDescription) {
+    self.text = urlAttachedDescription.desc
+    let nsDesc = urlAttachedDescription.desc as NSString
+    urlAttachedDescription.attachedURLs.forEach { (key, url) in
+      self.addLink(to: url, with: nsDesc.range(of: key))
+    }
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,10 +9,8 @@
 import GHAPI
 
 
-internal typealias URLAttachedEventDescription = (desc: String, attachedURLs: [String: URL])
-
 extension GHEvent {
-  internal var summary: URLAttachedEventDescription { return GHEventDescriber.describe(event: self) }
+  internal var summary: URLAttachedDescription { return GHEventDescriber.describe(event: self) }
 }
 
 /// The cases of different strings which will be attached at the end of a url 
@@ -39,7 +37,7 @@ fileprivate enum URLTargetStrings: String {
 // MARK: -
 // MARK: Event Description for AttributedLabel
 internal enum GHEventDescriber {
-  internal static func describe(event: GHEvent) -> URLAttachedEventDescription {
+  internal static func describe(event: GHEvent) -> URLAttachedDescription {
     var desc = ""
     var urls: [String: URL] = [:]
 

@@ -10,7 +10,7 @@ import Foundation
 
 public final class KTCodeTextStorage: NSTextStorage {
   /// Internal Storage
-  fileprivate let content = NSTextStorage() //NSMutableAttributedString()
+  fileprivate let content = NSTextStorage()
 
   fileprivate let highlighter = SyntaxHighlightRender()
 
@@ -48,6 +48,11 @@ public final class KTCodeTextStorage: NSTextStorage {
    - parameter str:   String
    */
   public override func replaceCharacters(in range: NSRange, with str: String) {
+    self.contentVersion += 1
+    self.paragraphNumberMapping
+      .filter { $0.key > range.location }
+      .forEach { self.paragraphNumberMapping.removeValue(forKey: $0.key) }
+
     content.replaceCharacters(in: range, with: str)
     self.edited(.editedCharacters,
                 range: range,
@@ -77,20 +82,25 @@ public final class KTCodeTextStorage: NSTextStorage {
     }
   }
 
-  let serialQueue = DispatchQueue(label: "highlighter_serial_queue")
-
+  fileprivate let serialQueue = DispatchQueue(label: "highlighter_serial_queue")
+  fileprivate var contentVersion = 0
+  fileprivate var paragraphNumberMapping: [Int: Int] = [:]
 
   fileprivate func highlight(_ range: NSRange) {
-    guard self.language.isEmpty == false else { return }
-    guard self.content.length > 0 else { return }
-    let string = (self.string as NSString)
+    guard
+      self.language.isEmpty == false,
+      self.content.length > 0
+      else { return }
+    let string = self.content.string as NSString
     let line = string.substring(with: range)
+    let currentVersion = self.contentVersion
     self.serialQueue.async {
       guard let tmpStrg = self.highlighter.highlight(line, as: self.language) else { return }
       DispatchQueue.main.async {
         //Checks to see if this highlighting is still valid.
-        if((range.location + range.length) > self.content.length) { return }
-        if(tmpStrg.string != self.content.attributedSubstring(from: range).string) { return }
+        guard
+          currentVersion == self.contentVersion
+          else { return }
 
         self.beginEditing()
         tmpStrg.enumerateAttributes(
@@ -116,12 +126,16 @@ public final class KTCodeTextStorage: NSTextStorage {
 
 extension KTCodeTextStorage {
   internal func paragraphNumber(at index: Int) -> Int {
+    if let paragraphNumber = self.paragraphNumberMapping[index] {
+      return paragraphNumber
+    }
     var number = 1
     let str = self.content.string as NSString
     str.enumerateSubstrings(in: NSRange(location: 0, length: index),
                             options: [.byParagraphs, .substringNotRequired]) { _ in
       number += 1
     }
+    self.paragraphNumberMapping[index] = number
     return number
   }
 }

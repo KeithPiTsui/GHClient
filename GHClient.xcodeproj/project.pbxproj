@@ -107,6 +107,7 @@
 		0E84B59E1E67AB3B00C5ADF7 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */; };
 		0E84B5A01E67C3DE00C5ADF7 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */; };
 		0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */; };
+		0E9451821E99E019006976CF /* PayloadModel+PayloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9451811E99E019006976CF /* PayloadModel+PayloadView.swift */; };
 		0E94F1ED1E65189900E962B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94F1EC1E65189900E962B6 /* AppDelegate.swift */; };
 		0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E94F1F31E65189900E962B6 /* Assets.xcassets */; };
 		0E94F1F71E65189900E962B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E94F1F51E65189900E962B6 /* LaunchScreen.storyboard */; };
@@ -466,6 +467,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0E71A2801E7FABAC00D8EED6;
 			remoteInfo = Highlighter;
+		};
+		0E9451A21E99E01A006976CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EBA39271E9775AC00C9D0A1;
+			remoteInfo = Demo;
+		};
+		0E9451A41E99E01A006976CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0EBA393A1E9775AC00C9D0A1;
+			remoteInfo = DemoTests;
 		};
 		0E94F1FE1E65189900E962B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1132,6 +1147,7 @@
 		0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
 		0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		0E9451811E99E019006976CF /* PayloadModel+PayloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PayloadModel+PayloadView.swift"; sourceTree = "<group>"; };
 		0E94F1E91E65189900E962B6 /* GHClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E94F1EC1E65189900E962B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E94F1F31E65189900E962B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1342,6 +1358,8 @@
 			children = (
 				0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */,
 				0E71A4BF1E7FAC7C00D8EED6 /* HighlighterTests.xctest */,
+				0E9451A31E99E01A006976CF /* Demo.app */,
+				0E9451A51E99E01A006976CF /* DemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1812,6 +1830,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB6580A1E82168800D48AAE /* EventExtension.swift */,
+				0E9451811E99E019006976CF /* PayloadModel+PayloadView.swift */,
 				0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */,
 				0EB6585E1E82903E00D48AAE /* ForkEventPayloadExtension.swift */,
 				0EB658601E82909400D48AAE /* IssueCommentEventPayloadExtension.swift */,
@@ -2301,6 +2320,20 @@
 			fileType = wrapper.cfbundle;
 			path = HighlighterTests.xctest;
 			remoteRef = 0E71A4BE1E7FAC7C00D8EED6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E9451A31E99E01A006976CF /* Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Demo.app;
+			remoteRef = 0E9451A21E99E01A006976CF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0E9451A51E99E01A006976CF /* DemoTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DemoTests.xctest;
+			remoteRef = 0E9451A41E99E01A006976CF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		0E94F2181E651AA600E962B6 /* Argo.framework */ = {
@@ -2915,6 +2948,7 @@
 				0EB582801E88EBEB0082AA09 /* RepositoryReleasesViewModel.swift in Sources */,
 				0E267A9C1E920455006D647B /* PullRequestTableViewController.swift in Sources */,
 				0E4BCFB11E80D78800BF6135 /* RepositoryContentDatasource.swift in Sources */,
+				0E9451821E99E019006976CF /* PayloadModel+PayloadView.swift in Sources */,
 				0ECE8A6B1E77FEF2001FE48B /* DiscoveryViewModel.swift in Sources */,
 				0EB582C41E893A420082AA09 /* MeUserBriefTableViewCell.swift in Sources */,
 				0E238F491E6BD669001F493A /* UserProfileOrganizationDatasource.swift in Sources */,

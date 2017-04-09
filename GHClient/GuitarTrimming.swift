@@ -11,6 +11,7 @@ import Foundation
 /// Trimming Operations
 public extension String {
 
+  /// trim white space and new line at the beginning and the end of string
   func trim() -> String {
     return self.trimmingCharacters(in: .whitespacesAndNewlines)
   }
