@@ -9,6 +9,42 @@
 import UIKit
 import GHAPI
 
+extension ForkEventPayload: EventPayloadTypeDisplay {
+  internal var payloadView: UIView {
+    let lab = UILabel()
+    lab.numberOfLines = 5
+    lab.text = self.forkee.desc ?? ""
+    lab.sizeToFit()
+    return  lab
+  }
+}
+
+extension IssueCommentEventPayload: EventPayloadTypeDisplay {
+  internal var payloadView: UIView {
+    let lab = GHCAttributedLabel()
+    lab.numberOfLines = 5
+    try? lab.set(markup: self.comment.body)
+    lab.sizeToFit()
+    return lab
+  }
+}
+
+extension PushEventPayload: EventPayloadTypeDisplay {
+  internal var payloadView: UIView {
+    let str = self.commits.reduce("", { (str, commit) -> String in
+      let sha = commit.sha?.last(8) ?? ""
+      let msg  = commit.message
+      return str + "\n" + sha + " " + msg
+    }).trim()
+    let lab = UILabel()
+    lab.numberOfLines = 5
+    lab.font = UIFont.systemFont(ofSize: 12)
+    lab.text = str
+    lab.sizeToFit()
+    return lab
+  }
+}
+
 extension PullRequestEventPayload: EventPayloadTypeDisplay {
   internal var payloadView: UIView {
     let lab = UILabel()
@@ -89,9 +125,35 @@ extension GollumEventPayload: EventPayloadTypeDisplay {
   }
 }
 
+extension ProjectCardEventPayload: EventPayloadTypeDisplay {
+  internal var payloadView: UIView {
+    let lab = UILabel()
+    lab.numberOfLines = 5
+    lab.text = self.project_card.note
+    lab.sizeToFit()
+    return lab
+  }
+}
 
+extension PullRequestReviewEventPayload: EventPayloadTypeDisplay {
+  internal var payloadView: UIView {
+    let lab = GHCAttributedLabel()
+    lab.numberOfLines = 5
+    try? lab.set(markup: self.review.body)
+    lab.sizeToFit()
+    return lab
+  }
+}
 
-
+extension RepositoryEventPayload: EventPayloadTypeDisplay {
+  internal var payloadView: UIView {
+    let lab = UILabel()
+    lab.numberOfLines = 5
+    lab.text = self.repository.desc
+    lab.sizeToFit()
+    return lab
+  }
+}
 
 
 

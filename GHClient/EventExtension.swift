@@ -29,6 +29,7 @@ fileprivate enum URLTargetStrings: String {
   case projectCard
   case project
   case projectColumn
+  case html
 }
 
 

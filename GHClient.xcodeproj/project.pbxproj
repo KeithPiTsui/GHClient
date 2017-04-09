@@ -201,10 +201,7 @@
 		0EB582D91E893C520082AA09 /* MeDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582D81E893C520082AA09 /* MeDatasource.swift */; };
 		0EB582DB1E893DE00082AA09 /* MeLogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB582DA1E893DE00082AA09 /* MeLogoutTableViewCell.swift */; };
 		0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6580A1E82168800D48AAE /* EventExtension.swift */; };
-		0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */; };
 		0EB6585D1E828F2200D48AAE /* EventPayloadTypeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */; };
-		0EB6585F1E82903E00D48AAE /* ForkEventPayloadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6585E1E82903E00D48AAE /* ForkEventPayloadExtension.swift */; };
-		0EB658611E82909400D48AAE /* IssueCommentEventPayloadExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB658601E82909400D48AAE /* IssueCommentEventPayloadExtension.swift */; };
 		0ECE8A6B1E77FEF2001FE48B /* DiscoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */; };
 		0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */; };
 		0ED575C71E90CB7500A0BA71 /* WebViewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED575C61E90CB7500A0BA71 /* WebViewTestViewController.swift */; };
@@ -1234,10 +1231,7 @@
 		0EB582D81E893C520082AA09 /* MeDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeDatasource.swift; sourceTree = "<group>"; };
 		0EB582DA1E893DE00082AA09 /* MeLogoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeLogoutTableViewCell.swift; sourceTree = "<group>"; };
 		0EB6580A1E82168800D48AAE /* EventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventExtension.swift; sourceTree = "<group>"; };
-		0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEventExtension.swift; sourceTree = "<group>"; };
 		0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPayloadTypeDisplay.swift; sourceTree = "<group>"; };
-		0EB6585E1E82903E00D48AAE /* ForkEventPayloadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForkEventPayloadExtension.swift; sourceTree = "<group>"; };
-		0EB658601E82909400D48AAE /* IssueCommentEventPayloadExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueCommentEventPayloadExtension.swift; sourceTree = "<group>"; };
 		0ECE8A491E77C590001FE48B /* Ji.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ji.xcodeproj; path = Ji/Ji.xcodeproj; sourceTree = "<group>"; };
 		0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewModel.swift; sourceTree = "<group>"; };
 		0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryDatasource.swift; sourceTree = "<group>"; };
@@ -1830,11 +1824,8 @@
 			isa = PBXGroup;
 			children = (
 				0EB6580A1E82168800D48AAE /* EventExtension.swift */,
-				0E9451811E99E019006976CF /* PayloadModel+PayloadView.swift */,
 				0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */,
-				0EB6585E1E82903E00D48AAE /* ForkEventPayloadExtension.swift */,
-				0EB658601E82909400D48AAE /* IssueCommentEventPayloadExtension.swift */,
-				0EB6585A1E828DFB00D48AAE /* PushEventExtension.swift */,
+				0E9451811E99E019006976CF /* PayloadModel+PayloadView.swift */,
 			);
 			name = EventAndPayload;
 			sourceTree = "<group>";
@@ -2870,7 +2861,6 @@
 				0E9EBD181E71000600D3E5A9 /* Image.swift in Sources */,
 				0E94F32A1E65206000E962B6 /* LoginViewController.swift in Sources */,
 				0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */,
-				0EB6585B1E828DFB00D48AAE /* PushEventExtension.swift in Sources */,
 				0ED575C71E90CB7500A0BA71 /* WebViewTestViewController.swift in Sources */,
 				0EB582A21E88FE870082AA09 /* RepositoryStargazersTableViewController.swift in Sources */,
 				0EB582D11E893AFA0082AA09 /* MePersonalGistsTableViewCell.swift in Sources */,
@@ -2911,8 +2901,6 @@
 				0E50A9CC1E67F5210002A40D /* KSCache.swift in Sources */,
 				0EDCFB171E8403AE0095F61B /* MeTableViewController.swift in Sources */,
 				0E1AAB221E84D42D00BFD36C /* IssueLabelTableViewCell.swift in Sources */,
-				0EB6585F1E82903E00D48AAE /* ForkEventPayloadExtension.swift in Sources */,
-				0EB658611E82909400D48AAE /* IssueCommentEventPayloadExtension.swift in Sources */,
 				0EECF63E1E70482C009600BB /* UIColor.swift in Sources */,
 				0E7B7BDD1E6E575800D50C95 /* SearchViewController.swift in Sources */,
 				0E5BF8B81E73AD7D00EDD841 /* RepositoryViewController.swift in Sources */,
