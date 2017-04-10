@@ -133,7 +133,6 @@ final class UserProfileViewController: UIViewController {
 //    let op = AppEnvironment.current.imagePipeline.operation(with: req, context: nil, delegate: self)
 //    AppEnvironment.current.imagePipeline.fetchImage(with: op)
   }
-
 }
 
 extension UserProfileViewController:  TIPImageFetchDelegate {

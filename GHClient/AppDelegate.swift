@@ -22,6 +22,11 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
     swizzle(UIViewController.self)
     swizzle(UIView.self)
 
+    let docURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    print(docURL)
+
+    FileManager.default.enumerator(atPath: "")
+
 
     /// Retrieve stored environment states if exists
     AppEnvironment.replaceCurrentEnvironment(

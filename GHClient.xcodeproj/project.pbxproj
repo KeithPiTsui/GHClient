@@ -1409,8 +1409,8 @@
 			isa = PBXGroup;
 			children = (
 				0ED645D91E694FF400017D28 /* DataSource */,
+				0EB657D01E82166000D48AAE /* GHAPIModelExtension */,
 				0E94F31C1E651CA300E962B6 /* Library */,
-				0EB657D01E82166000D48AAE /* ModelExtension */,
 				0E94F2FE1E651C3500E962B6 /* Models */,
 				0E94F3011E651C5000E962B6 /* Resources */,
 				0E94F2FB1E651C1800E962B6 /* Storyboards */,
@@ -1809,12 +1809,12 @@
 			name = Me;
 			sourceTree = "<group>";
 		};
-		0EB657D01E82166000D48AAE /* ModelExtension */ = {
+		0EB657D01E82166000D48AAE /* GHAPIModelExtension */ = {
 			isa = PBXGroup;
 			children = (
 				0EB658621E82974300D48AAE /* EventAndPayload */,
 			);
-			name = ModelExtension;
+			name = GHAPIModelExtension;
 			sourceTree = "<group>";
 		};
 		0EB658581E8267A200D48AAE /* ReadWriteCell */ = {

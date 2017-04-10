@@ -124,6 +124,9 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
       = self.tappOnEventWithLinkProperty.signal.skipNil()
         .map(GHEventDescriber.viewController)
         .skipNil()
+
+    let x = self.viewWillAppearProperty.signal.scan(0) { acc, _ in return acc + 1  }
+  
   }
 
   fileprivate let tappOnEventWithLinkProperty = MutableProperty<(GHEvent, URL)?>(nil)
