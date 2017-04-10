@@ -24,14 +24,14 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Pc-wN-Ce3">
-                                    <rect key="frame" x="8" y="8" width="57" height="57"/>
+                                    <rect key="frame" x="8" y="8" width="32" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4Pc-wN-Ce3" secondAttribute="height" multiplier="1:1" id="Yp6-p7-hwz"/>
-                                        <constraint firstAttribute="width" constant="57" id="tAc-TH-5UQ"/>
+                                        <constraint firstAttribute="width" constant="32" id="tAc-TH-5UQ"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdO-e8-2ub">
-                                    <rect key="frame" x="73" y="20" width="294" height="38"/>
+                                    <rect key="frame" x="48" y="0.0" width="319" height="78"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -41,10 +41,10 @@
                             <constraints>
                                 <constraint firstItem="bdO-e8-2ub" firstAttribute="leading" secondItem="4Pc-wN-Ce3" secondAttribute="trailing" constant="8" symbolic="YES" id="8QA-AJ-urU"/>
                                 <constraint firstItem="4Pc-wN-Ce3" firstAttribute="top" secondItem="DBL-fX-hWq" secondAttribute="topMargin" id="8ku-mW-yrg"/>
-                                <constraint firstItem="bdO-e8-2ub" firstAttribute="top" secondItem="DBL-fX-hWq" secondAttribute="top" constant="20" symbolic="YES" id="eOA-2M-Aqd"/>
+                                <constraint firstItem="bdO-e8-2ub" firstAttribute="top" secondItem="DBL-fX-hWq" secondAttribute="top" id="eOA-2M-Aqd"/>
                                 <constraint firstItem="bdO-e8-2ub" firstAttribute="trailing" secondItem="DBL-fX-hWq" secondAttribute="trailingMargin" id="eQ6-n6-iVh"/>
                                 <constraint firstItem="4Pc-wN-Ce3" firstAttribute="leading" secondItem="DBL-fX-hWq" secondAttribute="leadingMargin" id="fvt-Sh-jNU"/>
-                                <constraint firstAttribute="bottom" secondItem="bdO-e8-2ub" secondAttribute="bottom" constant="20" symbolic="YES" id="x9m-nO-Ie6"/>
+                                <constraint firstAttribute="bottom" secondItem="bdO-e8-2ub" secondAttribute="bottom" id="x9m-nO-Ie6"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -151,7 +151,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtN-z1-pwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1273" y="145"/>
+            <point key="canvasLocation" x="-1743" y="137"/>
         </scene>
     </scenes>
 </document>

@@ -65,6 +65,11 @@
 		0E5BF8B81E73AD7D00EDD841 /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */; };
 		0E5BF8C01E73B40400EDD841 /* RepositoryDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */; };
 		0E5BF8C21E73B47E00EDD841 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */; };
+		0E6022FF1E9B1BF4004A2758 /* ChangedFilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6022FE1E9B1BF4004A2758 /* ChangedFilesTableViewController.swift */; };
+		0E6023511E9B1C05004A2758 /* ChangedFiles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6023501E9B1C05004A2758 /* ChangedFiles.storyboard */; };
+		0E6023531E9B1C5B004A2758 /* ChangedFilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6023521E9B1C5B004A2758 /* ChangedFilesViewModel.swift */; };
+		0E6023551E9B1C72004A2758 /* ChangedFilesDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6023541E9B1C72004A2758 /* ChangedFilesDatasource.swift */; };
+		0E6023571E9B1C9D004A2758 /* ChangedFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6023561E9B1C9D004A2758 /* ChangedFileTableViewCell.swift */; };
 		0E6AAC751E8134A900E94429 /* MarkupViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6AAC741E8134A900E94429 /* MarkupViewer.storyboard */; };
 		0E6AAC771E81350C00E94429 /* MarkupViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6AAC761E81350C00E94429 /* MarkupViewerViewController.swift */; };
 		0E6AAC791E81356600E94429 /* MarkupViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6AAC781E81356600E94429 /* MarkupViewerViewModel.swift */; };
@@ -1105,6 +1110,11 @@
 		0E5BF8B71E73AD7D00EDD841 /* RepositoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		0E5BF8BF1E73B40400EDD841 /* RepositoryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDatasource.swift; sourceTree = "<group>"; };
 		0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
+		0E6022FE1E9B1BF4004A2758 /* ChangedFilesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangedFilesTableViewController.swift; sourceTree = "<group>"; };
+		0E6023501E9B1C05004A2758 /* ChangedFiles.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChangedFiles.storyboard; sourceTree = "<group>"; };
+		0E6023521E9B1C5B004A2758 /* ChangedFilesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangedFilesViewModel.swift; sourceTree = "<group>"; };
+		0E6023541E9B1C72004A2758 /* ChangedFilesDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangedFilesDatasource.swift; sourceTree = "<group>"; };
+		0E6023561E9B1C9D004A2758 /* ChangedFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangedFileTableViewCell.swift; sourceTree = "<group>"; };
 		0E6AAC2D1E81265200E94429 /* Down.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Down.xcodeproj; path = Down/Down.xcodeproj; sourceTree = "<group>"; };
 		0E6AAC741E8134A900E94429 /* MarkupViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MarkupViewer.storyboard; sourceTree = "<group>"; };
 		0E6AAC761E81350C00E94429 /* MarkupViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupViewerViewController.swift; sourceTree = "<group>"; };
@@ -1595,6 +1605,7 @@
 				0E7B7BA71E6E572E00D50C95 /* Search.storyboard */,
 				0E7B7BEE1E6EB01300D50C95 /* SearchFilter.storyboard */,
 				0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */,
+				0E6023501E9B1C05004A2758 /* ChangedFiles.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1628,6 +1639,7 @@
 				0E7B7BDC1E6E575800D50C95 /* SearchViewController.swift */,
 				0E84B5A11E67C3EE00C5ADF7 /* UserProfileViewController.swift */,
 				0ED575C61E90CB7500A0BA71 /* WebViewTestViewController.swift */,
+				0E6022FE1E9B1BF4004A2758 /* ChangedFilesTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1654,6 +1666,7 @@
 				0EB5828B1E88F0F30082AA09 /* RepositoryEventsViewModel.swift */,
 				0EB582721E88E0850082AA09 /* RepositoryForksViewModel.swift */,
 				0EB582B51E8904B00082AA09 /* RepositoryIssuesViewModel.swift */,
+				0E6023521E9B1C5B004A2758 /* ChangedFilesViewModel.swift */,
 				0EB5827F1E88EBEB0082AA09 /* RepositoryReleasesViewModel.swift */,
 				0EB5829F1E88FE270082AA09 /* RepositoryStargazersViewModel.swift */,
 				0E5BF8C11E73B47E00EDD841 /* RepositoryViewModel.swift */,
@@ -1864,6 +1877,7 @@
 				0EB13A591E8D3F4D00163750 /* CommitDatasource.swift */,
 				0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */,
 				0E1AAB171E84C2D700BFD36C /* IssueDatasource.swift */,
+				0E6023541E9B1C72004A2758 /* ChangedFilesDatasource.swift */,
 				0EB582D81E893C520082AA09 /* MeDatasource.swift */,
 				0ED6460D1E69500900017D28 /* MenuDataSource.swift */,
 				0E267A9F1E9204B2006D647B /* PullRequestDatasource.swift */,
@@ -1894,6 +1908,7 @@
 			children = (
 				0EB13A741E8D4BB000163750 /* Commit */,
 				0EDB2CC51E79104A007103A7 /* EventTableViewCell.swift */,
+				0E6023561E9B1C9D004A2758 /* ChangedFileTableViewCell.swift */,
 				0E9451D71E99FDE3006976CF /* PullRequestTableViewCell.swift */,
 				0EB658591E82680000D48AAE /* GeneralCell */,
 				0EB582761E88E7EE0082AA09 /* Issue */,
@@ -2807,6 +2822,7 @@
 				0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */,
 				0E6AACC61E815B7000E94429 /* SouceCodeFileExtension.txt in Resources */,
 				0EB582A41E88FEDB0082AA09 /* RepositoryStargazers.storyboard in Resources */,
+				0E6023511E9B1C05004A2758 /* ChangedFiles.storyboard in Resources */,
 				0EB5826F1E88E0440082AA09 /* RepositoryForks.storyboard in Resources */,
 				0EA044981E764F0A00643EBA /* Readme.storyboard in Resources */,
 				0E4B40BE1E70453A004144DC /* Discovery.storyboard in Resources */,
@@ -2866,10 +2882,12 @@
 				0EA044D91E76897D00643EBA /* ActivitiesEventDatasource.swift in Sources */,
 				0ED575C71E90CB7500A0BA71 /* WebViewTestViewController.swift in Sources */,
 				0EB582A21E88FE870082AA09 /* RepositoryStargazersTableViewController.swift in Sources */,
+				0E6022FF1E9B1BF4004A2758 /* ChangedFilesTableViewController.swift in Sources */,
 				0EB582D11E893AFA0082AA09 /* MePersonalGistsTableViewCell.swift in Sources */,
 				0EB6580B1E82168800D48AAE /* EventExtension.swift in Sources */,
 				0E84B5A21E67C3EE00C5ADF7 /* UserProfileViewController.swift in Sources */,
 				0ECE8A6D1E77FF90001FE48B /* DiscoveryDatasource.swift in Sources */,
+				0E6023531E9B1C5B004A2758 /* ChangedFilesViewModel.swift in Sources */,
 				0EB582A81E8901930082AA09 /* PullRequestsViewModel.swift in Sources */,
 				0E71A4F11E7FAE1800D8EED6 /* HighlighterViewController.swift in Sources */,
 				0E7B7BFB1E6EF71E00D50C95 /* NumberRangeCollectionViewCell.swift in Sources */,
@@ -2894,6 +2912,7 @@
 				0EB582981E88F61E0082AA09 /* RepositoryContributorsViewModel.swift in Sources */,
 				0E9EBD4D1E71002600D3E5A9 /* Strings.swift in Sources */,
 				0E84B59A1E67AB1300C5ADF7 /* MenuViewModel.swift in Sources */,
+				0E6023551E9B1C72004A2758 /* ChangedFilesDatasource.swift in Sources */,
 				0EB13A5A1E8D3F4D00163750 /* CommitDatasource.swift in Sources */,
 				0E7B7BEB1E6E93A100D50C95 /* SearchUserTableViewCell.swift in Sources */,
 				0ED6464C1E6950E700017D28 /* ValueCell.swift in Sources */,
@@ -2971,6 +2990,7 @@
 				0E1AAB141E84C24E00BFD36C /* IssueTableViewController.swift in Sources */,
 				0E7B7BF51E6EB0E700D50C95 /* SearchFilterRepositoriesDatasource.swift in Sources */,
 				0EB582C61E893A8C0082AA09 /* MePersonalRepositoriesTableViewCell.swift in Sources */,
+				0E6023571E9B1C9D004A2758 /* ChangedFileTableViewCell.swift in Sources */,
 				0E267A9E1E92048D006D647B /* PullRequestViewModel.swift in Sources */,
 				0EB582BE1E890C8E0082AA09 /* RepositoryCommitsTableViewController.swift in Sources */,
 				0EB582BC1E890C6B0082AA09 /* RepositoryCommitsDatasource.swift in Sources */,

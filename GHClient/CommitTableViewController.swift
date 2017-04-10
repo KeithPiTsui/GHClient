@@ -76,3 +76,61 @@ internal final class CommitTableViewController: UITableViewController {
     }
   }
 }
+
+extension CommitTableViewController {
+  internal override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let value = self.datasource[indexPath]
+    if let cellStyle = value as? BasicTableViewValueCell.Style {
+      switch cellStyle {
+      case .commitChangeModification(let files):
+        let vc = ChangedFilesTableViewController.instantiate()
+        vc.set(files: files)
+        vc.title = "Modified"
+        self.navigationController?.pushViewController(vc, animated: true)
+      case .commitChangeAddition(let files):
+        let vc = ChangedFilesTableViewController.instantiate()
+        vc.set(files: files)
+        vc.title = "Added"
+        self.navigationController?.pushViewController(vc, animated: true)
+      case .commitChangeDeletion(let files):
+        let vc = ChangedFilesTableViewController.instantiate()
+        vc.set(files: files)
+        vc.title = "Removed"
+        self.navigationController?.pushViewController(vc, animated: true)
+      case .commitChangeAllFile(let files):
+        let vc = ChangedFilesTableViewController.instantiate()
+        vc.set(files: files)
+        vc.title = "All Files"
+        self.navigationController?.pushViewController(vc, animated: true)
+      default:
+        break
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

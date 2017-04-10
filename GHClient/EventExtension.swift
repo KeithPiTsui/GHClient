@@ -13,6 +13,7 @@ extension GHEvent {
   internal var summary: URLAttachedDescription { return GHEventDescriber.describe(event: self) }
 }
 
+
 /// The cases of different strings which will be attached at the end of a url 
 /// for identifying the target view controller to go when user tapped on link.
 internal enum URLTargetStrings: String {
@@ -32,7 +33,6 @@ internal enum URLTargetStrings: String {
   case html
   case content
 }
-
 
 
 
@@ -299,10 +299,15 @@ internal enum GHEventDescriber {
 // MARK: -
 // MARK: ViewController for display content of part of event
 extension GHEventDescriber {
-
   internal static func viewController(for event: GHEvent, with link: URL) -> UIViewController? {
-    guard let target = URLTargetStrings.init(rawValue: link.lastPathComponent) else { return nil }
-    let targetURL = link.deletingLastPathComponent()
+    return URLTargetStrings.viewController(for: link)
+  }
+}
+
+extension URLTargetStrings {
+  internal static func viewController(for url: URL) -> UIViewController? {
+    guard let target = URLTargetStrings.init(rawValue: url.lastPathComponent) else { return nil }
+    let targetURL = url.deletingLastPathComponent()
     switch target {
     case .user:
       let vc = UserProfileViewController.instantiate()
@@ -312,7 +317,7 @@ extension GHEventDescriber {
       let vc = RepositoryViewController.instantiate()
       vc.set(repoURL: targetURL)
       return vc
-    case .branchContent:
+    case .branchContent, .content:
       let vc = RepositoryContentTableViewController.instantiate()
       vc.set(contentURL: targetURL)
       return vc
@@ -328,12 +333,15 @@ extension GHEventDescriber {
       let vc = CommitTableViewController.instantiate()
       vc.set(commit: targetURL)
       return vc
+    case .html:
+      let vc = ReadmeViewController.instantiate()
+      vc.set(readmeUrl: targetURL)
+      return vc
     default:
       return nil
     }
   }
 }
-
 
 
 

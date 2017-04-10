@@ -23,7 +23,7 @@ internal final class HighlighterViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    guard  let lang = language else { return }
+    guard  let lang = self.language else { return }
 
     self.textView = KTCodeTextView(language: lang)
     self.textView.isEditable = false
