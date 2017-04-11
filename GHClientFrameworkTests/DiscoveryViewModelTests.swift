@@ -31,10 +31,6 @@ final class DiscoveryViewModelTests: XCTestCase {
 
     self.trendingReposExists.assertValues([], "No repo before view did load")
 
-//    self.vm.inputs.viewDidLoad()
-//
-//
-//    self.trendingReposExists.assertValues([true], "Repos comming")
 
   }
 

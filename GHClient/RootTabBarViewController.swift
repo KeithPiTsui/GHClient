@@ -48,12 +48,6 @@ internal final class RootTabBarViewController: UITabBarController {
         self?.viewModel.inputs.userSessionEnded()
     }
 
-    NotificationCenter
-      .default
-      .addObserver(forName: Notification.Name.gh_userUpdated, object: nil, queue: nil) { [weak self] _ in
-        self?.viewModel.inputs.currentUserUpdated()
-    }
-
     self.viewModel.inputs.viewDidLoad()
 
     AppEnvironment.authenticateCurrentAccount()
@@ -72,6 +66,7 @@ internal final class RootTabBarViewController: UITabBarController {
     self.viewModel.outputs.setViewControllers
       .observeForControllerAction()
       .observeValues { [weak self] (viewControllers, data) in
+        self?.dismiss(animated: true, completion: nil)
         let vcs = viewControllers.map(UINavigationController.init(rootViewController:))
         self?.setViewControllers(vcs, animated: true)
         self?.setTabBarItemStyles(withData: data)
@@ -82,15 +77,35 @@ internal final class RootTabBarViewController: UITabBarController {
       .observeValues { [weak self] in self?.selectedIndex = $0 }
 
 
-//    self.viewModel.outputs.tabBarItemsData
-//      .observeForUI()
-//      .observeValues { [weak self] in self?.setTabBarItemStyles(withData: $0) }
-
-    self.viewModel.outputs.presentAlert
+    self.viewModel.outputs.showUserAuthenticationFailedError
       .observeForControllerAction()
+      .observeValues { [weak self] (error) in
+        let alert = UIAlertController(title: "Cannot authenticate current user",
+                                      message: "Click Login to reenter username and password, or use guest mode instead",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Guest mode", style: .default, handler: {_ in
+          print("go to guest mode")
+          self?.viewModel.inputs.shouldEnterGuestMode()
+        }))
+        alert.addAction(UIAlertAction(title: "Login", style: .default, handler: {_ in
+          print("go to login")
+          self?.viewModel.inputs.shouldProvideLoginView()
+        }))
+        self?.dismiss(animated: true, completion: nil)
+        self?.present(alert, animated: true, completion: nil)
+    }
+
+    self.viewModel.outputs.showUserLoginView.observeForControllerAction()
       .observeValues { [weak self] in
-      self?.dismiss(animated: true, completion: nil)
-      self?.present($0, animated: true, completion: nil)
+        self?.dismiss(animated: true, completion: nil)
+        let vc = LoginViewController.instantiate()
+        self?.present(vc, animated: true, completion: nil)
+    }
+
+    self.viewModel.outputs.scrollToTop.observeForUI()
+      .observeValues { (vc) in
+        guard let scrollable = vc.view as? UIScrollView else { return }
+        scrollable.scrollsToTop = true
     }
   }
 
@@ -130,7 +145,6 @@ extension RootTabBarViewController: UITabBarControllerDelegate {
   //        }
   //    }
 }
-
 
 
 

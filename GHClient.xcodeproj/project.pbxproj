@@ -20,6 +20,7 @@
 		0E0944871E9CA025009672CA /* XCTestCase+AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0944861E9CA025009672CA /* XCTestCase+AppEnvironment.swift */; };
 		0E0944881E9CA541009672CA /* TwitterImagePipeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E05DF111E8E1C2800736885 /* TwitterImagePipeline.framework */; };
 		0E09448A1E9CA87F009672CA /* UserProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0944891E9CA87F009672CA /* UserProfileViewModelTests.swift */; };
+		0E3139641E9CC97A006C9232 /* RootTabBarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3139631E9CC97A006C9232 /* RootTabBarViewModelTests.swift */; };
 		0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; };
 		0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E6AAC7A1E81363200E94429 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; };
@@ -1164,6 +1165,7 @@
 		0E267AA51E92178B006D647B /* DetailTableViewValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewValueCell.swift; sourceTree = "<group>"; };
 		0E267AA71E921D4F006D647B /* LeftDetailTableViewValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftDetailTableViewValueCell.swift; sourceTree = "<group>"; };
 		0E267AA91E921D64006D647B /* RightDetailTableViewValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailTableViewValueCell.swift; sourceTree = "<group>"; };
+		0E3139631E9CC97A006C9232 /* RootTabBarViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewModelTests.swift; sourceTree = "<group>"; };
 		0E3E02E61E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularTextFieldCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
@@ -1469,6 +1471,7 @@
 			children = (
 				0E0944851E9CA001009672CA /* Testhelpers */,
 				0E0943B91E9C752D009672CA /* DiscoveryViewModelTests.swift */,
+				0E3139631E9CC97A006C9232 /* RootTabBarViewModelTests.swift */,
 				0E0944891E9CA87F009672CA /* UserProfileViewModelTests.swift */,
 				0E0943601E9C73DC009672CA /* GHClientFrameworkTests.swift */,
 				0E0943621E9C73DC009672CA /* Info.plist */,
@@ -3120,6 +3123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E3139641E9CC97A006C9232 /* RootTabBarViewModelTests.swift in Sources */,
 				0E0943611E9C73DC009672CA /* GHClientFrameworkTests.swift in Sources */,
 				0E09448A1E9CA87F009672CA /* UserProfileViewModelTests.swift in Sources */,
 				0E0944871E9CA025009672CA /* XCTestCase+AppEnvironment.swift in Sources */,
@@ -3680,6 +3684,7 @@
 				0E0943671E9C73DC009672CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E94F1E41E65189900E962B6 /* Build configuration list for PBXProject "GHClient" */ = {
 			isa = XCConfigurationList;
