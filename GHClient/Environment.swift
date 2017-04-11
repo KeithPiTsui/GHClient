@@ -13,7 +13,7 @@ import Result
 import TwitterImagePipeline
 
 extension TIPImagePipeline {
-  fileprivate static let defaultPipeline: TIPImagePipeline = TIPImagePipeline(identifier: "GHClientImagePipeline")!
+  public static let defaultPipeline: TIPImagePipeline = TIPImagePipeline(identifier: "GHClientImagePipeline")!
 }
 
 /**

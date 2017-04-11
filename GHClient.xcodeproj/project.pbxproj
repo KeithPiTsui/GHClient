@@ -17,6 +17,8 @@
 		0E0943631E9C73DC009672CA /* GHClientFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFD86DB1E9C5C5E002D764D /* GHClientFramework.framework */; };
 		0E0943BA1E9C752D009672CA /* DiscoveryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0943B91E9C752D009672CA /* DiscoveryViewModelTests.swift */; };
 		0E09445E1E9C7972009672CA /* ReactiveExtensions_TestHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F2631E651AC700E962B6 /* ReactiveExtensions_TestHelpers.framework */; };
+		0E0944871E9CA025009672CA /* XCTestCase+AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0944861E9CA025009672CA /* XCTestCase+AppEnvironment.swift */; };
+		0E0944881E9CA541009672CA /* TwitterImagePipeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E05DF111E8E1C2800736885 /* TwitterImagePipeline.framework */; };
 		0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; };
 		0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E6AAC7A1E81363200E94429 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; };
@@ -1137,6 +1139,7 @@
 		0E0943601E9C73DC009672CA /* GHClientFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHClientFrameworkTests.swift; sourceTree = "<group>"; };
 		0E0943621E9C73DC009672CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E0943B91E9C752D009672CA /* DiscoveryViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewModelTests.swift; sourceTree = "<group>"; };
+		0E0944861E9CA025009672CA /* XCTestCase+AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+AppEnvironment.swift"; sourceTree = "<group>"; };
 		0E1AAAD71E84C23300BFD36C /* Issue.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Issue.storyboard; sourceTree = "<group>"; };
 		0E1AAB131E84C24E00BFD36C /* IssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
 		0E1AAB151E84C26C00BFD36C /* IssueViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewModel.swift; sourceTree = "<group>"; };
@@ -1351,6 +1354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E0944881E9CA541009672CA /* TwitterImagePipeline.framework in Frameworks */,
 				0E09445E1E9C7972009672CA /* ReactiveExtensions_TestHelpers.framework in Frameworks */,
 				0E0943631E9C73DC009672CA /* GHClientFramework.framework in Frameworks */,
 			);
@@ -1461,11 +1465,20 @@
 		0E09435F1E9C73DC009672CA /* GHClientFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				0E0944851E9CA001009672CA /* Testhelpers */,
 				0E0943B91E9C752D009672CA /* DiscoveryViewModelTests.swift */,
 				0E0943601E9C73DC009672CA /* GHClientFrameworkTests.swift */,
 				0E0943621E9C73DC009672CA /* Info.plist */,
 			);
 			path = GHClientFrameworkTests;
+			sourceTree = "<group>";
+		};
+		0E0944851E9CA001009672CA /* Testhelpers */ = {
+			isa = PBXGroup;
+			children = (
+				0E0944861E9CA025009672CA /* XCTestCase+AppEnvironment.swift */,
+			);
+			name = Testhelpers;
 			sourceTree = "<group>";
 		};
 		0E6AAC2E1E81265200E94429 /* Products */ = {
@@ -3105,6 +3118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E0943611E9C73DC009672CA /* GHClientFrameworkTests.swift in Sources */,
+				0E0944871E9CA025009672CA /* XCTestCase+AppEnvironment.swift in Sources */,
 				0E0943BA1E9C752D009672CA /* DiscoveryViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
