@@ -8,6 +8,7 @@
 
 import UIKit
 import GHAPI
+import TTTAttributedLabel
 
 internal final class IssueTableViewController: UITableViewController {
 

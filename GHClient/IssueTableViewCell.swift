@@ -11,6 +11,7 @@ import GHAPI
 import ReactiveCocoa
 import Prelude_UIKit
 import Ladder
+import TTTAttributedLabel
 
 internal final class IssueTableViewCell: UITableViewCell, ValueCell {
 

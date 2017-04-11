@@ -8,6 +8,7 @@
 
 import UIKit
 import TwitterImagePipeline
+import GHClientFramework
 
 @UIApplicationMain
 internal final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,15 +19,7 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-
-    swizzle(UIViewController.self)
-    swizzle(UIView.self)
-
-    let docURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    print(docURL)
-
-    FileManager.default.enumerator(atPath: "")
-
+    AppEnvironment.initialize()
 
     /// Retrieve stored environment states if exists
     AppEnvironment.replaceCurrentEnvironment(
@@ -42,7 +35,6 @@ internal final class AppDelegate: UIResponder, UIApplicationDelegate {
     let tipConfig = TIPGlobalConfiguration.sharedInstance()
     tipConfig.serializeCGContextAccess = true
     tipConfig.isClearMemoryCachesOnApplicationBackgroundEnabled = true
-
 
     self.bindViewModel()
     self.viewModel.inputs.applicationDidFinishLaunching(application: application, launchOptions: launchOptions)

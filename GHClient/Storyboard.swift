@@ -8,10 +8,12 @@
 
 import UIKit
 
+private class A {}
+
 extension Bundle {
   /// Returns an NSBundle pinned to the framework target. We could choose anything for the `forClass`
   /// parameter as long as it is in the framework target.
-  internal static var framework: Bundle { return Bundle(for: AppDelegate.self)}
+  internal static var framework: Bundle { return Bundle(for: A.self)}
 }
 
 public enum Storyboard: String {

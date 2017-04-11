@@ -11,6 +11,7 @@ import Down
 import Curry
 import Prelude
 import Ji
+import TTTAttributedLabel
 
 internal typealias URLAttachedDescription = (desc: String, attachedURLs: [String: URL])
 

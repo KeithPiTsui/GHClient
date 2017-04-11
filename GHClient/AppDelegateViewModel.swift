@@ -31,7 +31,7 @@ public protocol AppDelegateViewModelType {
 
 public final class AppDelegateViewModel: AppDelegateViewModelType, AppDelegateViewModelInputs, AppDelegateViewModelOutputs {
 
-  init() {}
+  public init() {}
 
 
   fileprivate typealias ApplicationWithOptions = (application: UIApplication?, options: [AnyHashable: Any]?)

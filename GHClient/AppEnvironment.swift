@@ -20,6 +20,14 @@ import Result
 public struct AppEnvironment {
   internal static let environmentStorageKey = "com.kickstarter.AppEnvironment.current"
   internal static let oauthTokenStorageKey = "com.kickstarter.AppEnvironment.oauthToken"
+  private static let onceToken = UUID().uuidString
+
+  public static func initialize() {
+    DispatchQueue.once(token: onceToken) {
+      swizzle(UIViewController.self)
+      swizzle(UIView.self)
+    }
+  }
 
   /**
    A global stack of environments.

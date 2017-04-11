@@ -12,6 +12,7 @@ import ReactiveCocoa
 import Prelude_UIKit
 import Ladder
 import AlamofireImage
+import TTTAttributedLabel
 
 internal final class EventTableViewCell: UITableViewCell , ValueCell {
 

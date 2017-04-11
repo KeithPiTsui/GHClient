@@ -12,6 +12,7 @@ import ReactiveExtensions
 import ReactiveSwift
 import ReactiveCocoa
 import Result
+import TTTAttributedLabel
 
 internal final class PullRequestTableViewController: UITableViewController {
 
@@ -67,7 +68,7 @@ internal final class PullRequestTableViewController: UITableViewController {
 
 extension PullRequestTableViewController {
   internal override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let value = self.datasource[indexPath]
+//    let value = self.datasource[indexPath]
   }
 }
 

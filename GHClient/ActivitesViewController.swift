@@ -12,6 +12,7 @@ import ReactiveExtensions
 import ReactiveSwift
 import ReactiveCocoa
 import Result
+import TTTAttributedLabel
 
 internal final class ActivitesViewController: UIViewController {
 
