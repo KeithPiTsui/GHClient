@@ -13,6 +13,10 @@
 		0E0912921E934A6600D889A9 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E0912841E934A5000D889A9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E0912951E934A6600D889A9 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E09122B1E934A4A00D889A9 /* AlamofireImage.framework */; };
 		0E0912961E934A6600D889A9 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E09122B1E934A4A00D889A9 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E0943611E9C73DC009672CA /* GHClientFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0943601E9C73DC009672CA /* GHClientFrameworkTests.swift */; };
+		0E0943631E9C73DC009672CA /* GHClientFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFD86DB1E9C5C5E002D764D /* GHClientFramework.framework */; };
+		0E0943BA1E9C752D009672CA /* DiscoveryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0943B91E9C752D009672CA /* DiscoveryViewModelTests.swift */; };
+		0E09445E1E9C7972009672CA /* ReactiveExtensions_TestHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F2631E651AC700E962B6 /* ReactiveExtensions_TestHelpers.framework */; };
 		0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; };
 		0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E6AAC7A1E81363200E94429 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; };
@@ -422,6 +426,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4C9043761AABBFC5001B4E60;
 			remoteInfo = "AlamofireImage iOS";
+		};
+		0E0943641E9C73DC009672CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E94F1E11E65189900E962B6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EFD86DA1E9C5C5E002D764D;
+			remoteInfo = GHClientFramework;
+		};
+		0E0943FC1E9C77C1009672CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E94F1E11E65189900E962B6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E94F1E81E65189900E962B6;
+			remoteInfo = GHClient;
+		};
+		0E09445F1E9C797F009672CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E94F24F1E651AC700E962B6 /* ReactiveExtensions.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A7DB1D391C9F355E008244DA;
+			remoteInfo = "ReactiveExtensions-TestHelpers-iOS";
 		};
 		0E3E02E41E78071E00C1CD84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1108,6 +1133,10 @@
 		0E0912781E934A5000D889A9 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		0E0912991E934A8300D889A9 /* UIImageView+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
 		0E09129D1E934B6C00D889A9 /* EventTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		0E09435E1E9C73DC009672CA /* GHClientFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GHClientFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E0943601E9C73DC009672CA /* GHClientFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHClientFrameworkTests.swift; sourceTree = "<group>"; };
+		0E0943621E9C73DC009672CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E0943B91E9C752D009672CA /* DiscoveryViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewModelTests.swift; sourceTree = "<group>"; };
 		0E1AAAD71E84C23300BFD36C /* Issue.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Issue.storyboard; sourceTree = "<group>"; };
 		0E1AAB131E84C24E00BFD36C /* IssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
 		0E1AAB151E84C26C00BFD36C /* IssueViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewModel.swift; sourceTree = "<group>"; };
@@ -1314,9 +1343,19 @@
 		0EFD86DD1E9C5C5E002D764D /* GHClientFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHClientFramework.h; sourceTree = "<group>"; };
 		0EFD86DE1E9C5C5E002D764D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EFD87C41E9C60C7002D764D /* DispatchOnce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchOnce.swift; sourceTree = "<group>"; };
+		0EFD87C71E9C64AC002D764D /* GHClient.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GHClient.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0E09435B1E9C73DC009672CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E09445E1E9C7972009672CA /* ReactiveExtensions_TestHelpers.framework in Frameworks */,
+				0E0943631E9C73DC009672CA /* GHClientFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E94F1E61E65189900E962B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1419,6 +1458,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0E09435F1E9C73DC009672CA /* GHClientFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				0E0943B91E9C752D009672CA /* DiscoveryViewModelTests.swift */,
+				0E0943601E9C73DC009672CA /* GHClientFrameworkTests.swift */,
+				0E0943621E9C73DC009672CA /* Info.plist */,
+			);
+			path = GHClientFrameworkTests;
+			sourceTree = "<group>";
+		};
 		0E6AAC2E1E81265200E94429 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1461,8 +1510,10 @@
 		0E94F1E01E65189900E962B6 = {
 			isa = PBXGroup;
 			children = (
-				0EFD86DC1E9C5C5E002D764D /* GHClientFramework */,
 				0E94F20C1E651A9A00E962B6 /* Frameworks */,
+				0EFD87C71E9C64AC002D764D /* GHClient.playground */,
+				0EFD86DC1E9C5C5E002D764D /* GHClientFramework */,
+				0E09435F1E9C73DC009672CA /* GHClientFrameworkTests */,
 				0E94F1EB1E65189900E962B6 /* GHClient */,
 				0E94F2001E65189900E962B6 /* GHClientTests */,
 				0E94F1EA1E65189900E962B6 /* Products */,
@@ -1475,6 +1526,7 @@
 				0E94F1E91E65189900E962B6 /* GHClient.app */,
 				0E94F1FD1E65189900E962B6 /* GHClientTests.xctest */,
 				0EFD86DB1E9C5C5E002D764D /* GHClientFramework.framework */,
+				0E09435E1E9C73DC009672CA /* GHClientFrameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2074,6 +2126,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0E09435D1E9C73DC009672CA /* GHClientFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E0943B81E9C73DC009672CA /* Build configuration list for PBXNativeTarget "GHClientFrameworkTests" */;
+			buildPhases = (
+				0E09435A1E9C73DC009672CA /* Sources */,
+				0E09435B1E9C73DC009672CA /* Frameworks */,
+				0E09435C1E9C73DC009672CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E0944601E9C797F009672CA /* PBXTargetDependency */,
+				0E0943651E9C73DC009672CA /* PBXTargetDependency */,
+				0E0943FD1E9C77C1009672CA /* PBXTargetDependency */,
+			);
+			name = GHClientFrameworkTests;
+			productName = GHClientFrameworkTests;
+			productReference = 0E09435E1E9C73DC009672CA /* GHClientFrameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		0E94F1E81E65189900E962B6 /* GHClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E94F2061E65189900E962B6 /* Build configuration list for PBXNativeTarget "GHClient" */;
@@ -2154,10 +2226,16 @@
 		0E94F1E11E65189900E962B6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Keith;
 				TargetAttributes = {
+					0E09435D1E9C73DC009672CA = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 6T5NK4S24M;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0E94F1E81E65189900E962B6;
+					};
 					0E94F1E81E65189900E962B6 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 6T5NK4S24M;
@@ -2262,6 +2340,7 @@
 				0E94F1E81E65189900E962B6 /* GHClient */,
 				0E94F1FC1E65189900E962B6 /* GHClientTests */,
 				0EFD86DA1E9C5C5E002D764D /* GHClientFramework */,
+				0E09435D1E9C73DC009672CA /* GHClientFrameworkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2942,6 +3021,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0E09435C1E9C73DC009672CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E94F1E71E65189900E962B6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3014,6 +3100,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0E09435A1E9C73DC009672CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E0943611E9C73DC009672CA /* GHClientFrameworkTests.swift in Sources */,
+				0E0943BA1E9C752D009672CA /* DiscoveryViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E94F1E51E65189900E962B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3210,6 +3305,21 @@
 			name = "AlamofireImage iOS";
 			targetProxy = 0E0912971E934A6700D889A9 /* PBXContainerItemProxy */;
 		};
+		0E0943651E9C73DC009672CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0EFD86DA1E9C5C5E002D764D /* GHClientFramework */;
+			targetProxy = 0E0943641E9C73DC009672CA /* PBXContainerItemProxy */;
+		};
+		0E0943FD1E9C77C1009672CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E94F1E81E65189900E962B6 /* GHClient */;
+			targetProxy = 0E0943FC1E9C77C1009672CA /* PBXContainerItemProxy */;
+		};
+		0E0944601E9C797F009672CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactiveExtensions-TestHelpers-iOS";
+			targetProxy = 0E09445F1E9C797F009672CA /* PBXContainerItemProxy */;
+		};
 		0E3E02E51E78071E00C1CD84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Ji iOS";
@@ -3309,6 +3419,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0E0943661E9C73DC009672CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				INFOPLIST_FILE = GHClientFrameworkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.GHClientFrameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GHClient.app/GHClient";
+			};
+			name = Debug;
+		};
+		0E0943671E9C73DC009672CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				INFOPLIST_FILE = GHClientFrameworkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.GHClientFrameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GHClient.app/GHClient";
+			};
+			name = Release;
+		};
 		0E94F2041E65189900E962B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3515,6 +3655,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0E0943B81E9C73DC009672CA /* Build configuration list for PBXNativeTarget "GHClientFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E0943661E9C73DC009672CA /* Debug */,
+				0E0943671E9C73DC009672CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		0E94F1E41E65189900E962B6 /* Build configuration list for PBXProject "GHClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3549,6 +3697,7 @@
 				0EFD86E61E9C5C5E002D764D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

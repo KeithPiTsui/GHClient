@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>64</integer>
 		</dict>
+		<key>GHClientFrameworkTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>65</integer>
+		</dict>
 		<key>GHClient_Framework.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -32,6 +37,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0E09435D1E9C73DC009672CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0E94F1E81E65189900E962B6</key>
 		<dict>
 			<key>primary</key>
