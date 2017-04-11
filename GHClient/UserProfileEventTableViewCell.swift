@@ -8,10 +8,10 @@
 
 import UIKit
 
-internal typealias UserProfileEventTableViewCellConfig = (icon: UIImage, name: String)
+public typealias UserProfileEventTableViewCellConfig = (icon: UIImage, name: String)
 
-internal final class UserProfileEventTableViewCell: UITableViewCell, ValueCell {
-  internal func configureWith(value: UserProfileEventTableViewCellConfig) {
+public final class UserProfileEventTableViewCell: UITableViewCell, ValueCell {
+  public func configureWith(value: UserProfileEventTableViewCellConfig) {
     self.imageView?.image = value.icon
     self.textLabel?.text = value.name
   }

@@ -13,7 +13,7 @@ import GHAPI
 import Prelude
 import TwitterImagePipeline
 
-internal protocol UserProfileViewModelInputs {
+public protocol UserProfileViewModelInputs {
 
   /// Call when the view did load.
   func viewDidLoad()
@@ -34,7 +34,7 @@ internal protocol UserProfileViewModelInputs {
   func set(userUrl: URL)
 }
 
-internal protocol UserProfileViewModelOutputs {
+public protocol UserProfileViewModelOutputs {
 
   /// Emit a signal to update user avatar
   var userAvatar: Signal<UIImage, NoError> { get }
@@ -49,12 +49,12 @@ internal protocol UserProfileViewModelOutputs {
   var user: Signal<User, NoError> {get}
 }
 
-internal protocol UserProfileViewModelType {
+public protocol UserProfileViewModelType {
   var inputs: UserProfileViewModelInputs {get}
   var outputs: UserProfileViewModelOutputs {get}
 }
 
-internal final class UserProfileViewModel: UserProfileViewModelType, UserProfileViewModelInputs, UserProfileViewModelOutputs {
+public final class UserProfileViewModel: UserProfileViewModelType, UserProfileViewModelInputs, UserProfileViewModelOutputs {
 
   init() {
     let userUrl1 = self.setUserUrlProperty.signal.skipNil()
@@ -107,43 +107,43 @@ internal final class UserProfileViewModel: UserProfileViewModelType, UserProfile
   }
 
   fileprivate let setUserProperty = MutableProperty<User?>(nil)
-  internal func set(user: User) {
+  public func set(user: User) {
     self.setUserProperty.value = user
   }
 
   fileprivate let setUserUrlProperty = MutableProperty<URL?>(nil)
-  internal func set(userUrl: URL) {
+  public func set(userUrl: URL) {
     self.setUserUrlProperty.value = userUrl
   }
 
   fileprivate let tappedEventProperty = MutableProperty<UserProfileEventTableViewCellConfig?>(nil)
-  internal func tappedEvent(eventConfig: UserProfileEventTableViewCellConfig) {
+  public func tappedEvent(eventConfig: UserProfileEventTableViewCellConfig) {
     self.tappedEventProperty.value = eventConfig
   }
 
   fileprivate let tappedRefleshButtonProperty = MutableProperty()
-  internal func tappedRefleshButton() {
+  public func tappedRefleshButton() {
     self.tappedRefleshButtonProperty.value = ()
   }
 
   fileprivate let viewDidLoadProperty = MutableProperty()
-  internal func viewDidLoad() {
+  public func viewDidLoad() {
     self.viewDidLoadProperty.value = ()
   }
 
   fileprivate let viewWillAppearProperty = MutableProperty<Bool?>(nil)
-  internal func viewWillAppear(animated: Bool) {
+  public func viewWillAppear(animated: Bool) {
     self.viewWillAppearProperty.value = animated
   }
 
 
-  internal let events: Signal<[UserProfileEventTableViewCellConfig], NoError>
-  internal let organizations: Signal<[UserProfileOrganizationTableViewCellConfig], NoError>
-  internal let user: Signal<User, NoError>
-  internal let userAvatar: Signal<UIImage, NoError>
+  public let events: Signal<[UserProfileEventTableViewCellConfig], NoError>
+  public let organizations: Signal<[UserProfileOrganizationTableViewCellConfig], NoError>
+  public let user: Signal<User, NoError>
+  public let userAvatar: Signal<UIImage, NoError>
 
-  internal var inputs: UserProfileViewModelInputs { return self }
-  internal var outputs: UserProfileViewModelOutputs { return self}
+  public var inputs: UserProfileViewModelInputs { return self }
+  public var outputs: UserProfileViewModelOutputs { return self}
 }
 
 

@@ -8,16 +8,16 @@
 
 import UIKit
 
-internal typealias UserProfileOrganizationTableViewCellConfig = String
+public typealias UserProfileOrganizationTableViewCellConfig = String
 
-internal final class UserProfileOrganizationTableViewCell: UITableViewCell, ValueCell {
-  internal func configureWith(value: UserProfileOrganizationTableViewCellConfig) {
+public final class UserProfileOrganizationTableViewCell: UITableViewCell, ValueCell {
+  public func configureWith(value: UserProfileOrganizationTableViewCellConfig) {
     self.textLabel?.text = value
   }
 }
 
-internal final class UserProfileNoOrganizationTableViewCell: UITableViewCell, ValueCell {
-  internal func configureWith(value: String) {
+public final class UserProfileNoOrganizationTableViewCell: UITableViewCell, ValueCell {
+  public func configureWith(value: String) {
     self.textLabel?.text = value
   }
 }
