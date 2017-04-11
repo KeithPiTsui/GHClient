@@ -14,7 +14,12 @@ import ReactiveCocoa
 import Result
 import GHAPI
 
-internal final class LoginViewController: UIViewController {
+public final class LoginViewController: UIViewController {
+
+  public enum Style {
+    case underAuthentication
+    case underGuestMode
+  }
 
   fileprivate let viewModel: LoginViewModelType = LoginViewModel()
 
@@ -26,16 +31,25 @@ internal final class LoginViewController: UIViewController {
   @IBOutlet weak var usernameTF: UITextField!
   @IBOutlet weak var saveAccountBtn: UIButton!
   @IBOutlet weak var removeAccountBtn: UIButton!
+  @IBOutlet weak var gotoGuestMode: UIButton!
 
   @IBAction func tapOnView(_ sender: UITapGestureRecognizer) {
     firstResponderTextField?.resignFirstResponder()
+  }
+
+  @IBAction func enterGuestMode(_ sender: UIButton) {
+    self.viewModel.inputs.gotoGuestMode()
+  }
+
+  internal func set(style: LoginViewController.Style) {
+    self.viewModel.inputs.set(style: style)
   }
 
   internal static func instantiate() -> LoginViewController {
     return Storyboard.Login.instantiate(LoginViewController.self)
   }
 
-  override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
     self.bindUIAction()
 
@@ -49,7 +63,7 @@ internal final class LoginViewController: UIViewController {
     self.viewModel.inputs.viewDidLoad()
   }
 
-  override func viewWillAppear(_ animated: Bool) {
+  override public func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardDidShow(_:)),
                                            name: NSNotification.Name.UIKeyboardWillShow,
@@ -59,11 +73,11 @@ internal final class LoginViewController: UIViewController {
                                            object: nil)
   }
 
-  override func viewDidAppear(_ animated: Bool) {
+  override public func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
   }
 
-  override func viewDidDisappear(_ animated: Bool) {
+  override public func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     NotificationCenter.default.removeObserver(self)
   }
@@ -105,7 +119,7 @@ internal final class LoginViewController: UIViewController {
     }
   }
 
-  internal override func bindStyles() {
+  public override func bindStyles() {
     super.bindStyles()
     _ = self.navigationItem |> UINavigationItem.lens.title %~ {_ in "Login"}
     _ = self.removeAccountBtn |> UIButton.lens.titleColor(forState: .disabled) %~ {_ in UIColor.lightGray}
@@ -113,7 +127,7 @@ internal final class LoginViewController: UIViewController {
   }
 
   /// Hanlding view model output signals
-  internal override func bindViewModel() {
+  public override func bindViewModel() {
     super.bindViewModel()
 
     self.viewModel.outputs.saveAccountButtonEnable.observeForUI().observeValues{ [weak self] in
@@ -131,13 +145,21 @@ internal final class LoginViewController: UIViewController {
       self?.pushTokenTF.text = $0.pushToken
     }
 
-//    self.viewModel.outputs.accountSaved.observeValues { [weak self] in
-//      self?.dismiss(animated: true, completion: nil)
-//    }
+    self.viewModel.outputs.style.observeForUI()
+      .observeValues { [weak self] in
+      self?.gotoGuestMode.isHidden = $0 == LoginViewController.Style.underGuestMode
+    }
 
-    self.viewModel.outputs.presentAlert.observeForControllerAction().observeValues { [weak self] in
+    self.viewModel.outputs.presentAlert.observeForControllerAction()
+      .observeValues { [weak self] in
       self?.dismiss(animated: true, completion: nil)
       self?.present($0, animated: true, completion: nil)
+    }
+
+    self.viewModel.outputs.announceEnteringGuestMode.observeForControllerAction()
+      .observeValues { [weak self] in
+      self?.dismiss(animated: true, completion: nil)
+      NotificationCenter.default.post(Notification(name: Notification.Name.appRunOnGuestMode))
     }
   }
 }

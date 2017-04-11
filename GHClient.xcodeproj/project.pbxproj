@@ -21,6 +21,8 @@
 		0E0944881E9CA541009672CA /* TwitterImagePipeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E05DF111E8E1C2800736885 /* TwitterImagePipeline.framework */; };
 		0E09448A1E9CA87F009672CA /* UserProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0944891E9CA87F009672CA /* UserProfileViewModelTests.swift */; };
 		0E3139641E9CC97A006C9232 /* RootTabBarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3139631E9CC97A006C9232 /* RootTabBarViewModelTests.swift */; };
+		0E3139661E9CE887006C9232 /* UserAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E3139651E9CE887006C9232 /* UserAuthentication.storyboard */; };
+		0E3139681E9CE8DD006C9232 /* UserAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3139671E9CE8DD006C9232 /* UserAuthenticationViewController.swift */; };
 		0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; };
 		0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E6AAC7A1E81363200E94429 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; };
@@ -1166,6 +1168,8 @@
 		0E267AA71E921D4F006D647B /* LeftDetailTableViewValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftDetailTableViewValueCell.swift; sourceTree = "<group>"; };
 		0E267AA91E921D64006D647B /* RightDetailTableViewValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailTableViewValueCell.swift; sourceTree = "<group>"; };
 		0E3139631E9CC97A006C9232 /* RootTabBarViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewModelTests.swift; sourceTree = "<group>"; };
+		0E3139651E9CE887006C9232 /* UserAuthentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserAuthentication.storyboard; sourceTree = "<group>"; };
+		0E3139671E9CE8DD006C9232 /* UserAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationViewController.swift; sourceTree = "<group>"; };
 		0E3E02E61E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularTextFieldCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
@@ -1742,6 +1746,7 @@
 				0E7B7BEE1E6EB01300D50C95 /* SearchFilter.storyboard */,
 				0E84B59F1E67C3DE00C5ADF7 /* UserProfile.storyboard */,
 				0E6023501E9B1C05004A2758 /* ChangedFiles.storyboard */,
+				0E3139651E9CE887006C9232 /* UserAuthentication.storyboard */,
 			);
 			name = Storyboards;
 			path = ../GHClient;
@@ -1752,6 +1757,7 @@
 			children = (
 				0EECF6361E704608009600BB /* ActivitesViewController.swift */,
 				0EB13A551E8D3F2200163750 /* CommitTableViewController.swift */,
+				0E3139671E9CE8DD006C9232 /* UserAuthenticationViewController.swift */,
 				0E4B40BF1E70456C004144DC /* DiscoveryViewController.swift */,
 				0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */,
 				0E1AAB131E84C24E00BFD36C /* IssueTableViewController.swift */,
@@ -3072,6 +3078,7 @@
 				0EFD87831E9C5CEF002D764D /* Activities.storyboard in Resources */,
 				0EFD87841E9C5CEF002D764D /* Commit.storyboard in Resources */,
 				0EFD87851E9C5CEF002D764D /* Discovery.storyboard in Resources */,
+				0E3139661E9CE887006C9232 /* UserAuthentication.storyboard in Resources */,
 				0EFD87861E9C5CEF002D764D /* Highlighter.storyboard in Resources */,
 				0EFD87871E9C5CEF002D764D /* Issue.storyboard in Resources */,
 				0EFD87891E9C5CEF002D764D /* Login.storyboard in Resources */,
@@ -3262,6 +3269,7 @@
 				0EFD86F01E9C5C97002D764D /* RepositoryCommitsDatasource.swift in Sources */,
 				0EFD86F11E9C5C97002D764D /* RepositoryContentDatasource.swift in Sources */,
 				0EFD86F21E9C5C97002D764D /* RepositoryContributorsDatasource.swift in Sources */,
+				0E3139681E9CE8DD006C9232 /* UserAuthenticationViewController.swift in Sources */,
 				0EFD86F31E9C5C97002D764D /* RepositoryDatasource.swift in Sources */,
 				0EFD86F41E9C5C97002D764D /* RepositoryEventsDatasource.swift in Sources */,
 				0EFD86F51E9C5C97002D764D /* RepositoryForksDatasource.swift in Sources */,

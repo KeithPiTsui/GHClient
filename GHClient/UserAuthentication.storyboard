@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Authentication View Controller-->
+        <scene sceneID="Gf1-M3-wmP">
+            <objects>
+                <viewController storyboardIdentifier="UserAuthenticationViewController" id="j0I-n9-K7V" customClass="UserAuthenticationViewController" customModule="GHClientFramework" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bzR-Zy-gfO"/>
+                        <viewControllerLayoutGuide type="bottom" id="5hc-s4-3bx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X6x-bd-acS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authenticating, Please wait" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emJ-Bx-KtW">
+                                <rect key="frame" x="84" y="323" width="207" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="emJ-Bx-KtW" firstAttribute="centerX" secondItem="X6x-bd-acS" secondAttribute="centerX" id="Udc-Wx-nsF"/>
+                            <constraint firstItem="emJ-Bx-KtW" firstAttribute="centerY" secondItem="X6x-bd-acS" secondAttribute="centerY" id="z1H-Mn-zEn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qlC-ij-rs4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-406" y="127"/>
+        </scene>
+    </scenes>
+</document>

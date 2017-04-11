@@ -81,7 +81,9 @@ RootTabBarViewModelType, RootTabBarViewModelInputs, RootTabBarViewModelOutputs {
   init() {
 
     let userAuthenticationViewControllers = self.viewDidLoadProperty.signal
-      .map { () -> ([UIViewController],String) in ([UIViewController()],"default")}
+      .map { () -> ([UIViewController],String) in
+        ([UserAuthenticationViewController.instantiate()],"default")
+    }
 
     let accountModeControllers = self.userSessionStartedProperty.signal
       .map { () -> ([UIViewController],String) in

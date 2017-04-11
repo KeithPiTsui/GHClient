@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Account-->
         <scene sceneID="pjg-i8-XDe">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" title="Account" id="6ur-lx-WzX" customClass="LoginViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="Account" id="6ur-lx-WzX" customClass="LoginViewController" customModule="GHClientFramework" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uin-oE-Vv4"/>
                         <viewControllerLayoutGuide type="bottom" id="82f-O1-F4v"/>
@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pc8-fk-T46">
-                                <rect key="frame" x="106" y="83.5" width="253" height="30"/>
+                                <rect key="frame" x="106" y="84" width="253" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -60,31 +60,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auth: user, git, repo, notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoD-cm-6yE">
-                                <rect key="frame" x="16" y="267.5" width="343" height="19.5"/>
+                                <rect key="frame" x="16" y="267.5" width="343" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push: notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-VW-e4B">
-                                <rect key="frame" x="16" y="287" width="343" height="19.5"/>
+                                <rect key="frame" x="16" y="287.5" width="343" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AuthToken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NL4-gw-0VF">
-                                <rect key="frame" x="16" y="319.5" width="81" height="21"/>
+                                <rect key="frame" x="16" y="320.5" width="81" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PushToken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75z-0c-DM1">
-                                <rect key="frame" x="16" y="360.5" width="83" height="21"/>
+                                <rect key="frame" x="16" y="361.5" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Auth Token" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0a-sa-aP8">
-                                <rect key="frame" x="106" y="315" width="253" height="30"/>
+                                <rect key="frame" x="106" y="315.5" width="253" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -93,7 +93,7 @@
                                 </connections>
                             </textField>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Push Notification Token" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EwD-m3-8jv">
-                                <rect key="frame" x="105" y="356" width="254" height="30"/>
+                                <rect key="frame" x="105" y="356.5" width="254" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -102,26 +102,33 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gj-C3-YCs">
-                                <rect key="frame" x="16" y="394" width="343" height="39"/>
+                                <rect key="frame" x="16" y="394.5" width="343" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Okay"/>
                             </button>
                             <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZpU-Pb-2Oc">
-                                <rect key="frame" x="310" y="441" width="51" height="31"/>
+                                <rect key="frame" x="310" y="441.5" width="51" height="31"/>
                             </switch>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEb-tD-WML">
-                                <rect key="frame" x="16" y="484" width="343" height="39"/>
+                                <rect key="frame" x="16" y="484.5" width="343" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Remove Account">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7y-BQ-OKp">
-                                <rect key="frame" x="16" y="441" width="139" height="21"/>
+                                <rect key="frame" x="16" y="441.5" width="139" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZW-va-3Nj">
+                                <rect key="frame" x="145" y="531.5" width="84" height="30"/>
+                                <state key="normal" title="Guest Mode"/>
+                                <connections>
+                                    <action selector="enterGuestMode:" destination="6ur-lx-WzX" eventType="touchUpInside" id="raX-xa-49l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -134,6 +141,7 @@
                             <constraint firstItem="nEb-tD-WML" firstAttribute="top" secondItem="A7y-BQ-OKp" secondAttribute="bottom" constant="22" id="5Fx-ET-1nH"/>
                             <constraint firstItem="7Lk-TL-PRR" firstAttribute="leading" secondItem="9v8-oT-nuo" secondAttribute="leadingMargin" id="5iI-0e-Pka"/>
                             <constraint firstItem="h0a-sa-aP8" firstAttribute="leading" secondItem="NL4-gw-0VF" secondAttribute="trailing" constant="9" id="5yJ-Jf-lI2"/>
+                            <constraint firstItem="IZW-va-3Nj" firstAttribute="top" secondItem="nEb-tD-WML" secondAttribute="bottom" constant="8" symbolic="YES" id="6dv-d6-78W"/>
                             <constraint firstItem="pc8-fk-T46" firstAttribute="centerY" secondItem="8md-UB-eyh" secondAttribute="centerY" id="7io-aw-IL7"/>
                             <constraint firstItem="h0a-sa-aP8" firstAttribute="centerY" secondItem="NL4-gw-0VF" secondAttribute="centerY" id="8b0-7j-mzc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AaH-mI-TUZ" secondAttribute="trailing" id="Bu4-s7-2W6"/>
@@ -141,6 +149,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="nEb-tD-WML" secondAttribute="leading" id="Dsc-aD-Y9v"/>
                             <constraint firstItem="pc8-fk-T46" firstAttribute="leading" secondItem="8md-UB-eyh" secondAttribute="trailing" constant="8" symbolic="YES" id="FZK-uy-fvi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZpU-Pb-2Oc" secondAttribute="trailing" id="FtS-iC-1Fa"/>
+                            <constraint firstItem="IZW-va-3Nj" firstAttribute="centerX" secondItem="nEb-tD-WML" secondAttribute="centerX" id="HiH-GI-Ehb"/>
                             <constraint firstItem="Zny-uD-FNE" firstAttribute="leading" secondItem="9v8-oT-nuo" secondAttribute="leadingMargin" id="Ivg-8M-3nO"/>
                             <constraint firstAttribute="leadingMargin" secondItem="aoD-cm-6yE" secondAttribute="leading" id="MuB-Ni-YYW"/>
                             <constraint firstItem="7Lk-TL-PRR" firstAttribute="top" secondItem="8md-UB-eyh" secondAttribute="bottom" constant="22" id="Ntv-ei-bGv"/>
@@ -177,6 +186,7 @@
                     <connections>
                         <outlet property="NotificationPushSwitch" destination="ZpU-Pb-2Oc" id="Efh-Cc-mzo"/>
                         <outlet property="authTokenTF" destination="h0a-sa-aP8" id="wUI-tg-p05"/>
+                        <outlet property="gotoGuestMode" destination="IZW-va-3Nj" id="M4W-od-xRK"/>
                         <outlet property="passwordTF" destination="AaH-mI-TUZ" id="MiU-Jc-Xgm"/>
                         <outlet property="pushTokenTF" destination="EwD-m3-8jv" id="jcW-Wx-iAB"/>
                         <outlet property="removeAccountBtn" destination="nEb-tD-WML" id="9sV-3d-Ely"/>
@@ -191,7 +201,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-756" y="113"/>
+            <point key="canvasLocation" x="-1412" y="109"/>
         </scene>
     </scenes>
 </document>

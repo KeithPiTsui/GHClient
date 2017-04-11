@@ -47,6 +47,11 @@ public protocol LoginViewModelInputs {
 
   /// 
   func userLoginFailed(with error: ErrorEnvelope)
+
+  ///
+  func gotoGuestMode()
+
+  func set(style: LoginViewController.Style)
 }
 
 public protocol LoginViewModelOutputs {
@@ -55,6 +60,8 @@ public protocol LoginViewModelOutputs {
   var removeAccountButtonEnable: Signal<Bool, NoError> {get}
   var accountSaved: Signal<(), NoError> {get}
   var presentAlert: Signal<UIAlertController, NoError> {get}
+  var announceEnteringGuestMode: Signal<(), NoError> {get}
+  var style: Signal<LoginViewController.Style, NoError> {get}
 }
 
 public protocol LoginViewModelType {
@@ -90,8 +97,15 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
       return alert
     }
 
+    self.announceEnteringGuestMode
+      = Signal.combineLatest(self.viewDidLoadProperty.signal, self.gotoGuestModeProperty.signal)
+        .map(second)
+
     self.removeAccountButtonEnable = self.account.map{$0 != nil}
     self.accountSaved = self.accountSavedProperty.signal
+
+    self.style = Signal.combineLatest(self.viewDidLoadProperty.signal, self.setStyleProperty.signal.skipNil())
+      .map(second)
 
     self.account.observeValues{ [weak self] in
       self?.usernameProperty.value = $0?.username
@@ -114,6 +128,16 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
 
 
 
+  }
+
+  fileprivate let setStyleProperty = MutableProperty<LoginViewController.Style?>(nil)
+  public func set(style: LoginViewController.Style) {
+    self.setStyleProperty.value = style
+  }
+
+  fileprivate let gotoGuestModeProperty = MutableProperty()
+  public func gotoGuestMode() {
+    self.gotoGuestModeProperty.value = ()
   }
 
   fileprivate let userLoginFailedWithErrorProperty = MutableProperty<ErrorEnvelope?>(nil)
@@ -174,7 +198,8 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
   fileprivate let accountProperty = MutableProperty<Account?>(nil)
   fileprivate let accountSavedProperty = MutableProperty()
 
-
+  public let style: Signal<LoginViewController.Style, NoError>
+  public let announceEnteringGuestMode: Signal<(), NoError>
   public let presentAlert: Signal<UIAlertController, NoError>
   public let account: Signal<Account?, NoError>
   public let saveAccountButtonEnable: Signal<Bool, NoError>
