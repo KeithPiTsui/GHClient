@@ -273,12 +273,14 @@ internal enum GHEventDescriber {
       desc = "\(user) \(payload.action) \(reponame)"
 
     case .WatchEvent:
-      guard let payload = event.payload as? WatchEventPayload else { break }
-      let user = payload.sender.login
-      let userURL = payload.sender.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
+      guard
+        let payload = event.payload as? WatchEventPayload,
+        let user = payload.sender?.login,
+        let reponame = payload.repository?.full_name
+        else { break }
+      let userURL = payload.sender?.urls.url.appendingPathComponent(URLTargetStrings.user.rawValue)
       urls[user] = userURL
-      let reponame = payload.repository.full_name
-      let repoURL = payload.repository.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
+      let repoURL = payload.repository?.urls.url.appendingPathComponent(URLTargetStrings.repository.rawValue)
       urls[reponame] = repoURL
       desc = "\(user) starred \(reponame)"
 

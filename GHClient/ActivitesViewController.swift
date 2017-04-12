@@ -112,6 +112,12 @@ internal final class ActivitesViewController: UIViewController {
 }
 
 extension ActivitesViewController: UITableViewDelegate {
+  internal func tableView(_ tableView: UITableView,
+                                   willDisplay cell: UITableViewCell,
+                                   forRowAt indexPath: IndexPath) {
+    self.viewModel.inputs.willDisplayRow(self.datasource.itemIndexAt(indexPath),
+                                         outOf: self.datasource.numberOfItems())
+  }
 }
 
 extension ActivitesViewController: TTTAttributedLabelDelegate {

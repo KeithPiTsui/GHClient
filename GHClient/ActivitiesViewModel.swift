@@ -43,6 +43,14 @@ internal protocol ActivitesViewModelInputs {
 
   /// Call when user tapped on a link on event
   func tapped(on event: GHEvent, with link: URL)
+
+  /**
+   Call from the controller's `tableView:willDisplayCell:forRowAtIndexPath` method.
+
+   - parameter row:       The 0-based index of the row displaying.
+   - parameter totalRows: The total number of rows in the table view.
+   */
+  func willDisplayRow(_ row: Int, outOf totalRows: Int)
 }
 
 internal protocol ActivitesViewModelOutputs {
@@ -72,6 +80,45 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
   fileprivate static let allSegments = ActivitySegment.allCases
 
   init() {
+
+    let isCloseToBottom = self.willDisplayRowProperty.signal.skipNil()
+      .map { row, total in total > 3 && row >= total - 2 }
+      .skipRepeats()
+      .filter(isTrue)
+      .map{ _ in ()}
+
+    let requestFirstPage = Signal
+      .merge(
+        self.userSessionStartedProperty.signal,
+        self.viewWillAppearProperty.signal.skipNil().filter(isFalse).map{_ in ()},
+        self.refreshEventsProperty.signal
+      )
+      .filter { AppEnvironment.current.currentUser != nil }
+
+    let (paginatedActivities, isLoading, pageCount)
+      = paginate(requestFirstPageWith: requestFirstPage,
+             requestNextPageWhen: isCloseToBottom,
+             clearOnNewRequest: false,
+             skipRepeats: false,
+             valuesFromEnvelope: { (envelope: GHServiceReturnType<[GHEvent]>) -> [GHEvent] in envelope.0},
+             cursorFromEnvelope: { (envelope: GHServiceReturnType<[GHEvent]>) -> URL? in envelope.1.links?.next },
+             requestFromParams: { (_) -> SignalProducer<GHServiceReturnType<[GHEvent]>, ErrorEnvelope> in
+              guard let user = AppEnvironment.current.currentUser else {
+                return SignalProducer.init(error: ErrorEnvelope.unknownError)
+              }
+              return AppEnvironment.current.apiService.receivedEventsWithResponseHeader(of: user)},
+             requestFromCursor: { (url) -> SignalProducer<GHServiceReturnType<[GHEvent]>, ErrorEnvelope> in
+              guard let url = url else { return SignalProducer.init(error: ErrorEnvelope.unknownError) }
+              return AppEnvironment.current.apiService.receivedEventsWithResponseHeader(of: url)})
+
+    let activities = paginatedActivities
+      .scan([GHEvent]()) { acc, next in
+        !next.isEmpty
+          ? (acc + next).distincts().sorted { $0.id > $1.id }
+          : next
+    }
+
+
     let eventRequest = Signal.merge(self.viewDidLoadProperty.signal, self.refreshEventsProperty.signal)
     self.loading = eventRequest
 
@@ -81,11 +128,12 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
         return AppEnvironment.current.apiService.events(of: user).single()?.value
       }.skipNil()
 
-    let receivedEvents = eventRequest.observe(on: QueueScheduler())
-      .map { () -> [GHEvent]? in
-        guard let user = AppEnvironment.current.currentUser else { return nil }
-        return AppEnvironment.current.apiService.receivedEvents(of: user).single()?.value
-      }.skipNil()
+    let receivedEvents = activities
+//      eventRequest.observe(on: QueueScheduler())
+//      .map { () -> [GHEvent]? in
+//        guard let user = AppEnvironment.current.currentUser else { return nil }
+//        return AppEnvironment.current.apiService.receivedEvents(of: user).single()?.value
+//      }.skipNil()
 
     let initialSelectedSegment = self.viewDidLoadProperty.signal
       .map {ActivitesViewModel.allSegments.index(of: .Events)}
@@ -124,6 +172,11 @@ internal final class ActivitesViewModel: ActivitesViewModelType, ActivitesViewMo
       = self.tappOnEventWithLinkProperty.signal.skipNil()
         .map(GHEventDescriber.viewController)
         .skipNil()
+  }
+
+  fileprivate let willDisplayRowProperty = MutableProperty<(row: Int, total: Int)?>(nil)
+  public func willDisplayRow(_ row: Int, outOf totalRows: Int) {
+    self.willDisplayRowProperty.value = (row, totalRows)
   }
 
   fileprivate let tappOnEventWithLinkProperty = MutableProperty<(GHEvent, URL)?>(nil)

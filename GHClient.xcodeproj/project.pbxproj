@@ -23,6 +23,7 @@
 		0E3139641E9CC97A006C9232 /* RootTabBarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3139631E9CC97A006C9232 /* RootTabBarViewModelTests.swift */; };
 		0E3139661E9CE887006C9232 /* UserAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E3139651E9CE887006C9232 /* UserAuthentication.storyboard */; };
 		0E3139681E9CE8DD006C9232 /* UserAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3139671E9CE8DD006C9232 /* UserAuthenticationViewController.swift */; };
+		0E31398F1E9CFDAB006C9232 /* Paginate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31398E1E9CFDAB006C9232 /* Paginate.swift */; };
 		0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; };
 		0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E6AAC7A1E81363200E94429 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; };
@@ -1170,6 +1171,7 @@
 		0E3139631E9CC97A006C9232 /* RootTabBarViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewModelTests.swift; sourceTree = "<group>"; };
 		0E3139651E9CE887006C9232 /* UserAuthentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserAuthentication.storyboard; sourceTree = "<group>"; };
 		0E3139671E9CE8DD006C9232 /* UserAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationViewController.swift; sourceTree = "<group>"; };
+		0E31398E1E9CFDAB006C9232 /* Paginate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paginate.swift; sourceTree = "<group>"; };
 		0E3E02E61E780B6400C1CD84 /* TrendingRepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		0E4B40A21E7033AE004144DC /* RegularTextFieldCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularTextFieldCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E4B40B71E703BEB004144DC /* RootTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootTabBar.storyboard; sourceTree = "<group>"; };
@@ -1857,6 +1859,7 @@
 				0E84B59D1E67AB3B00C5ADF7 /* AppEnvironment.swift */,
 				0E9EBD571E715D1B00D3E5A9 /* CGRect-Extension.swift */,
 				0E50AA031E67F56F0002A40D /* DateProtocol.swift */,
+				0EFD87C41E9C60C7002D764D /* DispatchOnce.swift */,
 				0E84B59B1E67AB2E00C5ADF7 /* Environment.swift */,
 				0E6AAC8A1E8151CF00E94429 /* FileTypeCategorizer.swift */,
 				0E7358051E86162D005C5002 /* GHCAttributedLabel.swift */,
@@ -1868,6 +1871,7 @@
 				0E50AA2F1E6843D30002A40D /* Notifications.swift */,
 				0E94F31D1E651CBA00E962B6 /* NSBundleType.swift */,
 				0E50AA011E67F55B0002A40D /* NSHTTPCookieStorageType.swift */,
+				0E31398E1E9CFDAB006C9232 /* Paginate.swift */,
 				0E50AA091E67F6140002A40D /* Reachability.swift */,
 				0EB582311E88B35F0082AA09 /* SilverBullet */,
 				0E6AACC51E815B7000E94429 /* SouceCodeFileExtension.txt */,
@@ -1879,7 +1883,6 @@
 				0E0912991E934A8300D889A9 /* UIImageView+URL.swift */,
 				0ED6464D1E695BCD00017D28 /* UIView-Extensions.swift */,
 				0E94F31F1E651CBA00E962B6 /* UIViewController-Preparation.swift */,
-				0EFD87C41E9C60C7002D764D /* DispatchOnce.swift */,
 			);
 			name = Library;
 			path = ../GHClient;
@@ -3174,6 +3177,7 @@
 				0EFD872C1E9C5CA7002D764D /* IssueTableViewController.swift in Sources */,
 				0EFD872D1E9C5CA7002D764D /* LoginViewController.swift in Sources */,
 				0EFD872E1E9C5CA7002D764D /* MarkupViewerViewController.swift in Sources */,
+				0E31398F1E9CFDAB006C9232 /* Paginate.swift in Sources */,
 				0EFD872F1E9C5CA7002D764D /* MenuViewController.swift in Sources */,
 				0EFD87301E9C5CA7002D764D /* MeTableViewController.swift in Sources */,
 				0EFD87311E9C5CA7002D764D /* PullRequestsTableViewController.swift in Sources */,
