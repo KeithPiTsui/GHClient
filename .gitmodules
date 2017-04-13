@@ -36,7 +36,7 @@
 	url = https://github.com/ArtSabintsev/Guitar.git
 [submodule "Down"]
 	path = Down
-	url = https://github.com/iwasrobbed/Down.git
+	url = https://github.com/KeithPiTsui/Down.git
 [submodule "Ladder"]
 	path = Ladder
 	url = https://github.com/KeithPiTsui/Ladder.git
