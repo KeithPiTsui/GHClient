@@ -1578,23 +1578,23 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0EFD85CA1E9C566C002D764D /* TTTAttributedLabel.xcodeproj */,
 				0E0912781E934A5000D889A9 /* Alamofire.xcodeproj */,
 				0E09121E1E934A4900D889A9 /* AlamofireImage.xcodeproj */,
-				0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */,
-				0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */,
+				0E94F20D1E651AA600E962B6 /* Argo.xcodeproj */,
+				0E94F2251E651AAE00E962B6 /* Curry.xcodeproj */,
 				0E6AAC2D1E81265200E94429 /* Down.xcodeproj */,
+				0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */,
 				0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */,
 				0ECE8A491E77C590001FE48B /* Ji.xcodeproj */,
-				0E94F2C91E651B2A00E962B6 /* GHAPI.xcodeproj */,
-				0E94F2B11E651AF100E962B6 /* Runes.xcodeproj */,
-				0E94F2961E651AE900E962B6 /* Result.xcodeproj */,
-				0E94F27E1E651ADF00E962B6 /* ReactiveSwift.xcodeproj */,
+				0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */,
+				0E94F2341E651ABE00E962B6 /* Prelude.xcodeproj */,
 				0E94F2661E651AD000E962B6 /* ReactiveCocoa.xcodeproj */,
 				0E94F24F1E651AC700E962B6 /* ReactiveExtensions.xcodeproj */,
-				0E94F2341E651ABE00E962B6 /* Prelude.xcodeproj */,
-				0E94F2251E651AAE00E962B6 /* Curry.xcodeproj */,
-				0E94F20D1E651AA600E962B6 /* Argo.xcodeproj */,
+				0E94F27E1E651ADF00E962B6 /* ReactiveSwift.xcodeproj */,
+				0E94F2961E651AE900E962B6 /* Result.xcodeproj */,
+				0E94F2B11E651AF100E962B6 /* Runes.xcodeproj */,
+				0EFD85CA1E9C566C002D764D /* TTTAttributedLabel.xcodeproj */,
+				0E05DECA1E8E1C2800736885 /* TwitterImagePipeline.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

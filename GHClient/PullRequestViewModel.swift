@@ -50,6 +50,7 @@ PullRequestViewModelInputs,
 PullRequestViewModelOutputs {
 
   init() {
+
     let pr1 = self.setPullRequestProperty.signal.skipNil()
     let pr2 = self.setPullRequestURLProperty.signal.skipNil().observeInBackground()
       .map { AppEnvironment.current.apiService.pullRequest(of: $0).single()?.value}
