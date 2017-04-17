@@ -4,6 +4,7 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C5A1DDB3E606DFC92FA346AEA131D16A8E63D147" : 9223372036854775807,
     "93283886EC4825DF8E5FE1458E1E4238DD692370" : 9223372036854775807,
     "8FD8F7B1FD76A28DE77193D7D058AFD5380E5269" : 9223372036854775807,
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : 9223372036854775807,
@@ -28,6 +29,7 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8D255161-81CF-43F9-AC03-501CD0591EFC",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C5A1DDB3E606DFC92FA346AEA131D16A8E63D147" : "GHClient\/KTLibrary\/",
     "93283886EC4825DF8E5FE1458E1E4238DD692370" : "GHClient\/Down\/",
     "8FD8F7B1FD76A28DE77193D7D058AFD5380E5269" : "GHClient\/Ji\/",
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : "GHClient\/ReactiveCocoa\/Carthage\/Checkouts\/ReactiveSwift\/",
@@ -128,6 +130,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/antitypical\/Result.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "956D2B21DD155C49504BB67697A67F7C5351A353"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KeithPiTsui\/KTLibrary.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C5A1DDB3E606DFC92FA346AEA131D16A8E63D147"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/dekatotoro\/SlideMenuControllerSwift.git",

@@ -28,6 +28,11 @@
 		0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A541E77C590001FE48B /* Ji.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E6AAC7A1E81363200E94429 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; };
 		0E6AAC7B1E81363200E94429 /* Down.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6AAC3F1E81265300E94429 /* Down.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0E6FBFD01EA4F18900646D42 /* CGPointExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBFCD1EA4F18900646D42 /* CGPointExt.swift */; };
+		0E6FBFD11EA4F18900646D42 /* CGSizeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBFCE1EA4F18900646D42 /* CGSizeExt.swift */; };
+		0E6FBFD21EA4F18900646D42 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBFCF1EA4F18900646D42 /* Grid.swift */; };
+		0E6FBFD41EA4F1FA00646D42 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBFD31EA4F1FA00646D42 /* Filter.swift */; };
+		0E6FBFDD1EA4FDA900646D42 /* FilterPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBFDC1EA4FDA900646D42 /* FilterPanelView.swift */; };
 		0E71A4EA1E7FAC8C00D8EED6 /* Highlighter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */; };
 		0E71A4EB1E7FAC8C00D8EED6 /* Highlighter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E71A4BD1E7FAC7C00D8EED6 /* Highlighter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E94F1F41E65189900E962B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E94F1F31E65189900E962B6 /* Assets.xcassets */; };
@@ -1239,6 +1244,11 @@
 		0E6AAC781E81356600E94429 /* MarkupViewerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkupViewerViewModel.swift; sourceTree = "<group>"; };
 		0E6AAC8A1E8151CF00E94429 /* FileTypeCategorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTypeCategorizer.swift; sourceTree = "<group>"; };
 		0E6AACC51E815B7000E94429 /* SouceCodeFileExtension.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SouceCodeFileExtension.txt; sourceTree = "<group>"; };
+		0E6FBFCD1EA4F18900646D42 /* CGPointExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExt.swift; sourceTree = "<group>"; };
+		0E6FBFCE1EA4F18900646D42 /* CGSizeExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeExt.swift; sourceTree = "<group>"; };
+		0E6FBFCF1EA4F18900646D42 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		0E6FBFD31EA4F1FA00646D42 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		0E6FBFDC1EA4FDA900646D42 /* FilterPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPanelView.swift; sourceTree = "<group>"; };
 		0E71A4AD1E7FAC7C00D8EED6 /* Highlighter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Highlighter.xcodeproj; path = Highlighter/Highlighter.xcodeproj; sourceTree = "<group>"; };
 		0E71A4EE1E7FAD0700D8EED6 /* Highlighter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Highlighter.storyboard; sourceTree = "<group>"; };
 		0E71A4F01E7FAE1800D8EED6 /* HighlighterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlighterViewController.swift; sourceTree = "<group>"; };
@@ -1538,6 +1548,18 @@
 				0E6AAC471E81265300E94429 /* DownTests-macOS.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0E6FBFCC1EA4F15200646D42 /* Gridder */ = {
+			isa = PBXGroup;
+			children = (
+				0E6FBFCD1EA4F18900646D42 /* CGPointExt.swift */,
+				0E6FBFCE1EA4F18900646D42 /* CGSizeExt.swift */,
+				0E6FBFCF1EA4F18900646D42 /* Grid.swift */,
+				0E6FBFD31EA4F1FA00646D42 /* Filter.swift */,
+				0E6FBFDC1EA4FDA900646D42 /* FilterPanelView.swift */,
+			);
+			name = Gridder;
 			sourceTree = "<group>";
 		};
 		0E71A4AE1E7FAC7C00D8EED6 /* Products */ = {
@@ -2134,6 +2156,7 @@
 		0EDB2CBC1E7909EF007103A7 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				0E6FBFCC1EA4F15200646D42 /* Gridder */,
 				0E7895FC1E798BCF00DB2098 /* Guitar */,
 			);
 			name = Vendor;
@@ -3254,6 +3277,7 @@
 				0EFD87281E9C5CA7002D764D /* ActivitesViewController.swift in Sources */,
 				0EFD87291E9C5CA7002D764D /* CommitTableViewController.swift in Sources */,
 				0EFD872A1E9C5CA7002D764D /* DiscoveryViewController.swift in Sources */,
+				0E6FBFD01EA4F18900646D42 /* CGPointExt.swift in Sources */,
 				0EFD872B1E9C5CA7002D764D /* HighlighterViewController.swift in Sources */,
 				0EFD872C1E9C5CA7002D764D /* IssueTableViewController.swift in Sources */,
 				0EFD872D1E9C5CA7002D764D /* LoginViewController.swift in Sources */,
@@ -3276,6 +3300,7 @@
 				0EFD873C1E9C5CA7002D764D /* RepositoryViewController.swift in Sources */,
 				0EFD873D1E9C5CA7002D764D /* RootTabBarViewController.swift in Sources */,
 				0EFD873E1E9C5CA7002D764D /* SearchFilterViewController.swift in Sources */,
+				0E6FBFD11EA4F18900646D42 /* CGSizeExt.swift in Sources */,
 				0EFD873F1E9C5CA7002D764D /* SearchViewController.swift in Sources */,
 				0EFD87401E9C5CA7002D764D /* UserProfileViewController.swift in Sources */,
 				0EFD87411E9C5CA7002D764D /* WebViewTestViewController.swift in Sources */,
@@ -3283,6 +3308,7 @@
 				0EFD87431E9C5CA7002D764D /* ActivitiesViewModel.swift in Sources */,
 				0EFD87441E9C5CA7002D764D /* AppDelegateViewModel.swift in Sources */,
 				0EFD87451E9C5CA7002D764D /* CommitViewModel.swift in Sources */,
+				0E6FBFD21EA4F18900646D42 /* Grid.swift in Sources */,
 				0EFD87461E9C5CA7002D764D /* DiscoveryViewModel.swift in Sources */,
 				0EFD87471E9C5CA7002D764D /* MeViewModel.swift in Sources */,
 				0EFD87481E9C5CA7002D764D /* IssueViewModel.swift in Sources */,
@@ -3379,7 +3405,9 @@
 				0EFD87081E9C5C97002D764D /* FileTypeCategorizer.swift in Sources */,
 				0EFD87091E9C5C97002D764D /* GHCAttributedLabel.swift in Sources */,
 				0EFD870A1E9C5C97002D764D /* Image.swift in Sources */,
+				0E6FBFD41EA4F1FA00646D42 /* Filter.swift in Sources */,
 				0EFD870B1E9C5C97002D764D /* ImageFetcher.swift in Sources */,
+				0E6FBFDD1EA4FDA900646D42 /* FilterPanelView.swift in Sources */,
 				0EFD870C1E9C5C97002D764D /* KeyValueStoreType.swift in Sources */,
 				0EFD870D1E9C5C97002D764D /* KSCache.swift in Sources */,
 				0EFD870E1E9C5C97002D764D /* LocalizedString.swift in Sources */,
