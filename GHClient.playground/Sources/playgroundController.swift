@@ -14,6 +14,12 @@ public enum Orientation {
   case landscape
 }
 
+public enum PlaygroundControllerStyle {
+  case none
+  case navigationBar
+  case tabBar
+}
+
 /**
  Creates a controller that represents a specific device, orientation with specific traits.
 
@@ -30,12 +36,29 @@ public enum Orientation {
 public func playgroundControllers(device: Device = .phone4_7inch,
                                   orientation: Orientation = .portrait,
                                   child: UIViewController = UIViewController(),
-                                  additionalTraits: UITraitCollection = .init())
+                                  additionalTraits: UITraitCollection = .init(),
+                                  style: PlaygroundControllerStyle = .none)
   -> (parent: UIViewController, child: UIViewController) {
 
-    let parent = UIViewController()
-    parent.addChildViewController(child)
-    parent.view.addSubview(child.view)
+    let parent: UIViewController
+
+    switch style {
+    case .none:
+      parent = UIViewController()
+      parent.addChildViewController(child)
+      parent.view.addSubview(child.view)
+    case .navigationBar:
+      parent = UINavigationController(rootViewController: child)
+    case .tabBar:
+      let tbc = UITabBarController()
+      tbc.addChildViewController(UINavigationController(rootViewController: child))
+      if let item = tbc.tabBar.items?.first {
+        item.title = child.title
+      }
+      parent = tbc
+    }
+
+
 
     child.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
@@ -99,8 +122,8 @@ public func playgroundControllers(device: Device = .phone4_7inch,
         ])
     }
 
-    child.view.frame = parent.view.frame
-    parent.preferredContentSize = parent.view.frame.size
+//    child.view.frame = parent.view.frame
+//    parent.preferredContentSize = parent.view.frame.size
     parent.view.backgroundColor = .white
     child.view.backgroundColor = .white
 

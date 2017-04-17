@@ -54,6 +54,9 @@
 		0E94F2F61E651B7E00E962B6 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F2181E651AA600E962B6 /* Argo.framework */; };
 		0E94F2F71E651B7E00E962B6 /* Argo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E94F2181E651AA600E962B6 /* Argo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E9CEF8E1E8F5A8F001F9625 /* content.html in Resources */ = {isa = PBXBuildFile; fileRef = 0E9CEF8D1E8F5A8F001F9625 /* content.html */; };
+		0ECC6AA21EA4DF4F00B52170 /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECC6AA11EA4DE0500B52170 /* DropDown.framework */; };
+		0ECC6AA31EA4DF5D00B52170 /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECC6AA11EA4DE0500B52170 /* DropDown.framework */; };
+		0ECC6AA41EA4DF5D00B52170 /* DropDown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECC6AA11EA4DE0500B52170 /* DropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EDCFB561E8432130095F61B /* Ladder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; };
 		0EDCFB571E8432130095F61B /* Ladder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EFD85D51E9C5710002D764D /* TTTAttributedLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFD85CF1E9C566D002D764D /* TTTAttributedLabel.framework */; };
@@ -1008,6 +1011,34 @@
 			remoteGlobalIDString = EAD9FACE19D0EAB50031E006;
 			remoteInfo = "Argo-iOS";
 		};
+		0ECC6A9C1EA4DE0500B52170 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECC6A961EA4DE0500B52170 /* DropDown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A76440F1B676C2300BF1A2D;
+			remoteInfo = Demo;
+		};
+		0ECC6A9E1EA4DE0500B52170 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECC6A961EA4DE0500B52170 /* DropDown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A7644241B676C2300BF1A2D;
+			remoteInfo = DropDownTests;
+		};
+		0ECC6AA01EA4DE0500B52170 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECC6A961EA4DE0500B52170 /* DropDown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0AB5D8711D0EEECD002D3A17;
+			remoteInfo = DropDown;
+		};
+		0ECC6AA51EA4DF5D00B52170 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0ECC6A961EA4DE0500B52170 /* DropDown.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0AB5D8701D0EEECD002D3A17;
+			remoteInfo = DropDown;
+		};
 		0ECE8A531E77C590001FE48B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0ECE8A491E77C590001FE48B /* Ji.xcodeproj */;
@@ -1123,6 +1154,7 @@
 				0E94F2E31E651B7E00E962B6 /* ReactiveCocoa.framework in Embed Frameworks */,
 				0E94F2E71E651B7E00E962B6 /* ReactiveExtensions.framework in Embed Frameworks */,
 				0E0912961E934A6600D889A9 /* AlamofireImage.framework in Embed Frameworks */,
+				0ECC6AA41EA4DF5D00B52170 /* DropDown.framework in Embed Frameworks */,
 				0E3E02E31E78071E00C1CD84 /* Ji.framework in Embed Frameworks */,
 				0E05DF1D1E8E1C4300736885 /* TwitterImagePipeline.framework in Embed Frameworks */,
 				0E0912921E934A6600D889A9 /* Alamofire.framework in Embed Frameworks */,
@@ -1330,6 +1362,7 @@
 		0EB582DA1E893DE00082AA09 /* MeLogoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeLogoutTableViewCell.swift; sourceTree = "<group>"; };
 		0EB6580A1E82168800D48AAE /* EventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventExtension.swift; sourceTree = "<group>"; };
 		0EB6585C1E828F2200D48AAE /* EventPayloadTypeDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPayloadTypeDisplay.swift; sourceTree = "<group>"; };
+		0ECC6A961EA4DE0500B52170 /* DropDown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DropDown.xcodeproj; path = DropDown/DropDown.xcodeproj; sourceTree = "<group>"; };
 		0ECE8A491E77C590001FE48B /* Ji.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ji.xcodeproj; path = Ji/Ji.xcodeproj; sourceTree = "<group>"; };
 		0ECE8A6A1E77FEF2001FE48B /* DiscoveryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryViewModel.swift; sourceTree = "<group>"; };
 		0ECE8A6C1E77FF90001FE48B /* DiscoveryDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryDatasource.swift; sourceTree = "<group>"; };
@@ -1389,6 +1422,7 @@
 				0E3E02E21E78071E00C1CD84 /* Ji.framework in Frameworks */,
 				0E94F2E21E651B7E00E962B6 /* ReactiveCocoa.framework in Frameworks */,
 				0E0912951E934A6600D889A9 /* AlamofireImage.framework in Frameworks */,
+				0ECC6AA31EA4DF5D00B52170 /* DropDown.framework in Frameworks */,
 				0E94F2E61E651B7E00E962B6 /* ReactiveExtensions.framework in Frameworks */,
 				0E05DF1C1E8E1C4300736885 /* TwitterImagePipeline.framework in Frameworks */,
 				0E0912911E934A6600D889A9 /* Alamofire.framework in Frameworks */,
@@ -1407,6 +1441,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ECC6AA21EA4DF4F00B52170 /* DropDown.framework in Frameworks */,
 				0EFD879F1E9C5D47002D764D /* Alamofire.framework in Frameworks */,
 				0EFD87A01E9C5D47002D764D /* AlamofireImage.framework in Frameworks */,
 				0EFD87A11E9C5D47002D764D /* Argo.framework in Frameworks */,
@@ -1578,6 +1613,7 @@
 		0E94F20C1E651A9A00E962B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0ECC6A961EA4DE0500B52170 /* DropDown.xcodeproj */,
 				0E0912781E934A5000D889A9 /* Alamofire.xcodeproj */,
 				0E09121E1E934A4900D889A9 /* AlamofireImage.xcodeproj */,
 				0E94F20D1E651AA600E962B6 /* Argo.xcodeproj */,
@@ -1862,7 +1898,6 @@
 				0EFD87C41E9C60C7002D764D /* DispatchOnce.swift */,
 				0E84B59B1E67AB2E00C5ADF7 /* Environment.swift */,
 				0E6AAC8A1E8151CF00E94429 /* FileTypeCategorizer.swift */,
-				0E7358051E86162D005C5002 /* GHCAttributedLabel.swift */,
 				0E9EBD171E71000600D3E5A9 /* Image.swift */,
 				0E05DF671E8E661600736885 /* ImageFetcher.swift */,
 				0E50AA0B1E67F6310002A40D /* KeyValueStoreType.swift */,
@@ -1891,6 +1926,7 @@
 		0E94F3231E651CF000E962B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0ECC6A3E1EA4DCE800B52170 /* Custom */,
 				0ED6464F1E695BFD00017D28 /* Cells */,
 			);
 			name = Views;
@@ -1995,6 +2031,24 @@
 				0E9451811E99E019006976CF /* PayloadModel+PayloadView.swift */,
 			);
 			name = EventAndPayload;
+			sourceTree = "<group>";
+		};
+		0ECC6A3E1EA4DCE800B52170 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				0E7358051E86162D005C5002 /* GHCAttributedLabel.swift */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
+		0ECC6A971EA4DE0500B52170 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0ECC6A9D1EA4DE0500B52170 /* Demo.app */,
+				0ECC6A9F1EA4DE0500B52170 /* DropDownTests.xctest */,
+				0ECC6AA11EA4DE0500B52170 /* DropDown.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		0ECE8A4A1E77C590001FE48B /* Products */ = {
@@ -2206,6 +2260,7 @@
 				0E0912981E934A6700D889A9 /* PBXTargetDependency */,
 				0EFD85D81E9C5710002D764D /* PBXTargetDependency */,
 				0EFD86E11E9C5C5E002D764D /* PBXTargetDependency */,
+				0ECC6AA61EA4DF5D00B52170 /* PBXTargetDependency */,
 			);
 			name = GHClient;
 			productName = GHClient;
@@ -2278,6 +2333,7 @@
 					0EFD86DA1E9C5C5E002D764D = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 6T5NK4S24M;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2313,6 +2369,10 @@
 				{
 					ProductGroup = 0E6AAC2E1E81265200E94429 /* Products */;
 					ProjectRef = 0E6AAC2D1E81265200E94429 /* Down.xcodeproj */;
+				},
+				{
+					ProductGroup = 0ECC6A971EA4DE0500B52170 /* Products */;
+					ProjectRef = 0ECC6A961EA4DE0500B52170 /* DropDown.xcodeproj */;
 				},
 				{
 					ProductGroup = 0E94F2CA1E651B2A00E962B6 /* Products */;
@@ -2976,6 +3036,27 @@
 			remoteRef = 0E94F2D01E651B2B00E962B6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		0ECC6A9D1EA4DE0500B52170 /* Demo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Demo.app;
+			remoteRef = 0ECC6A9C1EA4DE0500B52170 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0ECC6A9F1EA4DE0500B52170 /* DropDownTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DropDownTests.xctest;
+			remoteRef = 0ECC6A9E1EA4DE0500B52170 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0ECC6AA11EA4DE0500B52170 /* DropDown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DropDown.framework;
+			remoteRef = 0ECC6AA01EA4DE0500B52170 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0ECE8A541E77C590001FE48B /* Ji.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -3424,6 +3505,11 @@
 			name = "Argo-iOS";
 			targetProxy = 0E94F2F81E651B7E00E962B6 /* PBXContainerItemProxy */;
 		};
+		0ECC6AA61EA4DF5D00B52170 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DropDown;
+			targetProxy = 0ECC6AA51EA4DF5D00B52170 /* PBXContainerItemProxy */;
+		};
 		0EDCFB591E8432130095F61B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Ladder;
@@ -3640,6 +3726,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -3654,6 +3741,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.GHClientFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3665,6 +3753,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

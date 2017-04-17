@@ -13,6 +13,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 import GHAPI
+import DropDown
 
 internal final class DiscoveryViewController: UIViewController {
 
@@ -22,8 +23,16 @@ internal final class DiscoveryViewController: UIViewController {
 
   fileprivate let viewModel: DiscoveryViewModelType = DiscoveryViewModel()
   fileprivate let datasource = DiscoveryDatasource()
+
+  fileprivate let languageOptions = DropDown()
+
   @IBOutlet weak var tableView: UITableView!
 
+  @IBOutlet weak var languageSelector: UIButton!
+
+  @IBAction func touched(_ sender: UIButton) {
+    self.languageOptions.show()
+  }
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -31,6 +40,12 @@ internal final class DiscoveryViewController: UIViewController {
     self.tableView.delegate = self
     self.tableView.rowHeight = UITableViewAutomaticDimension
     self.tableView.estimatedRowHeight = 120
+
+    self.languageOptions.anchorView = self.languageSelector
+    self.languageOptions.dataSource = GithubCraper.programmingLanguages.map(second)
+    self.languageOptions.selectionAction = { [unowned self] (index, item) in
+      self.languageSelector.setTitle(item, for: .normal)
+    }
 
     self.viewModel.inputs.viewDidLoad()
   }
@@ -64,7 +79,6 @@ extension DiscoveryViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
   }
 }
-
 
 
 

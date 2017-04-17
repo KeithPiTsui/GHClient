@@ -2,10 +2,11 @@
 
 import Foundation
 
-
+typealias StoreReturn<Whole, Part> = (Part, (Part) -> Whole)
+typealias Store<Whole, Part> = (Whole) -> StoreReturn<Whole, Part>
 
 struct Lens<Whole, Part> {
-  var store: (Whole) -> (Part, (Part) -> Whole)
+  let store: Store<Whole, Part>
 }
 
 extension Lens {
@@ -118,6 +119,27 @@ func |> <Whole> (whole: Whole, process: (Whole) -> Whole) -> (Whole) {
  let newPerson = myPerson |> (Person.lense.cityname .~ "Shenzhen")
 
 
+let personCityNameStyle = (Person.lense.cityname .~ "Shenzhen")
+let personNameStyle = Person.lense.name .~ "Jason"
+
+func • <Whole> (lhs: @escaping (Whole) -> Whole,
+         rhs: @escaping (Whole) -> Whole)
+  -> (Whole) -> Whole {
+    return { (whole: Whole) -> Whole in rhs(lhs(whole)) }
+}
+
+let personStyle = personCityNameStyle • personNameStyle
+
+let anotherNewPerson = myPerson |> personStyle
+
+
+//extension Store {
+//  func map <NewWhole> (f: (Whole) -> (NewWhole)) -> Lens<NewWhole, Part> {
+//    let getter = self.get
+//    let setter = self.set
+//
+//  }
+//}
 
 
 

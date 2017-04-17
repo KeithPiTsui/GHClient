@@ -13,9 +13,11 @@ import PlaygroundSupport
 
 AppEnvironment.initialize()
 let vc = DiscoveryViewController.instantiate()
-let (parent, _) = playgroundControllers(device: .phone4_7inch, orientation: .portrait, child: vc)
+let (parent, _) = playgroundControllers(device: .phone4_7inch,
+                                        orientation: .portrait,
+                                        child: vc,
+                                        style: .tabBar)
 
-let frame = parent.view.frame |> CGRect.lens.size.height .~ 2200
 PlaygroundPage.current.liveView = parent
-parent.view.frame = frame
+
 
