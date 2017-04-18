@@ -14,9 +14,19 @@ import PlaygroundSupport
 
 let panelView = FilterPanelView(frame: CGRect(x: 0, y: 0, width: 200, height: 400))
 
-let label = Grid<Filter>.primitive(CGSize.one, .element(.dropDownList(["color": UIColor.red])))
+let checkbox = Grid<Filter>.primitive(CGSize.one,
+                                      .element(.checkBoxButton(["style": checkboxButtonStyle])))
 
-let panel = label ||| label --- label ||| label
+let checkbox2 = Grid<Filter>.primitive(CGSize.one,
+                                       .element(.checkBoxButton(["style": lightNavyButtonStyle])))
+
+let checkbox3 = Grid<Filter>.primitive(CGSize.one,
+                                       .element(.checkBoxButton(["style": blackButtonStyle])))
+
+let checkbox4 = Grid<Filter>.primitive(CGSize.one,
+                                       .element(.checkBoxButton(["style": twitterButtonStyle])))
+
+let panel = checkbox ||| checkbox2 --- checkbox3 ||| checkbox4
 
 panelView.panel = panel
 

@@ -60,7 +60,13 @@ extension FilterPanelView {
           dropDown.show()
         }
         self.addSubview(btn)
-
+      case .checkBoxButton(let attributes):
+        print("check box")
+        let btn = UIButton(frame: frame)
+        if let style = attributes["style"] as? ButtonStyle {
+          _ = btn |> style
+        }
+        self.addSubview(btn)
       default:
         break;
       }

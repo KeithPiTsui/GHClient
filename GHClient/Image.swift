@@ -1,7 +1,9 @@
 import UIKit
 
+private class A {}
+
 public func image(named name: String,
-                  inBundle bundle: NSBundleType = AppEnvironment.current.mainBundle,
+                  inBundle bundle: NSBundleType = Bundle(for: A.self),
                   compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
 
   return UIImage(named: name, in: Bundle(identifier: bundle.identifier), compatibleWith: traitCollection)
@@ -9,7 +11,7 @@ public func image(named name: String,
 
 public func image(named name: String,
                   tintColor: UIColor,
-                  inBundle bundle: NSBundleType = AppEnvironment.current.mainBundle,
+                  inBundle bundle: NSBundleType = Bundle(for: A.self),
                   compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
 
   guard let img = image(named: name, inBundle: bundle, compatibleWithTraitCollection: traitCollection)

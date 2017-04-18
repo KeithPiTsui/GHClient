@@ -6,5 +6,6 @@
         <page name='Curry'/>
         <page name='Lense'/>
         <page name='FilterPanel'/>
+        <page name='ButtonStyle'/>
     </pages>
 </playground>

@@ -65,6 +65,9 @@
 		0EDCFB561E8432130095F61B /* Ladder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; };
 		0EDCFB571E8432130095F61B /* Ladder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EDEF43B1EA59F2B00D2D281 /* UIButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEF43A1EA59F2B00D2D281 /* UIButtonExt.swift */; };
+		0EDEF4A11EA5A5C400D2D281 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEF4A01EA5A5C400D2D281 /* ButtonStyles.swift */; };
+		0EDEF4A31EA5A5ED00D2D281 /* BaseStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEF4A21EA5A5ED00D2D281 /* BaseStyles.swift */; };
+		0EDEF4A51EA5A61F00D2D281 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEF4A41EA5A61F00D2D281 /* Fonts.swift */; };
 		0EFD85D51E9C5710002D764D /* TTTAttributedLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFD85CF1E9C566D002D764D /* TTTAttributedLabel.framework */; };
 		0EFD85D61E9C5710002D764D /* TTTAttributedLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFD85CF1E9C566D002D764D /* TTTAttributedLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EFD86DF1E9C5C5E002D764D /* GHClientFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EFD86DD1E9C5C5E002D764D /* GHClientFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1390,6 +1393,9 @@
 		0EDCFB161E8403AE0095F61B /* MeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ladder.xcodeproj; path = Ladder/Ladder.xcodeproj; sourceTree = "<group>"; };
 		0EDEF43A1EA59F2B00D2D281 /* UIButtonExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExt.swift; sourceTree = "<group>"; };
+		0EDEF4A01EA5A5C400D2D281 /* ButtonStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		0EDEF4A21EA5A5ED00D2D281 /* BaseStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStyles.swift; sourceTree = "<group>"; };
+		0EDEF4A41EA5A61F00D2D281 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		0EE749E51E878BD700262014 /* RepositoryOwerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryOwerTableViewCell.swift; sourceTree = "<group>"; };
 		0EECF6341E7045F0009600BB /* Activities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
 		0EECF6361E704608009600BB /* ActivitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitesViewController.swift; sourceTree = "<group>"; };
@@ -2187,6 +2193,9 @@
 		0EECF6381E70479F009600BB /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				0EDEF4A41EA5A61F00D2D281 /* Fonts.swift */,
+				0EDEF4A21EA5A5ED00D2D281 /* BaseStyles.swift */,
+				0EDEF4A01EA5A5C400D2D281 /* ButtonStyles.swift */,
 				0EECF63B1E7047C1009600BB /* TabBarItemStyles.swift */,
 				0EECF6391E7047B2009600BB /* Colors.swift */,
 			);
@@ -3290,6 +3299,7 @@
 				0EFD87301E9C5CA7002D764D /* MeTableViewController.swift in Sources */,
 				0EFD87311E9C5CA7002D764D /* PullRequestsTableViewController.swift in Sources */,
 				0EFD87321E9C5CA7002D764D /* PullRequestTableViewController.swift in Sources */,
+				0EDEF4A51EA5A61F00D2D281 /* Fonts.swift in Sources */,
 				0EFD87331E9C5CA7002D764D /* ReadmeViewController.swift in Sources */,
 				0EFD87341E9C5CA7002D764D /* RepositoryCommitsTableViewController.swift in Sources */,
 				0EFD87351E9C5CA7002D764D /* RepositoryContentTableViewController.swift in Sources */,
@@ -3395,6 +3405,7 @@
 				0EFD86FA1E9C5C97002D764D /* SearchFilterUsersDatasource.swift in Sources */,
 				0EFD86FB1E9C5C97002D764D /* SearchRepositoryDataSource.swift in Sources */,
 				0EFD86FC1E9C5C97002D764D /* SearchUserDataSource.swift in Sources */,
+				0EDEF4A31EA5A5ED00D2D281 /* BaseStyles.swift in Sources */,
 				0EFD86FD1E9C5C97002D764D /* UserProfileEventDatasource.swift in Sources */,
 				0EFD86FE1E9C5C97002D764D /* UserProfileOrganizationDatasource.swift in Sources */,
 				0EFD86FF1E9C5C97002D764D /* ValueCell.swift in Sources */,
@@ -3417,6 +3428,7 @@
 				0EFD870E1E9C5C97002D764D /* LocalizedString.swift in Sources */,
 				0EFD870F1E9C5C97002D764D /* Notifications.swift in Sources */,
 				0EFD87101E9C5C97002D764D /* NSBundleType.swift in Sources */,
+				0EDEF4A11EA5A5C400D2D281 /* ButtonStyles.swift in Sources */,
 				0EFD87111E9C5C97002D764D /* NSHTTPCookieStorageType.swift in Sources */,
 				0EFD87121E9C5C97002D764D /* Reachability.swift in Sources */,
 				0EFD87131E9C5C97002D764D /* OptionalUnwraper.swift in Sources */,
