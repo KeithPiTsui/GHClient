@@ -31,7 +31,7 @@ public struct FilterPanel {
 
     let label = Grid<Filter>.primitive(CGSize.one, .element(.label(["color": UIColor.red])))
 
-    let panel = Grid<Filter>.section(label, ["title": "Filter"])
+    let panel = Grid<Filter>.align(CGPoint.topCenter, label)
 
     return panel
   }()

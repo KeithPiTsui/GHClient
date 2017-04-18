@@ -11,7 +11,12 @@ import UIKit
 public final class FilterPanelView: UIView {
 
 
-  public var panel: Grid<Filter> = FilterPanel.filterPanel1
+  public var panel: Grid<Filter> = FilterPanel.filterPanel1  {
+    didSet {
+      boundSize = nil
+      self.setNeedsLayout()
+    }
+  }
 
   /// To record bound change
   private var boundSize: CGSize?
@@ -33,7 +38,15 @@ public final class FilterPanelView: UIView {
 extension FilterPanelView {
   func layout(_ primitive: Primitive<Filter>, in frame: CGRect) {
     if case let .element(k) = primitive {
-
+      switch k {
+      case .label(_):
+        let lab = UILabel(frame: frame)
+        lab.text = "testing"
+        lab.textColor = UIColor.red
+        self.addSubview(lab)
+      default:
+        break;
+      }
 
     }
   }
@@ -45,6 +58,7 @@ extension FilterPanelView {
       layout(primitive, in: bounds)
 
     case .align(let alignment, let diagram):
+      print("align")
       let bounds = diagram.size.fit(into: bounds, alignment: alignment)
       layout(diagram, in: bounds)
 
