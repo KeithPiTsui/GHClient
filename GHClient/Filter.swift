@@ -19,6 +19,8 @@ public enum Filter {
     switch name {
     case "label":
       return .label(["color": UIColor.red])
+    case "dropDownList":
+      return .dropDownList(["color": UIColor.red])
     default:
       return .label(["color": UIColor.red])
     }

@@ -64,6 +64,7 @@
 		0ECC6AA41EA4DF5D00B52170 /* DropDown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECC6AA11EA4DE0500B52170 /* DropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EDCFB561E8432130095F61B /* Ladder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; };
 		0EDCFB571E8432130095F61B /* Ladder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EDCFB531E8431FD0095F61B /* Ladder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0EDEF43B1EA59F2B00D2D281 /* UIButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDEF43A1EA59F2B00D2D281 /* UIButtonExt.swift */; };
 		0EFD85D51E9C5710002D764D /* TTTAttributedLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFD85CF1E9C566D002D764D /* TTTAttributedLabel.framework */; };
 		0EFD85D61E9C5710002D764D /* TTTAttributedLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFD85CF1E9C566D002D764D /* TTTAttributedLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0EFD86DF1E9C5C5E002D764D /* GHClientFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EFD86DD1E9C5C5E002D764D /* GHClientFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1388,6 +1389,7 @@
 		0EDCFB141E8403900095F61B /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		0EDCFB161E8403AE0095F61B /* MeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTableViewController.swift; sourceTree = "<group>"; };
 		0EDCFB4D1E8431FC0095F61B /* Ladder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ladder.xcodeproj; path = Ladder/Ladder.xcodeproj; sourceTree = "<group>"; };
+		0EDEF43A1EA59F2B00D2D281 /* UIButtonExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExt.swift; sourceTree = "<group>"; };
 		0EE749E51E878BD700262014 /* RepositoryOwerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryOwerTableViewCell.swift; sourceTree = "<group>"; };
 		0EECF6341E7045F0009600BB /* Activities.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activities.storyboard; sourceTree = "<group>"; };
 		0EECF6361E704608009600BB /* ActivitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitesViewController.swift; sourceTree = "<group>"; };
@@ -2059,6 +2061,7 @@
 			isa = PBXGroup;
 			children = (
 				0E7358051E86162D005C5002 /* GHCAttributedLabel.swift */,
+				0EDEF43A1EA59F2B00D2D281 /* UIButtonExt.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -3384,6 +3387,7 @@
 				0EFD86F31E9C5C97002D764D /* RepositoryDatasource.swift in Sources */,
 				0EFD86F41E9C5C97002D764D /* RepositoryEventsDatasource.swift in Sources */,
 				0EFD86F51E9C5C97002D764D /* RepositoryForksDatasource.swift in Sources */,
+				0EDEF43B1EA59F2B00D2D281 /* UIButtonExt.swift in Sources */,
 				0EFD86F61E9C5C97002D764D /* RepositoryIssuesDatasource.swift in Sources */,
 				0EFD86F71E9C5C97002D764D /* RepositoryReleasesDatasource.swift in Sources */,
 				0EFD86F81E9C5C97002D764D /* RepositoryStargazersDatasource.swift in Sources */,

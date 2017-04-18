@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Prelude
+import Prelude_UIKit
+import DropDown
 
 public final class FilterPanelView: UIView {
 
@@ -44,6 +47,20 @@ extension FilterPanelView {
         lab.text = "testing"
         lab.textColor = UIColor.red
         self.addSubview(lab)
+      case .dropDownList(_):
+        print("attach drop down list")
+        let btn = UIButton(frame: frame)
+        _ = btn |> UIButton.lens.titleColor(forState: .normal) .~ UIColor.blue
+        btn.setTitle("btn", for: .normal)
+        let dropDown = DropDown(anchorView: btn, selectionAction: { (idx, item) in
+          print("idx: \(idx), item: \(item)")
+        }, dataSource: ["A", "B", "C"], topOffset: nil, bottomOffset: nil, cellConfiguration: nil, cancelAction: nil)
+        btn.reactive.controlEvents(.touchUpInside).observeValues{ _ in
+          print("show drop down")
+          dropDown.show()
+        }
+        self.addSubview(btn)
+
       default:
         break;
       }

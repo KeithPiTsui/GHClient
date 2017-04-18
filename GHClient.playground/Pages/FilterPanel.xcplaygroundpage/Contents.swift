@@ -14,7 +14,7 @@ import PlaygroundSupport
 
 let panelView = FilterPanelView(frame: CGRect(x: 0, y: 0, width: 200, height: 400))
 
-let label = Grid<Filter>.primitive(CGSize.one, .element(.label(["color": UIColor.red])))
+let label = Grid<Filter>.primitive(CGSize.one, .element(.dropDownList(["color": UIColor.red])))
 
 let panel = label ||| label --- label ||| label
 
